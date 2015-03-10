@@ -131,13 +131,6 @@
 			remoteGlobalIDString = 2E4FEFDA19575BE100351305;
 			remoteInfo = "SwiftyJSON iOS";
 		};
-		93D2E9251AAF3F920028ED1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 93D2E9061AAF3BEE0028ED1B /* Alamofire-SwiftyJSON.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = A8AFB70E19D1401D0070765E;
-			remoteInfo = AlamofireSwiftyJSON;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -365,7 +358,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				93D2E9261AAF3F920028ED1B /* PBXTargetDependency */,
 				93D2E9241AAF3E7F0028ED1B /* PBXTargetDependency */,
 				93D2E9221AAF3E730028ED1B /* PBXTargetDependency */,
 			);
@@ -576,11 +568,6 @@
 			isa = PBXTargetDependency;
 			name = "SwiftyJSON iOS";
 			targetProxy = 93D2E9231AAF3E7F0028ED1B /* PBXContainerItemProxy */;
-		};
-		93D2E9261AAF3F920028ED1B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AlamofireSwiftyJSON;
-			targetProxy = 93D2E9251AAF3F920028ED1B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
