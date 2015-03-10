@@ -85,7 +85,7 @@ extension LeftMenuViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             
-            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: ViewController())
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: GeoViewController())
             sideMenuViewController?.hideMenuViewController()
             break
         /*case 1:

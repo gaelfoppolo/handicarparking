@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		93C83F4F1AAED9AD005990C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C83F4E1AAED9AD005990C2 /* AppDelegate.swift */; };
 		93C83F521AAED9AD005990C2 /* HandiParking.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 93C83F501AAED9AD005990C2 /* HandiParking.xcdatamodeld */; };
-		93C83F541AAED9AD005990C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C83F531AAED9AD005990C2 /* ViewController.swift */; };
+		93C83F541AAED9AD005990C2 /* GeoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C83F531AAED9AD005990C2 /* GeoViewController.swift */; };
 		93C83F571AAED9AD005990C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C83F551AAED9AD005990C2 /* Main.storyboard */; };
 		93C83F5C1AAED9AD005990C2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C83F5A1AAED9AD005990C2 /* LaunchScreen.xib */; };
 		93C83F681AAED9AD005990C2 /* HandiParkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C83F671AAED9AD005990C2 /* HandiParkingTests.swift */; };
@@ -154,7 +154,7 @@
 		93C83F4D1AAED9AD005990C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93C83F4E1AAED9AD005990C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93C83F511AAED9AD005990C2 /* HandiParking.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HandiParking.xcdatamodel; sourceTree = "<group>"; };
-		93C83F531AAED9AD005990C2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		93C83F531AAED9AD005990C2 /* GeoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoViewController.swift; sourceTree = "<group>"; };
 		93C83F561AAED9AD005990C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		93C83F5B1AAED9AD005990C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		93C83F611AAED9AD005990C2 /* HandiParkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HandiParkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,6 +218,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		934BADFC1AAF49780034E407 /* Controleurs */ = {
+			isa = PBXGroup;
+			children = (
+				93C83F531AAED9AD005990C2 /* GeoViewController.swift */,
+			);
+			name = Controleurs;
+			sourceTree = "<group>";
+		};
+		934BAE051AAF49830034E407 /* Vues */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Vues;
+			sourceTree = "<group>";
+		};
 		93C83F401AAED9AD005990C2 = {
 			isa = PBXGroup;
 			children = (
@@ -242,12 +257,13 @@
 		93C83F4B1AAED9AD005990C2 /* HandiParking */ = {
 			isa = PBXGroup;
 			children = (
+				934BAE051AAF49830034E407 /* Vues */,
+				934BADFC1AAF49780034E407 /* Controleurs */,
 				93D2E85D1AAF2DD80028ED1B /* Frameworks */,
 				93D2E8291AAEE3040028ED1B /* Sources */,
 				93C83F4E1AAED9AD005990C2 /* AppDelegate.swift */,
 				93D2E82E1AAEEB1F0028ED1B /* RightMenuViewController.swift */,
 				93D2E82C1AAEE9950028ED1B /* LeftMenuViewController.swift */,
-				93C83F531AAED9AD005990C2 /* ViewController.swift */,
 				93C83F551AAED9AD005990C2 /* Main.storyboard */,
 				93C83F5A1AAED9AD005990C2 /* LaunchScreen.xib */,
 				93C83F501AAED9AD005990C2 /* HandiParking.xcdatamodeld */,
@@ -534,7 +550,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93C83F541AAED9AD005990C2 /* ViewController.swift in Sources */,
+				93C83F541AAED9AD005990C2 /* GeoViewController.swift in Sources */,
 				93D2E82B1AAEE3250028ED1B /* SSASideMenu.swift in Sources */,
 				93C83F4F1AAED9AD005990C2 /* AppDelegate.swift in Sources */,
 				93D2E82D1AAEE9950028ED1B /* LeftMenuViewController.swift in Sources */,
