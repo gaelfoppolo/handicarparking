@@ -10,19 +10,19 @@
 	<string>HandiParking</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>5ecc9668-ffb4-2040-a4ba-67aae04a6357++6816</key>
-		<string>svn://80.236.15.6/keepcore/KC</string>
+		<key>5ecc9668-ffb4-2040-a4ba-67aae04a6357++2003</key>
+		<string>svn://80.236.15.6/keepcore/KC/trunk/handiparkingios</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>trunk/handiparkingios/HandiParking/HandiParking.xcodeproj</string>
+	<string>HandiParking/HandiParking.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>5ecc9668-ffb4-2040-a4ba-67aae04a6357++6816</key>
-		<string>../../../../..</string>
+		<key>5ecc9668-ffb4-2040-a4ba-67aae04a6357++2003</key>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectRepositoryRootDictionary</key>
 	<dict>
-		<key>5ecc9668-ffb4-2040-a4ba-67aae04a6357++6816</key>
+		<key>5ecc9668-ffb4-2040-a4ba-67aae04a6357++2003</key>
 		<string>svn://80.236.15.6/keepcore</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -30,16 +30,16 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>5ecc9668-ffb4-2040-a4ba-67aae04a6357++6816</string>
+	<string>5ecc9668-ffb4-2040-a4ba-67aae04a6357++2003</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.subversion</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>5ecc9668-ffb4-2040-a4ba-67aae04a6357++6816</string>
+			<string>5ecc9668-ffb4-2040-a4ba-67aae04a6357++2003</string>
 			<key>IDESourceControlWCCName</key>
-			<string>KC</string>
+			<string>handiparkingios</string>
 		</dict>
 	</array>
 </dict>
