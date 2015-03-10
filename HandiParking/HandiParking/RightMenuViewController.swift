@@ -13,10 +13,6 @@ class RightMenuViewController: UIViewController {
     
     lazy var tableView: UITableView = {
         let tableView = UITableView()
-        
-        println(self.view.frame.size.height)
-        println(self.view.frame.size.width)
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .None
@@ -70,14 +66,14 @@ extension RightMenuViewController: UITableViewDelegate, UITableViewDataSource {
         
         let titles: [String] = ["Aide", "À propos"]
         
-        //let images: [String] = ["IconHome", "IconHome"]
+        let images: [String] = ["IconHome", "IconHome"]
         
         cell.backgroundColor = UIColor.clearColor()
         cell.textLabel?.font = UIFont(name: "HelveticaNeue", size: 17)
         cell.textLabel?.textColor = UIColor.whiteColor()
         cell.textLabel?.text  = titles[indexPath.row]
         cell.selectionStyle = .None
-        //cell.imageView?.image = UIImage(named: images[indexPath.row])
+        cell.imageView?.image = UIImage(named: images[indexPath.row])
                 
         return cell
     }
