@@ -409,6 +409,7 @@
 				93C83F6D1AAED9AD005990C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		93C83F6E1AAED9AD005990C2 /* Build configuration list for PBXNativeTarget "HandiParkingTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +418,7 @@
 				93C83F701AAED9AD005990C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
