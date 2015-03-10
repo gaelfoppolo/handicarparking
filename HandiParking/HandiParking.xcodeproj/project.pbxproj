@@ -17,6 +17,8 @@
 		93D2E82D1AAEE9950028ED1B /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D2E82C1AAEE9950028ED1B /* LeftMenuViewController.swift */; };
 		93D2E82F1AAEEB1F0028ED1B /* RightMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D2E82E1AAEEB1F0028ED1B /* RightMenuViewController.swift */; };
 		93D2E8311AAEED1A0028ED1B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D2E8301AAEED1A0028ED1B /* Images.xcassets */; };
+		93D2E85F1AAF2DEC0028ED1B /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D2E85E1AAF2DEC0028ED1B /* GoogleMaps.framework */; };
+		93D2E8611AAF2E060028ED1B /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 93D2E8601AAF2E060028ED1B /* GoogleMaps.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		93D2E82C1AAEE9950028ED1B /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		93D2E82E1AAEEB1F0028ED1B /* RightMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightMenuViewController.swift; sourceTree = "<group>"; };
 		93D2E8301AAEED1A0028ED1B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		93D2E85E1AAF2DEC0028ED1B /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		93D2E8601AAF2E060028ED1B /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93D2E85F1AAF2DEC0028ED1B /* GoogleMaps.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +90,7 @@
 		93C83F4B1AAED9AD005990C2 /* HandiParking */ = {
 			isa = PBXGroup;
 			children = (
+				93D2E85D1AAF2DD80028ED1B /* Frameworks */,
 				93D2E8291AAEE3040028ED1B /* Sources */,
 				93C83F4E1AAED9AD005990C2 /* AppDelegate.swift */,
 				93D2E82E1AAEEB1F0028ED1B /* RightMenuViewController.swift */,
@@ -130,6 +136,15 @@
 				93D2E82A1AAEE3250028ED1B /* SSASideMenu.swift */,
 			);
 			name = Sources;
+			sourceTree = "<group>";
+		};
+		93D2E85D1AAF2DD80028ED1B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				93D2E8601AAF2E060028ED1B /* GoogleMaps.bundle */,
+				93D2E85E1AAF2DEC0028ED1B /* GoogleMaps.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +230,7 @@
 				93D2E8311AAEED1A0028ED1B /* Images.xcassets in Resources */,
 				93C83F571AAED9AD005990C2 /* Main.storyboard in Resources */,
 				93C83F5C1AAED9AD005990C2 /* LaunchScreen.xib in Resources */,
+				93D2E8611AAF2E060028ED1B /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +377,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HandiParking",
+				);
 				INFOPLIST_FILE = HandiParking/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -372,6 +392,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HandiParking",
+				);
 				INFOPLIST_FILE = HandiParking/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
