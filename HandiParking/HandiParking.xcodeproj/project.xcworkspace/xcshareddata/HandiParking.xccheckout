@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A0D0AD4C-28C1-4C14-8333-F2713F7716F5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>HandiParking</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5ecc9668-ffb4-2040-a4ba-67aae04a6357++6816</key>
+		<string>svn://80.236.15.6/keepcore/KC</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>trunk/handiparkingios/HandiParking/HandiParking.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5ecc9668-ffb4-2040-a4ba-67aae04a6357++6816</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>5ecc9668-ffb4-2040-a4ba-67aae04a6357++6816</key>
+		<string>svn://80.236.15.6/keepcore</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>svn://80.236.15.6/keepcore/KC/trunk/handiparkingios/HandiParking/HandiParking.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5ecc9668-ffb4-2040-a4ba-67aae04a6357++6816</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5ecc9668-ffb4-2040-a4ba-67aae04a6357++6816</string>
+			<key>IDESourceControlWCCName</key>
+			<string>KC</string>
+		</dict>
+	</array>
+</dict>
+</plist>
