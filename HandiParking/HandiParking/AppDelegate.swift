@@ -2,22 +2,52 @@
 //  AppDelegate.swift
 //  HandiParking
 //
-//  Created by Gaël on 10/03/2015.
-//  Copyright (c) 2015 KeepCore. All rights reserved.
+//  Created by Sebastian Andersen on 06/10/14.
+//  Modified by Gaël on 10/03/2015.
+//  Copyright (c) 2014 Sebastian Andersen &&  2015 KeepCore. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, SSASideMenuDelegate {
 
     var window: UIWindow?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        //MARK : Setup SSASideMenu
+        
+        let sideMenu = SSASideMenu(contentViewController: UINavigationController(rootViewController: ViewController()), leftMenuViewController: LeftMenuViewController(), rightMenuViewController: RightMenuViewController())
+        sideMenu.backgroundImage = UIImage(named: "background.jpg")
+        sideMenu.menuPreferredStatusBarStyle = .LightContent
+        sideMenu.delegate = self
+        
+        self.window?.rootViewController = sideMenu
+        self.window?.makeKeyAndVisible()
+        
         return true
+    }
+    
+    func sideMenuWillShowMenuViewController(sideMenu: SSASideMenu, menuViewController: UIViewController) {
+        println("Va s'afficher \(menuViewController)")
+    }
+    
+    func sideMenuDidShowMenuViewController(sideMenu: SSASideMenu, menuViewController: UIViewController) {
+        println("S'est affiché \(menuViewController)")
+    }
+    
+    func sideMenuDidHideMenuViewController(sideMenu: SSASideMenu, menuViewController: UIViewController) {
+        println("S'est caché \(menuViewController)")
+    }
+    
+    func sideMenuWillHideMenuViewController(sideMenu: SSASideMenu, menuViewController: UIViewController) {
+        println("Va se cacher \(menuViewController)")
+    }
+    func sideMenuDidRecognizePanGesture(sideMenu: SSASideMenu, recongnizer: UIPanGestureRecognizer) {
+        println("PanGesture reconnue \(recongnizer)")
     }
 
     func applicationWillResignActive(application: UIApplication) {

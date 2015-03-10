@@ -12,7 +12,11 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        view.backgroundColor = UIColor.whiteColor()
+        title = "Home"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "IconHome"), style: .Plain, target: self, action: "presentLeftMenuViewController")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "IconHome"), style: .Plain, target: self, action: "presentRightMenuViewController")
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,4 +26,6 @@ class ViewController: UIViewController {
 
 
 }
+
+
 
