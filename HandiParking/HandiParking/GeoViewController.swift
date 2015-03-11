@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GeoViewController.swift
 //  HandiParking
 //
 //  Created by Gaël on 10/03/2015.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class GeoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

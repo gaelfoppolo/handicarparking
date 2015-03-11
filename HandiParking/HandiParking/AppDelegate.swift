@@ -38,13 +38,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // create viewController code...
         var storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let mainViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController") as MainViewController
+        let mainViewController = storyboard.instantiateViewControllerWithIdentifier("GeoViewController") as GeoViewController
         let leftViewController = storyboard.instantiateViewControllerWithIdentifier("LeftViewController") as LeftViewController
         let rightViewController = storyboard.instantiateViewControllerWithIdentifier("RightViewController") as RightViewController
         
         let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
         
-        leftViewController.mainViewController = nvc
+        leftViewController.geoViewController = nvc
         
         let slideMenuController = SlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController, rightMenuViewController: rightViewController)
         

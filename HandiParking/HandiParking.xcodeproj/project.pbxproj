@@ -11,13 +11,12 @@
 		937626F71AB030470059C23D /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937626F61AB030470059C23D /* StringExtension.swift */; };
 		937626F91AB030670059C23D /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937626F81AB030670059C23D /* UITableViewExtension.swift */; };
 		937626FB1AB030860059C23D /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937626FA1AB030860059C23D /* UIViewControllerExtension.swift */; };
-		937626FD1AB0316F0059C23D /* SwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937626FC1AB0316F0059C23D /* SwiftViewController.swift */; };
-		937626FF1AB031A80059C23D /* JavaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937626FE1AB031A80059C23D /* JavaViewController.swift */; };
-		937627011AB031D60059C23D /* GoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937627001AB031D60059C23D /* GoViewController.swift */; };
-		937627031AB031F60059C23D /* NonMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937627021AB031F60059C23D /* NonMenuController.swift */; };
+		937626FD1AB0316F0059C23D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937626FC1AB0316F0059C23D /* SearchViewController.swift */; };
+		937626FF1AB031A80059C23D /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937626FE1AB031A80059C23D /* HelpViewController.swift */; };
+		937627011AB031D60059C23D /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937627001AB031D60059C23D /* AboutViewController.swift */; };
 		93C83F4F1AAED9AD005990C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C83F4E1AAED9AD005990C2 /* AppDelegate.swift */; };
 		93C83F521AAED9AD005990C2 /* HandiParking.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 93C83F501AAED9AD005990C2 /* HandiParking.xcdatamodeld */; };
-		93C83F541AAED9AD005990C2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C83F531AAED9AD005990C2 /* MainViewController.swift */; };
+		93C83F541AAED9AD005990C2 /* GeoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C83F531AAED9AD005990C2 /* GeoViewController.swift */; };
 		93C83F571AAED9AD005990C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C83F551AAED9AD005990C2 /* Main.storyboard */; };
 		93C83F5C1AAED9AD005990C2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C83F5A1AAED9AD005990C2 /* LaunchScreen.xib */; };
 		93C83F681AAED9AD005990C2 /* HandiParkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C83F671AAED9AD005990C2 /* HandiParkingTests.swift */; };
@@ -162,15 +161,14 @@
 		937626F61AB030470059C23D /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		937626F81AB030670059C23D /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		937626FA1AB030860059C23D /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
-		937626FC1AB0316F0059C23D /* SwiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftViewController.swift; sourceTree = "<group>"; };
-		937626FE1AB031A80059C23D /* JavaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JavaViewController.swift; sourceTree = "<group>"; };
-		937627001AB031D60059C23D /* GoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoViewController.swift; sourceTree = "<group>"; };
-		937627021AB031F60059C23D /* NonMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonMenuController.swift; sourceTree = "<group>"; };
+		937626FC1AB0316F0059C23D /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		937626FE1AB031A80059C23D /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		937627001AB031D60059C23D /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		93C83F491AAED9AD005990C2 /* HandiParking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandiParking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C83F4D1AAED9AD005990C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93C83F4E1AAED9AD005990C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93C83F511AAED9AD005990C2 /* HandiParking.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HandiParking.xcdatamodel; sourceTree = "<group>"; };
-		93C83F531AAED9AD005990C2 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		93C83F531AAED9AD005990C2 /* GeoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoViewController.swift; sourceTree = "<group>"; };
 		93C83F561AAED9AD005990C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		93C83F5B1AAED9AD005990C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		93C83F611AAED9AD005990C2 /* HandiParkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HandiParkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -237,11 +235,10 @@
 		934BADFC1AAF49780034E407 /* Controleurs */ = {
 			isa = PBXGroup;
 			children = (
-				93C83F531AAED9AD005990C2 /* MainViewController.swift */,
-				937627021AB031F60059C23D /* NonMenuController.swift */,
-				937626FE1AB031A80059C23D /* JavaViewController.swift */,
-				937627001AB031D60059C23D /* GoViewController.swift */,
-				937626FC1AB0316F0059C23D /* SwiftViewController.swift */,
+				93C83F531AAED9AD005990C2 /* GeoViewController.swift */,
+				937626FE1AB031A80059C23D /* HelpViewController.swift */,
+				937627001AB031D60059C23D /* AboutViewController.swift */,
+				937626FC1AB0316F0059C23D /* SearchViewController.swift */,
 			);
 			name = Controleurs;
 			sourceTree = "<group>";
@@ -574,17 +571,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93C83F541AAED9AD005990C2 /* MainViewController.swift in Sources */,
+				93C83F541AAED9AD005990C2 /* GeoViewController.swift in Sources */,
 				93D2E82B1AAEE3250028ED1B /* SlideMenuController.swift in Sources */,
-				937626FD1AB0316F0059C23D /* SwiftViewController.swift in Sources */,
+				937626FD1AB0316F0059C23D /* SearchViewController.swift in Sources */,
 				937626FB1AB030860059C23D /* UIViewControllerExtension.swift in Sources */,
 				93C83F4F1AAED9AD005990C2 /* AppDelegate.swift in Sources */,
 				93D2E82D1AAEE9950028ED1B /* LeftViewController.swift in Sources */,
-				937627031AB031F60059C23D /* NonMenuController.swift in Sources */,
 				937626F71AB030470059C23D /* StringExtension.swift in Sources */,
 				937626F51AB0300D0059C23D /* BaseTableViewCell.swift in Sources */,
-				937627011AB031D60059C23D /* GoViewController.swift in Sources */,
-				937626FF1AB031A80059C23D /* JavaViewController.swift in Sources */,
+				937627011AB031D60059C23D /* AboutViewController.swift in Sources */,
+				937626FF1AB031A80059C23D /* HelpViewController.swift in Sources */,
 				937626F91AB030670059C23D /* UITableViewExtension.swift in Sources */,
 				93D2E82F1AAEEB1F0028ED1B /* RightViewController.swift in Sources */,
 				93C83F521AAED9AD005990C2 /* HandiParking.xcdatamodeld in Sources */,

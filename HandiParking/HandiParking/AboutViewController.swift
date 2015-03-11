@@ -1,12 +1,12 @@
 //
-//  JavaViewController.swift
+//  AboutViewController.swift
 //  HandiParking
 //
 //  Created by Gaël on 11/03/2015.
 //  Copyright (c) 2015 KeepCore. All rights reserved.
 //
 
-class JavaViewController: UIViewController {
+class AboutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
