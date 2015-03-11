@@ -1,7 +1,8 @@
 //
 //  SlideMenuController.swift
 //
-//  Created by Yuji Hato on 12/3/14.
+//  Created by Yuji Hato on 12/3/14
+//  Modified by Gaël Foppol on 10/3/15
 //
 
 import Foundation
@@ -10,7 +11,7 @@ import UIKit
 
 class SlideMenuOption {
     
-    let leftViewWidth: CGFloat = 220.0
+    let leftViewWidth: CGFloat = 190.0
     let leftBezelWidth: CGFloat = 16.0
     let contentViewScale: CGFloat = 0.96
     let contentViewOpacity: CGFloat = 0.5
@@ -19,7 +20,7 @@ class SlideMenuOption {
     let shadowOffset: CGSize = CGSizeMake(0,0)
     let panFromBezel: Bool = true
     let animationDuration: CGFloat = 0.4
-    let rightViewWidth: CGFloat = 180.0
+    let rightViewWidth: CGFloat = 160.0
     let rightBezelWidth: CGFloat = 16.0
     let rightPanFromBezel: Bool = true
     let hideStatusBar: Bool = true

@@ -250,6 +250,15 @@
 			name = Vues;
 			sourceTree = "<group>";
 		};
+		9396F5BC1AB07A4300784082 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				93D2E82C1AAEE9950028ED1B /* LeftViewController.swift */,
+				93D2E82E1AAEEB1F0028ED1B /* RightViewController.swift */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
 		93C83F401AAED9AD005990C2 = {
 			isa = PBXGroup;
 			children = (
@@ -274,13 +283,12 @@
 		93C83F4B1AAED9AD005990C2 /* HandiParking */ = {
 			isa = PBXGroup;
 			children = (
+				9396F5BC1AB07A4300784082 /* Menu */,
+				93C83F4E1AAED9AD005990C2 /* AppDelegate.swift */,
+				93D2E8291AAEE3040028ED1B /* Sources */,
 				93D2E85D1AAF2DD80028ED1B /* Frameworks */,
 				934BAE051AAF49830034E407 /* Vues */,
 				934BADFC1AAF49780034E407 /* Controleurs */,
-				93D2E8291AAEE3040028ED1B /* Sources */,
-				93C83F4E1AAED9AD005990C2 /* AppDelegate.swift */,
-				93D2E82E1AAEEB1F0028ED1B /* RightViewController.swift */,
-				93D2E82C1AAEE9950028ED1B /* LeftViewController.swift */,
 				93C83F551AAED9AD005990C2 /* Main.storyboard */,
 				93C83F5A1AAED9AD005990C2 /* LaunchScreen.xib */,
 				93C83F501AAED9AD005990C2 /* HandiParking.xcdatamodeld */,
