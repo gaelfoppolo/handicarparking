@@ -11,7 +11,7 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, SSASideMenuDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
@@ -24,13 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SSASideMenuDelegate {
         
         //MARK : Setup SSASideMenu
         
-        let sideMenu = SSASideMenu(contentViewController: UINavigationController(rootViewController: GeoViewController()), leftMenuViewController: LeftMenuViewController(), rightMenuViewController: RightMenuViewController())
-        sideMenu.backgroundImage = UIImage(named: "background.jpg")
-        sideMenu.menuPreferredStatusBarStyle = .LightContent
-        sideMenu.delegate = self
-        
-        self.window?.rootViewController = sideMenu
-        self.window?.makeKeyAndVisible()
+        self.createMenuView()
         
         //MARK : instanciation des services de Google Maps avec notre clé serveur
         
@@ -39,23 +33,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SSASideMenuDelegate {
         return true
     }
     
-    func sideMenuWillShowMenuViewController(sideMenu: SSASideMenu, menuViewController: UIViewController) {
-        println("Va s'afficher \(menuViewController)")
-    }
-    
-    func sideMenuDidShowMenuViewController(sideMenu: SSASideMenu, menuViewController: UIViewController) {
-        println("S'est affiché \(menuViewController)")
-    }
-    
-    func sideMenuDidHideMenuViewController(sideMenu: SSASideMenu, menuViewController: UIViewController) {
-        println("S'est caché \(menuViewController)")
-    }
-    
-    func sideMenuWillHideMenuViewController(sideMenu: SSASideMenu, menuViewController: UIViewController) {
-        println("Va se cacher \(menuViewController)")
-    }
-    func sideMenuDidRecognizePanGesture(sideMenu: SSASideMenu, recongnizer: UIPanGestureRecognizer) {
-        println("PanGesture reconnue \(recongnizer)")
+    private func createMenuView() {
+        
+        // create viewController code...
+        var storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let mainViewController = storyboard.instantiateViewControllerWithIdentifier("MainViewController") as MainViewController
+        let leftViewController = storyboard.instantiateViewControllerWithIdentifier("LeftViewController") as LeftViewController
+        let rightViewController = storyboard.instantiateViewControllerWithIdentifier("RightViewController") as RightViewController
+        
+        let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
+        
+        leftViewController.mainViewController = nvc
+        
+        let slideMenuController = SlideMenuController(mainViewController:nvc, leftMenuViewController: leftViewController, rightMenuViewController: rightViewController)
+        
+        self.window?.backgroundColor = UIColor(red: 236.0, green: 238.0, blue: 241.0, alpha: 1.0)
+        self.window?.rootViewController = slideMenuController
+        self.window?.makeKeyAndVisible()
     }
 
     func applicationWillResignActive(application: UIApplication) {
