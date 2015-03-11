@@ -23,7 +23,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate {
         
         locationManager.requestWhenInUseAuthorization()
         
-        checkServices()
+        //checkServices()
         
     }
 
@@ -33,7 +33,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     // vérification de la présence d'une connexion internet, full ou limitée
-    func checkInternetConnection() -> Bool {
+    /*func checkInternetConnection() -> Bool {
         if !IJReachability.isConnectedToNetwork() {
             
             SCLAlertView().showError("Hum... 😁", subTitle:"Il semblerait que votre accès Internet soit désactivé. Veuillez le réactiver si vous souhaitez utiliser pleinement l'application", closeButtonTitle:"OK")
@@ -62,20 +62,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate {
             return true
         }
     
-    }
-    
-    func checkServices() {
-        // check si internet connexion
-        // check si service localisation
-        // check si localisation ok
-        
-        if checkInternetConnection() {
-            if checkLocationService() {
-                    locationManager.startUpdatingLocation()
-                
-            }
-        }
-    }
+    }*/
     
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         
@@ -88,14 +75,11 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate {
         
         if status == .AuthorizedWhenInUse {
             
+            locationManager.startUpdatingLocation()
+            
             mapView.myLocationEnabled = true
             mapView.settings.myLocationButton = true
             
-            if checkInternetConnection() {
-                if checkLocationService() {
-                        locationManager.startUpdatingLocation()
-                }
-            }
         }
     }
 
