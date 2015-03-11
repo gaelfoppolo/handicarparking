@@ -17,8 +17,8 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // set le titre dans la barre de navigation + les deux boutons latéraux
-        self.setNavigationBarItem("Géolocalisation")
+        // set le titre dans la barre de navigation
+        title = "Géolocalisation"
         self.locationManager.delegate = self;
         
         locationManager.requestWhenInUseAuthorization()

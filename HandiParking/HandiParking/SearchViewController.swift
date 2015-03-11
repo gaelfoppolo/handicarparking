@@ -16,7 +16,7 @@ class SearchViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarItem("Recherche")
+        title = "Recherche"
     }
     
 }

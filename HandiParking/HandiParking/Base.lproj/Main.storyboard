@@ -1,83 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="R1K-Uk-hOy">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--Left View Controller-->
-        <scene sceneID="hcz-nx-3CJ">
-            <objects>
-                <viewController storyboardIdentifier="LeftViewController" id="he2-kW-yg5" customClass="LeftViewController" customModule="HandiParking" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="C0p-0i-Uk6"/>
-                        <viewControllerLayoutGuide type="bottom" id="BYa-Ar-kX3"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="XCf-iE-IHd">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="BG8-mW-c35">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="he2-kW-yg5" id="HSr-Ug-gDx"/>
-                                    <outlet property="delegate" destination="he2-kW-yg5" id="Fko-VY-mKs"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="BG8-mW-c35" firstAttribute="leading" secondItem="XCf-iE-IHd" secondAttribute="leading" id="WA4-Uf-ljv"/>
-                            <constraint firstItem="BG8-mW-c35" firstAttribute="top" secondItem="XCf-iE-IHd" secondAttribute="top" id="Yi8-AR-zUe"/>
-                            <constraint firstItem="BYa-Ar-kX3" firstAttribute="top" secondItem="BG8-mW-c35" secondAttribute="bottom" id="gVL-Cp-GU7"/>
-                            <constraint firstAttribute="trailing" secondItem="BG8-mW-c35" secondAttribute="trailing" id="yKQ-Si-WUh"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="tableView" destination="BG8-mW-c35" id="Xcu-IB-eEq"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9Bz-Gh-jVr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="225" y="-474"/>
-        </scene>
-        <!--Right View Controller-->
-        <scene sceneID="wZX-YO-Die">
-            <objects>
-                <viewController storyboardIdentifier="RightViewController" id="4YB-O7-421" customClass="RightViewController" customModule="HandiParking" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Z3X-Mc-JNr"/>
-                        <viewControllerLayoutGuide type="bottom" id="Y1j-7o-vSK"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="x8j-04-az3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="7C1-qf-LL8">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="4YB-O7-421" id="996-QB-P9W"/>
-                                    <outlet property="delegate" destination="4YB-O7-421" id="2CD-XK-avZ"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="7C1-qf-LL8" firstAttribute="leading" secondItem="x8j-04-az3" secondAttribute="leading" id="TGI-MP-nPH"/>
-                            <constraint firstItem="Y1j-7o-vSK" firstAttribute="top" secondItem="7C1-qf-LL8" secondAttribute="bottom" id="TYV-6r-VFt"/>
-                            <constraint firstItem="7C1-qf-LL8" firstAttribute="top" secondItem="x8j-04-az3" secondAttribute="top" id="Wzu-Gp-QrT"/>
-                            <constraint firstAttribute="trailing" secondItem="7C1-qf-LL8" secondAttribute="trailing" id="jsj-iK-ujr"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="tableView" destination="7C1-qf-LL8" id="peP-Rg-YFJ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9iM-gJ-ikU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="857" y="-474"/>
-        </scene>
         <!--Help View Controller-->
         <scene sceneID="PpS-4U-Cs6">
             <objects>
@@ -103,7 +29,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ca-xH-1TP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1482" y="-479"/>
+            <point key="canvasLocation" x="848" y="-527"/>
         </scene>
         <!--Geo View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -142,6 +68,54 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0AF-px-RBQ">
+            <objects>
+                <navigationController id="R1K-Uk-hOy" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nc2-YL-mkk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="g0Y-Sq-anj" kind="relationship" relationship="rootViewController" id="dof-jp-b5k"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v6d-BX-Yb5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-204" y="-479"/>
+        </scene>
+        <!--HP-->
+        <scene sceneID="l4M-eL-xlB">
+            <objects>
+                <viewController id="g0Y-Sq-anj" customClass="MainViewController" customModule="HandiParking" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Tiw-hz-PZ7"/>
+                        <viewControllerLayoutGuide type="bottom" id="B9J-QH-nRo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Efj-IE-P5n">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bcz-tR-4BW">
+                                <rect key="frame" x="107" y="91" width="106" height="30"/>
+                                <state key="normal" title="Géolocalisation">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="vXZ-lx-hvc" kind="show" id="nF8-bk-BEq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="HP" id="APm-jU-fHy"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A51-aq-oHB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="302" y="-507"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="Q0O-fs-GLI">

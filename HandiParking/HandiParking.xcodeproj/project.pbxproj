@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		937626F51AB0300D0059C23D /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937626F41AB0300D0059C23D /* BaseTableViewCell.swift */; };
-		937626F71AB030470059C23D /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937626F61AB030470059C23D /* StringExtension.swift */; };
-		937626F91AB030670059C23D /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937626F81AB030670059C23D /* UITableViewExtension.swift */; };
-		937626FB1AB030860059C23D /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937626FA1AB030860059C23D /* UIViewControllerExtension.swift */; };
+		9371FFA91AB0E8CB001C4743 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9371FFA81AB0E8CB001C4743 /* MainViewController.swift */; };
 		937626FD1AB0316F0059C23D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937626FC1AB0316F0059C23D /* SearchViewController.swift */; };
 		937626FF1AB031A80059C23D /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937626FE1AB031A80059C23D /* HelpViewController.swift */; };
 		937627011AB031D60059C23D /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937627001AB031D60059C23D /* AboutViewController.swift */; };
@@ -22,9 +19,6 @@
 		93C83F571AAED9AD005990C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C83F551AAED9AD005990C2 /* Main.storyboard */; };
 		93C83F5C1AAED9AD005990C2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C83F5A1AAED9AD005990C2 /* LaunchScreen.xib */; };
 		93C83F681AAED9AD005990C2 /* HandiParkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C83F671AAED9AD005990C2 /* HandiParkingTests.swift */; };
-		93D2E82B1AAEE3250028ED1B /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D2E82A1AAEE3250028ED1B /* SlideMenuController.swift */; };
-		93D2E82D1AAEE9950028ED1B /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D2E82C1AAEE9950028ED1B /* LeftViewController.swift */; };
-		93D2E82F1AAEEB1F0028ED1B /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D2E82E1AAEEB1F0028ED1B /* RightViewController.swift */; };
 		93D2E8311AAEED1A0028ED1B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D2E8301AAEED1A0028ED1B /* Images.xcassets */; };
 		93D2E85F1AAF2DEC0028ED1B /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D2E85E1AAF2DEC0028ED1B /* GoogleMaps.framework */; };
 		93D2E8611AAF2E060028ED1B /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 93D2E8601AAF2E060028ED1B /* GoogleMaps.bundle */; };
@@ -159,10 +153,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		937626F41AB0300D0059C23D /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
-		937626F61AB030470059C23D /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
-		937626F81AB030670059C23D /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
-		937626FA1AB030860059C23D /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		9371FFA81AB0E8CB001C4743 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		937626FC1AB0316F0059C23D /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		937626FE1AB031A80059C23D /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		937627001AB031D60059C23D /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -178,9 +169,6 @@
 		93C83F611AAED9AD005990C2 /* HandiParkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HandiParkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C83F661AAED9AD005990C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93C83F671AAED9AD005990C2 /* HandiParkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandiParkingTests.swift; sourceTree = "<group>"; };
-		93D2E82A1AAEE3250028ED1B /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
-		93D2E82C1AAEE9950028ED1B /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
-		93D2E82E1AAEEB1F0028ED1B /* RightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
 		93D2E8301AAEED1A0028ED1B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		93D2E85E1AAF2DEC0028ED1B /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		93D2E8601AAF2E060028ED1B /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
@@ -240,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				93C83F531AAED9AD005990C2 /* GeoViewController.swift */,
+				9371FFA81AB0E8CB001C4743 /* MainViewController.swift */,
 				937626FE1AB031A80059C23D /* HelpViewController.swift */,
 				937627001AB031D60059C23D /* AboutViewController.swift */,
 				937626FC1AB0316F0059C23D /* SearchViewController.swift */,
@@ -252,15 +241,6 @@
 			children = (
 			);
 			name = Vues;
-			sourceTree = "<group>";
-		};
-		9396F5BC1AB07A4300784082 /* Menu */ = {
-			isa = PBXGroup;
-			children = (
-				93D2E82C1AAEE9950028ED1B /* LeftViewController.swift */,
-				93D2E82E1AAEEB1F0028ED1B /* RightViewController.swift */,
-			);
-			name = Menu;
 			sourceTree = "<group>";
 		};
 		9396F5BF1AB07DB300784082 /* Modeles */ = {
@@ -295,7 +275,6 @@
 			isa = PBXGroup;
 			children = (
 				9396F5BF1AB07DB300784082 /* Modeles */,
-				9396F5BC1AB07A4300784082 /* Menu */,
 				93C83F4E1AAED9AD005990C2 /* AppDelegate.swift */,
 				93D2E8291AAEE3040028ED1B /* Sources */,
 				93D2E85D1AAF2DD80028ED1B /* Frameworks */,
@@ -338,11 +317,6 @@
 		93D2E8291AAEE3040028ED1B /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				93D2E82A1AAEE3250028ED1B /* SlideMenuController.swift */,
-				937626F41AB0300D0059C23D /* BaseTableViewCell.swift */,
-				937626F61AB030470059C23D /* StringExtension.swift */,
-				937626F81AB030670059C23D /* UITableViewExtension.swift */,
-				937626FA1AB030860059C23D /* UIViewControllerExtension.swift */,
 				9396F5BD1AB07BDA00784082 /* IJReachbility.swift */,
 				9396F5C41AB0843200784082 /* SCLAlertView.swift */,
 			);
@@ -594,19 +568,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				93C83F541AAED9AD005990C2 /* GeoViewController.swift in Sources */,
-				93D2E82B1AAEE3250028ED1B /* SlideMenuController.swift in Sources */,
 				937626FD1AB0316F0059C23D /* SearchViewController.swift in Sources */,
 				9396F5BE1AB07BDA00784082 /* IJReachbility.swift in Sources */,
-				937626FB1AB030860059C23D /* UIViewControllerExtension.swift in Sources */,
 				93C83F4F1AAED9AD005990C2 /* AppDelegate.swift in Sources */,
-				93D2E82D1AAEE9950028ED1B /* LeftViewController.swift in Sources */,
 				9396F5C51AB0843200784082 /* SCLAlertView.swift in Sources */,
-				937626F71AB030470059C23D /* StringExtension.swift in Sources */,
-				937626F51AB0300D0059C23D /* BaseTableViewCell.swift in Sources */,
 				937627011AB031D60059C23D /* AboutViewController.swift in Sources */,
+				9371FFA91AB0E8CB001C4743 /* MainViewController.swift in Sources */,
 				937626FF1AB031A80059C23D /* HelpViewController.swift in Sources */,
-				937626F91AB030670059C23D /* UITableViewExtension.swift in Sources */,
-				93D2E82F1AAEEB1F0028ED1B /* RightViewController.swift in Sources */,
 				93C83F521AAED9AD005990C2 /* HandiParking.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
