@@ -15,18 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    // pour faire les appels serveurs Google Maps
+    // pour utiliser la carte dans l'application
     let cleAPIGoogleMapsServeur = "AIzaSyB5wnwkYNT7azlLkIGDOcFAA3DrBo-Jneo"
-    // pour afficher la carte dans l'application
-    let cleAPIGoogleMapsiOS = "AIzaSyBCsJT2QsSUcnnkb8Oq6wDuRUshrXmYb4Y"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         //MARK : instanciation des services de Google Maps avec notre clé serveur
         
         GMSServices.provideAPIKey(cleAPIGoogleMapsServeur)
-        
-        
         
         return true
     }
