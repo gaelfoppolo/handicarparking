@@ -122,7 +122,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     func reloadData() {
         if(self.emplacements.count > 10) {
             SwiftSpinner.hide()
-            //call la suite
+            displayMarker()
             println("on a assez d'emplacements")
             println("on a : \(self.emplacements.count)")
             println("avec un rayon de \(self.rayon.valeur)")
@@ -133,11 +133,29 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             self.getEmplacements(locationManager.location.coordinate, radius: self.rayon)
         } else {
             SwiftSpinner.hide()
+            displayMarker()
             println("on ne sait pas si assez d'emplacements")
             println("on a : \(self.emplacements.count)")
             println("avec un rayon de \(self.rayon.valeur)")
             self.searchByMyLocationButton = false
         }
+    }
+    
+    func displayMarker() {
+        var firstLocation: CLLocationCoordinate2D
+        //((GMSMarker *)markers.firstObject).position;
+        var bounds = GMSCoordinateBounds(coordinate: self.locationManager.location.coordinate, coordinate: self.locationManager.location.coordinate)
+        for place: Emplacement in self.emplacements {
+            let marker = PlaceMarker(place: place)
+            println(marker.position)
+            bounds = bounds.includingCoordinate(marker.position)
+            marker.map = self.mapView
+        }
+        mapView.animateWithCameraUpdate(GMSCameraUpdate.fitBounds(bounds, withPadding: 50.0))
+        //var zoom = GMSCameraPosition.zoomAtCoordinate(locationManager.location.coordinate, forMeters:CLLocationDistance(self.rayon.valeur), perPoints:500)
+        //var camera = GMSCameraPosition(target: locationManager.location.coordinate, zoom: zoom, bearing: 0, viewingAngle: 0)
+        //mapView.animateToCameraPosition(camera)
+        
     }
     
     func getEmplacements(coordinate: CLLocationCoordinate2D, radius: RayonRecherche) {

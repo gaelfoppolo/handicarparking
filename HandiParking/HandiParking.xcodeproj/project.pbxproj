@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9345FBC21AB2F3F900D4F686 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9345FBC11AB2F3F900D4F686 /* SwiftSpinner.swift */; };
+		9345FBD11AB2FFDD00D4F686 /* PlaceMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9345FBD01AB2FFDD00D4F686 /* PlaceMarker.swift */; };
 		935D42681AB19355005779FA /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 935D42671AB19355005779FA /* GoogleMaps.framework */; };
 		935D426A1AB19361005779FA /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 935D42691AB19361005779FA /* GoogleMaps.bundle */; };
 		935D42701AB1AAEA005779FA /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D426F1AB1AAEA005779FA /* DataProvider.swift */; };
@@ -158,6 +159,7 @@
 
 /* Begin PBXFileReference section */
 		9345FBC11AB2F3F900D4F686 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
+		9345FBD01AB2FFDD00D4F686 /* PlaceMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceMarker.swift; sourceTree = "<group>"; };
 		935D42671AB19355005779FA /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		935D42691AB19361005779FA /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		935D426F1AB1AAEA005779FA /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 		934BAE051AAF49830034E407 /* Vues */ = {
 			isa = PBXGroup;
 			children = (
+				9345FBD01AB2FFDD00D4F686 /* PlaceMarker.swift */,
 			);
 			name = Vues;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93C83F541AAED9AD005990C2 /* GeoViewController.swift in Sources */,
+				9345FBD11AB2FFDD00D4F686 /* PlaceMarker.swift in Sources */,
 				937626FD1AB0316F0059C23D /* SearchViewController.swift in Sources */,
 				935D42821AB1DC05005779FA /* Emplacement.swift in Sources */,
 				9396F5BE1AB07BDA00784082 /* IJReachbility.swift in Sources */,
