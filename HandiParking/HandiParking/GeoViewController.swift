@@ -85,6 +85,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             
             if !searchByMyLocationButton && testServices() {
                 updateMapCameraOnUserLocation()
+                SwiftSpinner.show("Recherche en cours...")
                 launchRecherche()
             }
             
@@ -97,6 +98,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         locationManager.startUpdatingLocation()
         if testServices() {
             updateMapCameraOnUserLocation()
+            SwiftSpinner.show("Recherche en cours...")
             launchRecherche()
             return false
         }
@@ -119,7 +121,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     
     func reloadData() {
         if(self.emplacements.count > 10) {
-            //stop spinner
+            SwiftSpinner.hide()
             //call la suite
             println("on a assez d'emplacements")
             println("on a : \(self.emplacements.count)")
@@ -130,7 +132,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             self.rayon = newRayon
             self.getEmplacements(locationManager.location.coordinate, radius: self.rayon)
         } else {
-            //stop spinner
+            SwiftSpinner.hide()
             println("on ne sait pas si assez d'emplacements")
             println("on a : \(self.emplacements.count)")
             println("avec un rayon de \(self.rayon.valeur)")
@@ -156,7 +158,8 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             
                 self.reloadData()
             } else {
-                println("erreur")
+                SwiftSpinner.hide()
+                SCLAlertView().showError("Hum... 😁", subTitle:"Il semblerait que les serveurs soient surchargés ou que votre connexion Internet soit trop faible... Réesayez dans quelques instants !", closeButtonTitle:"OK")
             }
         }
         

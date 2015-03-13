@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9345FBC21AB2F3F900D4F686 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9345FBC11AB2F3F900D4F686 /* SwiftSpinner.swift */; };
 		935D42681AB19355005779FA /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 935D42671AB19355005779FA /* GoogleMaps.framework */; };
 		935D426A1AB19361005779FA /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 935D42691AB19361005779FA /* GoogleMaps.bundle */; };
 		935D42701AB1AAEA005779FA /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D426F1AB1AAEA005779FA /* DataProvider.swift */; };
@@ -156,6 +157,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9345FBC11AB2F3F900D4F686 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
 		935D42671AB19355005779FA /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		935D42691AB19361005779FA /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		935D426F1AB1AAEA005779FA /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 			children = (
 				9396F5BD1AB07BDA00784082 /* IJReachbility.swift */,
 				9396F5C41AB0843200784082 /* SCLAlertView.swift */,
+				9345FBC11AB2F3F900D4F686 /* SwiftSpinner.swift */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				9396F5BE1AB07BDA00784082 /* IJReachbility.swift in Sources */,
 				93C83F4F1AAED9AD005990C2 /* AppDelegate.swift in Sources */,
 				9396F5C51AB0843200784082 /* SCLAlertView.swift in Sources */,
+				9345FBC21AB2F3F900D4F686 /* SwiftSpinner.swift in Sources */,
 				935D42701AB1AAEA005779FA /* DataProvider.swift in Sources */,
 				937627011AB031D60059C23D /* AboutViewController.swift in Sources */,
 				9371FFA91AB0E8CB001C4743 /* MainViewController.swift in Sources */,
