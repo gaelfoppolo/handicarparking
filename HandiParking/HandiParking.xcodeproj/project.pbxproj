@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		935D42681AB19355005779FA /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 935D42671AB19355005779FA /* GoogleMaps.framework */; };
 		935D426A1AB19361005779FA /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 935D42691AB19361005779FA /* GoogleMaps.bundle */; };
-		935D42701AB1AAEA005779FA /* GoogleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D426F1AB1AAEA005779FA /* GoogleDataProvider.swift */; };
+		935D42701AB1AAEA005779FA /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D426F1AB1AAEA005779FA /* DataProvider.swift */; };
+		935D42821AB1DC05005779FA /* Emplacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D42811AB1DC05005779FA /* Emplacement.swift */; };
 		9371FFA91AB0E8CB001C4743 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9371FFA81AB0E8CB001C4743 /* MainViewController.swift */; };
 		937626FD1AB0316F0059C23D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937626FC1AB0316F0059C23D /* SearchViewController.swift */; };
 		937626FF1AB031A80059C23D /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937626FE1AB031A80059C23D /* HelpViewController.swift */; };
@@ -41,6 +42,7 @@
 		93D2E9171AAF3C220028ED1B /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 93D2E8FF1AAF3BE40028ED1B /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		93D2E91A1AAF3C270028ED1B /* AlamofireSwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D2E90E1AAF3BEE0028ED1B /* AlamofireSwiftyJSON.framework */; };
 		93D2E91B1AAF3C270028ED1B /* AlamofireSwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 93D2E90E1AAF3BEE0028ED1B /* AlamofireSwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		93DC120E1AB2DE9200C244DB /* RayonRecherche.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DC120D1AB2DE9200C244DB /* RayonRecherche.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,7 +158,8 @@
 /* Begin PBXFileReference section */
 		935D42671AB19355005779FA /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		935D42691AB19361005779FA /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
-		935D426F1AB1AAEA005779FA /* GoogleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDataProvider.swift; sourceTree = "<group>"; };
+		935D426F1AB1AAEA005779FA /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		935D42811AB1DC05005779FA /* Emplacement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emplacement.swift; sourceTree = "<group>"; };
 		9371FFA81AB0E8CB001C4743 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		937626FC1AB0316F0059C23D /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		937626FE1AB031A80059C23D /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +193,7 @@
 		93D2E8E81AAF3BDA0028ED1B /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "../../../Downloads/Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 		93D2E8F71AAF3BE40028ED1B /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = "../../../Downloads/SwiftyJSON-master 2/SwiftyJSON.xcodeproj"; sourceTree = "<group>"; };
 		93D2E9061AAF3BEE0028ED1B /* Alamofire-SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Alamofire-SwiftyJSON.xcodeproj"; path = "../../../Downloads/Alamofire-SwiftyJSON-master/Alamofire-SwiftyJSON.xcodeproj"; sourceTree = "<group>"; };
+		93DC120D1AB2DE9200C244DB /* RayonRecherche.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RayonRecherche.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,7 +252,9 @@
 		9396F5BF1AB07DB300784082 /* Modeles */ = {
 			isa = PBXGroup;
 			children = (
-				935D426F1AB1AAEA005779FA /* GoogleDataProvider.swift */,
+				935D426F1AB1AAEA005779FA /* DataProvider.swift */,
+				935D42811AB1DC05005779FA /* Emplacement.swift */,
+				93DC120D1AB2DE9200C244DB /* RayonRecherche.swift */,
 			);
 			name = Modeles;
 			sourceTree = "<group>";
@@ -572,14 +578,16 @@
 			files = (
 				93C83F541AAED9AD005990C2 /* GeoViewController.swift in Sources */,
 				937626FD1AB0316F0059C23D /* SearchViewController.swift in Sources */,
+				935D42821AB1DC05005779FA /* Emplacement.swift in Sources */,
 				9396F5BE1AB07BDA00784082 /* IJReachbility.swift in Sources */,
 				93C83F4F1AAED9AD005990C2 /* AppDelegate.swift in Sources */,
 				9396F5C51AB0843200784082 /* SCLAlertView.swift in Sources */,
-				935D42701AB1AAEA005779FA /* GoogleDataProvider.swift in Sources */,
+				935D42701AB1AAEA005779FA /* DataProvider.swift in Sources */,
 				937627011AB031D60059C23D /* AboutViewController.swift in Sources */,
 				9371FFA91AB0E8CB001C4743 /* MainViewController.swift in Sources */,
 				937626FF1AB031A80059C23D /* HelpViewController.swift in Sources */,
 				93C83F521AAED9AD005990C2 /* HandiParking.xcdatamodeld in Sources */,
+				93DC120E1AB2DE9200C244DB /* RayonRecherche.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

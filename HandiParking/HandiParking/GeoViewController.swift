@@ -8,12 +8,24 @@
 
 import UIKit
 import CoreLocation
+import Alamofire
+import SwiftyJSON
+import AlamofireSwiftyJSON
 
 class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
 
     @IBOutlet weak var mapView: GMSMapView!
     
     var locationManager = CLLocationManager()
+    
+    var rayon: RayonRecherche = RayonRecherche(rawValue: 1)!
+    
+    var emplacements = [Emplacement]()
+    
+    var searchByMyLocationButton: Bool = false
+    
+    // pour les appels aux services Google Maps
+    let cleAPIGoogleMapsiOS = "AIzaSyBCsJT2QsSUcnnkb8Oq6wDuRUshrXmYb4Y"
     
     // on instantie au démarrage
     override func viewDidLoad() {
@@ -64,18 +76,22 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if let location = locations.first as? CLLocation {
             
-            updateMapCameraOnUserLocation()
+            if !searchByMyLocationButton && testServices() {
+                updateMapCameraOnUserLocation()
+                launchRecherche()
+            }
             
             locationManager.stopUpdatingLocation()
         }
     }
     
     func didTapMyLocationButtonForMapView(mapView: GMSMapView!) -> Bool {
-        //println(testServices())
+        self.searchByMyLocationButton = true
+        locationManager.startUpdatingLocation()
         if testServices() {
-            locationManager.startUpdatingLocation()
             updateMapCameraOnUserLocation()
-            locationManager.stopUpdatingLocation()
+            launchRecherche()
+            return false
         }
         return false
         //true pour le comportement par défaut de la fonction
@@ -86,6 +102,55 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         var camera = GMSCameraPosition(target: locationManager.location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
         mapView.animateToCameraPosition(camera)
     }
+    
+    func launchRecherche() {
+        //ajouter un spinner
+        self.emplacements.removeAll(keepCapacity: false)
+        self.rayon = RayonRecherche(rawValue: 1)!
+        self.getEmplacements(locationManager.location.coordinate, radius: self.rayon)
+    }
+    
+    func reloadData() {
+        if(self.emplacements.count > 10) {
+            //stop spinner
+            //call la suite
+            println("on a assez d'emplacements")
+            println("on a : \(self.emplacements.count)")
+            println("avec un rayon de \(self.rayon.valeur)")
+            self.searchByMyLocationButton = false
+        } else if let newRayon = RayonRecherche(rawValue: self.rayon.rawValue+1){
+            self.emplacements.removeAll(keepCapacity: false)
+            self.rayon = newRayon
+            self.getEmplacements(locationManager.location.coordinate, radius: self.rayon)
+        } else {
+            //stop spinner
+            println("on ne sait pas si assez d'emplacements")
+            println("on a : \(self.emplacements.count)")
+            println("avec un rayon de \(self.rayon.valeur)")
+            self.searchByMyLocationButton = false
+        }
+    }
+    
+    func getEmplacements(coordinate: CLLocationCoordinate2D, radius: RayonRecherche) {
+        
+        let request = Alamofire.request(DataProvider.OpenStreetMap.GetNode(coordinate,radius))
+        request.responseSwiftyJSON { request, response, json, error in
+            
+            let elements = json["elements"].arrayValue
+
+                for place in elements {
+                    var id: String? = place["id"].stringValue
+                    var lat: String? = place["lat"].stringValue
+                    var lon: String? = place["lon"].stringValue
+                    var emplacement = Emplacement(id: id, lat: lat, lon: lon)
+                    self.emplacements.append(emplacement)
+                }
+            
+            self.reloadData()
+        }
+        
+    }
+
     
     // vérification de la présence d'une connexion internet, full ou limitée
     func checkInternetConnection() -> Bool {
@@ -127,8 +192,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         }
         return false
     }
-    
-    
 
 
 }
