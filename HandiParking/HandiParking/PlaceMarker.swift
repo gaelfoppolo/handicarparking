@@ -17,7 +17,9 @@ class PlaceMarker: GMSMarker {
         super.init()
         
         position = CLLocationCoordinate2DMake(NSString(string: place.lat).doubleValue, NSString(string: place.lon).doubleValue)
+        icon = UIImage(named: "marker")
         groundAnchor = CGPoint(x: 0.5, y: 1)
         appearAnimation = kGMSMarkerAnimationPop
+        title = place.id
     }
 }
