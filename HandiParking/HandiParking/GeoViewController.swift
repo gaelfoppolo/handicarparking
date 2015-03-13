@@ -24,6 +24,8 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     
     var searchByMyLocationButton: Bool = false
     
+    var managerOSM: Alamofire.Manager?
+    
     // pour les appels aux services Google Maps
     let cleAPIGoogleMapsiOS = "AIzaSyBCsJT2QsSUcnnkb8Oq6wDuRUshrXmYb4Y"
     
@@ -42,6 +44,15 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         locationManager.requestWhenInUseAuthorization()
         mapView.delegate = self
         
+        if testServices() {
+            locationManager.startUpdatingLocation()
+        }
+        
+        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        configuration.timeoutIntervalForRequest = 10 // secondes
+        
+        self.managerOSM = Alamofire.Manager(configuration: configuration)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,10 +69,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             // on affiche le bouton My Location dans la vue
             mapView.settings.myLocationButton = true
             mapView.myLocationEnabled = true
-            
-            if testServices() {
-                locationManager.startUpdatingLocation()
-            }
             
         } else if testServices() {
             switch status {
@@ -133,20 +140,24 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     
     func getEmplacements(coordinate: CLLocationCoordinate2D, radius: RayonRecherche) {
         
-        let request = Alamofire.request(DataProvider.OpenStreetMap.GetNode(coordinate,radius))
+        let request = self.managerOSM!.request(DataProvider.OpenStreetMap.GetNode(coordinate,radius))
+        request.validate()
         request.responseSwiftyJSON { request, response, json, error in
-            
-            let elements = json["elements"].arrayValue
+            if error == nil {
+                let elements = json["elements"].arrayValue
 
-                for place in elements {
-                    var id: String? = place["id"].stringValue
-                    var lat: String? = place["lat"].stringValue
-                    var lon: String? = place["lon"].stringValue
-                    var emplacement = Emplacement(id: id, lat: lat, lon: lon)
-                    self.emplacements.append(emplacement)
-                }
+                    for place in elements {
+                        var id: String? = place["id"].stringValue
+                        var lat: String? = place["lat"].stringValue
+                        var lon: String? = place["lon"].stringValue
+                        var emplacement = Emplacement(id: id, lat: lat, lon: lon)
+                        self.emplacements.append(emplacement)
+                    }
             
-            self.reloadData()
+                self.reloadData()
+            } else {
+                println("erreur")
+            }
         }
         
     }
