@@ -26,6 +26,8 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     
     var managerOSM: Alamofire.Manager?
     
+    var markers = [PlaceMarker]()
+    
     // pour les appels aux services Google Maps
     let cleAPIGoogleMapsiOS = "AIzaSyBCsJT2QsSUcnnkb8Oq6wDuRUshrXmYb4Y"
     
@@ -113,7 +115,8 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     }
     
     func launchRecherche() {
-        //ajouter un spinner
+        mapView.clear()
+        self.markers.removeAll(keepCapacity: false)
         self.emplacements.removeAll(keepCapacity: false)
         self.rayon = RayonRecherche(rawValue: 1)!
         self.getEmplacements(locationManager.location.coordinate, radius: self.rayon)
@@ -121,40 +124,36 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     
     func reloadData() {
         if(self.emplacements.count > 10) {
-            SwiftSpinner.hide()
-            displayMarker()
-            println("on a assez d'emplacements")
-            println("on a : \(self.emplacements.count)")
-            println("avec un rayon de \(self.rayon.valeur)")
+            makeMarkersAndBoundsToDisplay()
             self.searchByMyLocationButton = false
         } else if let newRayon = RayonRecherche(rawValue: self.rayon.rawValue+1){
             self.emplacements.removeAll(keepCapacity: false)
             self.rayon = newRayon
             self.getEmplacements(locationManager.location.coordinate, radius: self.rayon)
         } else {
-            SwiftSpinner.hide()
-            displayMarker()
-            println("on ne sait pas si assez d'emplacements")
-            println("on a : \(self.emplacements.count)")
-            println("avec un rayon de \(self.rayon.valeur)")
+            makeMarkersAndBoundsToDisplay()
             self.searchByMyLocationButton = false
         }
     }
     
-    func displayMarker() {
+    func makeMarkersAndBoundsToDisplay() {
+        SwiftSpinner.show("Préparation de l'affichage...")
         var firstLocation: CLLocationCoordinate2D
-        //((GMSMarker *)markers.firstObject).position;
         var bounds = GMSCoordinateBounds(coordinate: self.locationManager.location.coordinate, coordinate: self.locationManager.location.coordinate)
-        for place: Emplacement in self.emplacements {
-            let marker = PlaceMarker(place: place)
-            println(marker.position)
-            bounds = bounds.includingCoordinate(marker.position)
-            marker.map = self.mapView
+        if !self.emplacements.isEmpty {
+            for place: Emplacement in self.emplacements {
+                let marker = PlaceMarker(place: place)
+                bounds = bounds.includingCoordinate(marker.position)
+                self.markers.append(marker)
+                marker.map = mapView
+            }
+            mapView.animateWithCameraUpdate(GMSCameraUpdate.fitBounds(bounds, withPadding: 50.0))
+            SwiftSpinner.hide()
+        } else {
+            SwiftSpinner.hide()
+            SCLAlertView().showError("Hum... 😁", subTitle:"Il semblerait qu'aucun emplacement n'est été trouvé dans un rayon de 50 kilomètres... C'est fortuit !", closeButtonTitle:"OK")
         }
-        mapView.animateWithCameraUpdate(GMSCameraUpdate.fitBounds(bounds, withPadding: 50.0))
-        //var zoom = GMSCameraPosition.zoomAtCoordinate(locationManager.location.coordinate, forMeters:CLLocationDistance(self.rayon.valeur), perPoints:500)
-        //var camera = GMSCameraPosition(target: locationManager.location.coordinate, zoom: zoom, bearing: 0, viewingAngle: 0)
-        //mapView.animateToCameraPosition(camera)
+        
         
     }
     
