@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9345FBC21AB2F3F900D4F686 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9345FBC11AB2F3F900D4F686 /* SwiftSpinner.swift */; };
 		9345FBD11AB2FFDD00D4F686 /* PlaceMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9345FBD01AB2FFDD00D4F686 /* PlaceMarker.swift */; };
+		9345FC051AB33AFB00D4F686 /* Alamofire-SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9345FC041AB33AFB00D4F686 /* Alamofire-SwiftyJSON.swift */; };
 		935D42681AB19355005779FA /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 935D42671AB19355005779FA /* GoogleMaps.framework */; };
 		935D426A1AB19361005779FA /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 935D42691AB19361005779FA /* GoogleMaps.bundle */; };
 		935D42701AB1AAEA005779FA /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D426F1AB1AAEA005779FA /* DataProvider.swift */; };
@@ -42,8 +43,6 @@
 		93D2E9121AAF3C1B0028ED1B /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 93D2E8F01AAF3BDA0028ED1B /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		93D2E9161AAF3C220028ED1B /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D2E8FF1AAF3BE40028ED1B /* SwiftyJSON.framework */; };
 		93D2E9171AAF3C220028ED1B /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 93D2E8FF1AAF3BE40028ED1B /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		93D2E91A1AAF3C270028ED1B /* AlamofireSwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D2E90E1AAF3BEE0028ED1B /* AlamofireSwiftyJSON.framework */; };
-		93D2E91B1AAF3C270028ED1B /* AlamofireSwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 93D2E90E1AAF3BEE0028ED1B /* AlamofireSwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		93DC120E1AB2DE9200C244DB /* RayonRecherche.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DC120D1AB2DE9200C244DB /* RayonRecherche.swift */; };
 /* End PBXBuildFile section */
 
@@ -111,20 +110,6 @@
 			remoteGlobalIDString = 030B6CCD1A6E16E900C2D4F1;
 			remoteInfo = "SwiftyJSON OSXTests";
 		};
-		93D2E90D1AAF3BEE0028ED1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 93D2E9061AAF3BEE0028ED1B /* Alamofire-SwiftyJSON.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A8AFB70F19D1401D0070765E;
-			remoteInfo = AlamofireSwiftyJSON;
-		};
-		93D2E90F1AAF3BEE0028ED1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 93D2E9061AAF3BEE0028ED1B /* Alamofire-SwiftyJSON.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A8AFB71A19D1401D0070765E;
-			remoteInfo = AlamofireSwiftyJSONTests;
-		};
 		93D2E9211AAF3E730028ED1B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 93D2E8E81AAF3BDA0028ED1B /* Alamofire.xcodeproj */;
@@ -149,7 +134,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				93D2E9171AAF3C220028ED1B /* SwiftyJSON.framework in Embed Frameworks */,
-				93D2E91B1AAF3C270028ED1B /* AlamofireSwiftyJSON.framework in Embed Frameworks */,
 				93D2E9121AAF3C1B0028ED1B /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -160,6 +144,7 @@
 /* Begin PBXFileReference section */
 		9345FBC11AB2F3F900D4F686 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
 		9345FBD01AB2FFDD00D4F686 /* PlaceMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceMarker.swift; sourceTree = "<group>"; };
+		9345FC041AB33AFB00D4F686 /* Alamofire-SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire-SwiftyJSON.swift"; sourceTree = "<group>"; };
 		935D42671AB19355005779FA /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		935D42691AB19361005779FA /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		935D426F1AB1AAEA005779FA /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
@@ -196,7 +181,6 @@
 		93D2E87A1AAF2FAD0028ED1B /* HandiParking-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HandiParking-Bridging-Header.h"; sourceTree = "<group>"; };
 		93D2E8E81AAF3BDA0028ED1B /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "../../../Downloads/Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 		93D2E8F71AAF3BE40028ED1B /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = "../../../Downloads/SwiftyJSON-master 2/SwiftyJSON.xcodeproj"; sourceTree = "<group>"; };
-		93D2E9061AAF3BEE0028ED1B /* Alamofire-SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Alamofire-SwiftyJSON.xcodeproj"; path = "../../../Downloads/Alamofire-SwiftyJSON-master/Alamofire-SwiftyJSON.xcodeproj"; sourceTree = "<group>"; };
 		93DC120D1AB2DE9200C244DB /* RayonRecherche.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RayonRecherche.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -214,7 +198,6 @@
 				93D2E86D1AAF2ED60028ED1B /* ImageIO.framework in Frameworks */,
 				93D2E86B1AAF2ECE0028ED1B /* GLKit.framework in Frameworks */,
 				93D2E8691AAF2EC70028ED1B /* CoreText.framework in Frameworks */,
-				93D2E91A1AAF3C270028ED1B /* AlamofireSwiftyJSON.framework in Frameworks */,
 				93D2E8671AAF2EC10028ED1B /* CoreLocation.framework in Frameworks */,
 				93D2E8651AAF2EBC0028ED1B /* CoreData.framework in Frameworks */,
 				93D2E9111AAF3C1B0028ED1B /* Alamofire.framework in Frameworks */,
@@ -267,7 +250,6 @@
 		93C83F401AAED9AD005990C2 = {
 			isa = PBXGroup;
 			children = (
-				93D2E9061AAF3BEE0028ED1B /* Alamofire-SwiftyJSON.xcodeproj */,
 				93D2E8F71AAF3BE40028ED1B /* SwiftyJSON.xcodeproj */,
 				93D2E8E81AAF3BDA0028ED1B /* Alamofire.xcodeproj */,
 				93C83F4B1AAED9AD005990C2 /* HandiParking */,
@@ -334,6 +316,7 @@
 				9396F5BD1AB07BDA00784082 /* IJReachbility.swift */,
 				9396F5C41AB0843200784082 /* SCLAlertView.swift */,
 				9345FBC11AB2F3F900D4F686 /* SwiftSpinner.swift */,
+				9345FC041AB33AFB00D4F686 /* Alamofire-SwiftyJSON.swift */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -378,15 +361,6 @@
 				93D2E9011AAF3BE40028ED1B /* SwiftyJSONTests.xctest */,
 				93D2E9031AAF3BE40028ED1B /* SwiftyJSON.framework */,
 				93D2E9051AAF3BE40028ED1B /* SwiftyJSON OSXTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		93D2E9071AAF3BEE0028ED1B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				93D2E90E1AAF3BEE0028ED1B /* AlamofireSwiftyJSON.framework */,
-				93D2E9101AAF3BEE0028ED1B /* AlamofireSwiftyJSONTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -443,6 +417,7 @@
 				TargetAttributes = {
 					93C83F481AAED9AD005990C2 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = M3B49R69C6;
 					};
 					93C83F601AAED9AD005990C2 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -462,10 +437,6 @@
 			productRefGroup = 93C83F4A1AAED9AD005990C2 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
-				{
-					ProductGroup = 93D2E9071AAF3BEE0028ED1B /* Products */;
-					ProjectRef = 93D2E9061AAF3BEE0028ED1B /* Alamofire-SwiftyJSON.xcodeproj */;
-				},
 				{
 					ProductGroup = 93D2E8E91AAF3BDA0028ED1B /* Products */;
 					ProjectRef = 93D2E8E81AAF3BDA0028ED1B /* Alamofire.xcodeproj */;
@@ -540,20 +511,6 @@
 			remoteRef = 93D2E9041AAF3BE40028ED1B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		93D2E90E1AAF3BEE0028ED1B /* AlamofireSwiftyJSON.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = AlamofireSwiftyJSON.framework;
-			remoteRef = 93D2E90D1AAF3BEE0028ED1B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		93D2E9101AAF3BEE0028ED1B /* AlamofireSwiftyJSONTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = AlamofireSwiftyJSONTests.xctest;
-			remoteRef = 93D2E90F1AAF3BEE0028ED1B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -589,6 +546,7 @@
 				9396F5BE1AB07BDA00784082 /* IJReachbility.swift in Sources */,
 				93C83F4F1AAED9AD005990C2 /* AppDelegate.swift in Sources */,
 				9396F5C51AB0843200784082 /* SCLAlertView.swift in Sources */,
+				9345FC051AB33AFB00D4F686 /* Alamofire-SwiftyJSON.swift in Sources */,
 				9345FBC21AB2F3F900D4F686 /* SwiftSpinner.swift in Sources */,
 				935D42701AB1AAEA005779FA /* DataProvider.swift in Sources */,
 				937627011AB031D60059C23D /* AboutViewController.swift in Sources */,
@@ -732,6 +690,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -741,6 +701,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HandiParking/HandiParking-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -752,6 +713,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -761,6 +724,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HandiParking/HandiParking-Bridging-Header.h";
 			};
 			name = Release;

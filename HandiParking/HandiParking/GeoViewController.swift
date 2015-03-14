@@ -10,7 +10,6 @@ import UIKit
 import CoreLocation
 import Alamofire
 import SwiftyJSON
-import AlamofireSwiftyJSON
 
 class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
 
@@ -75,7 +74,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         } else if testServices() {
             switch status {
             case .Denied:
-                SCLAlertView().showError("Hum... 😁", subTitle:"Il semblerait que l'application n'est pas le droit d'utiliser vos données de géolocalisation !", closeButtonTitle:"OK")
+                SCLAlertView().showError("😁", subTitle:"Il semblerait que l'application n'est pas le droit d'utiliser vos données de géolocalisation !", closeButtonTitle:"OK")
             default:
                 break
             }
@@ -138,6 +137,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     
     func makeMarkersAndBoundsToDisplay() {
         SwiftSpinner.show("Préparation de l'affichage...")
+        println("ready to affiche")
         var firstLocation: CLLocationCoordinate2D
         var bounds = GMSCoordinateBounds(coordinate: self.locationManager.location.coordinate, coordinate: self.locationManager.location.coordinate)
         if !self.emplacements.isEmpty {
@@ -151,7 +151,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             SwiftSpinner.hide()
         } else {
             SwiftSpinner.hide()
-            SCLAlertView().showError("Hum... 😁", subTitle:"Il semblerait qu'aucun emplacement n'est été trouvé dans un rayon de 50 kilomètres... C'est fortuit !", closeButtonTitle:"OK")
+            SCLAlertView().showError("😁", subTitle:"Il semblerait qu'aucun emplacement n'est été trouvé dans un rayon de 50 kilomètres... C'est fortuit !", closeButtonTitle:"OK")
         }
         
         
@@ -176,7 +176,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 self.reloadData()
             } else {
                 SwiftSpinner.hide()
-                SCLAlertView().showError("Hum... 😁", subTitle:"Il semblerait que les serveurs soient surchargés ou que votre connexion Internet soit trop faible... Réesayez dans quelques instants !", closeButtonTitle:"OK")
+                SCLAlertView().showError("😁", subTitle:"Il semblerait que les serveurs soient surchargés ou que votre connexion Internet soit trop faible... Réesayez dans quelques instants !", closeButtonTitle:"OK")
             }
         }
         
@@ -187,7 +187,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     func checkInternetConnection() -> Bool {
         if !IJReachability.isConnectedToNetwork() {
             
-            SCLAlertView().showError("Hum... 😁", subTitle:"Il semblerait que votre accès Internet soit désactivé. Veuillez le réactiver si vous souhaitez utiliser pleinement l'application", closeButtonTitle:"OK")
+            SCLAlertView().showError("😁", subTitle:"Il semblerait que votre accès Internet soit désactivé. Veuillez le réactiver si vous souhaitez utiliser pleinement l'application", closeButtonTitle:"OK")
             
             return false
             
@@ -205,7 +205,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         
         if !CLLocationManager.locationServicesEnabled() {
             
-            SCLAlertView().showError("Hum... 😁", subTitle:"Il semblerait que le service de localisation ne soit pas activé ! Allez les modifier dans les Réglages !", closeButtonTitle:"OK")
+            SCLAlertView().showError("😁", subTitle:"Il semblerait que le service de localisation ne soit pas activé ! Allez les modifier dans les Réglages !", closeButtonTitle:"OK")
             
             return false
             
