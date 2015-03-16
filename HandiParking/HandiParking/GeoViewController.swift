@@ -159,7 +159,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     
     func getEmplacements(coordinate: CLLocationCoordinate2D, radius: RayonRecherche) {
         
-        let request = self.managerOSM!.request(DataProvider.OpenStreetMap.GetNode(coordinate,radius))
+        let request = self.managerOSM!.request(DataProvider.OpenStreetMap.GetNodes(coordinate,radius))
         request.validate()
         request.responseSwiftyJSON { request, response, json, error in
             if error == nil {

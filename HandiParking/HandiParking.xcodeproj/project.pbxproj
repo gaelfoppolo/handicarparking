@@ -232,6 +232,9 @@
 		934BAE051AAF49830034E407 /* Vues */ = {
 			isa = PBXGroup;
 			children = (
+				93D2E8301AAEED1A0028ED1B /* Images.xcassets */,
+				93C83F5A1AAED9AD005990C2 /* LaunchScreen.xib */,
+				93C83F551AAED9AD005990C2 /* Main.storyboard */,
 				9345FBD01AB2FFDD00D4F686 /* PlaceMarker.swift */,
 			);
 			name = Vues;
@@ -240,6 +243,7 @@
 		9396F5BF1AB07DB300784082 /* Modeles */ = {
 			isa = PBXGroup;
 			children = (
+				93C83F501AAED9AD005990C2 /* HandiParking.xcdatamodeld */,
 				935D426F1AB1AAEA005779FA /* DataProvider.swift */,
 				935D42811AB1DC05005779FA /* Emplacement.swift */,
 				93DC120D1AB2DE9200C244DB /* RayonRecherche.swift */,
@@ -276,10 +280,6 @@
 				93D2E85D1AAF2DD80028ED1B /* Frameworks */,
 				934BAE051AAF49830034E407 /* Vues */,
 				934BADFC1AAF49780034E407 /* Controleurs */,
-				93C83F551AAED9AD005990C2 /* Main.storyboard */,
-				93C83F5A1AAED9AD005990C2 /* LaunchScreen.xib */,
-				93C83F501AAED9AD005990C2 /* HandiParking.xcdatamodeld */,
-				93D2E8301AAEED1A0028ED1B /* Images.xcassets */,
 				93C83F4C1AAED9AD005990C2 /* Supporting Files */,
 			);
 			path = HandiParking;
