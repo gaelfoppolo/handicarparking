@@ -57,7 +57,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         locationManager.requestWhenInUseAuthorization()
         mapView.delegate = self
         
-        if testServices() {
+        if ServicesController().servicesAreWorking() {
             locationManager.startUpdatingLocation()
         }
         
@@ -83,7 +83,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             mapView.settings.myLocationButton = true
             mapView.myLocationEnabled = true
             
-        } else if testServices() {
+        } else if ServicesController().servicesAreWorking() {
             switch status {
             case .Denied:
                 SCLAlertView().showError("😁", subTitle:"Il semblerait que l'application n'est pas le droit d'utiliser vos données de géolocalisation !", closeButtonTitle:"OK")
@@ -96,7 +96,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if let location = locations.first as? CLLocation {
             
-            if !searchByMyLocationButton && testServices() {
+            if !searchByMyLocationButton && ServicesController().servicesAreWorking() {
                 updateMapCameraOnUserLocation()
                 SwiftSpinner.show("Recherche en cours...")
                 launchRecherche()
@@ -109,7 +109,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     func didTapMyLocationButtonForMapView(mapView: GMSMapView!) -> Bool {
         self.searchByMyLocationButton = true
         locationManager.startUpdatingLocation()
-        if testServices() {
+        if ServicesController().servicesAreWorking() {
             updateMapCameraOnUserLocation()
             SwiftSpinner.show("Recherche en cours...")
             launchRecherche()
@@ -193,49 +193,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         }
         
     }
-
-    
-    // vérification de la présence d'une connexion internet, full ou limitée
-    func checkInternetConnection() -> Bool {
-        if !IJReachability.isConnectedToNetwork() {
-            
-            SCLAlertView().showError("😁", subTitle:"Il semblerait que votre accès Internet soit désactivé. Veuillez le réactiver si vous souhaitez utiliser pleinement l'application", closeButtonTitle:"OK")
-            
-            return false
-            
-        } else if IJReachability.isConnectedToNetwork() && IJReachability.isConnectedToNetworkOfType().description == "NotConnected" {
-            
-            SCLAlertView().showWarning("Connexion inexistante..", subTitle: "Il semblerait que votre accès Internet soit actif mais limité. Essayez de trouver une meilleure connexion pour pouvoir utiliser pleinement l'application", closeButtonTitle:"OK")
-            
-            return false
-        }
-        
-        return true
-    }
-    
-    func checkLocationService() -> Bool {
-        
-        if !CLLocationManager.locationServicesEnabled() {
-            
-            SCLAlertView().showError("😁", subTitle:"Il semblerait que le service de localisation ne soit pas activé ! Allez les modifier dans les Réglages !", closeButtonTitle:"OK")
-            
-            return false
-            
-        } else {
-            return true
-        }
-    
-    }
-    
-    func testServices() -> Bool {
-        if checkInternetConnection() {
-            if checkLocationService() {
-                return true
-            }
-        }
-        return false
-    }
-
 
 }
 

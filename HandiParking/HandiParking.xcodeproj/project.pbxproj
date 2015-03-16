@@ -26,6 +26,7 @@
 		93C83F571AAED9AD005990C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93C83F551AAED9AD005990C2 /* Main.storyboard */; };
 		93C83F5C1AAED9AD005990C2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C83F5A1AAED9AD005990C2 /* LaunchScreen.xib */; };
 		93C83F681AAED9AD005990C2 /* HandiParkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C83F671AAED9AD005990C2 /* HandiParkingTests.swift */; };
+		93CCBA431AB6DDF800FCCB1E /* ServicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CCBA421AB6DDF800FCCB1E /* ServicesController.swift */; };
 		93D2E8311AAEED1A0028ED1B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D2E8301AAEED1A0028ED1B /* Images.xcassets */; };
 		93D2E8631AAF2EB60028ED1B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D2E8621AAF2EB60028ED1B /* AVFoundation.framework */; };
 		93D2E8651AAF2EBC0028ED1B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D2E8641AAF2EBC0028ED1B /* CoreData.framework */; };
@@ -165,6 +166,7 @@
 		93C83F611AAED9AD005990C2 /* HandiParkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HandiParkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C83F661AAED9AD005990C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93C83F671AAED9AD005990C2 /* HandiParkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandiParkingTests.swift; sourceTree = "<group>"; };
+		93CCBA421AB6DDF800FCCB1E /* ServicesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesController.swift; sourceTree = "<group>"; };
 		93D2E8301AAEED1A0028ED1B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		93D2E8621AAF2EB60028ED1B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		93D2E8641AAF2EBC0028ED1B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -225,6 +227,7 @@
 				937626FE1AB031A80059C23D /* HelpViewController.swift */,
 				937627001AB031D60059C23D /* AboutViewController.swift */,
 				937626FC1AB0316F0059C23D /* SearchViewController.swift */,
+				93CCBA421AB6DDF800FCCB1E /* ServicesController.swift */,
 			);
 			name = Controleurs;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 				9345FBC21AB2F3F900D4F686 /* SwiftSpinner.swift in Sources */,
 				935D42701AB1AAEA005779FA /* DataProvider.swift in Sources */,
 				937627011AB031D60059C23D /* AboutViewController.swift in Sources */,
+				93CCBA431AB6DDF800FCCB1E /* ServicesController.swift in Sources */,
 				9371FFA91AB0E8CB001C4743 /* MainViewController.swift in Sources */,
 				937626FF1AB031A80059C23D /* HelpViewController.swift in Sources */,
 				93C83F521AAED9AD005990C2 /* HandiParking.xcdatamodeld in Sources */,
