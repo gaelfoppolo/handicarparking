@@ -18,6 +18,15 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     // lien de sortie vers la carte
     @IBOutlet weak var mapView: GMSMapView!
     
+    //lien vers le bouton de droite de la barre de navigation
+    @IBAction func launchSearch(sender: AnyObject) {
+        if ServicesController().servicesAreWorking() {
+            updateMapCameraOnUserLocation()
+            SwiftSpinner.show("Recherche en cours...")
+            launchRecherche()
+        }
+    }
+    
     // gestionnaire de la localisation
     var locationManager = CLLocationManager()
     
@@ -95,23 +104,11 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             
             if ServicesController().servicesAreWorking() {
                 updateMapCameraOnUserLocation()
-                SwiftSpinner.show("Recherche en cours...")
-                launchRecherche()
             }
             
             locationManager.stopUpdatingLocation()
         }
     }
-    
-    /*func didTapMyLocationButtonForMapView(mapView: GMSMapView!) -> Bool {
-        locationManager.startUpdatingLocation()
-        if ServicesController().servicesAreWorking() {
-            updateMapCameraOnUserLocation()
-        }
-        return false
-        //true pour le comportement par défaut de la fonction
-        //false pour faire ce que l'on veut
-    }*/
     
     func updateMapCameraOnUserLocation() {
         var camera = GMSCameraPosition(target: locationManager.location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)

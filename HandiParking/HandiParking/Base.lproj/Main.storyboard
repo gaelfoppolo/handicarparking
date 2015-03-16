@@ -32,7 +32,7 @@
             </objects>
             <point key="canvasLocation" x="848" y="-527"/>
         </scene>
-        <!--Geo View Controller-->
+        <!--Géolocalisation-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController storyboardIdentifier="GeoViewController" id="vXZ-lx-hvc" customClass="GeoViewController" customModule="HandiParking" customModuleProvider="target" sceneMemberID="viewController">
@@ -68,6 +68,14 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Géolocalisation" id="xp8-ND-Wsa">
+                        <barButtonItem key="rightBarButtonItem" image="ic_menu_location" id="RfN-0X-qN4">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="launchSearch:" destination="vXZ-lx-hvc" id="JoG-Jv-Gj2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="Ubb-74-Jby" id="7Xh-hs-TFJ"/>
@@ -84,6 +92,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nc2-YL-mkk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.058823529409999999" green="0.51372549020000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="g0Y-Sq-anj" kind="relationship" relationship="rootViewController" id="dof-jp-b5k"/>
@@ -163,4 +175,7 @@
             <point key="canvasLocation" x="1373" y="206"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_menu_location" width="25" height="25"/>
+    </resources>
 </document>
