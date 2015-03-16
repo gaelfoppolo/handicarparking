@@ -15,6 +15,8 @@ import SwiftyJSON
 
 class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
     
+    //MARK: Variables
+    
     // lien de sortie vers la carte
     @IBOutlet weak var mapView: GMSMapView!
     
@@ -76,7 +78,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // appelé quand l'autorisation localisation est changée
@@ -89,14 +90,23 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             mapView.settings.myLocationButton = true
             mapView.myLocationEnabled = true
             
-        } else if ServicesController().servicesAreWorking() {
+        } else if CLLocationManager.locationServicesEnabled() {
             switch status {
             case .Denied:
+                
+                mapView.myLocationEnabled = false
                 SCLAlertView().showError("😁", subTitle:"Il semblerait que l'application n'est pas le droit d'utiliser vos données de géolocalisation !", closeButtonTitle:"OK")
             default:
                 break
             }
         }
+    }
+    
+    func didTapMyLocationButtonForMapView(mapView: GMSMapView!) -> Bool {
+        if ServicesController().servicesAreWorking() {
+            locationManager.startUpdatingLocation()
+        }
+        return true
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
