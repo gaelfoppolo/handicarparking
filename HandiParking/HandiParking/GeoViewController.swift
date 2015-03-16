@@ -65,9 +65,9 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         locationManager.requestWhenInUseAuthorization()
         mapView.delegate = self
         
+        // instanciation du manager de requêtes
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         configuration.timeoutIntervalForRequest = 10 // secondes
-        
         self.managerOSM = Alamofire.Manager(configuration: configuration)
         
     }
@@ -76,32 +76,41 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         super.didReceiveMemoryWarning()
     }
     
-    // appelé quand l'autorisation localisation est changée
+    // MARK: Localisation
     
+    /**
+        Appelée dès que le statut de l'autorisation change : chargement de la vue, changement d'application, etc.
+        Si toutes les services sont opérationnels, on met à jour la localisation
+    */
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         
         if ServicesController().servicesAreWorking() {
-            
-            if status == .AuthorizedWhenInUse {
 
-                // on affiche le bouton My Location dans la vue
+                // on affiche le bouton My Location dans la vue et on lance l'actualisation de la localisation
                 mapView.settings.myLocationButton = true
                 mapView.myLocationEnabled = true
-                
                 locationManager.startUpdatingLocation()
-                
-            } else if status == .Denied {
-                
-                mapView.myLocationEnabled = false
-                mapView.settings.myLocationButton = false
-            }
-            
             
         }
         
-        
     }
     
+    /**
+        Appelé dès que la localisation change
+        On suppose ici qu'une vérification des services a été effectuées avant de lancer l'actualisation de la localisation
+    */
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        if let location = locations.first as? CLLocation {
+            
+            updateMapCameraOnUserLocation()
+            locationManager.stopUpdatingLocation()
+        }
+    }
+    
+    /**
+        Appelé dès que le bouton Ma position est tappé
+        N'est appelé que si le service de localisation est activé et que l'autorisation est permise
+    */
     func didTapMyLocationButtonForMapView(mapView: GMSMapView!) -> Bool {
         if ServicesController().servicesAreWorking() {
             locationManager.startUpdatingLocation()
@@ -109,21 +118,19 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         return true
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        if let location = locations.first as? CLLocation {
-            
-            updateMapCameraOnUserLocation()
 
-            
-            locationManager.stopUpdatingLocation()
-        }
-    }
-    
+    /**
+        Centre la caméra (vue) sur la localisation actuelle
+        On suppose ici qu'une vérification des services a été effectuées et que la localisation a été actualisé au moins une fois
+    */
     func updateMapCameraOnUserLocation() {
         var camera = GMSCameraPosition(target: locationManager.location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
         mapView.animateToCameraPosition(camera)
     }
     
+    /**
+        Initie le lancement de la recherche d'emplacements avec les données remise à zéro
+    */
     func launchRecherche() {
         mapView.clear()
         self.markers.removeAll(keepCapacity: false)
@@ -132,7 +139,11 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         self.getEmplacements(locationManager.location.coordinate, radius: self.rayon)
     }
     
-    func reloadData() {
+    /**
+        Vérifie les résultats de la recherche et en initie une nouvelle s'il n'y a pas assez de résultats
+        Si en revanche il y a assez de résultats, on peut préparer les données pour le traitement/affichage
+    */
+    func searchResultsController() {
         if(self.emplacements.count > 10) {
             makeMarkersAndBoundsToDisplay()
         } else if let newRayon = RayonRecherche(rawValue: self.rayon.rawValue+1){
@@ -144,6 +155,10 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         }
     }
     
+    /**
+        Traitement & affichage des marqueurs sur la carte
+        En même temps, on calcule les bornes afin d'ajuster la caméra pour afficher tous les marqueurs
+    */
     func makeMarkersAndBoundsToDisplay() {
         SwiftSpinner.show("Préparation de l'affichage...")
         var firstLocation: CLLocationCoordinate2D
@@ -162,9 +177,18 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             AlertViewController().noPlacesFound()
         }
         
-        
     }
     
+    /**
+        Recherche des emplacements de places grâce à l'API d'OSM
+    
+        :param: coordinate Les coordonnées (latitude, longitue) de notre position actuelle
+    
+        :param: radius Le rayon (en mètres) de recherche
+    
+        La requête est effectuée de façon asynchrone grâce à une closure, avec un timeout de 10 secondes.
+        Quand la requête est un succès, on appelle une fonction contrôleur qui va vérifier les résultats.    
+    */
     func getEmplacements(coordinate: CLLocationCoordinate2D, radius: RayonRecherche) {
         
         let request = self.managerOSM!.request(DataProvider.OpenStreetMap.GetNodes(coordinate,radius))
@@ -181,7 +205,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                         self.emplacements.append(emplacement)
                     }
             
-                self.reloadData()
+                self.searchResultsController()
             } else {
                 SwiftSpinner.hide()
                 AlertViewController().errorRequestOSM()

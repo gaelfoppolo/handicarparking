@@ -61,6 +61,11 @@ class ServicesController {
         
     }
     
+    /**
+        Vérifie l'autorisation d'utilisation de la localisation
+    
+        :returns: Bool autorisation
+    */
     private func checkAutho() -> Bool {
         
         let status = CLLocationManager.authorizationStatus()
