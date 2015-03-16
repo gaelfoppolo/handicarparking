@@ -26,7 +26,7 @@ struct DataProvider {
                     let params = ["data": "[out:json];(node(around:\(rayon.valeur),\(coordinate.latitude),\(coordinate.longitude))['amenity'~'parking|parking_space']['capacity:disabled'~'yes|[0-9]*[0-9]'];node(around:\(rayon.valeur),\(coordinate.latitude),\(coordinate.longitude))['amenity'~'parking|parking_space']['wheelchair'='yes'];node(around:\(rayon.valeur),\(coordinate.latitude),\(coordinate.longitude))['amenity'='parking_space']['parking_space'='disable'];);out 20;"]
                     return (params)
                 }
-                }()
+            }()
             
             let URL = NSURL(string: OpenStreetMap.baseURLString)
             let URLRequest = NSURLRequest(URL: URL!)
@@ -42,6 +42,7 @@ struct DataProvider {
         static let apiKey = "AIzaSyB5wnwkYNT7azlLkIGDOcFAA3DrBo-Jneo"
         
         case Autocomplete(String)
+        case DistanceMatrix(CLLocationCoordinate2D, CLLocationCoordinate2D)
         
         var URLRequest: NSURLRequest {
             let (path: String, parameters: [String: AnyObject]) = {
@@ -51,8 +52,12 @@ struct DataProvider {
                     let path = "/place/autocomplete/json"
                     let params = ["input": searchString, "key": GoogleMaps.apiKey]
                     return (path, params)
+                case .DistanceMatrix (let origins, let destinations):
+                    let path = "/distancematrix/json"
+                    let params = ["origins": "\(origins.latitude),\(origins.longitude)", "destinations": "\(destinations.latitude),\(destinations.longitude)", "key": GoogleMaps.apiKey]
+                    return (path, params)
                 }
-                }()
+            }()
             
             let URL = NSURL(string: OpenStreetMap.baseURLString)
             let URLRequest = NSURLRequest(URL: URL!.URLByAppendingPathComponent(path))
