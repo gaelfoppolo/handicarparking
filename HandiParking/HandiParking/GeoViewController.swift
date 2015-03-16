@@ -27,9 +27,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     // tableau des emplacements récupérés
     var emplacements = [Emplacement]()
     
-    // FIX : to delete
-    var searchByMyLocationButton: Bool = false
-    
     // gestionnaire des requêtes pour OpenStreetMap
     var managerOSM: Alamofire.Manager?
     
@@ -96,7 +93,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if let location = locations.first as? CLLocation {
             
-            if !searchByMyLocationButton && ServicesController().servicesAreWorking() {
+            if ServicesController().servicesAreWorking() {
                 updateMapCameraOnUserLocation()
                 SwiftSpinner.show("Recherche en cours...")
                 launchRecherche()
@@ -106,19 +103,15 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         }
     }
     
-    func didTapMyLocationButtonForMapView(mapView: GMSMapView!) -> Bool {
-        self.searchByMyLocationButton = true
+    /*func didTapMyLocationButtonForMapView(mapView: GMSMapView!) -> Bool {
         locationManager.startUpdatingLocation()
         if ServicesController().servicesAreWorking() {
             updateMapCameraOnUserLocation()
-            SwiftSpinner.show("Recherche en cours...")
-            launchRecherche()
-            return false
         }
         return false
         //true pour le comportement par défaut de la fonction
         //false pour faire ce que l'on veut
-    }
+    }*/
     
     func updateMapCameraOnUserLocation() {
         var camera = GMSCameraPosition(target: locationManager.location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
@@ -136,14 +129,12 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     func reloadData() {
         if(self.emplacements.count > 10) {
             makeMarkersAndBoundsToDisplay()
-            self.searchByMyLocationButton = false
         } else if let newRayon = RayonRecherche(rawValue: self.rayon.rawValue+1){
             self.emplacements.removeAll(keepCapacity: false)
             self.rayon = newRayon
             self.getEmplacements(locationManager.location.coordinate, radius: self.rayon)
         } else {
             makeMarkersAndBoundsToDisplay()
-            self.searchByMyLocationButton = false
         }
     }
     
