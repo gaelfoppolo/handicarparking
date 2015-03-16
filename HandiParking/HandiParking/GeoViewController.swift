@@ -11,26 +11,38 @@ import CoreLocation
 import Alamofire
 import SwiftyJSON
 
-class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
+/// Contrôleur de la vue géolocalisation 📍
 
+class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
+    
+    // lien de sortie vers la carte
     @IBOutlet weak var mapView: GMSMapView!
     
+    // gestionnaire de la localisation
     var locationManager = CLLocationManager()
     
+    // rayon de recherche (mètres) des emplacements
     var rayon: RayonRecherche = RayonRecherche(rawValue: 1)!
     
+    // tableau des emplacements récupérés
     var emplacements = [Emplacement]()
     
+    // FIX : to delete
     var searchByMyLocationButton: Bool = false
     
+    // gestionnaire des requêtes pour OpenStreetMap
     var managerOSM: Alamofire.Manager?
     
+    // tableau de marqueurs ajoutés sur la carte
     var markers = [PlaceMarker]()
     
-    // pour les appels aux services Google Maps
-    let cleAPIGoogleMapsiOS = "AIzaSyBCsJT2QsSUcnnkb8Oq6wDuRUshrXmYb4Y"
+    // MARK: Démarrage
     
-    // on instantie au démarrage
+    /**
+        Instanciation de la vue
+        
+        - initialise les composants nécessaires
+    */
     override func viewDidLoad() {
         
         super.viewDidLoad()

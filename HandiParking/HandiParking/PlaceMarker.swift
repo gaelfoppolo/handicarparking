@@ -8,11 +8,22 @@
 
 import UIKit
 
+/// Marqueur personnalisé héritant des propriétés du marqueur par défaut du framework Google Maps
+
 class PlaceMarker: GMSMarker {
-
+    
+    // les marqueurs sont des emplacements auxquels on ajoute des layouts
     let place: Emplacement
-
+    
+    /**
+        Initialise un nouveau marqueur
+        
+        :param: place un emplacement
+        
+        :returns: Un marqueur contenant les informations de l'emplacement
+    */
     init(place: Emplacement) {
+        
         self.place = place
         super.init()
         
@@ -21,5 +32,6 @@ class PlaceMarker: GMSMarker {
         groundAnchor = CGPoint(x: 0.5, y: 1)
         appearAnimation = kGMSMarkerAnimationPop
         title = place.id_node
+        
     }
 }
