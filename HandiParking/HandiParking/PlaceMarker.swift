@@ -16,10 +16,10 @@ class PlaceMarker: GMSMarker {
         self.place = place
         super.init()
         
-        position = CLLocationCoordinate2DMake(NSString(string: place.lat).doubleValue, NSString(string: place.lon).doubleValue)
+        position = CLLocationCoordinate2DMake(NSString(string: place.latitude).doubleValue, NSString(string: place.longitude).doubleValue)
         icon = UIImage(named: "marker")
         groundAnchor = CGPoint(x: 0.5, y: 1)
         appearAnimation = kGMSMarkerAnimationPop
-        title = place.id
+        title = place.id_node
     }
 }
