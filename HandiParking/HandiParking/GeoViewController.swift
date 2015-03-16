@@ -65,10 +65,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         locationManager.requestWhenInUseAuthorization()
         mapView.delegate = self
         
-        if ServicesController().servicesAreWorking() {
-            locationManager.startUpdatingLocation()
-        }
-        
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         configuration.timeoutIntervalForRequest = 10 // secondes
         
@@ -84,22 +80,26 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         
-        if status == .AuthorizedWhenInUse {
+        if ServicesController().servicesAreWorking() {
             
-            // on affiche le bouton My Location dans la vue
-            mapView.settings.myLocationButton = true
-            mapView.myLocationEnabled = true
-            
-        } else if CLLocationManager.locationServicesEnabled() {
-            switch status {
-            case .Denied:
+            if status == .AuthorizedWhenInUse {
+
+                // on affiche le bouton My Location dans la vue
+                mapView.settings.myLocationButton = true
+                mapView.myLocationEnabled = true
+                
+                locationManager.startUpdatingLocation()
+                
+            } else if status == .Denied {
                 
                 mapView.myLocationEnabled = false
-                SCLAlertView().showError("😁", subTitle:"Il semblerait que l'application n'est pas le droit d'utiliser vos données de géolocalisation !", closeButtonTitle:"OK")
-            default:
-                break
+                mapView.settings.myLocationButton = false
             }
+            
+            
         }
+        
+        
     }
     
     func didTapMyLocationButtonForMapView(mapView: GMSMapView!) -> Bool {
@@ -112,9 +112,8 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if let location = locations.first as? CLLocation {
             
-            if ServicesController().servicesAreWorking() {
-                updateMapCameraOnUserLocation()
-            }
+            updateMapCameraOnUserLocation()
+
             
             locationManager.stopUpdatingLocation()
         }
@@ -147,7 +146,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     
     func makeMarkersAndBoundsToDisplay() {
         SwiftSpinner.show("Préparation de l'affichage...")
-        println("ready to affiche")
         var firstLocation: CLLocationCoordinate2D
         var bounds = GMSCoordinateBounds(coordinate: self.locationManager.location.coordinate, coordinate: self.locationManager.location.coordinate)
         if !self.emplacements.isEmpty {
@@ -161,7 +159,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             SwiftSpinner.hide()
         } else {
             SwiftSpinner.hide()
-            SCLAlertView().showError("😁", subTitle:"Il semblerait qu'aucun emplacement n'est été trouvé dans un rayon de 50 kilomètres... C'est fortuit !", closeButtonTitle:"OK")
+            AlertViewController().noPlacesFound()
         }
         
         
@@ -186,7 +184,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 self.reloadData()
             } else {
                 SwiftSpinner.hide()
-                SCLAlertView().showError("😁", subTitle:"Il semblerait que les serveurs soient surchargés ou que votre connexion Internet soit trop faible... Réesayez dans quelques instants !", closeButtonTitle:"OK")
+                AlertViewController().errorRequestOSM()
             }
         }
         

@@ -16,49 +16,67 @@ class ServicesController {
     /**
         Vérifie la présence d'une connexion Internet fonctionnelle
     
-        :returns: InternetIsWorking la connexion Internet est fonctionnelle
+        :returns: internetIsWorking la connexion Internet est fonctionnelle
     */
     private func checkInternetConnection() -> Bool {
         
         // le service est activé par défaut
-        var InternetIsWorking: Bool = true
+        var internetIsWorking: Bool = true
         
         if !IJReachability.isConnectedToNetwork() {
+
+            AlertViewController().internetConnectionDisabled()
             
-            SCLAlertView().showError("😁", subTitle:"Il semblerait que votre accès Internet soit désactivé. Veuillez le réactiver si vous souhaitez utiliser pleinement l'application", closeButtonTitle:"OK")
-            
-            InternetIsWorking = !InternetIsWorking
+            internetIsWorking = !internetIsWorking
             
         } else if IJReachability.isConnectedToNetwork() && IJReachability.isConnectedToNetworkOfType().description == "NotConnected" {
             
-            SCLAlertView().showWarning("Connexion inexistante..", subTitle: "Il semblerait que votre accès Internet soit actif mais limité. Essayez de trouver une meilleure connexion pour pouvoir utiliser pleinement l'application", closeButtonTitle:"OK")
+            AlertViewController().internetConnectionLimited()
             
-            InternetIsWorking = !InternetIsWorking
+            internetIsWorking = !internetIsWorking
         }
         
-        return InternetIsWorking
+        return internetIsWorking
     }
     
     /**
         Vérifie l'activation du service de localisation
     
-        :returns: LocationIsEnable le service de localisation est activé
+        :returns: locationIsEnable le service de localisation est activé
     */
     private func checkLocationService() -> Bool {
         
         // le service est activé par défaut
-        var LocationIsEnable: Bool = true
+        var locationIsEnable: Bool = true
         
         if !CLLocationManager.locationServicesEnabled() {
             
-            SCLAlertView().showError("😁", subTitle:"Il semblerait que le service de localisation ne soit pas activé ! Allez les modifier dans les Réglages !", closeButtonTitle:"OK")
+            AlertViewController().locationServiceError()
             
-            LocationIsEnable = !LocationIsEnable
+            locationIsEnable = !locationIsEnable
             
         }
         
-        return LocationIsEnable
+        return locationIsEnable
         
+    }
+    
+    private func checkAutho() -> Bool {
+        
+        let status = CLLocationManager.authorizationStatus()
+        
+        // l'autorisation est vraie
+        var authoriIsOk: Bool = true
+
+        switch status {
+            case .Denied:
+                authoriIsOk = !authoriIsOk
+                AlertViewController().locationAutho()
+            default:
+                break
+        }
+     
+        return authoriIsOk
     }
     
     /**
@@ -70,7 +88,9 @@ class ServicesController {
         
         if checkInternetConnection() {
             if checkLocationService() {
-                return true
+                if checkAutho() {
+                    return true
+                }
             }
         }
         return false
