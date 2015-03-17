@@ -22,8 +22,11 @@ class Emplacement {
     /// l'adresse approximative de l'emplacement (reverseGoogle)
     var adresse: String?
     
-    /// distance approximative de l'emplacement (reverseGoogle)
-    var distance: Int?
+    /// distance approximative jusqu'à l'emplacement (reverseGoogle -> texte)
+    var distance: String?
+    
+    /// temps de parcours approximatif jusqu'à l'emplacement (reverseGoogle -> texte)
+    var duration: String?
     
     /**
         Initialise un nouvel emplacement avec les informations suivantes :

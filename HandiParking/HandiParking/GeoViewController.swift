@@ -235,10 +235,12 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         let placeMarker = marker as PlaceMarker
         if let infoView = UIView.viewFromNibName("InfoMarkerWindow") as? InfoMarkerWindow {
             if (infoView.adresse.text == "" && placeMarker.place.adresse == nil) {
-                infoView.adresse.lock()
+                infoView.lock()
             } else {
-                infoView.adresse.unlock()
+                infoView.unlock()
                 infoView.adresse.text = placeMarker.place.adresse
+                infoView.duration.text = placeMarker.place.duration
+                infoView.distance.text = placeMarker.place.distance
             }
         
             
@@ -275,10 +277,34 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                     } else {
                         place.place.adresse = destination.arrayValue[0].stringValue
                     }
+                    
+                    var rows = dataRecup["rows"].arrayValue
+                    
+                    if !rows.isEmpty {
+                        
+                        let element = rows[0]["elements"].arrayValue
+                        
+                        let firstData = element[0]
+                        
+                        if firstData["status"].stringValue == "OK" {
+                            
+                            place.place.duration = firstData["duration"]["text"].stringValue
+                            
+                            place.place.distance = firstData["distance"]["text"].stringValue
+                            
+                        } else {
+                            println(firstData["status"].stringValue)
+                        }
+                        
+                    }
+                    
+                    
+                    
                     self.mapView.selectedMarker = place
                 } else {
                     println(status)
                 }
+                
             } else {
                 SwiftSpinner.hide()
                 println("error")

@@ -12,4 +12,7 @@ class InfoMarkerWindow: UIView {
     
     @IBOutlet weak var adresse: UILabel!
 
+    @IBOutlet weak var duration: UILabel!
+    
+    @IBOutlet weak var distance: UILabel!
 }
