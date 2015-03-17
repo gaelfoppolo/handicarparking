@@ -8,7 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="InfoMarkerWindow" customModule="HandiParking" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="250" height="93"/>
+            <rect key="frame" x="0.0" y="0.0" width="250" height="66"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Détails" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74D-eU-PWF">
@@ -24,25 +24,28 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8d-Yu-fyP">
-                    <rect key="frame" x="0.0" y="46" width="250" height="47"/>
+                    <rect key="frame" x="0.0" y="25" width="250" height="40.5"/>
+                    <color key="backgroundColor" red="0.79582917330000003" green="0.79582917330000003" blue="0.79582917330000003" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSe-Gu-m2g">
-                    <rect key="frame" x="0.0" y="0.0" width="125" height="46"/>
+                    <rect key="frame" x="0.0" y="0.0" width="125" height="25"/>
+                    <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="125" id="yJ8-ve-ZOT"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18t-BE-Zxp">
-                    <rect key="frame" x="125" y="0.0" width="125" height="46"/>
+                    <rect key="frame" x="125" y="0.0" width="125" height="25"/>
+                    <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="125" id="Ozy-zu-TLb"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="prv-hS-Nad">
@@ -82,7 +85,7 @@
                 <constraint firstItem="V8d-Yu-fyP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="14" id="ozW-8S-l6b"/>
                 <constraint firstItem="fSe-Gu-m2g" firstAttribute="firstBaseline" secondItem="18t-BE-Zxp" secondAttribute="firstBaseline" id="plO-c2-GTS"/>
                 <constraint firstItem="V8d-Yu-fyP" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="yTp-YN-jsu"/>
-                <constraint firstItem="V8d-Yu-fyP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="46" id="zMr-Ge-cBU"/>
+                <constraint firstItem="V8d-Yu-fyP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="zMr-Ge-cBU"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -112,7 +115,7 @@
                 <outlet property="distance" destination="18t-BE-Zxp" id="vJI-jT-AGf"/>
                 <outlet property="duration" destination="fSe-Gu-m2g" id="h9h-yG-dX4"/>
             </connections>
-            <point key="canvasLocation" x="198" y="242.5"/>
+            <point key="canvasLocation" x="198" y="256"/>
         </view>
     </objects>
 </document>
