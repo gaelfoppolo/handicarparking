@@ -47,6 +47,8 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     // tableau de marqueurs ajoutés sur la carte
     var markers = [PlaceMarker]()
     
+    var markerFilledWithInfos:Int = 0
+    
     // MARK: Démarrage
     
     /**
@@ -143,6 +145,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         self.markers.removeAll(keepCapacity: false)
         self.emplacements.removeAll(keepCapacity: false)
         self.rayon = RayonRecherche(rawValue: 1)!
+        self.markerFilledWithInfos = 0
         self.getEmplacements(locationManager.location.coordinate, radius: self.rayon)
     }
     
@@ -167,6 +170,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         En même temps, on calcule les bornes afin d'ajuster la caméra pour afficher tous les marqueurs
     */
     func createMarkersAndBoundsToDisplay() {
+        SwiftSpinner.show("Récupération des informations...")
         var firstLocation: CLLocationCoordinate2D
         var bounds = GMSCoordinateBounds(coordinate: self.locationManager.location.coordinate, coordinate: self.locationManager.location.coordinate)
         if !self.emplacements.isEmpty {
@@ -174,6 +178,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 let marker = PlaceMarker(place: place)
                 bounds = bounds.includingCoordinate(marker.position)
                 self.markers.append(marker)
+                getInformations(marker)
                 marker.map = mapView
             }
             mapView.animateWithCameraUpdate(GMSCameraUpdate.fitBounds(bounds, withPadding: 50.0))
@@ -220,24 +225,34 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         
     }
     
-    func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
-        if marker.title == nil{
-            marker.title = "Chargement..."
-            reverseGeocodeCoordinate(marker as PlaceMarker)
-        }
-        return false
-    }
-    
-    func reverseGeocodeCoordinate(marker: PlaceMarker) {
-        
+    /*func reverseGeocodeCoordinate(marker: PlaceMarker) -> String {
         let geocoder = GMSGeocoder()
         geocoder.reverseGeocodeCoordinate(marker.position) { response , error in
             if let address = response?.firstResult() {
                 let lines = address.lines as [String]
-                println(lines)
-                marker.title = lines.first ?? "Aucune adresse trouvée"
+                marker.place.adresse = lines.first ?? "Aucune adresse trouvée"
                 self.mapView.selectedMarker = marker
             }
+        }
+    }*/
+    
+    func mapView(mapView: GMSMapView!, markerInfoContents marker: GMSMarker!) -> UIView! {
+        
+        let placeMarker = marker as PlaceMarker
+        if let infoView = UIView.viewFromNibName("InfoMarkerWindow") as? InfoMarkerWindow {
+            
+        /*infoView.nameLabel.text = placeMarker.place.name
+        
+        // 4
+        if let photo = placeMarker.place.photo {
+        infoView.placePhoto.image = photo
+        } else {
+        infoView.placePhoto.image = UIImage(named: "generic")
+        }*/
+        
+        return infoView
+        } else {
+        return nil
         }
     }
     
@@ -247,12 +262,21 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         request.responseSwiftyJSON { request, response, json, error in
             if error == nil {
                 println(json)
-                SwiftSpinner.hide()
+                self.markerFilledWithInfos++
+                self.resultsController()
             } else {
                 SwiftSpinner.hide()
                 println("error")
                 println(error)
             }
+        }
+    }
+    
+    func resultsController() {
+        if(self.markerFilledWithInfos < self.emplacements.count) {
+            return
+        } else  {
+            SwiftSpinner.hide()
         }
     }
 

@@ -20,6 +20,9 @@
 		937627011AB031D60059C23D /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937627001AB031D60059C23D /* AboutViewController.swift */; };
 		9396F5BE1AB07BDA00784082 /* IJReachbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9396F5BD1AB07BDA00784082 /* IJReachbility.swift */; };
 		9396F5C51AB0843200784082 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9396F5C41AB0843200784082 /* SCLAlertView.swift */; };
+		939F00B51AB82E8D007B928E /* InfoMarkerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939F00B41AB82E8D007B928E /* InfoMarkerWindow.xib */; };
+		939F00BD1AB831D5007B928E /* InfoMarkerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939F00BC1AB831D5007B928E /* InfoMarkerWindow.swift */; };
+		939F00C71AB834A6007B928E /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939F00C61AB834A6007B928E /* UIViewExtension.swift */; };
 		93C83F4F1AAED9AD005990C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C83F4E1AAED9AD005990C2 /* AppDelegate.swift */; };
 		93C83F521AAED9AD005990C2 /* HandiParking.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 93C83F501AAED9AD005990C2 /* HandiParking.xcdatamodeld */; };
 		93C83F541AAED9AD005990C2 /* GeoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C83F531AAED9AD005990C2 /* GeoViewController.swift */; };
@@ -157,6 +160,9 @@
 		937627001AB031D60059C23D /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		9396F5BD1AB07BDA00784082 /* IJReachbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IJReachbility.swift; sourceTree = "<group>"; };
 		9396F5C41AB0843200784082 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
+		939F00B41AB82E8D007B928E /* InfoMarkerWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoMarkerWindow.xib; sourceTree = "<group>"; };
+		939F00BC1AB831D5007B928E /* InfoMarkerWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoMarkerWindow.swift; sourceTree = "<group>"; };
+		939F00C61AB834A6007B928E /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		93C83F491AAED9AD005990C2 /* HandiParking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandiParking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C83F4D1AAED9AD005990C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93C83F4E1AAED9AD005990C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -242,6 +248,9 @@
 				93C83F551AAED9AD005990C2 /* Main.storyboard */,
 				9345FBD01AB2FFDD00D4F686 /* PlaceMarker.swift */,
 				93CCBA441AB6F60800FCCB1E /* AlertViewController.swift */,
+				939F00B41AB82E8D007B928E /* InfoMarkerWindow.xib */,
+				939F00BC1AB831D5007B928E /* InfoMarkerWindow.swift */,
+				939F00C61AB834A6007B928E /* UIViewExtension.swift */,
 			);
 			name = Vues;
 			sourceTree = "<group>";
@@ -525,6 +534,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93D2E8311AAEED1A0028ED1B /* Images.xcassets in Resources */,
+				939F00B51AB82E8D007B928E /* InfoMarkerWindow.xib in Resources */,
 				93C83F571AAED9AD005990C2 /* Main.storyboard in Resources */,
 				93C83F5C1AAED9AD005990C2 /* LaunchScreen.xib in Resources */,
 				935D426A1AB19361005779FA /* GoogleMaps.bundle in Resources */,
@@ -550,6 +560,7 @@
 				937626FD1AB0316F0059C23D /* SearchViewController.swift in Sources */,
 				935D42821AB1DC05005779FA /* Emplacement.swift in Sources */,
 				9396F5BE1AB07BDA00784082 /* IJReachbility.swift in Sources */,
+				939F00BD1AB831D5007B928E /* InfoMarkerWindow.swift in Sources */,
 				93C83F4F1AAED9AD005990C2 /* AppDelegate.swift in Sources */,
 				9396F5C51AB0843200784082 /* SCLAlertView.swift in Sources */,
 				9345FC051AB33AFB00D4F686 /* Alamofire-SwiftyJSON.swift in Sources */,
@@ -557,6 +568,7 @@
 				9345FBC21AB2F3F900D4F686 /* SwiftSpinner.swift in Sources */,
 				935D42701AB1AAEA005779FA /* DataProvider.swift in Sources */,
 				937627011AB031D60059C23D /* AboutViewController.swift in Sources */,
+				939F00C71AB834A6007B928E /* UIViewExtension.swift in Sources */,
 				93CCBA431AB6DDF800FCCB1E /* ServicesController.swift in Sources */,
 				9371FFA91AB0E8CB001C4743 /* MainViewController.swift in Sources */,
 				937626FF1AB031A80059C23D /* HelpViewController.swift in Sources */,

@@ -22,6 +22,9 @@ class Emplacement {
     /// l'adresse approximative de l'emplacement (reverseGoogle)
     var adresse: String?
     
+    /// distance approximative de l'emplacement (reverseGoogle)
+    var distance: Int?
+    
     /**
         Initialise un nouvel emplacement avec les informations suivantes :
         
@@ -35,9 +38,5 @@ class Emplacement {
         self.id_node = id ?? ""
         self.latitude = lat ?? ""
         self.longitude = lon ?? ""
-    }
-    
-    func setAdresse(adr: NSString) {
-        self.adresse = adr
     }
 }
