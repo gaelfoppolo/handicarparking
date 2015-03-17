@@ -60,7 +60,10 @@ struct DataProvider {
         static let baseURLString = "https://maps.googleapis.com/maps/api"
         
         // la clé spécifique au bundle de cette application iOS
-        static let apiKey = "AIzaSyBCsJT2QsSUcnnkb8Oq6wDuRUshrXmYb4Y"
+        static let apiKeyiOS = "AIzaSyBCsJT2QsSUcnnkb8Oq6wDuRUshrXmYb4Y"
+        
+        // la clé utiliser pour les appels aux services serveurs
+        static let apiKeyServer = "AIzaSyB5wnwkYNT7azlLkIGDOcFAA3DrBo-Jneo"
         
         /**
             Autocomplete : récupérer les prédictions des lieux
@@ -86,23 +89,23 @@ struct DataProvider {
                     
                 case .Autocomplete (let searchString):
                     let path = "/place/autocomplete/json"
-                    let params = ["input": searchString, "key": GoogleMaps.apiKey]
+                    let params = ["input": searchString, "key": GoogleMaps.apiKeyiOS]
                     return (path, params)
                 case .DistanceMatrix (let origins, let destinations):
                     let path = "/distancematrix/json"
-                    let params = ["origins": "\(origins.latitude),\(origins.longitude)", "destinations": "\(destinations.latitude),\(destinations.longitude)", "key": GoogleMaps.apiKey]
+                    let params = ["origins": "\(origins.latitude),\(origins.longitude)", "destinations": "\(destinations.latitude),\(destinations.longitude)", "key": GoogleMaps.apiKeyServer]
                     return (path, params)
                 }
             }()
             
-            let URL = NSURL(string: OpenStreetMap.baseURLString)
+            let URL = NSURL(string: GoogleMaps.baseURLString)
             let URLRequest = NSURLRequest(URL: URL!.URLByAppendingPathComponent(path))
             let encoding = Alamofire.ParameterEncoding.URL
             
             // // Exemple illustrant la logique pour DistanceMatrix :
             // = baseURLString  +  path  +  encoded parameters
-            // https://maps.googleapis.com/maps/api  +  /distancematrix/json  +  ?origins=44.3526603,2.5690328&destinations=44.5204289,2.762072&key=AIzaSyBCsJT2QsSUcnnkb8Oq6wDuRUshrXmYb4Y
-            // URL: https://maps.googleapis.com/maps/api/distancematrix/json?origins=44.3526603,2.5690328&destinations=44.5204289,2.762072&key=AIzaSyBCsJT2QsSUcnnkb8Oq6wDuRUshrXmYb4Y
+            // https://maps.googleapis.com/maps/api  +  /distancematrix/json  +  ?origins=44.3526603,2.5690328&destinations=44.5204289,2.762072&key=AIzaSyB5wnwkYNT7azlLkIGDOcFAA3DrBo-Jneo
+            // URL: https://maps.googleapis.com/maps/api/distancematrix/json?origins=44.3526603,2.5690328&destinations=44.5204289,2.762072&key=AIzaSyB5wnwkYNT7azlLkIGDOcFAA3DrBo-Jneo
             
             return encoding.encode(URLRequest, parameters: parameters).0
         }

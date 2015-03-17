@@ -41,6 +41,9 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     // gestionnaire des requêtes pour OpenStreetMap
     var managerOSM: Alamofire.Manager?
     
+    //gestionnaire des requêtes pour Google Maps
+    var managerGM: Alamofire.Manager?
+    
     // tableau de marqueurs ajoutés sur la carte
     var markers = [PlaceMarker]()
     
@@ -66,9 +69,13 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         mapView.delegate = self
         
         // instanciation du manager de requêtes
-        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        configuration.timeoutIntervalForRequest = 10 // secondes
-        self.managerOSM = Alamofire.Manager(configuration: configuration)
+        let configurationOSM = NSURLSessionConfiguration.defaultSessionConfiguration()
+        configurationOSM.timeoutIntervalForRequest = 10 // secondes
+        self.managerOSM = Alamofire.Manager(configuration: configurationOSM)
+        
+        let configurationGM = NSURLSessionConfiguration.defaultSessionConfiguration()
+        configurationGM.timeoutIntervalForRequest = 5 // secondes
+        self.managerGM = Alamofire.Manager(configuration: configurationGM)
         
     }
 
@@ -145,13 +152,13 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     */
     func searchResultsController() {
         if(self.emplacements.count > 10) {
-            makeMarkersAndBoundsToDisplay()
+            createMarkersAndBoundsToDisplay()
         } else if let newRayon = RayonRecherche(rawValue: self.rayon.rawValue+1){
             self.emplacements.removeAll(keepCapacity: false)
             self.rayon = newRayon
             self.getEmplacements(locationManager.location.coordinate, radius: self.rayon)
         } else {
-            makeMarkersAndBoundsToDisplay()
+            createMarkersAndBoundsToDisplay()
         }
     }
     
@@ -159,8 +166,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         Traitement & affichage des marqueurs sur la carte
         En même temps, on calcule les bornes afin d'ajuster la caméra pour afficher tous les marqueurs
     */
-    func makeMarkersAndBoundsToDisplay() {
-        SwiftSpinner.show("Préparation de l'affichage...")
+    func createMarkersAndBoundsToDisplay() {
         var firstLocation: CLLocationCoordinate2D
         var bounds = GMSCoordinateBounds(coordinate: self.locationManager.location.coordinate, coordinate: self.locationManager.location.coordinate)
         if !self.emplacements.isEmpty {
@@ -168,10 +174,11 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 let marker = PlaceMarker(place: place)
                 bounds = bounds.includingCoordinate(marker.position)
                 self.markers.append(marker)
-                marker.map = mapView
+                //marker.map = mapView
             }
             mapView.animateWithCameraUpdate(GMSCameraUpdate.fitBounds(bounds, withPadding: 50.0))
-            SwiftSpinner.hide()
+            //launch func recup
+            getInformations(self.markers[0])
         } else {
             SwiftSpinner.hide()
             AlertViewController().noPlacesFound()
@@ -212,6 +219,21 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             }
         }
         
+    }
+    
+    func getInformations(place: PlaceMarker) {
+        let request = self.managerGM!.request(DataProvider.GoogleMaps.DistanceMatrix(self.locationManager.location.coordinate, place.position))
+        request.validate()
+        request.responseSwiftyJSON { request, response, json, error in
+            if error == nil {
+                println(json)
+                SwiftSpinner.hide()
+            } else {
+                SwiftSpinner.hide()
+                println("error")
+                println(error)
+            }
+        }
     }
 
 }

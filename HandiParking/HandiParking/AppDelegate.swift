@@ -19,12 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //MARK : instanciation des services de Google Maps avec notre clé spécifique au bundle de l'application iOS
         
-        GMSServices.provideAPIKey(DataProvider.GoogleMaps.apiKey)
+        GMSServices.provideAPIKey(DataProvider.GoogleMaps.apiKeyiOS)
         
         return true
-    }
-    
-
+    } 
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

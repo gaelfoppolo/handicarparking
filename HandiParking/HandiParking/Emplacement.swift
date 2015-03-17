@@ -19,6 +19,9 @@ class Emplacement {
     /// la longitude de l'emplacement
     var longitude: String
     
+    /// l'adresse approximative de l'emplacement (reverseGoogle)
+    var adresse: String?
+    
     /**
         Initialise un nouvel emplacement avec les informations suivantes :
         
