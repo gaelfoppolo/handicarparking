@@ -11,5 +11,5 @@ import Foundation
 class InfoMarkerWindow: UIView {
     
     @IBOutlet weak var adresse: UILabel!
-    
+
 }

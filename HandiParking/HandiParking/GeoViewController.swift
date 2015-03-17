@@ -76,7 +76,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         self.managerOSM = Alamofire.Manager(configuration: configurationOSM)
         
         let configurationGM = NSURLSessionConfiguration.defaultSessionConfiguration()
-        configurationGM.timeoutIntervalForRequest = 5 // secondes
+        configurationGM.timeoutIntervalForRequest = 10 // secondes
         self.managerGM = Alamofire.Manager(configuration: configurationGM)
         
     }
@@ -178,7 +178,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 let marker = PlaceMarker(place: place)
                 bounds = bounds.includingCoordinate(marker.position)
                 self.markers.append(marker)
-                getInformations(marker)
+                //getInformations(marker)
                 marker.map = mapView
             }
             mapView.animateWithCameraUpdate(GMSCameraUpdate.fitBounds(bounds, withPadding: 50.0))
@@ -225,23 +225,23 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         
     }
     
-    /*func reverseGeocodeCoordinate(marker: PlaceMarker) -> String {
-        let geocoder = GMSGeocoder()
-        geocoder.reverseGeocodeCoordinate(marker.position) { response , error in
-            if let address = response?.firstResult() {
-                let lines = address.lines as [String]
-                marker.place.adresse = lines.first ?? "Aucune adresse trouvée"
-                self.mapView.selectedMarker = marker
-            }
-        }
-    }*/
+    func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
+        getInformations(marker as PlaceMarker)
+        return false
+    }
     
     func mapView(mapView: GMSMapView!, markerInfoContents marker: GMSMarker!) -> UIView! {
         
         let placeMarker = marker as PlaceMarker
         if let infoView = UIView.viewFromNibName("InfoMarkerWindow") as? InfoMarkerWindow {
+            if (infoView.adresse.text == "" && placeMarker.place.adresse == nil) {
+                infoView.adresse.lock()
+            } else {
+                infoView.adresse.unlock()
+                infoView.adresse.text = placeMarker.place.adresse
+            }
+        
             
-        infoView.adresse.text = placeMarker.place.adresse
             
         /*infoView.nameLabel.text = placeMarker.place.name
         
@@ -275,9 +275,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                     } else {
                         place.place.adresse = destination.arrayValue[0].stringValue
                     }
-                    
-                    self.markerFilledWithInfos++
-                    self.resultsController()
+                    self.mapView.selectedMarker = place
                 } else {
                     println(status)
                 }
@@ -286,14 +284,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 println("error")
                 println(error)
             }
-        }
-    }
-    
-    func resultsController() {
-        if(self.markerFilledWithInfos < self.emplacements.count) {
-            return
-        } else  {
-            SwiftSpinner.hide()
         }
     }
 
