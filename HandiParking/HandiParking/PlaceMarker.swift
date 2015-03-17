@@ -31,7 +31,6 @@ class PlaceMarker: GMSMarker {
         icon = UIImage(named: "marker")
         groundAnchor = CGPoint(x: 0.5, y: 1)
         appearAnimation = kGMSMarkerAnimationPop
-        title = place.id_node
         
     }
 }

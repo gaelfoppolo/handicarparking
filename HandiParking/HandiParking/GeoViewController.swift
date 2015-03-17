@@ -174,11 +174,10 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 let marker = PlaceMarker(place: place)
                 bounds = bounds.includingCoordinate(marker.position)
                 self.markers.append(marker)
-                //marker.map = mapView
+                marker.map = mapView
             }
             mapView.animateWithCameraUpdate(GMSCameraUpdate.fitBounds(bounds, withPadding: 50.0))
-            //launch func recup
-            getInformations(self.markers[0])
+            SwiftSpinner.hide()
         } else {
             SwiftSpinner.hide()
             AlertViewController().noPlacesFound()
@@ -219,6 +218,27 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             }
         }
         
+    }
+    
+    func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
+        if marker.title == nil{
+            marker.title = "Chargement..."
+            reverseGeocodeCoordinate(marker as PlaceMarker)
+        }
+        return false
+    }
+    
+    func reverseGeocodeCoordinate(marker: PlaceMarker) {
+        
+        let geocoder = GMSGeocoder()
+        geocoder.reverseGeocodeCoordinate(marker.position) { response , error in
+            if let address = response?.firstResult() {
+                let lines = address.lines as [String]
+                println(lines)
+                marker.title = lines.first ?? "Aucune adresse trouvée"
+                self.mapView.selectedMarker = marker
+            }
+        }
     }
     
     func getInformations(place: PlaceMarker) {

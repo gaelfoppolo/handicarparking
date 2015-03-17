@@ -36,4 +36,8 @@ class Emplacement {
         self.latitude = lat ?? ""
         self.longitude = lon ?? ""
     }
+    
+    func setAdresse(adr: NSString) {
+        self.adresse = adr
+    }
 }
