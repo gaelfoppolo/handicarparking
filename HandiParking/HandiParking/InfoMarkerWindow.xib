@@ -22,9 +22,9 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adresse" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8d-Yu-fyP">
-                    <rect key="frame" x="67" y="14" width="63" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adresse" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8d-Yu-fyP">
+                    <rect key="frame" x="0.0" y="0.0" width="197" height="49"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -44,8 +44,17 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="V8d-Yu-fyP" secondAttribute="centerX" id="2GE-YG-v9R"/>
+                <constraint firstItem="V8d-Yu-fyP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8fV-k5-bSc"/>
                 <constraint firstAttribute="centerY" secondItem="V8d-Yu-fyP" secondAttribute="centerY" id="Fqv-8M-NBK"/>
+                <constraint firstAttribute="trailing" secondItem="V8d-Yu-fyP" secondAttribute="trailing" id="JFy-y1-ayU"/>
+                <constraint firstItem="V8d-Yu-fyP" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="KbB-sX-daf"/>
+                <constraint firstItem="V8d-Yu-fyP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="X97-VK-gOZ"/>
+                <constraint firstItem="V8d-Yu-fyP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="67" id="cfJ-uV-H6M"/>
+                <constraint firstAttribute="bottom" secondItem="V8d-Yu-fyP" secondAttribute="bottom" id="lcv-hS-hq3"/>
+                <constraint firstItem="V8d-Yu-fyP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="14" id="ozW-8S-l6b"/>
+                <constraint firstItem="V8d-Yu-fyP" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="yTp-YN-jsu"/>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="subviews">
@@ -53,6 +62,14 @@
                     <exclude reference="Cam-7I-7T7"/>
                     <exclude reference="Mjp-vd-MIN"/>
                     <exclude reference="WOj-zX-A03"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="2GE-YG-v9R"/>
+                    <exclude reference="Fqv-8M-NBK"/>
+                    <exclude reference="KbB-sX-daf"/>
+                    <exclude reference="cfJ-uV-H6M"/>
+                    <exclude reference="ozW-8S-l6b"/>
+                    <exclude reference="yTp-YN-jsu"/>
                 </mask>
             </variation>
             <connections>

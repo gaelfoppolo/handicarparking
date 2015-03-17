@@ -241,6 +241,8 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         let placeMarker = marker as PlaceMarker
         if let infoView = UIView.viewFromNibName("InfoMarkerWindow") as? InfoMarkerWindow {
             
+        infoView.adresse.text = placeMarker.place.adresse
+            
         /*infoView.nameLabel.text = placeMarker.place.name
         
         // 4
@@ -260,10 +262,25 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         let request = self.managerGM!.request(DataProvider.GoogleMaps.DistanceMatrix(self.locationManager.location.coordinate, place.position))
         request.validate()
         request.responseSwiftyJSON { request, response, json, error in
-            if error == nil {
-                println(json)
-                self.markerFilledWithInfos++
-                self.resultsController()
+            if error == nil  {
+                var dataRecup = json
+                var status:String? = dataRecup["status"].stringValue
+                
+                if status == "OK" {
+                    
+                    var destination = dataRecup["destination_addresses"]
+                    
+                    if destination.isEmpty {
+                        place.place.adresse = "Aucune adresse correspondante"
+                    } else {
+                        place.place.adresse = destination.arrayValue[0].stringValue
+                    }
+                    
+                    self.markerFilledWithInfos++
+                    self.resultsController()
+                } else {
+                    println(status)
+                }
             } else {
                 SwiftSpinner.hide()
                 println("error")
