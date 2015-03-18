@@ -18,8 +18,14 @@ struct DataProvider {
 
     enum OpenStreetMap: URLRequestConvertible {
         
-        // l'URL de base de l'API d'OSM
+        /// l'URL de base de l'API d'OSM
         static let baseURLString = "http://overpass-api.de/api/interpreter"
+        
+        /// nombre minimum de résultats à récupérer
+        static let minimumResults: Int = 20
+        
+        /// nombre maximum de résultats à récupérer
+        static let maximumResults: Int = 50
         
         /**
             GetNodes : récupérer les nodes
@@ -36,7 +42,7 @@ struct DataProvider {
                 switch self {
                     
                 case .GetNodes (let coordinate, let rayon):
-                    let params = ["data": "[out:json];(node(around:\(rayon.valeur),\(coordinate.latitude),\(coordinate.longitude))['amenity'~'parking|parking_space']['capacity:disabled'~'yes|[0-9]*[0-9]'];node(around:\(rayon.valeur),\(coordinate.latitude),\(coordinate.longitude))['amenity'~'parking|parking_space']['wheelchair'='yes'];node(around:\(rayon.valeur),\(coordinate.latitude),\(coordinate.longitude))['amenity'='parking_space']['parking_space'='disable'];);out 20;"]
+                    let params = ["data": "[out:json];(node(around:\(rayon.valeur),\(coordinate.latitude),\(coordinate.longitude))['amenity'~'parking|parking_space']['capacity:disabled'~'yes|[0-9]*[0-9]'];node(around:\(rayon.valeur),\(coordinate.latitude),\(coordinate.longitude))['amenity'~'parking|parking_space']['wheelchair'='yes'];node(around:\(rayon.valeur),\(coordinate.latitude),\(coordinate.longitude))['amenity'='parking_space']['parking_space'='disable'];);out meta \(DataProvider.OpenStreetMap.maximumResults);"]
                     return (params)
                 }
             }()
@@ -47,8 +53,8 @@ struct DataProvider {
             
             // Exemple illustrant la logique :
             // = baseURLString  +  params
-            // http://overpass-api.de/api/interpreter  +   ?data=[out:json];(node(around:5000,43.609416,3.869641)['amenity'~'parking|parking_space']['capacity:disabled'~'yes|[0-9]*[0-9]'];node(around:5000,43.609416,3.869641)['amenity'~'parking|parking_space']['wheelchair'='yes'];node(around:5000,43.609416,3.869641)['amenity'='parking_space']['parking_space'='disabled'];);out 20;
-            // URL: http://overpass-api.de/api/interpreter?data=[out:json];(node(around:5000,43.609416,3.869641)['amenity'~'parking|parking_space']['capacity:disabled'~'yes|[0-9]*[0-9]'];node(around:5000,43.609416,3.869641)['amenity'~'parking|parking_space']['wheelchair'='yes'];node(around:5000,43.609416,3.869641)['amenity'='parking_space']['parking_space'='disabled'];);out 20;
+            // http://overpass-api.de/api/interpreter  +   ?data=[out:json];(node(around:5000,43.609416,3.869641)['amenity'~'parking|parking_space']['capacity:disabled'~'yes|[0-9]*[0-9]'];node(around:5000,43.609416,3.869641)['amenity'~'parking|parking_space']['wheelchair'='yes'];node(around:5000,43.609416,3.869641)['amenity'='parking_space']['parking_space'='disabled'];);out meta 20;
+            // URL: http://overpass-api.de/api/interpreter?data=[out:json];(node(around:5000,43.609416,3.869641)['amenity'~'parking|parking_space']['capacity:disabled'~'yes|[0-9]*[0-9]'];node(around:5000,43.609416,3.869641)['amenity'~'parking|parking_space']['wheelchair'='yes'];node(around:5000,43.609416,3.869641)['amenity'='parking_space']['parking_space'='disabled'];);out meta 20;
             
             return encoding.encode(URLRequest, parameters: parameters).0
         }
