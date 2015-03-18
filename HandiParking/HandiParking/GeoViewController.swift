@@ -217,8 +217,26 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                         var lat: String? = place["lat"].stringValue
                         var lon: String? = place["lon"].stringValue
                         var tim: String? = place["timestamp"].stringValue
+                        var name: String?
+                        var fee: String?
+                        var capacity:String?
+                        
+                        for tag in place["tags"] {
+                            switch tag.0 {
+                                case "name":
+                                    name = tag.1.stringValue
+                                case "fee":
+                                    fee = tag.1.stringValue
+                                case "capacity:disabled":
+                                    if tag.1.stringValue != "yes" {
+                                        capacity = tag.1.stringValue
+                                    }
+                                default:
+                                    break
+                            }
+                        }
 
-                        var emplacement = Emplacement(id: id, lat: lat, lon: lon, tim: tim)
+                        var emplacement = Emplacement(id: id, lat: lat, lon: lon, tim: tim, name: name, fee: fee, capacity: capacity)
                         self.emplacements.append(emplacement)
                     }
             
@@ -267,7 +285,8 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         Appelé dès que la fenêtre d'informations d'un marqueur est tappé
     */
     func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
-        println("window tapped")
+        
+        SCLAlertView().showInfo("Informations", subTitle: "description blabla infos doto", closeButtonTitle: "Fermer")
     }
     
     /**
