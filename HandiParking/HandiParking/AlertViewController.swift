@@ -62,7 +62,7 @@ struct AlertViewController {
     /**
         Erreur - Erreur lors de la réponse de la requête (timeout ou autre)
     */
-    internal func errorRequestOSM() {
+    internal func errorRequest() {
         SCLAlertView().showError("😁", subTitle:"Il semblerait que les serveurs soient surchargés ou que votre connexion Internet soit trop faible... Réesayez dans quelques instants !", closeButtonTitle:"OK")
     }
     
@@ -71,6 +71,13 @@ struct AlertViewController {
     */
     internal func locationWasNotGet() {
         SCLAlertView().showError("😁", subTitle:"Il semblerait que votre position n'est pas pu être déterminée ! Réesayez dans quelques instants !", closeButtonTitle:"OK")
+    }
+    
+    /**
+    Erreur - Erreur dans la réponse de la requête Google
+    */
+    internal func errorResponseGoogle() {
+        SCLAlertView().showError("😁", subTitle:"Il semblerait qu'il y ait un problème lors de la récupération des données ! Si ce problème persiste, contactez-nous via Informations ! ", closeButtonTitle:"OK")
     }
     
 }
