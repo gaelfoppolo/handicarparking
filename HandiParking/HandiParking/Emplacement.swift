@@ -31,6 +31,15 @@ class Emplacement {
     /// dernière date de modification
     var timestamp:String?
     
+    /// place playante
+    var fee: String?
+    
+    /// nombre d'emplacements
+    var capacity: Int?
+    
+    /// nom du lieu
+    var name: String?
+    
     /**
         Initialise un nouvel emplacement avec les informations suivantes :
         
@@ -40,10 +49,24 @@ class Emplacement {
         
         :returns: Un emplacement tout neuf, prêt à être utilisé
     */
-    init(id: String?, lat: String?, lon: String?, tim: String?) {
+    init(id: String?, lat: String?, lon: String?, tim: String?, name: String?, fee: String?, capacity: String?) {
         self.id_node = id ?? ""
         self.latitude = lat ?? ""
         self.longitude = lon ?? ""
         self.timestamp = tim ?? ""
+        self.name = name ?? nil
+        if let feee = fee {
+            switch feee {
+                case "yes":
+                    self.fee = "Oui"
+                case "no":
+                    self.fee = "Non"
+                default:
+                    break
+            }
+        }
+        if let capa = capacity {
+            self.capacity = capa.toInt()
+        }
     }
 }
