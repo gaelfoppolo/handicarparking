@@ -23,9 +23,13 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     //lien vers le bouton de droite de la barre de navigation
     @IBAction func launchSearch(sender: AnyObject) {
         if ServicesController().servicesAreWorking() {
-            updateMapCameraOnUserLocation()
-            SwiftSpinner.show("Recherche en cours...")
-            launchRecherche()
+            if let locationWasGet = locationManager.location {
+                SwiftSpinner.show("Recherche en cours...")
+                launchRecherche()
+            } else {
+                AlertViewController().locationWasNotGet()
+            }
+            
         }
     }
     
@@ -154,7 +158,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         Si en revanche il y a assez de résultats, on peut préparer les données pour le traitement/affichage
     */
     func searchResultsController() {
-        if(self.emplacements.count > 10) {
+        if(self.emplacements.count > DataProvider.OpenStreetMap.minimumResults) {
             createMarkersAndBoundsToDisplay()
         } else if let newRayon = RayonRecherche(rawValue: self.rayon.rawValue+1){
             self.emplacements.removeAll(keepCapacity: false)
@@ -212,7 +216,9 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                         var id: String? = place["id"].stringValue
                         var lat: String? = place["lat"].stringValue
                         var lon: String? = place["lon"].stringValue
-                        var emplacement = Emplacement(id: id, lat: lat, lon: lon)
+                        var tim: String? = place["timestamp"].stringValue
+
+                        var emplacement = Emplacement(id: id, lat: lat, lon: lon, tim: tim)
                         self.emplacements.append(emplacement)
                     }
             
@@ -236,27 +242,16 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         if let infoView = UIView.viewFromNibName("InfoMarkerWindow") as? InfoMarkerWindow {
             if (infoView.adresse.text == "" && placeMarker.place.adresse == nil) {
                 infoView.lock()
-            } else {
+            } else if infoView.adresse.text != placeMarker.place.adresse {
                 infoView.unlock()
                 infoView.adresse.text = placeMarker.place.adresse
                 infoView.duration.text = placeMarker.place.duration
                 infoView.distance.text = placeMarker.place.distance
             }
         
-            
-            
-        /*infoView.nameLabel.text = placeMarker.place.name
-        
-        // 4
-        if let photo = placeMarker.place.photo {
-        infoView.placePhoto.image = photo
+            return infoView
         } else {
-        infoView.placePhoto.image = UIImage(named: "generic")
-        }*/
-        
-        return infoView
-        } else {
-        return nil
+            return nil
         }
     }
     
@@ -297,9 +292,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                         }
                         
                     }
-                    
-                    
-                    
+
                     self.mapView.selectedMarker = place
                 } else {
                     println(status)

@@ -66,4 +66,11 @@ struct AlertViewController {
         SCLAlertView().showError("😁", subTitle:"Il semblerait que les serveurs soient surchargés ou que votre connexion Internet soit trop faible... Réesayez dans quelques instants !", closeButtonTitle:"OK")
     }
     
+    /**
+    Erreur - La localisation n'a pas encore été récupérée
+    */
+    internal func locationWasNotGet() {
+        SCLAlertView().showError("😁", subTitle:"Il semblerait que votre position n'est pas pu être déterminée ! Réesayez dans quelques instants !", closeButtonTitle:"OK")
+    }
+    
 }
