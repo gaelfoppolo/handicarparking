@@ -35,7 +35,7 @@ class Emplacement {
     var fee: String?
     
     /// nombre d'emplacements
-    var capacity: Int?
+    var capacity: String?
     
     /// nom du lieu
     var name: String?
@@ -54,7 +54,7 @@ class Emplacement {
         self.latitude = lat ?? ""
         self.longitude = lon ?? ""
         self.timestamp = tim ?? ""
-        self.name = name ?? nil
+        self.name = name ?? "Aucun nom de lieu"
         if let feee = fee {
             switch feee {
                 case "yes":
@@ -64,9 +64,15 @@ class Emplacement {
                 default:
                     break
             }
+        } else {
+            self.fee = "Aucune information sur le stationnement"
         }
-        if let capa = capacity {
-            self.capacity = capa.toInt()
-        }
+        self.capacity = capacity ?? "Aucune information"
+    }
+    
+    func setInfos(adr: String?, dur: String?, dist: String?) {
+        self.adresse = adr ?? "Aucune adresse correspondante"
+        self.duration = dur ?? "Aucune information sur la durée"
+        self.distance = dist ?? "Aucune information sur la distance"
     }
 }

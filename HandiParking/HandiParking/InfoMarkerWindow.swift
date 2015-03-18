@@ -16,4 +16,11 @@ class InfoMarkerWindow: UIView {
     
     @IBOutlet weak var distance: UILabel!
     
+    @IBOutlet weak var name: UILabel!
+    
+    @IBOutlet weak var timestamp: UILabel!
+    
+    @IBOutlet weak var capacity: UILabel!
+
+    @IBOutlet weak var fee: UILabel!
 }

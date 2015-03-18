@@ -273,6 +273,10 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 infoView.adresse.text = placeMarker.place.adresse
                 infoView.duration.text = placeMarker.place.duration
                 infoView.distance.text = placeMarker.place.distance
+                infoView.name.text = placeMarker.place.name
+                infoView.timestamp.text = placeMarker.place.timestamp
+                infoView.capacity.text = placeMarker.place.capacity
+                infoView.fee.text = placeMarker.place.fee
             }
         
             return infoView
@@ -286,7 +290,11 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     */
     func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
         
-        SCLAlertView().showInfo("Informations", subTitle: "description blabla infos doto", closeButtonTitle: "Fermer")
+        let placeMarker = marker as PlaceMarker
+        
+        //penser à check si les infos ont été get
+        
+        //et afficher un uisheet pour les intent
     }
     
     /**
@@ -307,14 +315,16 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                     var dataRecup = json
                     var status:String? = dataRecup["status"].stringValue
                     
+                    var adresse:String?
+                    var duration:String?
+                    var distance:String?
+                    
                     if status == "OK" {
                         
                         var destination = dataRecup["destination_addresses"]
                         
-                        if destination.isEmpty {
-                            place.place.adresse = "Aucune adresse correspondante"
-                        } else {
-                            place.place.adresse = destination.arrayValue[0].stringValue
+                        if !destination.isEmpty {
+                            adresse = destination.arrayValue[0].stringValue
                         }
                         
                         var rows = dataRecup["rows"].arrayValue
@@ -327,18 +337,14 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                             
                             if firstData["status"].stringValue == "OK" {
                                 
-                                place.place.duration = firstData["duration"]["text"].stringValue
+                                duration = firstData["duration"]["text"].stringValue
                                 
-                                place.place.distance = firstData["distance"]["text"].stringValue
-                                
-                            } else {
-                                
-                                place.place.duration = "Aucune donnée"
-                                
-                                place.place.distance = "Aucune donnée"
+                                distance = firstData["distance"]["text"].stringValue
                             }
                             
                         }
+                            
+                        place.place.setInfos(adresse, dur: duration, dist: distance)
 
                         self.mapView.selectedMarker = place
                         
