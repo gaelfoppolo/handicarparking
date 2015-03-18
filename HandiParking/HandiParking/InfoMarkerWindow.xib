@@ -5,7 +5,7 @@
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InfoMarkerWindow" customModule="HandiParking" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="InfoMarkerWindow" customModule="HandiParking" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="66"/>
@@ -64,7 +64,6 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="V8d-Yu-fyP" secondAttribute="centerX" id="2GE-YG-v9R"/>
                 <constraint firstAttribute="trailing" secondItem="V8d-Yu-fyP" secondAttribute="trailing" id="3Uq-rt-EKw"/>

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 KeepCore. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class InfoMarkerWindow: UIView {
     
@@ -15,4 +15,5 @@ class InfoMarkerWindow: UIView {
     @IBOutlet weak var duration: UILabel!
     
     @IBOutlet weak var distance: UILabel!
+    
 }
