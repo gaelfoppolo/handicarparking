@@ -225,17 +225,25 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 self.searchResultsController()
             } else {
                 SwiftSpinner.hide()
-                AlertViewController().errorRequestOSM()
+                AlertViewController().errorRequest()
             }
         }
         
     }
     
+    /**
+        Appelé dès qu'un marqueur est tappé
+        On retourne faux pour que le comportement par défaut soit réalisé
+    */
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
         getInformations(marker as PlaceMarker)
         return false
     }
     
+    /**
+        Appelé si markerInfoWindow renvoie nil
+        On load notre vue personnalisée et on affiche si disponible les informations
+    */
     func mapView(mapView: GMSMapView!, markerInfoContents marker: GMSMarker!) -> UIView! {
         
         let placeMarker = marker as PlaceMarker
@@ -255,53 +263,75 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         }
     }
     
+    /**
+        Appelé dès que la fenêtre d'informations d'un marqueur est tappé
+    */
+    func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
+        println("window tapped")
+    }
+    
+    /**
+        Recherche des informations complémentaires entre deux lieux
+    
+        :param: place Le marqueur sélectionné
+    
+        On effectue une requête sur l'API de Google Maps afin de récupérer l'adresse du lieu de destination ainsi que la distance et le temps de parcours pour se rendre sur ce lieu, grâce à la position actuelle.
+    
+        La requête est effectuée de façon asynchrone grâce à une closure, avec un timeout de 10 secondes.
+    */
     func getInformations(place: PlaceMarker) {
-        let request = self.managerGM!.request(DataProvider.GoogleMaps.DistanceMatrix(self.locationManager.location.coordinate, place.position))
-        request.validate()
-        request.responseSwiftyJSON { request, response, json, error in
-            if error == nil  {
-                var dataRecup = json
-                var status:String? = dataRecup["status"].stringValue
-                
-                if status == "OK" {
+        if place.place.adresse == nil {
+            let request = self.managerGM!.request(DataProvider.GoogleMaps.DistanceMatrix(self.locationManager.location.coordinate, place.position))
+            request.validate()
+            request.responseSwiftyJSON { request, response, json, error in
+                if error == nil  {
+                    var dataRecup = json
+                    var status:String? = dataRecup["status"].stringValue
                     
-                    var destination = dataRecup["destination_addresses"]
-                    
-                    if destination.isEmpty {
-                        place.place.adresse = "Aucune adresse correspondante"
-                    } else {
-                        place.place.adresse = destination.arrayValue[0].stringValue
-                    }
-                    
-                    var rows = dataRecup["rows"].arrayValue
-                    
-                    if !rows.isEmpty {
+                    if status == "OK" {
                         
-                        let element = rows[0]["elements"].arrayValue
+                        var destination = dataRecup["destination_addresses"]
                         
-                        let firstData = element[0]
-                        
-                        if firstData["status"].stringValue == "OK" {
-                            
-                            place.place.duration = firstData["duration"]["text"].stringValue
-                            
-                            place.place.distance = firstData["distance"]["text"].stringValue
-                            
+                        if destination.isEmpty {
+                            place.place.adresse = "Aucune adresse correspondante"
                         } else {
-                            println(firstData["status"].stringValue)
+                            place.place.adresse = destination.arrayValue[0].stringValue
                         }
                         
-                    }
+                        var rows = dataRecup["rows"].arrayValue
+                        
+                        if !rows.isEmpty {
+                            
+                            let element = rows[0]["elements"].arrayValue
+                            
+                            let firstData = element[0]
+                            
+                            if firstData["status"].stringValue == "OK" {
+                                
+                                place.place.duration = firstData["duration"]["text"].stringValue
+                                
+                                place.place.distance = firstData["distance"]["text"].stringValue
+                                
+                            } else {
+                                
+                                place.place.duration = "Aucune donnée"
+                                
+                                place.place.distance = "Aucune donnée"
+                            }
+                            
+                        }
 
-                    self.mapView.selectedMarker = place
+                        self.mapView.selectedMarker = place
+                        
+                    } else {
+                        self.mapView.selectedMarker = nil
+                        AlertViewController().errorResponseGoogle()
+                    }
+                    
                 } else {
-                    println(status)
+                    self.mapView.selectedMarker = nil
+                    AlertViewController().errorRequest()
                 }
-                
-            } else {
-                SwiftSpinner.hide()
-                println("error")
-                println(error)
             }
         }
     }
