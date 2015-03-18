@@ -28,6 +28,9 @@ class Emplacement {
     /// temps de parcours approximatif jusqu'à l'emplacement (reverseGoogle -> texte)
     var duration: String?
     
+    /// dernière date de modification
+    var timestamp:String?
+    
     /**
         Initialise un nouvel emplacement avec les informations suivantes :
         
@@ -37,9 +40,10 @@ class Emplacement {
         
         :returns: Un emplacement tout neuf, prêt à être utilisé
     */
-    init(id: String?, lat: String?, lon: String?) {
+    init(id: String?, lat: String?, lon: String?, tim: String?) {
         self.id_node = id ?? ""
         self.latitude = lat ?? ""
         self.longitude = lon ?? ""
+        self.timestamp = tim ?? ""
     }
 }
