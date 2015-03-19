@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InfoMarkerWindow: UIView {
+@IBDesignable class InfoMarkerWindow: UIView {
     
     @IBOutlet weak var adresse: UILabel!
 
@@ -23,4 +23,26 @@ class InfoMarkerWindow: UIView {
     @IBOutlet weak var capacity: UILabel!
 
     @IBOutlet weak var fee: UILabel!
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    func setup() {
+        self.layer.masksToBounds = true
+        self.layer.cornerRadius = 20
+        //self.clipsToBounds = true
+        self.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
+        
+        //var blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+        //var blurEffectView = UIVisualEffectView(effect: blurEffect)
+        //blurEffectView.frame = self.bounds
+        //self.addSubview(blurEffectView)
+
+    }
 }
