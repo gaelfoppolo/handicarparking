@@ -216,7 +216,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                         var id: String? = place["id"].stringValue
                         var lat: String? = place["lat"].stringValue
                         var lon: String? = place["lon"].stringValue
-                        var tim: String? = place["timestamp"].stringValue
                         var name: String?
                         var fee: String?
                         var capacity:String?
@@ -236,7 +235,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                             }
                         }
 
-                        var emplacement = Emplacement(id: id, lat: lat, lon: lon, tim: tim, name: name, fee: fee, capacity: capacity)
+                        var emplacement = Emplacement(id: id, lat: lat, lon: lon, name: name, fee: fee, capacity: capacity)
                         self.emplacements.append(emplacement)
                     }
             
@@ -280,7 +279,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 infoView.duration.text = placeMarker.place.duration
                 infoView.distance.text = placeMarker.place.distance
                 infoView.name.text = placeMarker.place.name
-                infoView.timestamp.text = placeMarker.place.timestamp
                 infoView.capacity.text = placeMarker.place.capacity
                 infoView.fee.text = placeMarker.place.fee
             }

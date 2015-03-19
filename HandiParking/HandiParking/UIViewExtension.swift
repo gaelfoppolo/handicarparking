@@ -21,7 +21,7 @@ extension UIView {
         }
         else {
             let lockView = UIView(frame: bounds)
-            lockView.backgroundColor = UIColor(white: 0.0, alpha: 0.0)
+            lockView.backgroundColor = UIColor(white: 0.0, alpha: 1)
             lockView.tag = 10
             lockView.alpha = 0.0
             let activity = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)

@@ -18,8 +18,6 @@ import UIKit
     
     @IBOutlet weak var name: UILabel!
     
-    @IBOutlet weak var timestamp: UILabel!
-    
     @IBOutlet weak var capacity: UILabel!
 
     @IBOutlet weak var fee: UILabel!
@@ -35,7 +33,7 @@ import UIKit
     
     func setup() {
         self.layer.masksToBounds = true
-        self.layer.cornerRadius = 20
+        self.layer.cornerRadius = 15
         //self.clipsToBounds = true
         self.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
         
@@ -45,4 +43,5 @@ import UIKit
         //self.addSubview(blurEffectView)
 
     }
+    
 }

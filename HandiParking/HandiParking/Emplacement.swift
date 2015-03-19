@@ -28,9 +28,6 @@ class Emplacement {
     /// temps de parcours approximatif jusqu'à l'emplacement (reverseGoogle -> texte)
     var duration: String?
     
-    /// dernière date de modification
-    var timestamp:String?
-    
     /// place playante
     var fee: String?
     
@@ -49,30 +46,33 @@ class Emplacement {
         
         :returns: Un emplacement tout neuf, prêt à être utilisé
     */
-    init(id: String?, lat: String?, lon: String?, tim: String?, name: String?, fee: String?, capacity: String?) {
+    init(id: String?, lat: String?, lon: String?, name: String?, fee: String?, capacity: String?) {
         self.id_node = id ?? ""
         self.latitude = lat ?? ""
         self.longitude = lon ?? ""
-        self.timestamp = tim ?? ""
-        self.name = name ?? "Nom de lieu non disponible"
+        self.name = name ?? ""
         if let feee = fee {
             switch feee {
                 case "yes":
                     self.fee = "Payant"
                 case "no":
-                    self.fee = "Non payant"
+                    self.fee = "Gratuit"
                 default:
                     break
             }
         } else {
-            self.fee = "Frais de stationnement non disponible"
+            self.fee = ""
         }
-        self.capacity = capacity ?? "Nombre de places non disponible"
+        if let capa = capacity {
+            self.capacity = "\(capa) places"
+        } else {
+            self.capacity = ""
+        }
     }
     
     func setInfos(adr: String?, dur: String?, dist: String?) {
         self.adresse = adr ?? "Aucune adresse correspondante"
-        self.duration = dur ?? "Aucune information sur la durée de voyage"
-        self.distance = dist ?? "Aucune information sur la distance"
+        self.duration = dur ?? ""
+        self.distance = dist ?? ""
     }
 }
