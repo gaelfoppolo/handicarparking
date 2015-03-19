@@ -99,7 +99,7 @@ struct DataProvider {
                     return (path, params)
                 case .DistanceMatrix (let origins, let destinations):
                     let path = "/distancematrix/json"
-                    let params = ["origins": "\(origins.latitude),\(origins.longitude)", "destinations": "\(destinations.latitude),\(destinations.longitude)"]
+                    let params = ["origins": "\(origins.latitude),\(origins.longitude)", "destinations": "\(destinations.latitude),\(destinations.longitude)", "key": DataProvider.GoogleMaps.apiKeyServer]
                     return (path, params)
                 }
             }()
