@@ -54,25 +54,25 @@ class Emplacement {
         self.latitude = lat ?? ""
         self.longitude = lon ?? ""
         self.timestamp = tim ?? ""
-        self.name = name ?? "Aucun nom de lieu"
+        self.name = name ?? "Nom de lieu non disponible"
         if let feee = fee {
             switch feee {
                 case "yes":
-                    self.fee = "Oui"
+                    self.fee = "Payant"
                 case "no":
-                    self.fee = "Non"
+                    self.fee = "Non payant"
                 default:
                     break
             }
         } else {
-            self.fee = "Aucune information sur le stationnement"
+            self.fee = "Frais de stationnement non disponible"
         }
-        self.capacity = capacity ?? "Aucune information"
+        self.capacity = capacity ?? "Nombre de places non disponible"
     }
     
     func setInfos(adr: String?, dur: String?, dist: String?) {
         self.adresse = adr ?? "Aucune adresse correspondante"
-        self.duration = dur ?? "Aucune information sur la durée"
+        self.duration = dur ?? "Aucune information sur la durée de voyage"
         self.distance = dist ?? "Aucune information sur la distance"
     }
 }
