@@ -259,10 +259,10 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     }
     
     /**
-        Appelé si markerInfoWindow renvoie nil
+        Appelé juste avant que infoWindow soit affiché
         On load notre vue personnalisée et on affiche si disponible les informations
     */
-    func mapView(mapView: GMSMapView!, markerInfoContents marker: GMSMarker!) -> UIView! {
+    func mapView(mapView: GMSMapView!, markerInfoWindow marker: GMSMarker!) -> UIView! {
         
         let placeMarker = marker as PlaceMarker
         if let infoView = UIView.viewFromNibName("InfoMarkerWindow") as? InfoMarkerWindow {
