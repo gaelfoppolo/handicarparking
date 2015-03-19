@@ -24,7 +24,7 @@ extension UIView {
             lockView.backgroundColor = UIColor(white: 0.0, alpha: 0.0)
             lockView.tag = 10
             lockView.alpha = 0.0
-            let activity = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+            let activity = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
             activity.hidesWhenStopped = true
             activity.center = lockView.center
             activity.startAnimating()
