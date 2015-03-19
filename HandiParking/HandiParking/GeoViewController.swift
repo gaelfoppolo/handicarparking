@@ -252,10 +252,16 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     /**
         Appelé dès qu'un marqueur est tappé
         On retourne faux pour que le comportement par défaut soit réalisé
+        si les services (internet, localisation) et la localisation sont ok
     */
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
-        getInformations(marker as PlaceMarker)
-        return false
+        if ServicesController().servicesAreWorking() && locationManager.location != nil {
+            getInformations(marker as PlaceMarker)
+            return false
+        } else {
+           self.mapView.selectedMarker = nil
+            return true
+        }
     }
     
     /**
