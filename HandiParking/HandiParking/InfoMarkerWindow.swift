@@ -35,7 +35,7 @@ import UIKit
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 15
         //self.clipsToBounds = true
-        self.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
+        self.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.8)
         
         //var blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
         //var blurEffectView = UIVisualEffectView(effect: blurEffect)

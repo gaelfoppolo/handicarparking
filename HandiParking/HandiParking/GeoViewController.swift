@@ -227,9 +227,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                                 case "fee":
                                     fee = tag.1.stringValue
                                 case "capacity:disabled":
-                                    if tag.1.stringValue != "yes" {
-                                        capacity = tag.1.stringValue
-                                    }
+                                    capacity = tag.1.stringValue
                                 default:
                                     break
                             }

@@ -50,7 +50,7 @@ class Emplacement {
         self.id_node = id ?? ""
         self.latitude = lat ?? ""
         self.longitude = lon ?? ""
-        self.name = name ?? ""
+        self.name = name ?? "Aucune information"
         if let feee = fee {
             switch feee {
                 case "yes":
@@ -61,18 +61,26 @@ class Emplacement {
                     break
             }
         } else {
-            self.fee = ""
+            self.fee = "N/A"
         }
         if let capa = capacity {
-            self.capacity = "\(capa) places"
+            if let capa2 = capa.toInt() {
+                if capa2 > 1 {
+                    self.capacity = "\(capa2) places"
+                } else {
+                    self.capacity = "\(capa2) place"
+                }
+            } else {
+                self.capacity = "\(capa) place"
+            }
         } else {
-            self.capacity = ""
+            self.capacity = "N/A"
         }
     }
     
     func setInfos(adr: String?, dur: String?, dist: String?) {
         self.adresse = adr ?? "Aucune adresse correspondante"
-        self.duration = dur ?? ""
-        self.distance = dist ?? ""
+        self.duration = dur ?? "N/A"
+        self.distance = dist ?? "N/A"
     }
 }
