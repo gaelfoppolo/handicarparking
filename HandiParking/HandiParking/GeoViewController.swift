@@ -20,8 +20,8 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     // lien de sortie vers la carte
     @IBOutlet weak var mapView: GMSMapView!
     
-    //lien vers le bouton de droite de la barre de navigation
-    @IBAction func launchSearch(sender: AnyObject) {
+    /// bouton pour lancer la recherche de places - action
+    @IBAction func launchButtonAction(sender: AnyObject) {
         if ServicesController().servicesAreWorking() {
             if let locationWasGet = locationManager.location {
                 SwiftSpinner.show("Recherche en cours...")
@@ -32,6 +32,16 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             
         }
     }
+    
+    /// bouton pour afficher les applications pour l'itinéraire - layout
+    @IBOutlet weak var itineraryButtonText: UIBarButtonItem!
+    
+    /// bouton pour afficher les applications pour l'itinéraire - action
+    @IBAction func itineraryButtonAction(sender: AnyObject) {
+    }
+    
+    typealias KVOContext = UInt8
+    var MyObservationContext = KVOContext()
     
     // gestionnaire de la localisation
     var locationManager = CLLocationManager()
@@ -83,11 +93,27 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         configurationGM.timeoutIntervalForRequest = 10 // secondes
         self.managerGM = Alamofire.Manager(configuration: configurationGM)
         
+        let options = NSKeyValueObservingOptions.New | NSKeyValueObservingOptions.Old
+        mapView.addObserver(self, forKeyPath: "selectedMarker", options: options, context: &MyObservationContext)
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+        switch (keyPath, context) {
+            case("selectedMarker", &MyObservationContext):
+                if self.mapView.selectedMarker == nil {
+                    self.itineraryButtonText.enabled = false
+                }
+            default:
+                super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+        }
+    }
+    
+
     
     // MARK: Localisation
     
@@ -182,7 +208,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 let marker = PlaceMarker(place: place)
                 bounds = bounds.includingCoordinate(marker.position)
                 self.markers.append(marker)
-                //getInformations(marker)
                 marker.map = mapView
             }
             mapView.animateWithCameraUpdate(GMSCameraUpdate.fitBounds(bounds, withPadding: 50.0))
@@ -252,6 +277,9 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         si les services (internet, localisation) et la localisation sont ok
     */
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
+        if self.mapView.selectedMarker != nil {
+            self.mapView.selectedMarker = nil
+        }
         if ServicesController().servicesAreWorking() && locationManager.location != nil {
             getInformations(marker as PlaceMarker)
             return false
@@ -266,7 +294,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         On load notre vue personnalisée et on affiche si disponible les informations
     */
     func mapView(mapView: GMSMapView!, markerInfoWindow marker: GMSMarker!) -> UIView! {
-        
         let placeMarker = marker as PlaceMarker
         if let infoView = UIView.viewFromNibName("InfoMarkerWindow") as? InfoMarkerWindow {
             if (infoView.adresse.text == "" && placeMarker.place.adresse == nil) {
@@ -279,24 +306,14 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 infoView.name.text = placeMarker.place.name
                 infoView.capacity.text = placeMarker.place.capacity
                 infoView.fee.text = placeMarker.place.fee
+                
+                self.itineraryButtonText.enabled = true
             }
-        
+            
             return infoView
         } else {
             return nil
         }
-    }
-    
-    /**
-        Appelé dès que la fenêtre d'informations d'un marqueur est tappé
-    */
-    func mapView(mapView: GMSMapView!, didTapInfoWindowOfMarker marker: GMSMarker!) {
-        
-        let placeMarker = marker as PlaceMarker
-        
-        //penser à check si les infos ont été get
-        
-        //et afficher un uisheet pour les intent
     }
     
     /**
