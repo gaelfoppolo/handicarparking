@@ -68,10 +68,10 @@ class Emplacement {
                 if capa2 > 1 {
                     self.capacity = "\(capa2) places"
                 } else {
-                    self.capacity = "\(capa2) place"
+                    self.capacity = "1 place"
                 }
             } else {
-                self.capacity = "\(capa) place"
+                self.capacity = "1 place"
             }
         } else {
             self.capacity = "N/A"
