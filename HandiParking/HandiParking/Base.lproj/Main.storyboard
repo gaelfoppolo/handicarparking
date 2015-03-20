@@ -44,40 +44,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="main" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PqS-5E-gfQ">
-                                <rect key="frame" x="292" y="247" width="38" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ubb-74-Jby" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8DD-3I-e7A">
+                                <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="MkK-BO-KX4"/>
+                                    <barButtonItem image="toolbar_launch" id="pbJ-q0-J9F">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="launchButtonAction:" destination="vXZ-lx-hvc" id="Pz6-Ov-fvu"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="9RC-QL-zeU"/>
+                                    <barButtonItem enabled="NO" image="toolbar_itinerary" id="QPG-YG-gcl">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="itineraryButtonAction:" destination="vXZ-lx-hvc" id="4sB-ms-Na3"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="dGA-hl-DD3"/>
+                                </items>
+                                <color key="barTintColor" red="0.058823529411764705" green="0.51372549019607838" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="8DD-3I-e7A" secondAttribute="trailing" constant="-16" id="PSp-5n-nZe"/>
                             <constraint firstAttribute="trailing" secondItem="Ubb-74-Jby" secondAttribute="trailing" id="RfY-Ef-UPe"/>
+                            <constraint firstItem="8DD-3I-e7A" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="SSM-3m-l9V"/>
                             <constraint firstItem="Ubb-74-Jby" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="64" id="h3K-zC-zK6"/>
                             <constraint firstItem="Ubb-74-Jby" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="hE3-bj-abU"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Ubb-74-Jby" secondAttribute="bottom" id="pII-Hk-DH2"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="8DD-3I-e7A" secondAttribute="bottom" id="nJL-vQ-W5v"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Ubb-74-Jby" secondAttribute="bottom" constant="44" id="pII-Hk-DH2"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="PqS-5E-gfQ"/>
-                            </mask>
-                        </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Géolocalisation" id="xp8-ND-Wsa">
-                        <barButtonItem key="rightBarButtonItem" image="ic_menu_location" id="RfN-0X-qN4">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="launchSearch:" destination="vXZ-lx-hvc" id="JoG-Jv-Gj2"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Géolocalisation" id="xp8-ND-Wsa"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="itineraryButtonText" destination="QPG-YG-gcl" id="mFb-kw-aFm"/>
                         <outlet property="mapView" destination="Ubb-74-Jby" id="7Xh-hs-TFJ"/>
                     </connections>
                 </viewController>
@@ -176,6 +183,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_menu_location" width="25" height="25"/>
+        <image name="toolbar_itinerary" width="25" height="25"/>
+        <image name="toolbar_launch" width="25" height="25"/>
     </resources>
 </document>
