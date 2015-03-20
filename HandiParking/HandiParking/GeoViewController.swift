@@ -101,6 +101,10 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    // appelé juste avant que l'instance soit désalloué. Ainsi on supprime l'observateur avant de désallouer l'instance et l'application ne crash pas en désallouant mapView
+    deinit {
+        mapView.removeObserver(self, forKeyPath: "selectedMarker", context: &MyObservationContext)
+    }
     
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         switch (keyPath, context) {
