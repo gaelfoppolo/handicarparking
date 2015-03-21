@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="R1K-Uk-hOy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dRn-qT-5zn">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -32,6 +32,70 @@
             </objects>
             <point key="canvasLocation" x="848" y="-527"/>
         </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="DxI-jW-41X">
+            <objects>
+                <tabBarController id="dRn-qT-5zn" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="I6u-dV-UmR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="2Iw-bA-fRb" kind="relationship" relationship="viewControllers" id="cmM-al-qUJ"/>
+                        <segue destination="ZBn-pn-8rQ" kind="relationship" relationship="viewControllers" id="Cfe-Ms-07k"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dSG-7Z-LVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1200" y="-1288"/>
+        </scene>
+        <!--Géolocalisation-->
+        <scene sceneID="ZjP-Ad-NfU">
+            <objects>
+                <navigationController id="2Iw-bA-fRb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Géolocalisation" image="ic_menu_location" id="Pn0-n3-mZO"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9AI-Dm-84L">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.55775337160000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="NL3-Ot-KxZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XJK-vu-uG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1610" y="-1288"/>
+        </scene>
+        <!--Recherche-->
+        <scene sceneID="zwP-jq-bob">
+            <objects>
+                <navigationController id="ZBn-pn-8rQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Recherche" image="ic_menu_search" id="38a-BK-0rf"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YdB-5F-VYz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="A0g-To-mv9" kind="relationship" relationship="rootViewController" id="aop-w6-Jbg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Igv-rR-WX7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1630" y="-698"/>
+        </scene>
         <!--Géolocalisation-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -45,43 +109,32 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ubb-74-Jby" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="64" width="320" height="372"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8DD-3I-e7A">
-                                <rect key="frame" x="0.0" y="436" width="320" height="44"/>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="MkK-BO-KX4"/>
-                                    <barButtonItem image="toolbar_launch" id="pbJ-q0-J9F">
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <action selector="launchButtonAction:" destination="vXZ-lx-hvc" id="Pz6-Ov-fvu"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="9RC-QL-zeU"/>
-                                    <barButtonItem enabled="NO" image="toolbar_itinerary" id="QPG-YG-gcl">
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <action selector="itineraryButtonAction:" destination="vXZ-lx-hvc" id="4sB-ms-Na3"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="dGA-hl-DD3"/>
-                                </items>
-                                <color key="barTintColor" red="0.058823529411764705" green="0.51372549019607838" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="8DD-3I-e7A" secondAttribute="trailing" constant="-16" id="PSp-5n-nZe"/>
                             <constraint firstAttribute="trailing" secondItem="Ubb-74-Jby" secondAttribute="trailing" id="RfY-Ef-UPe"/>
-                            <constraint firstItem="8DD-3I-e7A" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="SSM-3m-l9V"/>
                             <constraint firstItem="Ubb-74-Jby" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="64" id="h3K-zC-zK6"/>
                             <constraint firstItem="Ubb-74-Jby" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="hE3-bj-abU"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="8DD-3I-e7A" secondAttribute="bottom" id="nJL-vQ-W5v"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Ubb-74-Jby" secondAttribute="bottom" constant="44" id="pII-Hk-DH2"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Ubb-74-Jby" secondAttribute="bottom" id="pII-Hk-DH2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Géolocalisation" id="xp8-ND-Wsa"/>
+                    <navigationItem key="navigationItem" title="Géolocalisation" id="xp8-ND-Wsa">
+                        <barButtonItem key="leftBarButtonItem" image="toolbar_launch" id="pbJ-q0-J9F">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="launchButtonAction:" destination="vXZ-lx-hvc" id="Pz6-Ov-fvu"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" image="toolbar_itinerary" id="QPG-YG-gcl">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="itineraryButtonAction:" destination="vXZ-lx-hvc" id="4sB-ms-Na3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="itineraryButtonText" destination="QPG-YG-gcl" id="mFb-kw-aFm"/>
@@ -90,58 +143,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="2050" y="-1288"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="0AF-px-RBQ">
+        <!--View Controller-->
+        <scene sceneID="RCQ-zM-Ixr">
             <objects>
-                <navigationController id="R1K-Uk-hOy" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nc2-YL-mkk">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.058823529409999999" green="0.51372549020000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="g0Y-Sq-anj" kind="relationship" relationship="rootViewController" id="dof-jp-b5k"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="v6d-BX-Yb5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-204" y="-479"/>
-        </scene>
-        <!--HP-->
-        <scene sceneID="l4M-eL-xlB">
-            <objects>
-                <viewController id="g0Y-Sq-anj" customClass="MainViewController" customModule="HandiParking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="A0g-To-mv9" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Tiw-hz-PZ7"/>
-                        <viewControllerLayoutGuide type="bottom" id="B9J-QH-nRo"/>
+                        <viewControllerLayoutGuide type="top" id="HY7-fM-nM8"/>
+                        <viewControllerLayoutGuide type="bottom" id="8OP-qo-88I"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Efj-IE-P5n">
+                    <view key="view" contentMode="scaleToFill" id="qgM-3a-NHa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bcz-tR-4BW">
-                                <rect key="frame" x="107" y="91" width="106" height="30"/>
-                                <state key="normal" title="Géolocalisation">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="vXZ-lx-hvc" kind="show" id="nF8-bk-BEq"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="HP" id="APm-jU-fHy"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <navigationItem key="navigationItem" id="o9c-Ir-sm3"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="A51-aq-oHB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="suj-u0-kHU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="302" y="-507"/>
+            <point key="canvasLocation" x="2050" y="-698"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="Q0O-fs-GLI">
@@ -183,7 +206,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic_menu_location" width="25" height="25"/>
+        <image name="ic_menu_search" width="25" height="25"/>
         <image name="toolbar_itinerary" width="25" height="25"/>
         <image name="toolbar_launch" width="25" height="25"/>
     </resources>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
