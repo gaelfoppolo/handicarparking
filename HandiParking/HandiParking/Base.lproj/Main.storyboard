@@ -15,21 +15,33 @@
                     <view key="view" contentMode="scaleToFill" id="ot7-Pt-WzS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="java" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tyn-9X-yes">
-                                <rect key="frame" x="308" y="268" width="31" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="KL7-1k-Iiu"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ca-xH-1TP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="848" y="-527"/>
+            <point key="canvasLocation" x="85" y="-626"/>
+        </scene>
+        <!--À propos-->
+        <scene sceneID="c06-Vu-T4W">
+            <objects>
+                <navigationController id="fl6-iQ-b6O" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="À propos" image="ic_menu_about" id="OeG-8g-f4B"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MAx-1g-6IW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="pL5-nx-PPr" kind="relationship" relationship="rootViewController" id="qUi-I1-tCI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gVr-l6-NnC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="385" y="-1374"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="DxI-jW-41X">
@@ -47,11 +59,13 @@
                     <connections>
                         <segue destination="2Iw-bA-fRb" kind="relationship" relationship="viewControllers" id="cmM-al-qUJ"/>
                         <segue destination="ZBn-pn-8rQ" kind="relationship" relationship="viewControllers" id="Cfe-Ms-07k"/>
+                        <segue destination="wlH-ca-XwW" kind="relationship" relationship="viewControllers" id="ewT-SP-swy"/>
+                        <segue destination="fl6-iQ-b6O" kind="relationship" relationship="viewControllers" id="vhv-XQ-2Zh"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dSG-7Z-LVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1200" y="-1288"/>
+            <point key="canvasLocation" x="971" y="-1382"/>
         </scene>
         <!--Géolocalisation-->
         <scene sceneID="ZjP-Ad-NfU">
@@ -74,7 +88,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XJK-vu-uG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1610" y="-1288"/>
+            <point key="canvasLocation" x="1610" y="-1374"/>
+        </scene>
+        <!--Aide-->
+        <scene sceneID="DhT-u1-FnA">
+            <objects>
+                <navigationController id="wlH-ca-XwW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Aide" image="ic_menu_help" id="ePO-Zc-P3P"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fMY-fg-m4T">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="r6E-Aa-c9I" kind="relationship" relationship="rootViewController" id="IOf-CE-eoW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I89-Re-4G1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="734" y="-626"/>
         </scene>
         <!--Recherche-->
         <scene sceneID="zwP-jq-bob">
@@ -88,12 +121,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="A0g-To-mv9" kind="relationship" relationship="rootViewController" id="aop-w6-Jbg"/>
+                        <segue destination="c1w-Jo-0iB" kind="relationship" relationship="rootViewController" id="gAs-gW-AMX"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Igv-rR-WX7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1630" y="-698"/>
+            <point key="canvasLocation" x="1354" y="-626"/>
         </scene>
         <!--Géolocalisation-->
         <scene sceneID="ufC-wZ-h7g">
@@ -143,28 +176,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2050" y="-1288"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="RCQ-zM-Ixr">
-            <objects>
-                <viewController id="A0g-To-mv9" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="HY7-fM-nM8"/>
-                        <viewControllerLayoutGuide type="bottom" id="8OP-qo-88I"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qgM-3a-NHa">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="o9c-Ir-sm3"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="480"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="suj-u0-kHU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2050" y="-698"/>
+            <point key="canvasLocation" x="2118" y="-1374"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="Q0O-fs-GLI">
@@ -179,11 +191,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="K1x-u0-wLb"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iD3-d0-lXU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="775" y="130"/>
+            <point key="canvasLocation" x="2050" y="-626"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="ArT-ao-QSF">
@@ -198,14 +211,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="9vz-xV-gYA"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="axk-Lg-s1g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1373" y="206"/>
+            <point key="canvasLocation" x="-167" y="-1382"/>
         </scene>
     </scenes>
     <resources>
+        <image name="ic_menu_about" width="25" height="25"/>
+        <image name="ic_menu_help" width="25" height="25"/>
         <image name="ic_menu_location" width="25" height="25"/>
         <image name="ic_menu_search" width="25" height="25"/>
         <image name="toolbar_itinerary" width="25" height="25"/>
