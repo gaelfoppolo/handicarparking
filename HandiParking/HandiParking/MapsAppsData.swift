@@ -12,6 +12,23 @@ struct MapsAppsData {
     
     private let listAppsMaps = ["Google Maps", "Waze"]
     
+    func generateActionSheet() -> UIActionSheet {
+        var sheet: UIActionSheet = UIActionSheet()
+        let title: String = "Sélectionnez l'application qui va prendre en charge votre itinéraire"
+        sheet.title = title
+        sheet.addButtonWithTitle("Annuler")
+        sheet.cancelButtonIndex = 0
+        sheet.addButtonWithTitle("Plans")
+        
+        var installApps = MapsAppsData().getListOfInstalledMapsApps()
+        
+        for app in installApps {
+            sheet.addButtonWithTitle(app)
+        }
+        
+        return sheet
+    }
+    
     func getListOfInstalledMapsApps() -> [String] {
         var listAppsInstall = [String]()
         for app in listAppsMaps {

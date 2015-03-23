@@ -67,17 +67,24 @@ struct AlertViewController {
     }
     
     /**
-    Erreur - La localisation n'a pas encore été récupérée
+        Erreur - La localisation n'a pas encore été récupérée
     */
     internal func locationWasNotGet() {
         SCLAlertView().showError("😁", subTitle:"Il semblerait que votre position n'est pas pu être déterminée ! Réesayez dans quelques instants !", closeButtonTitle:"OK")
     }
     
     /**
-    Erreur - Erreur dans la réponse de la requête Google
+        Erreur - Erreur dans la réponse de la requête Google
     */
     internal func errorResponseGoogle() {
         SCLAlertView().showError("😁", subTitle:"Il semblerait qu'il y ait un problème lors de la récupération des données ! Si ce problème persiste, contactez-nous via Informations ! ", closeButtonTitle:"OK")
+    }
+    
+    /**
+        Erreur - L'application n'est plus installée
+    */
+    internal func appsDeleted(appName: String) {
+        SCLAlertView().showError("😁", subTitle:"Il semblerait que \(appName) n'est plus installée ! Réinstallez-la afin de pouvoir à nouveau l'utiliser !", closeButtonTitle:"OK")
     }
     
 }

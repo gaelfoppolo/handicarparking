@@ -39,21 +39,9 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     @IBAction func itineraryButtonAction(sender: AnyObject) {
         if ServicesController().servicesAreWorking() {
             if let locationWasGet = locationManager.location {
-                var sheet: UIActionSheet = UIActionSheet();
-                let title: String = "Sélectionnez l'application qui va prendre en charge votre itinéraire";
-                sheet.title = title;
-                sheet.delegate = self;
-                sheet.addButtonWithTitle("Annuler");
-                sheet.cancelButtonIndex = 0;
-                sheet.addButtonWithTitle("Plans");
-                
-                var installApps = MapsAppsData().getListOfInstalledMapsApps()
-                
-                for app in installApps {
-                    sheet.addButtonWithTitle(app);
-                }
-                
-                sheet.showInView(self.view);
+                var sheet = MapsAppsData().generateActionSheet()
+                sheet.delegate = self
+                sheet.showInView(self.view)
                 
             } else {
                 AlertViewController().locationWasNotGet()
@@ -148,6 +136,10 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         }
     }
     
+    /**
+        Appelée dès qu'un bouton de l'action sheet est tappé
+        On test si l'application est toujours installée, on génère l'URL scheme et on bascule vers l'application choisie
+    */
     func actionSheet(sheet: UIActionSheet!, clickedButtonAtIndex buttonIndex: Int) {
         if buttonIndex > 0 {
             if MapsAppsData().isInstalled(sheet.buttonTitleAtIndex(buttonIndex)) {
@@ -157,7 +149,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 var urlParse: NSString = urlsheme.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
                 UIApplication.sharedApplication().openURL(NSURL(string: urlParse)!)
             } else {
-                // erreur application n'est plus installé
+                AlertViewController().appsDeleted(sheet.buttonTitleAtIndex(buttonIndex))
             }
             
         }
