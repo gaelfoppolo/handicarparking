@@ -154,13 +154,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Géolocalisation" id="xp8-ND-Wsa">
-                        <barButtonItem key="leftBarButtonItem" image="toolbar_launch" id="pbJ-q0-J9F">
+                        <barButtonItem key="leftBarButtonItem" image="toolbar_launch" id="pbJ-q0-J9F" userLabel="Lancement">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="launchButtonAction:" destination="vXZ-lx-hvc" id="Pz6-Ov-fvu"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" image="toolbar_itinerary" id="QPG-YG-gcl">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" image="toolbar_itinerary" id="QPG-YG-gcl" userLabel="Itinéraire">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="itineraryButtonAction:" destination="vXZ-lx-hvc" id="4sB-ms-Na3"/>

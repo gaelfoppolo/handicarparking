@@ -13,7 +13,7 @@ import SwiftyJSON
 
 /// Contrôleur de la vue géolocalisation 📍
 
-class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
+class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate, UIActionSheetDelegate {
     
     //MARK: Variables
     
@@ -29,7 +29,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             } else {
                 AlertViewController().locationWasNotGet()
             }
-            
         }
     }
     
@@ -38,30 +37,50 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     
     /// bouton pour afficher les applications pour l'itinéraire - action
     @IBAction func itineraryButtonAction(sender: AnyObject) {
+        if ServicesController().servicesAreWorking() {
+            if let locationWasGet = locationManager.location {
+                var sheet: UIActionSheet = UIActionSheet();
+                let title: String = "Sélectionne l'application qui va prendre en charge votre itinéraire";
+                sheet.title = title;
+                sheet.delegate = self;
+                sheet.addButtonWithTitle("Annuler");
+                sheet.cancelButtonIndex = 0;
+                
+                // appel méthode qui vérifie si la/les applications(s) carte sont installées en retournant la liste
+                // on les ajoute
+                // et quand on tappera sur une avec son nom on générera url sheme car on sait qu'elle est déjà installé
+                // mais on recheckera quand on tappera car on peut quitter l'application après avoir display la liste et supprimer l'application
+                
+                sheet.addButtonWithTitle("Plans");
+                
+                sheet.showInView(self.view);
+            } else {
+                AlertViewController().locationWasNotGet()
+            }
+        }
     }
     
+    /// déclaration d'un alias pour les notifications KVO + instanciation d'un contexte
     typealias KVOContext = UInt8
     var MyObservationContext = KVOContext()
     
-    // gestionnaire de la localisation
+    /// gestionnaire de la localisation
     var locationManager = CLLocationManager()
     
-    // rayon de recherche (mètres) des emplacements
+    /// rayon de recherche (mètres) des emplacements
     var rayon: RayonRecherche = RayonRecherche(rawValue: 1)!
     
-    // tableau des emplacements récupérés
+    /// tableau des emplacements récupérés
     var emplacements = [Emplacement]()
     
-    // gestionnaire des requêtes pour OpenStreetMap
+    /// gestionnaire des requêtes pour OpenStreetMap
     var managerOSM: Alamofire.Manager?
     
-    //gestionnaire des requêtes pour Google Maps
+    /// gestionnaire des requêtes pour Google Maps
     var managerGM: Alamofire.Manager?
     
-    // tableau de marqueurs ajoutés sur la carte
+    /// tableau de marqueurs ajoutés sur la carte
     var markers = [PlaceMarker]()
-    
-    var markerFilledWithInfos:Int = 0
     
     // MARK: Démarrage
     
@@ -84,7 +103,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         locationManager.requestWhenInUseAuthorization()
         mapView.delegate = self
         
-        // instanciation du manager de requêtes
+        // instanciation du manager de requêtes OSM + GM
         let configurationOSM = NSURLSessionConfiguration.defaultSessionConfiguration()
         configurationOSM.timeoutIntervalForRequest = 10 // secondes
         self.managerOSM = Alamofire.Manager(configuration: configurationOSM)
@@ -93,7 +112,10 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         configurationGM.timeoutIntervalForRequest = 10 // secondes
         self.managerGM = Alamofire.Manager(configuration: configurationGM)
         
+        /// création des options pour les notifications KVO : ancienne et nouvelle valeur
         let options = NSKeyValueObservingOptions.New | NSKeyValueObservingOptions.Old
+        
+        /// ajout d'un observateur : self recevra les notifications de l'attribut selectedMarker de l'objet mapView et les deux valeurs (ancienne et nouvelle) de selectedMarker seront passées à la méthode qui observe
         mapView.addObserver(self, forKeyPath: "selectedMarker", options: options, context: &MyObservationContext)
         
     }
@@ -101,11 +123,19 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    // appelé juste avant que l'instance soit désalloué. Ainsi on supprime l'observateur avant de désallouer l'instance et l'application ne crash pas en désallouant mapView
+    
+    /**
+        Appelée juste avant que l'instance soit désalloué de la mémoire. Ainsi on supprime l'observateur avant de désallouer l'instance et l'application ne crash pas en désallouant mapView
+    */
     deinit {
         mapView.removeObserver(self, forKeyPath: "selectedMarker", context: &MyObservationContext)
     }
     
+    /**
+        Implémentation de l'observateur (surcharge)
+    
+        Dans notre cas, on n'observe que selectedMarker, si nil on désactive le bouton d'itinéraire, tout simplement
+    */
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         switch (keyPath, context) {
             case("selectedMarker", &MyObservationContext):
@@ -117,6 +147,14 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         }
     }
     
+    func actionSheet(sheet: UIActionSheet!, clickedButtonAtIndex buttonIndex: Int) {
+        println("index %d %@", buttonIndex, sheet.buttonTitleAtIndex(buttonIndex));
+        if buttonIndex > 1 {
+            // check si application install et si ok :
+            // fonction appelée avec le nom style : generateURLScheme(sheet.buttonTitleAtIndex(buttonIndex))
+            UIApplication.sharedApplication().openURL(NSURL(string: "http://maps.apple.com/?daddr=San+Francisco,+CA&saddr=cupertino")!)
+        }
+    }
 
     
     // MARK: Localisation
@@ -179,7 +217,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         self.markers.removeAll(keepCapacity: false)
         self.emplacements.removeAll(keepCapacity: false)
         self.rayon = RayonRecherche(rawValue: 1)!
-        self.markerFilledWithInfos = 0
         self.getEmplacements(locationManager.location.coordinate, radius: self.rayon)
     }
     
