@@ -17,8 +17,11 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     
     //MARK: Variables
     
-    // lien de sortie vers la carte
+    /// lien de sortie vers la carte
     @IBOutlet weak var mapView: GMSMapView!
+    
+    /// adresse actuelle
+    var address: String?
     
     /// bouton pour lancer la recherche de places - action
     @IBAction func launchButtonAction(sender: AnyObject) {
@@ -40,20 +43,21 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         if ServicesController().servicesAreWorking() {
             if let locationWasGet = locationManager.location {
                 var sheet: UIActionSheet = UIActionSheet();
-                let title: String = "Sélectionne l'application qui va prendre en charge votre itinéraire";
+                let title: String = "Sélectionnez l'application qui va prendre en charge votre itinéraire";
                 sheet.title = title;
                 sheet.delegate = self;
                 sheet.addButtonWithTitle("Annuler");
                 sheet.cancelButtonIndex = 0;
-                
-                // appel méthode qui vérifie si la/les applications(s) carte sont installées en retournant la liste
-                // on les ajoute
-                // et quand on tappera sur une avec son nom on générera url sheme car on sait qu'elle est déjà installé
-                // mais on recheckera quand on tappera car on peut quitter l'application après avoir display la liste et supprimer l'application
-                
                 sheet.addButtonWithTitle("Plans");
                 
+                var installApps = MapsAppsData().getListOfInstalledMapsApps()
+                
+                for app in installApps {
+                    sheet.addButtonWithTitle(app);
+                }
+                
                 sheet.showInView(self.view);
+                
             } else {
                 AlertViewController().locationWasNotGet()
             }
@@ -149,10 +153,16 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     
     func actionSheet(sheet: UIActionSheet!, clickedButtonAtIndex buttonIndex: Int) {
         println("index %d %@", buttonIndex, sheet.buttonTitleAtIndex(buttonIndex));
-        if buttonIndex > 1 {
-            // check si application install et si ok :
-            // fonction appelée avec le nom style : generateURLScheme(sheet.buttonTitleAtIndex(buttonIndex))
-            UIApplication.sharedApplication().openURL(NSURL(string: "http://maps.apple.com/?daddr=San+Francisco,+CA&saddr=cupertino")!)
+        if buttonIndex > 0 {
+            if MapsAppsData().isInstalled(sheet.buttonTitleAtIndex(buttonIndex)) {
+                var marker = mapView.selectedMarker as PlaceMarker
+                var urlsheme = MapsAppsData().generateURLScheme(sheet.buttonTitleAtIndex(buttonIndex), location: self.locationManager.location.coordinate, address: address!, marker: marker)
+                println(urlsheme)
+                UIApplication.sharedApplication().openURL(NSURL(string: urlsheme)!)
+            } else {
+                // erreur application n'est plus installé
+            }
+            
         }
     }
 
@@ -183,6 +193,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if let location = locations.first as? CLLocation {
             
+            reverseGeocodeCoordinate(location.coordinate)
             updateMapCameraOnUserLocation()
             locationManager.stopUpdatingLocation()
         }
@@ -207,6 +218,18 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     func updateMapCameraOnUserLocation() {
         var camera = GMSCameraPosition(target: locationManager.location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
         mapView.animateToCameraPosition(camera)
+    }
+    
+    func reverseGeocodeCoordinate(coordinate: CLLocationCoordinate2D) {
+        
+        let geocoder = GMSGeocoder()
+        geocoder.reverseGeocodeCoordinate(coordinate) { response , error in
+            if let address = response?.firstResult() {
+
+                let lines = address.lines as [String]
+                self.address = join(", ", lines)
+            }
+        }
     }
     
     /**
