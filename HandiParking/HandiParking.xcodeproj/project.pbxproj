@@ -14,7 +14,6 @@
 		935D426A1AB19361005779FA /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 935D42691AB19361005779FA /* GoogleMaps.bundle */; };
 		935D42701AB1AAEA005779FA /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D426F1AB1AAEA005779FA /* DataProvider.swift */; };
 		935D42821AB1DC05005779FA /* Emplacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D42811AB1DC05005779FA /* Emplacement.swift */; };
-		9371FFA91AB0E8CB001C4743 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9371FFA81AB0E8CB001C4743 /* MainViewController.swift */; };
 		937626FD1AB0316F0059C23D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937626FC1AB0316F0059C23D /* SearchViewController.swift */; };
 		937626FF1AB031A80059C23D /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937626FE1AB031A80059C23D /* HelpViewController.swift */; };
 		937627011AB031D60059C23D /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937627001AB031D60059C23D /* AboutViewController.swift */; };
@@ -155,7 +154,6 @@
 		935D42691AB19361005779FA /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		935D426F1AB1AAEA005779FA /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		935D42811AB1DC05005779FA /* Emplacement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emplacement.swift; sourceTree = "<group>"; };
-		9371FFA81AB0E8CB001C4743 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		937626FC1AB0316F0059C23D /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		937626FE1AB031A80059C23D /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		937627001AB031D60059C23D /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -233,7 +231,6 @@
 			isa = PBXGroup;
 			children = (
 				93C83F531AAED9AD005990C2 /* GeoViewController.swift */,
-				9371FFA81AB0E8CB001C4743 /* MainViewController.swift */,
 				937626FE1AB031A80059C23D /* HelpViewController.swift */,
 				937627001AB031D60059C23D /* AboutViewController.swift */,
 				937626FC1AB0316F0059C23D /* SearchViewController.swift */,
@@ -574,7 +571,6 @@
 				937627011AB031D60059C23D /* AboutViewController.swift in Sources */,
 				939F00C71AB834A6007B928E /* UIViewExtension.swift in Sources */,
 				93CCBA431AB6DDF800FCCB1E /* ServicesController.swift in Sources */,
-				9371FFA91AB0E8CB001C4743 /* MainViewController.swift in Sources */,
 				937626FF1AB031A80059C23D /* HelpViewController.swift in Sources */,
 				93C83F521AAED9AD005990C2 /* HandiParking.xcdatamodeld in Sources */,
 				93DC120E1AB2DE9200C244DB /* RayonRecherche.swift in Sources */,
