@@ -20,9 +20,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     /// lien de sortie vers la carte
     @IBOutlet weak var mapView: GMSMapView!
     
-    /// adresse actuelle
-    var address: String?
-    
     /// bouton pour lancer la recherche de places - action
     @IBAction func launchButtonAction(sender: AnyObject) {
         if ServicesController().servicesAreWorking() {
@@ -152,11 +149,10 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     }
     
     func actionSheet(sheet: UIActionSheet!, clickedButtonAtIndex buttonIndex: Int) {
-        println("index %d %@", buttonIndex, sheet.buttonTitleAtIndex(buttonIndex));
         if buttonIndex > 0 {
             if MapsAppsData().isInstalled(sheet.buttonTitleAtIndex(buttonIndex)) {
                 var marker = mapView.selectedMarker as PlaceMarker
-                var urlsheme: NSString = MapsAppsData().generateURLScheme(sheet.buttonTitleAtIndex(buttonIndex), location: self.locationManager.location.coordinate, address: address!, marker: marker)
+                var urlsheme: NSString = MapsAppsData().generateURLScheme(sheet.buttonTitleAtIndex(buttonIndex), location: self.locationManager.location.coordinate, marker: marker)
                 // on parse l'url sinon les caractères Unicode font crasher lors de openURL()
                 var urlParse: NSString = urlsheme.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
                 UIApplication.sharedApplication().openURL(NSURL(string: urlParse)!)
@@ -193,8 +189,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     */
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if let location = locations.first as? CLLocation {
-            
-            reverseGeocodeCoordinate(location.coordinate)
+
             updateMapCameraOnUserLocation()
             locationManager.stopUpdatingLocation()
         }
@@ -219,18 +214,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     func updateMapCameraOnUserLocation() {
         var camera = GMSCameraPosition(target: locationManager.location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
         mapView.animateToCameraPosition(camera)
-    }
-    
-    func reverseGeocodeCoordinate(coordinate: CLLocationCoordinate2D) {
-        
-        let geocoder = GMSGeocoder()
-        geocoder.reverseGeocodeCoordinate(coordinate) { response , error in
-            if let address = response?.firstResult() {
-
-                let lines = address.lines as [String]
-                self.address = join(", ", lines)
-            }
-        }
     }
     
     /**

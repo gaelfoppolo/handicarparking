@@ -33,7 +33,7 @@ struct MapsAppsData {
             case "Google Maps":
                 urlsheme = "comgooglemaps://?"
             case "Waze":
-                urlsheme = "waze://"
+                urlsheme = "waze://?"
             case "Plans":
                 urlsheme = "http://maps.apple.com/?"
             default:
@@ -42,22 +42,22 @@ struct MapsAppsData {
         return urlsheme
     }
     
-    func generateURLScheme(appName:String, location: CLLocationCoordinate2D, address: String?, marker: PlaceMarker) -> String {
+    func generateURLScheme(appName:String, location: CLLocationCoordinate2D, marker: PlaceMarker) -> String {
         
         let baseURL = getBaseURLScheme(appName)
         var parameters: String?
         
         switch appName {
-            case "Plans":
-                var source: String = address!.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.LiteralSearch, range: nil)
-                var destination: String = marker.place.adresse!.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.LiteralSearch, range: nil)
-                
-                parameters = "saddr=\(source)&daddr=\(destination)"
-            case "Google Maps":
+            case "Plans","Google Maps":
                 var source: String = "\(location.latitude),\(location.longitude)"
                 var destination: String = "\(marker.place.latitude),\(marker.place.longitude)"
                 
                 parameters = "saddr=\(source)&daddr=\(destination)"
+            case "Waze":
+                var latitude: String = marker.place.latitude
+                var longitude: String = marker.place.longitude
+                
+                parameters = "ll=\(latitude),\(longitude)&navigate=yes"
         default:
             break
         }
