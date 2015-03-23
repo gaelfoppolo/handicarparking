@@ -31,7 +31,7 @@ struct MapsAppsData {
         var urlsheme:String = ""
         switch appName {
             case "Google Maps":
-                urlsheme = "comgooglemaps://"
+                urlsheme = "comgooglemaps://?"
             case "Waze":
                 urlsheme = "waze://"
             case "Plans":
@@ -51,6 +51,11 @@ struct MapsAppsData {
             case "Plans":
                 var source: String = address!.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.LiteralSearch, range: nil)
                 var destination: String = marker.place.adresse!.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.LiteralSearch, range: nil)
+                
+                parameters = "saddr=\(source)&daddr=\(destination)"
+            case "Google Maps":
+                var source: String = "\(location.latitude),\(location.longitude)"
+                var destination: String = "\(marker.place.latitude),\(marker.place.longitude)"
                 
                 parameters = "saddr=\(source)&daddr=\(destination)"
         default:

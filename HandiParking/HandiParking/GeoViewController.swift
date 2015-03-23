@@ -157,7 +157,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             if MapsAppsData().isInstalled(sheet.buttonTitleAtIndex(buttonIndex)) {
                 var marker = mapView.selectedMarker as PlaceMarker
                 var urlsheme: NSString = MapsAppsData().generateURLScheme(sheet.buttonTitleAtIndex(buttonIndex), location: self.locationManager.location.coordinate, address: address!, marker: marker)
-                // on parse l'url sinon les caractères Unicode font crashés lors de openURL()
+                // on parse l'url sinon les caractères Unicode font crasher lors de openURL()
                 var urlParse: NSString = urlsheme.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
                 UIApplication.sharedApplication().openURL(NSURL(string: urlParse)!)
             } else {
