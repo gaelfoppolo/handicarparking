@@ -132,7 +132,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     }
     
     /**
-        Implémentation de l'observateur (surcharge)
+        Implémentation de l'observateur
     
         Dans notre cas, on n'observe que selectedMarker, si nil on désactive le bouton d'itinéraire, tout simplement
     */

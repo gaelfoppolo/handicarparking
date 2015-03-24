@@ -25,7 +25,7 @@ struct DataProvider {
         static let minimumResults: Int = 20
         
         /// nombre maximum de résultats à récupérer
-        static let maximumResults: Int = 50
+        static let maximumResults: Int = 200
         
         /**
             GetNodes : récupérer les nodes
@@ -42,7 +42,7 @@ struct DataProvider {
                 switch self {
                     
                 case .GetNodes (let coordinate, let rayon):
-                    let params = ["data": "[out:json];(node(around:\(rayon.valeur),\(coordinate.latitude),\(coordinate.longitude))['amenity'~'parking|parking_space']['capacity:disabled'~'yes|[0-9]*[0-9]'];node(around:\(rayon.valeur),\(coordinate.latitude),\(coordinate.longitude))['amenity'~'parking|parking_space']['wheelchair'='yes'];node(around:\(rayon.valeur),\(coordinate.latitude),\(coordinate.longitude))['amenity'='parking_space']['parking_space'='disable'];);out meta \(DataProvider.OpenStreetMap.maximumResults);"]
+                    let params = ["data": "[out:json];(node(around:\(rayon.valeur),\(coordinate.latitude),\(coordinate.longitude))['amenity'~'parking|parking_space']['capacity:disabled'~'yes|[0-9]*[0-9]'];node(around:\(rayon.valeur),\(coordinate.latitude),\(coordinate.longitude))['amenity'~'parking|parking_space']['wheelchair'='yes'];node(around:\(rayon.valeur),\(coordinate.latitude),\(coordinate.longitude))['amenity'='parking_space']['parking_space'='disable'];);out meta \(OpenStreetMap.maximumResults);"]
                     return (params)
                 }
             }()
