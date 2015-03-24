@@ -94,4 +94,11 @@ struct AlertViewController {
         SCLAlertView().showError("😁", subTitle:"Il semblerait que StreetView ne soit pas disponible pour ce lieu !", closeButtonTitle:"OK")
     }
     
+    /**
+    Erreur - Connexion trop faible pour StreetView
+    */
+    internal func errorBadConnection() {
+        SCLAlertView().showError("😁", subTitle:"Il semblerait que votre connexion Internet soit trop faible pour afficher StreetView...", closeButtonTitle:"OK")
+    }
+    
 }

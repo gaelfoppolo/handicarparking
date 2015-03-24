@@ -75,7 +75,12 @@ class StreetViewController: UIViewController {
                 self.view.addSubview(closeButton)
                 
             } else {
-                self.errorNoData()
+                if error.code == -1001 { // == timeout
+                    self.errorBadConnection()
+                } else {
+                    self.errorNoData()
+                }
+                
             }
             
             
@@ -95,6 +100,16 @@ class StreetViewController: UIViewController {
     func errorNoData() {
         self.dismissViewControllerAnimated(false, completion: { () -> Void in
             AlertViewController().errorStreetView()
+        })
+        
+    }
+    
+    /**
+    Appelée le message d'erreur indique un timeout
+    */
+    func errorBadConnection() {
+        self.dismissViewControllerAnimated(false, completion: { () -> Void in
+            AlertViewController().errorBadConnection()
         })
         
     }
