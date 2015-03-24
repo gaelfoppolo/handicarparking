@@ -49,6 +49,20 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         }
     }
     
+    /// bouton pour afficher StreetView - layout
+    @IBOutlet weak var streetViewButtonText: UIButton!
+    
+    /// bouton pour afficher StreetView - action
+    @IBAction func streetViewButtonAction(sender: AnyObject) {
+        if ServicesController().servicesAreWorking() {
+            
+            var streetView = StreetViewController(marker: self.mapView.selectedMarker as PlaceMarker)
+            
+            self.presentViewController(streetView, animated: true, completion: nil)
+        }
+        
+    }
+    
     /// déclaration d'un alias pour les notifications KVO + instanciation d'un contexte
     typealias KVOContext = UInt8
     var MyObservationContext = KVOContext()
@@ -81,9 +95,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        // set le titre dans la barre de navigation
-        title = "Géolocalisation"
         
         // fait de la vue le délégué de locationMananger afin d'utiliser la localisation
         // demande l'autorisation si besoin
@@ -130,6 +141,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             case("selectedMarker", &MyObservationContext):
                 if self.mapView.selectedMarker == nil {
                     self.itineraryButtonText.enabled = false
+                    self.streetViewButtonText.enabled = false
                 }
             default:
                 super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
@@ -224,6 +236,8 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         Si en revanche il y a assez de résultats, on peut préparer les données pour le traitement/affichage
     */
     func searchResultsController() {
+        println(self.emplacements.count)
+        println(self.rayon.valeur)
         if(self.emplacements.count > DataProvider.OpenStreetMap.minimumResults) {
             createMarkersAndBoundsToDisplay()
         } else if let newRayon = RayonRecherche(rawValue: self.rayon.rawValue+1){
@@ -348,6 +362,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 infoView.fee.text = placeMarker.place.fee
                 
                 self.itineraryButtonText.enabled = true
+                self.streetViewButtonText.enabled = true
             }
             
             return infoView
