@@ -87,4 +87,11 @@ struct AlertViewController {
         SCLAlertView().showError("😁", subTitle:"Il semblerait que \(appName) n'est plus installée ! Réinstallez-la afin de pouvoir à nouveau l'utiliser !", closeButtonTitle:"OK")
     }
     
+    /**
+        Erreur - StreetView non disponible
+    */
+    internal func errorStreetView() {
+        SCLAlertView().showError("😁", subTitle:"Il semblerait que StreetView ne soit pas disponible pour ce lieu !", closeButtonTitle:"OK")
+    }
+    
 }
