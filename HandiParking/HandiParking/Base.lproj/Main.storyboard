@@ -155,36 +155,35 @@
                     </view>
                     <navigationItem key="navigationItem" id="xp8-ND-Wsa">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" image="toolbar_launch" id="pbJ-q0-J9F" userLabel="Lancement">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" image="toolbar_streetview" id="pbJ-q0-J9F" userLabel="StreetView">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="launchButtonAction:" destination="vXZ-lx-hvc" id="Pz6-Ov-fvu"/>
+                                <action selector="streetViewButtonAction:" destination="vXZ-lx-hvc" id="ybf-Dv-2g5"/>
                             </connections>
                         </barButtonItem>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6TL-ay-6aS">
-                            <rect key="frame" x="136" y="9.5" width="48" height="25"/>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Uj9-vT-BvY" userLabel="Lancement">
+                            <rect key="frame" x="147.5" y="9.5" width="25" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <state key="normal" image="ic_menu_streetview">
+                            <state key="normal" image="toolbar_launch">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="streetViewButtonAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="1aj-0w-gj1"/>
+                                <action selector="launchButtonAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="5OZ-5W-EPs"/>
                             </connections>
                         </button>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" image="toolbar_itinerary" id="QPG-YG-gcl" userLabel="Itinéraire">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="itineraryButtonAction:" destination="vXZ-lx-hvc" id="4sB-ms-Na3"/>
+                                <action selector="itineraryButtonAction:" destination="vXZ-lx-hvc" id="V9V-SF-CTJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="itineraryButtonText" destination="QPG-YG-gcl" id="mFb-kw-aFm"/>
+                        <outlet property="itineraryButtonText" destination="QPG-YG-gcl" id="Z0L-g4-sHY"/>
                         <outlet property="mapView" destination="Ubb-74-Jby" id="7Xh-hs-TFJ"/>
-                        <outlet property="streetViewButtonText" destination="6TL-ay-6aS" id="e4I-wX-3c7"/>
+                        <outlet property="streetViewButtonText" destination="pbJ-q0-J9F" id="Nb6-gx-oJu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -237,9 +236,9 @@
         <image name="ic_menu_help" width="25" height="25"/>
         <image name="ic_menu_location" width="25" height="25"/>
         <image name="ic_menu_search" width="25" height="25"/>
-        <image name="ic_menu_streetview" width="25" height="25"/>
         <image name="toolbar_itinerary" width="25" height="25"/>
         <image name="toolbar_launch" width="25" height="25"/>
+        <image name="toolbar_streetview" width="25" height="25"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

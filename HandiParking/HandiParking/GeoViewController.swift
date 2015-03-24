@@ -50,7 +50,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     }
     
     /// bouton pour afficher StreetView - layout
-    @IBOutlet weak var streetViewButtonText: UIButton!
+    @IBOutlet weak var streetViewButtonText: UIBarButtonItem!
     
     /// bouton pour afficher StreetView - action
     @IBAction func streetViewButtonAction(sender: AnyObject) {
