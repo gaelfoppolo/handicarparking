@@ -16,17 +16,19 @@ enum RayonRecherche: Int {
         Quatre rayons (mètres) : 
         - 500m
         - 1km
+        - 5km
         - 10km
-        - 50km  
+        - 25km  
     */
-    case rayon1 = 1, rayon2, rayon3, rayon4
+    case rayon1 = 1, rayon2, rayon3, rayon4, rayon5
     
     var valeur : Int {
         switch self {
             case .rayon1: return 500;
             case .rayon2: return 1000;
-            case .rayon3: return 10000;
-            case .rayon4: return 50000;
+            case .rayon3: return 5000
+            case .rayon4: return 10000;
+            case .rayon5: return 25000;
         }
     }
 }
