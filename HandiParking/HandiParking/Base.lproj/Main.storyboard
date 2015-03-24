@@ -128,7 +128,7 @@
             </objects>
             <point key="canvasLocation" x="1354" y="-626"/>
         </scene>
-        <!--Géolocalisation-->
+        <!--Geo View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController storyboardIdentifier="GeoViewController" id="vXZ-lx-hvc" customClass="GeoViewController" customModule="HandiParking" customModuleProvider="target" sceneMemberID="viewController">
@@ -153,13 +153,25 @@
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Ubb-74-Jby" secondAttribute="bottom" id="pII-Hk-DH2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Géolocalisation" id="xp8-ND-Wsa">
+                    <navigationItem key="navigationItem" id="xp8-ND-Wsa">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" image="toolbar_launch" id="pbJ-q0-J9F" userLabel="Lancement">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="launchButtonAction:" destination="vXZ-lx-hvc" id="Pz6-Ov-fvu"/>
                             </connections>
                         </barButtonItem>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6TL-ay-6aS">
+                            <rect key="frame" x="136" y="9.5" width="48" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" image="ic_menu_streetview">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="streetViewButtonAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="1aj-0w-gj1"/>
+                            </connections>
+                        </button>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" image="toolbar_itinerary" id="QPG-YG-gcl" userLabel="Itinéraire">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -172,6 +184,7 @@
                     <connections>
                         <outlet property="itineraryButtonText" destination="QPG-YG-gcl" id="mFb-kw-aFm"/>
                         <outlet property="mapView" destination="Ubb-74-Jby" id="7Xh-hs-TFJ"/>
+                        <outlet property="streetViewButtonText" destination="6TL-ay-6aS" id="e4I-wX-3c7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -224,6 +237,7 @@
         <image name="ic_menu_help" width="25" height="25"/>
         <image name="ic_menu_location" width="25" height="25"/>
         <image name="ic_menu_search" width="25" height="25"/>
+        <image name="ic_menu_streetview" width="25" height="25"/>
         <image name="toolbar_itinerary" width="25" height="25"/>
         <image name="toolbar_launch" width="25" height="25"/>
     </resources>
