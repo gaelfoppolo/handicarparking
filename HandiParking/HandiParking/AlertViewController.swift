@@ -77,7 +77,7 @@ struct AlertViewController {
         Erreur - Erreur dans la réponse de la requête Google
     */
     internal func errorResponseGoogle() {
-        SCLAlertView().showError("😁", subTitle:"Il semblerait qu'il y ait un problème lors de la récupération des données ! Si ce problème persiste, contactez-nous via Informations ! ", closeButtonTitle:"OK")
+        SCLAlertView().showError("😁", subTitle:"Il semblerait qu'il y ait un problème lors de la récupération des données ! Si ce problème persiste, contactez-nous !", closeButtonTitle:"OK")
     }
     
     /**
