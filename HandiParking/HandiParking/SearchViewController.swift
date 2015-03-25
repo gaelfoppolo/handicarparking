@@ -147,13 +147,6 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
         return cell
     }
     
-    // MARK : UITableViewDelegate
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-    {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
-    
     // MARK : UISearchResultsUpdating
     
     func updateSearchResultsForSearchController(searchController: UISearchController)
@@ -222,6 +215,30 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
             else {
                 self.tableView.reloadData()
             }
+        }
+    }
+    
+    // MARK : UITableViewDelegate
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        //tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.performSegueWithIdentifier("placeSelected", sender: self.tableView)
+    }
+    
+    // MARK : Segue
+    
+    //pour savoir à quelle vue on envoie les donnnées
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "placeSelected" {
+            let searchSelectedViewController = segue.destinationViewController as SearchSelectedViewController
+            let indexPath = self.tableView.indexPathForSelectedRow()!
+            searchSelectedViewController.place = self.searchArray[indexPath.row]
+            //self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+            //autant passer l'objet directement !
+            //candyDetailViewController.categorie = self.filteredCandies[indexPath.row].category
+            //candyDetailViewController.name = self.filteredCandies[indexPath.row].name
         }
     }
 

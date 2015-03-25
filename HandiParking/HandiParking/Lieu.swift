@@ -27,4 +27,10 @@ class Lieu: NSObject, Printable {
         self.placeid = placeid ?? ""
         self.nom = nom ?? ""
     }
+    
+    override init() {
+        self.placeid = ""
+        self.nom = ""
+        super.init()
+    }
 }

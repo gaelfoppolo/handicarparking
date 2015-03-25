@@ -227,10 +227,61 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Recherche" id="EEK-Gk-3Kf"/>
+                    <connections>
+                        <segue destination="QlG-71-OAr" kind="show" identifier="placeSelected" id="xhS-zR-7kT"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="648-y1-9SM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1795" y="-626"/>
+        </scene>
+        <!--Search Selected View Controller-->
+        <scene sceneID="T0t-0c-OhA">
+            <objects>
+                <viewController id="QlG-71-OAr" customClass="SearchSelectedViewController" customModule="HandiParking" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kvv-r9-7TE"/>
+                        <viewControllerLayoutGuide type="bottom" id="wO5-Em-PYd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ziS-hO-SLu">
+                        <rect key="frame" x="0.0" y="64" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EmB-rJ-7Cq" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EmB-rJ-7Cq" firstAttribute="top" secondItem="kvv-r9-7TE" secondAttribute="bottom" id="C4s-vS-uvr"/>
+                            <constraint firstItem="EmB-rJ-7Cq" firstAttribute="leading" secondItem="ziS-hO-SLu" secondAttribute="leading" id="Dne-hN-qCg"/>
+                            <constraint firstAttribute="trailing" secondItem="EmB-rJ-7Cq" secondAttribute="trailing" id="NOJ-WA-dhs"/>
+                            <constraint firstItem="wO5-Em-PYd" firstAttribute="top" secondItem="EmB-rJ-7Cq" secondAttribute="bottom" id="iLy-VZ-hQU"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="eOD-8M-zT8">
+                        <nil key="title"/>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="95B-mb-YdT" userLabel="Lancement">
+                            <rect key="frame" x="147.5" y="9.5" width="25" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="toolbar_launch">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" image="toolbar_itinerary" id="J4f-MJ-cS3" userLabel="Itinéraire">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="mapView" destination="EmB-rJ-7Cq" id="UY4-N2-i5N"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MbO-FX-36d" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2270" y="-626"/>
         </scene>
     </scenes>
     <resources>
