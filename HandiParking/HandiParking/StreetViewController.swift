@@ -30,7 +30,8 @@ class StreetViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    // initialisateur obligatoire
+    // initialisateur obligatoire car marker n'est pas initialisé
+    // find better way to do : init placemarker()
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
