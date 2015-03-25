@@ -89,6 +89,14 @@ struct DataProvider {
         */
         case DistanceMatrix(CLLocationCoordinate2D, CLLocationCoordinate2D)
         
+        /**
+            Place Details : récupérer les détails d'un lieu
+        
+            :param: l'ID unique généré par Google pour identifier un lieu
+        
+        */
+        case PlaceDetails(String)
+        
         var URLRequest: NSURLRequest {
             let (path: String, parameters: [String: AnyObject]) = {
                 switch self {
@@ -100,6 +108,10 @@ struct DataProvider {
                 case .DistanceMatrix (let origins, let destinations):
                     let path = "/distancematrix/json"
                     let params = ["origins": "\(origins.latitude),\(origins.longitude)", "destinations": "\(destinations.latitude),\(destinations.longitude)", "key": GoogleMaps.apiKeyServer]
+                    return (path, params)
+                case .PlaceDetails (let id_place):
+                    let path = "/place/details/json"
+                    let params = ["placeid": id_place, "key": GoogleMaps.apiKeyServer]
                     return (path, params)
                 }
             }()
