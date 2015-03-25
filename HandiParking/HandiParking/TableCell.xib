@@ -16,7 +16,7 @@
                     <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UXv-Eg-9E9">
                         <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>

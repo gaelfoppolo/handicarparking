@@ -54,6 +54,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
         //self.countrySearchController.searchBar.barTintColor = self.navigationController?.navigationBar.barTintColor
         //self.countrySearchController.searchBar.translucent = true
         tableView.tableHeaderView = self.countrySearchController.searchBar
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None;
         //self.countrySearchController.searchBar.searchBarStyle = .Prominent
         
         self.countrySearchController.delegate = self
@@ -113,7 +114,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
                 //messageLabel.font = UIFont(name: "HelveticaNeue", size: CGFloat(22))
                 //[messageLabel sizeToFit];
                 self.tableView.backgroundView = messageLabel;
-                self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None;
+                
             }
             else if (self.searchArray.count == 0) {
                 var messageLabel:UILabel
@@ -125,16 +126,13 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
                 //messageLabel.font = UIFont(name: "HelveticaNeue", size: CGFloat(22))
                 //[messageLabel sizeToFit];
                 self.tableView.backgroundView = messageLabel;
-                self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None;
             }
             else {
                 self.tableView.backgroundView = nil;
-                self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine;
             }
         }
         else {
             self.tableView.backgroundView = nil;
-            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine;
         }
         return self.searchArray.count
     }
@@ -186,22 +184,38 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
                 
                 self.request = self.managerGM!.request(DataProvider.GoogleMaps.Autocomplete(searchString)).responseSwiftyJSON { request, response, json, error in
                     
-                    let predictions = json["predictions"].arrayValue
-                    //TODO//let status = json["status"]
-                    if !predictions.isEmpty {
+                    if error == nil  {
                         
-                        for lieu in predictions {
-                            var placeid: String? = lieu["place_id"].stringValue
-                            var nom: String? = lieu["description"].stringValue
-                            var types = lieu["types"].arrayValue
-                            if !contains(types, "country") {
-                                var point = Lieu(placeid: placeid, nom: nom)
-                                self.searchArray.append(point)
+                        let predictions = json["predictions"].arrayValue
+                        var status = json["status"].stringValue
+                        
+                        if status == "OK" || status == "ZERO_RESULTS" {
+                            
+                            if !predictions.isEmpty {
+                                
+                                for lieu in predictions {
+                                    var placeid: String? = lieu["place_id"].stringValue
+                                    var nom: String? = lieu["description"].stringValue
+                                    var types = lieu["types"].arrayValue
+                                    if !contains(types, "country") {
+                                        var point = Lieu(placeid: placeid, nom: nom)
+                                        self.searchArray.append(point)
+                                    }
+                                }
+                                
                             }
+                            self.tableView.reloadData()
+                            
+                        } else {
+                            self.countrySearchController.searchBar.resignFirstResponder()
+                            AlertViewController().errorResponseGoogle()
                         }
                         
+                    } else {
+                        self.countrySearchController.searchBar.resignFirstResponder()
+                        AlertViewController().errorRequest()
                     }
-                    self.tableView.reloadData()
+                    
                 }
    
             }
