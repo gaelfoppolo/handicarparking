@@ -95,11 +95,11 @@ struct DataProvider {
                     
                 case .Autocomplete (let searchString):
                     let path = "/place/autocomplete/json"
-                    let params = ["input": searchString, "key": GoogleMaps.apiKeyiOS]
+                    let params = ["input": searchString, "key": GoogleMaps.apiKeyServer]
                     return (path, params)
                 case .DistanceMatrix (let origins, let destinations):
                     let path = "/distancematrix/json"
-                    let params = ["origins": "\(origins.latitude),\(origins.longitude)", "destinations": "\(destinations.latitude),\(destinations.longitude)", "key": DataProvider.GoogleMaps.apiKeyServer]
+                    let params = ["origins": "\(origins.latitude),\(origins.longitude)", "destinations": "\(destinations.latitude),\(destinations.longitude)", "key": GoogleMaps.apiKeyServer]
                     return (path, params)
                 }
             }()

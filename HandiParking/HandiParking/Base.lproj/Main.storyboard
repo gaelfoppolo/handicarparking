@@ -58,9 +58,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="2Iw-bA-fRb" kind="relationship" relationship="viewControllers" id="cmM-al-qUJ"/>
-                        <segue destination="ZBn-pn-8rQ" kind="relationship" relationship="viewControllers" id="Cfe-Ms-07k"/>
-                        <segue destination="wlH-ca-XwW" kind="relationship" relationship="viewControllers" id="ewT-SP-swy"/>
-                        <segue destination="fl6-iQ-b6O" kind="relationship" relationship="viewControllers" id="vhv-XQ-2Zh"/>
+                        <segue destination="D9K-ix-aJ9" kind="relationship" relationship="viewControllers" id="5ii-u4-eJ8"/>
+                        <segue destination="wlH-ca-XwW" kind="relationship" relationship="viewControllers" id="5QJ-Ca-btr"/>
+                        <segue destination="fl6-iQ-b6O" kind="relationship" relationship="viewControllers" id="oJC-Mc-NsC"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dSG-7Z-LVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -109,25 +109,6 @@
             </objects>
             <point key="canvasLocation" x="734" y="-626"/>
         </scene>
-        <!--Recherche-->
-        <scene sceneID="zwP-jq-bob">
-            <objects>
-                <navigationController id="ZBn-pn-8rQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Recherche" image="ic_menu_search" id="38a-BK-0rf"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="480"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YdB-5F-VYz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="c1w-Jo-0iB" kind="relationship" relationship="rootViewController" id="gAs-gW-AMX"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Igv-rR-WX7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1354" y="-626"/>
-        </scene>
         <!--Geo View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -137,7 +118,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ubb-74-Jby" customClass="GMSMapView">
@@ -190,26 +171,6 @@
             </objects>
             <point key="canvasLocation" x="2118" y="-1374"/>
         </scene>
-        <!--Search View Controller-->
-        <scene sceneID="Q0O-fs-GLI">
-            <objects>
-                <viewController storyboardIdentifier="SearchViewController" id="c1w-Jo-0iB" customClass="SearchViewController" customModule="HandiParking" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="9uO-65-3ZB"/>
-                        <viewControllerLayoutGuide type="bottom" id="PlK-Yj-ng8"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="CDT-Ir-CjE">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="K1x-u0-wLb"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iD3-d0-lXU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2050" y="-626"/>
-        </scene>
         <!--About View Controller-->
         <scene sceneID="ArT-ao-QSF">
             <objects>
@@ -229,6 +190,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="axk-Lg-s1g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-167" y="-1382"/>
+        </scene>
+        <!--Recherche-->
+        <scene sceneID="C4w-pK-wh4">
+            <objects>
+                <navigationController definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="D9K-ix-aJ9" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Recherche" image="ic_menu_search" id="45o-MJ-lDN"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VTf-sj-F8i">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.5568627451" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="A7Z-Rq-Nwg" kind="relationship" relationship="rootViewController" id="dfF-K0-KoI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d0a-M2-G0O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1358" y="-626"/>
+        </scene>
+        <!--Recherche-->
+        <scene sceneID="2s2-4N-pnL">
+            <objects>
+                <tableViewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="A7Z-Rq-Nwg" customClass="SearchViewController" customModule="HandiParking" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RQm-md-HJ2">
+                        <rect key="frame" x="0.0" y="64" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="A7Z-Rq-Nwg" id="0bw-e5-OYg"/>
+                            <outlet property="delegate" destination="A7Z-Rq-Nwg" id="9Gu-4E-zaw"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Recherche" id="EEK-Gk-3Kf"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="648-y1-9SM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1795" y="-626"/>
         </scene>
     </scenes>
     <resources>
