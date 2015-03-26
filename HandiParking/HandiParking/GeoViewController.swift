@@ -24,7 +24,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     @IBAction func launchButtonAction(sender: AnyObject) {
         if ServicesController().servicesAreWorking() {
             if let locationWasGet = locationManager.location {
-                SwiftSpinner.show("Recherche en cours...")
                 launchRecherche()
             } else {
                 AlertViewController().locationWasNotGet()
@@ -284,6 +283,12 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         Quand la requête est un succès, on appelle une fonction contrôleur qui va vérifier les résultats.    
     */
     func getEmplacements(coordinate: CLLocationCoordinate2D, radius: RayonRecherche) {
+        
+        if self.rayon.rawValue % 2 == 0 {
+            SwiftSpinner.show("Recherche en cours...")
+        } else {
+            SwiftSpinner.show("Patientez...")
+        }
         
         let request = self.managerOSM!.request(DataProvider.OpenStreetMap.GetNodes(coordinate,radius))
         request.validate()
