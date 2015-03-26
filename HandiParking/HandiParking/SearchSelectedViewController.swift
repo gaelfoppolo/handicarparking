@@ -16,6 +16,10 @@ class SearchSelectedViewController: UIViewController, CLLocationManagerDelegate,
     /// lien de sortie vers la carte
     @IBOutlet weak var mapView: GMSMapView!
     
+    var streetViewButton: UIBarButtonItem!
+    
+    var itineraryButton: UIBarButtonItem!
+    
     /// lieu choisi
     var place = Lieu()
     
@@ -28,16 +32,23 @@ class SearchSelectedViewController: UIViewController, CLLocationManagerDelegate,
         let configurationGM = NSURLSessionConfiguration.defaultSessionConfiguration()
         configurationGM.timeoutIntervalForRequest = 10 // secondes
         self.managerGM = Alamofire.Manager(configuration: configurationGM)
-        var rightA = UIBarButtonItem(title: "11", style: .Plain, target: nil, action: nil)
-        var rightB = UIBarButtonItem(title: "22", style: .Plain, target: nil, action: nil)
-        var myButtonArray: NSArray = [rightA, rightB]
-        self.navigationItem.rightBarButtonItems = myButtonArray
+        
+        self.navigationItem.rightBarButtonItems = setButtons()
         println(place.description)
         getCoordinate()
     }
     
     override func viewDidAppear(animated: Bool) {
-        //self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "test", style: .Plain, target: nil, action: nil)
+        super.viewDidAppear(animated)
+    }
+    
+    func setButtons() -> NSArray {
+        self.streetViewButton = UIBarButtonItem(image: UIImage(named: "toolbar_streetview"), style: UIBarButtonItemStyle.Bordered, target: nil, action: nil)
+        streetViewButton.enabled = false
+        self.itineraryButton = UIBarButtonItem(image: UIImage(named: "toolbar_itinerary"), style: UIBarButtonItemStyle.Bordered, target: nil, action: nil)
+        itineraryButton.enabled = false
+        var buttons: NSArray = [self.streetViewButton, self.itineraryButton]
+        return buttons
     }
     
     func getCoordinate() {
