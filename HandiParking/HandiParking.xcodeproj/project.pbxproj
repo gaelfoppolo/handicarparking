@@ -17,6 +17,22 @@
 		9375D5FB1AC1999200A583B5 /* Lieu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9375D5FA1AC1999200A583B5 /* Lieu.swift */; };
 		937626FF1AB031A80059C23D /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937626FE1AB031A80059C23D /* HelpViewController.swift */; };
 		937627011AB031D60059C23D /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937627001AB031D60059C23D /* AboutViewController.swift */; };
+		9376407E1AC3FDA100716122 /* LTCharacterLimbo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376406C1AC3FDA100716122 /* LTCharacterLimbo.swift */; };
+		9376407F1AC3FDA100716122 /* LTEasing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376406D1AC3FDA100716122 /* LTEasing.swift */; };
+		937640801AC3FDA100716122 /* LTEmitterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376406E1AC3FDA100716122 /* LTEmitterView.swift */; };
+		937640811AC3FDA100716122 /* LTMorphingEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376406F1AC3FDA100716122 /* LTMorphingEffect.swift */; };
+		937640821AC3FDA100716122 /* LTMorphingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640711AC3FDA100716122 /* LTMorphingLabel.swift */; };
+		937640831AC3FDA100716122 /* LTMorphingLabel+Anvil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640721AC3FDA100716122 /* LTMorphingLabel+Anvil.swift */; };
+		937640841AC3FDA100716122 /* LTMorphingLabel+Burn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640731AC3FDA100716122 /* LTMorphingLabel+Burn.swift */; };
+		937640851AC3FDA100716122 /* LTMorphingLabel+Evaporate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640741AC3FDA100716122 /* LTMorphingLabel+Evaporate.swift */; };
+		937640861AC3FDA100716122 /* LTMorphingLabel+Fall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640751AC3FDA100716122 /* LTMorphingLabel+Fall.swift */; };
+		937640871AC3FDA100716122 /* LTMorphingLabel+Pixelate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640761AC3FDA100716122 /* LTMorphingLabel+Pixelate.swift */; };
+		937640881AC3FDA100716122 /* LTMorphingLabel+Sparkle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640771AC3FDA100716122 /* LTMorphingLabel+Sparkle.swift */; };
+		937640891AC3FDA100716122 /* NSString+LTMorphingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640781AC3FDA100716122 /* NSString+LTMorphingLabel.swift */; };
+		9376408A1AC3FDA100716122 /* Fire.png in Resources */ = {isa = PBXBuildFile; fileRef = 9376407A1AC3FDA100716122 /* Fire.png */; };
+		9376408B1AC3FDA100716122 /* Fragment.png in Resources */ = {isa = PBXBuildFile; fileRef = 9376407B1AC3FDA100716122 /* Fragment.png */; };
+		9376408C1AC3FDA100716122 /* Smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = 9376407C1AC3FDA100716122 /* Smoke.png */; };
+		9376408D1AC3FDA100716122 /* Sparkle.png in Resources */ = {isa = PBXBuildFile; fileRef = 9376407D1AC3FDA100716122 /* Sparkle.png */; };
 		938EA4B91ABB004700F9B247 /* InfoMarkerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939F00B41AB82E8D007B928E /* InfoMarkerWindow.xib */; };
 		9391D80E1AC2F207005EC0FD /* SearchSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391D80D1AC2F207005EC0FD /* SearchSelectedViewController.swift */; };
 		9396F5BE1AB07BDA00784082 /* IJReachbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9396F5BD1AB07BDA00784082 /* IJReachbility.swift */; };
@@ -162,6 +178,23 @@
 		9375D5FA1AC1999200A583B5 /* Lieu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lieu.swift; sourceTree = "<group>"; };
 		937626FE1AB031A80059C23D /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		937627001AB031D60059C23D /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		9376406C1AC3FDA100716122 /* LTCharacterLimbo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTCharacterLimbo.swift; sourceTree = "<group>"; };
+		9376406D1AC3FDA100716122 /* LTEasing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTEasing.swift; sourceTree = "<group>"; };
+		9376406E1AC3FDA100716122 /* LTEmitterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTEmitterView.swift; sourceTree = "<group>"; };
+		9376406F1AC3FDA100716122 /* LTMorphingEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTMorphingEffect.swift; sourceTree = "<group>"; };
+		937640701AC3FDA100716122 /* LTMorphingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTMorphingLabel.h; sourceTree = "<group>"; };
+		937640711AC3FDA100716122 /* LTMorphingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTMorphingLabel.swift; sourceTree = "<group>"; };
+		937640721AC3FDA100716122 /* LTMorphingLabel+Anvil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LTMorphingLabel+Anvil.swift"; sourceTree = "<group>"; };
+		937640731AC3FDA100716122 /* LTMorphingLabel+Burn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LTMorphingLabel+Burn.swift"; sourceTree = "<group>"; };
+		937640741AC3FDA100716122 /* LTMorphingLabel+Evaporate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LTMorphingLabel+Evaporate.swift"; sourceTree = "<group>"; };
+		937640751AC3FDA100716122 /* LTMorphingLabel+Fall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LTMorphingLabel+Fall.swift"; sourceTree = "<group>"; };
+		937640761AC3FDA100716122 /* LTMorphingLabel+Pixelate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LTMorphingLabel+Pixelate.swift"; sourceTree = "<group>"; };
+		937640771AC3FDA100716122 /* LTMorphingLabel+Sparkle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LTMorphingLabel+Sparkle.swift"; sourceTree = "<group>"; };
+		937640781AC3FDA100716122 /* NSString+LTMorphingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+LTMorphingLabel.swift"; sourceTree = "<group>"; };
+		9376407A1AC3FDA100716122 /* Fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fire.png; sourceTree = "<group>"; };
+		9376407B1AC3FDA100716122 /* Fragment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fragment.png; sourceTree = "<group>"; };
+		9376407C1AC3FDA100716122 /* Smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Smoke.png; sourceTree = "<group>"; };
+		9376407D1AC3FDA100716122 /* Sparkle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sparkle.png; sourceTree = "<group>"; };
 		9391D80D1AC2F207005EC0FD /* SearchSelectedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSelectedViewController.swift; sourceTree = "<group>"; };
 		9396F5BD1AB07BDA00784082 /* IJReachbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IJReachbility.swift; sourceTree = "<group>"; };
 		9396F5C41AB0843200784082 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
@@ -268,6 +301,38 @@
 			name = Vues;
 			sourceTree = "<group>";
 		};
+		937640651AC3FD8D00716122 /* LTMorphingLabel */ = {
+			isa = PBXGroup;
+			children = (
+				9376406C1AC3FDA100716122 /* LTCharacterLimbo.swift */,
+				9376406D1AC3FDA100716122 /* LTEasing.swift */,
+				9376406E1AC3FDA100716122 /* LTEmitterView.swift */,
+				9376406F1AC3FDA100716122 /* LTMorphingEffect.swift */,
+				937640701AC3FDA100716122 /* LTMorphingLabel.h */,
+				937640711AC3FDA100716122 /* LTMorphingLabel.swift */,
+				937640721AC3FDA100716122 /* LTMorphingLabel+Anvil.swift */,
+				937640731AC3FDA100716122 /* LTMorphingLabel+Burn.swift */,
+				937640741AC3FDA100716122 /* LTMorphingLabel+Evaporate.swift */,
+				937640751AC3FDA100716122 /* LTMorphingLabel+Fall.swift */,
+				937640761AC3FDA100716122 /* LTMorphingLabel+Pixelate.swift */,
+				937640771AC3FDA100716122 /* LTMorphingLabel+Sparkle.swift */,
+				937640781AC3FDA100716122 /* NSString+LTMorphingLabel.swift */,
+				937640791AC3FDA100716122 /* Particles */,
+			);
+			name = LTMorphingLabel;
+			sourceTree = "<group>";
+		};
+		937640791AC3FDA100716122 /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				9376407A1AC3FDA100716122 /* Fire.png */,
+				9376407B1AC3FDA100716122 /* Fragment.png */,
+				9376407C1AC3FDA100716122 /* Smoke.png */,
+				9376407D1AC3FDA100716122 /* Sparkle.png */,
+			);
+			path = Particles;
+			sourceTree = "<group>";
+		};
 		9396F5BF1AB07DB300784082 /* Modeles */ = {
 			isa = PBXGroup;
 			children = (
@@ -343,6 +408,7 @@
 		93D2E8291AAEE3040028ED1B /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				937640651AC3FD8D00716122 /* LTMorphingLabel */,
 				9396F5BD1AB07BDA00784082 /* IJReachbility.swift */,
 				9396F5C41AB0843200784082 /* SCLAlertView.swift */,
 				9345FBC11AB2F3F900D4F686 /* SwiftSpinner.swift */,
@@ -550,10 +616,14 @@
 			files = (
 				938EA4B91ABB004700F9B247 /* InfoMarkerWindow.xib in Resources */,
 				93D2E8311AAEED1A0028ED1B /* Images.xcassets in Resources */,
+				9376408D1AC3FDA100716122 /* Sparkle.png in Resources */,
 				93C83F571AAED9AD005990C2 /* Main.storyboard in Resources */,
+				9376408B1AC3FDA100716122 /* Fragment.png in Resources */,
 				93C83F5C1AAED9AD005990C2 /* LaunchScreen.xib in Resources */,
+				9376408A1AC3FDA100716122 /* Fire.png in Resources */,
 				93EF79071AC2A4550053A329 /* TableCell.xib in Resources */,
 				935D426A1AB19361005779FA /* GoogleMaps.bundle in Resources */,
+				9376408C1AC3FDA100716122 /* Smoke.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,28 +642,40 @@
 			buildActionMask = 2147483647;
 			files = (
 				93C83F541AAED9AD005990C2 /* GeoViewController.swift in Sources */,
+				937640871AC3FDA100716122 /* LTMorphingLabel+Pixelate.swift in Sources */,
 				9345FBD11AB2FFDD00D4F686 /* PlaceMarker.swift in Sources */,
 				935D42821AB1DC05005779FA /* Emplacement.swift in Sources */,
+				937640861AC3FDA100716122 /* LTMorphingLabel+Fall.swift in Sources */,
 				9396F5BE1AB07BDA00784082 /* IJReachbility.swift in Sources */,
 				939F00BD1AB831D5007B928E /* InfoMarkerWindow.swift in Sources */,
 				93EF79401AC2B69B0053A329 /* BaseTableView.swift in Sources */,
+				9376407F1AC3FDA100716122 /* LTEasing.swift in Sources */,
+				937640851AC3FDA100716122 /* LTMorphingLabel+Evaporate.swift in Sources */,
+				937640801AC3FDA100716122 /* LTEmitterView.swift in Sources */,
+				937640821AC3FDA100716122 /* LTMorphingLabel.swift in Sources */,
 				93C83F4F1AAED9AD005990C2 /* AppDelegate.swift in Sources */,
 				9396F5C51AB0843200784082 /* SCLAlertView.swift in Sources */,
 				93CD3CF51AC0170200E6E385 /* MapsAppsData.swift in Sources */,
 				9345FC051AB33AFB00D4F686 /* Alamofire-SwiftyJSON.swift in Sources */,
 				93CCBA451AB6F60800FCCB1E /* AlertViewController.swift in Sources */,
+				937640881AC3FDA100716122 /* LTMorphingLabel+Sparkle.swift in Sources */,
 				9345FBC21AB2F3F900D4F686 /* SwiftSpinner.swift in Sources */,
+				937640811AC3FDA100716122 /* LTMorphingEffect.swift in Sources */,
 				93EF793E1AC2B5C70053A329 /* SearchViewController.swift in Sources */,
 				935D42701AB1AAEA005779FA /* DataProvider.swift in Sources */,
 				9391D80E1AC2F207005EC0FD /* SearchSelectedViewController.swift in Sources */,
 				937627011AB031D60059C23D /* AboutViewController.swift in Sources */,
+				937640891AC3FDA100716122 /* NSString+LTMorphingLabel.swift in Sources */,
 				939F00C71AB834A6007B928E /* UIViewExtension.swift in Sources */,
+				9376407E1AC3FDA100716122 /* LTCharacterLimbo.swift in Sources */,
 				9375D5FB1AC1999200A583B5 /* Lieu.swift in Sources */,
 				93CCBA431AB6DDF800FCCB1E /* ServicesController.swift in Sources */,
 				937626FF1AB031A80059C23D /* HelpViewController.swift in Sources */,
+				937640841AC3FDA100716122 /* LTMorphingLabel+Burn.swift in Sources */,
 				93C83F521AAED9AD005990C2 /* HandiParking.xcdatamodeld in Sources */,
 				93DC120E1AB2DE9200C244DB /* RayonRecherche.swift in Sources */,
 				93CE8E861AC1529A008F09BF /* StreetViewController.swift in Sources */,
+				937640831AC3FDA100716122 /* LTMorphingLabel+Anvil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
