@@ -18,11 +18,61 @@ class SearchSelectedViewController: UIViewController, CLLocationManagerDelegate,
     
     /// lieu choisi
     var place = Lieu()
+    
+    /// gestionnaire des requêtes pour Google Maps
+    var managerGM: Alamofire.Manager?
+    
+    var request: Alamofire.Request?
 
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        let configurationGM = NSURLSessionConfiguration.defaultSessionConfiguration()
+        configurationGM.timeoutIntervalForRequest = 10 // secondes
+        self.managerGM = Alamofire.Manager(configuration: configurationGM)
+        var rightA = UIBarButtonItem(title: "11", style: .Plain, target: nil, action: nil)
+        var rightB = UIBarButtonItem(title: "22", style: .Plain, target: nil, action: nil)
+        var myButtonArray: NSArray = [rightA, rightB]
+        self.navigationItem.rightBarButtonItems = myButtonArray
         println(place.description)
+        getCoordinate()
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        //self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "test", style: .Plain, target: nil, action: nil)
+    }
+    
+    func getCoordinate() {
+            let request = self.managerGM!.request(DataProvider.GoogleMaps.PlaceDetails(self.place.placeid))
+            request.validate()
+            request.responseSwiftyJSON { request, response, json, error in
+                if error == nil  {
+                    var dataRecup = json
+                    var status:String? = dataRecup["status"].stringValue
+                    
+                    var lat:String?
+                    var lon:String?
+                    
+                    if status == "OK" {
+                        
+                        lat = dataRecup["result"]["geometry"]["location"]["lat"].stringValue
+                        lon = dataRecup["result"]["geometry"]["location"]["lng"].stringValue
+                        
+                        println(lat)
+                        println(lon)
+
+                        
+                    } else {
+
+                        AlertViewController().errorResponseGoogle()
+                    }
+                    
+                } else {
+
+                    AlertViewController().errorRequest()
+                }
+            }
+        
+    }
+
     
     
     
