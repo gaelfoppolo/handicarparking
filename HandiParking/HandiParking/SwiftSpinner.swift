@@ -41,12 +41,11 @@ public class SwiftSpinner: UIView {
         
         let titleScale: CGFloat = 0.85
         titleLabel.frame.size = CGSize(width: frameSize.width * titleScale, height: frameSize.height * titleScale)
-        titleLabel.font = UIFont(name: "HelveticaNeue", size: 16.0)
+        titleLabel.font = UIFont(name: "HelveticaNeue", size: 22.0)
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .Center
         titleLabel.lineBreakMode = .ByWordWrapping
         titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.morphingEffect = .Evaporate
         
         vibrancyView.contentView.addSubview(titleLabel)
         blurView.contentView.addSubview(vibrancyView)
@@ -139,9 +138,8 @@ public class SwiftSpinner: UIView {
         didSet {
             
             let spinner = SwiftSpinner.sharedInstance
-            spinner.titleLabel.transform = CGAffineTransformIdentity
-            spinner.titleLabel.text = self.title
-            /*UIView.animateWithDuration(0.15, delay: 0.0, options: .CurveEaseOut, animations: {
+            
+            UIView.animateWithDuration(0.15, delay: 0.0, options: .CurveEaseOut, animations: {
                 spinner.titleLabel.transform = CGAffineTransformMakeScale(0.75, 0.75)
                 spinner.titleLabel.alpha = 0.2
                 }, completion: {_ in
@@ -150,7 +148,7 @@ public class SwiftSpinner: UIView {
                         spinner.titleLabel.transform = CGAffineTransformIdentity
                         spinner.titleLabel.alpha = 1.0
                         }, completion: nil)
-            })*/
+            })
         }
     }
     
@@ -210,8 +208,7 @@ public class SwiftSpinner: UIView {
     private var blurView: UIVisualEffectView!
     private var vibrancyView: UIVisualEffectView!
     
-    lazy var titleLabel = LTMorphingLabel()
-    
+    lazy var titleLabel = UILabel()
     let frameSize = CGSize(width: 200.0, height: 200.0)
     
     private lazy var outerCircleView = UIView()
