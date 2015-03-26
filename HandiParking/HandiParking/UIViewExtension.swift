@@ -24,11 +24,15 @@ extension UIView {
             lockView.backgroundColor = UIColor(white: 0.0, alpha: 1)
             lockView.tag = 10
             lockView.alpha = 0.0
-            let activity = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
-            activity.hidesWhenStopped = true
-            activity.center = lockView.center
-            activity.startAnimating()
-            lockView.addSubview(activity)
+            var label: UILabel = UILabel()
+            label.text = "Chargement..."
+            label.textColor = UIColor.whiteColor()
+            label.numberOfLines = 1
+            label.textAlignment = NSTextAlignment.Center
+            label.font = UIFont.systemFontOfSize(16.0)
+            label.sizeToFit()
+            lockView.addSubview(label)
+            label.center = lockView.center
             self.addSubview(lockView)
             UIView.animateWithDuration(0.5) {
                 lockView.alpha = 1.0

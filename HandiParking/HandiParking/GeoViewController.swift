@@ -434,6 +434,8 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             }
         }
     }
+    
+    
 
 }
 
