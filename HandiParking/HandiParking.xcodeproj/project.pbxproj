@@ -17,6 +17,13 @@
 		9375D5FB1AC1999200A583B5 /* Lieu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9375D5FA1AC1999200A583B5 /* Lieu.swift */; };
 		937626FF1AB031A80059C23D /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937626FE1AB031A80059C23D /* HelpViewController.swift */; };
 		937627011AB031D60059C23D /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937627001AB031D60059C23D /* AboutViewController.swift */; };
+		937640D01AC4127100716122 /* RAMBounceAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640C51AC4127000716122 /* RAMBounceAnimation.swift */; };
+		937640D11AC4127100716122 /* RAMFrameItemAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640C71AC4127000716122 /* RAMFrameItemAnimation.swift */; };
+		937640D21AC4127100716122 /* RAMFumeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640C91AC4127000716122 /* RAMFumeAnimation.swift */; };
+		937640D31AC4127100716122 /* RAMRotationAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640CB1AC4127000716122 /* RAMRotationAnimation.swift */; };
+		937640D41AC4127100716122 /* RAMTransitionItemAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640CD1AC4127000716122 /* RAMTransitionItemAnimation.swift */; };
+		937640D51AC4127100716122 /* RAMAnimatedTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640CE1AC4127000716122 /* RAMAnimatedTabBarController.swift */; };
+		937640D61AC4127100716122 /* RAMItemAnimationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640CF1AC4127000716122 /* RAMItemAnimationProtocol.swift */; };
 		938EA4B91ABB004700F9B247 /* InfoMarkerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939F00B41AB82E8D007B928E /* InfoMarkerWindow.xib */; };
 		9391D80E1AC2F207005EC0FD /* SearchSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391D80D1AC2F207005EC0FD /* SearchSelectedViewController.swift */; };
 		9396F5BE1AB07BDA00784082 /* IJReachbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9396F5BD1AB07BDA00784082 /* IJReachbility.swift */; };
@@ -162,6 +169,13 @@
 		9375D5FA1AC1999200A583B5 /* Lieu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lieu.swift; sourceTree = "<group>"; };
 		937626FE1AB031A80059C23D /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		937627001AB031D60059C23D /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		937640C51AC4127000716122 /* RAMBounceAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMBounceAnimation.swift; sourceTree = "<group>"; };
+		937640C71AC4127000716122 /* RAMFrameItemAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMFrameItemAnimation.swift; sourceTree = "<group>"; };
+		937640C91AC4127000716122 /* RAMFumeAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMFumeAnimation.swift; sourceTree = "<group>"; };
+		937640CB1AC4127000716122 /* RAMRotationAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMRotationAnimation.swift; sourceTree = "<group>"; };
+		937640CD1AC4127000716122 /* RAMTransitionItemAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMTransitionItemAnimation.swift; sourceTree = "<group>"; };
+		937640CE1AC4127000716122 /* RAMAnimatedTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMAnimatedTabBarController.swift; sourceTree = "<group>"; };
+		937640CF1AC4127000716122 /* RAMItemAnimationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMItemAnimationProtocol.swift; sourceTree = "<group>"; };
 		9391D80D1AC2F207005EC0FD /* SearchSelectedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSelectedViewController.swift; sourceTree = "<group>"; };
 		9396F5BD1AB07BDA00784082 /* IJReachbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IJReachbility.swift; sourceTree = "<group>"; };
 		9396F5C41AB0843200784082 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
@@ -268,6 +282,68 @@
 			name = Vues;
 			sourceTree = "<group>";
 		};
+		937640C21AC4127000716122 /* RAMAnimatedTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				937640C31AC4127000716122 /* Animations */,
+				937640CE1AC4127000716122 /* RAMAnimatedTabBarController.swift */,
+				937640CF1AC4127000716122 /* RAMItemAnimationProtocol.swift */,
+			);
+			path = RAMAnimatedTabBarController;
+			sourceTree = "<group>";
+		};
+		937640C31AC4127000716122 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				937640C41AC4127000716122 /* BounceAnimation */,
+				937640C61AC4127000716122 /* FrameAnimation */,
+				937640C81AC4127000716122 /* FumeAnimation */,
+				937640CA1AC4127000716122 /* RotationAnimation */,
+				937640CC1AC4127000716122 /* TransitionAniamtions */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		937640C41AC4127000716122 /* BounceAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				937640C51AC4127000716122 /* RAMBounceAnimation.swift */,
+			);
+			path = BounceAnimation;
+			sourceTree = "<group>";
+		};
+		937640C61AC4127000716122 /* FrameAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				937640C71AC4127000716122 /* RAMFrameItemAnimation.swift */,
+			);
+			path = FrameAnimation;
+			sourceTree = "<group>";
+		};
+		937640C81AC4127000716122 /* FumeAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				937640C91AC4127000716122 /* RAMFumeAnimation.swift */,
+			);
+			path = FumeAnimation;
+			sourceTree = "<group>";
+		};
+		937640CA1AC4127000716122 /* RotationAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				937640CB1AC4127000716122 /* RAMRotationAnimation.swift */,
+			);
+			path = RotationAnimation;
+			sourceTree = "<group>";
+		};
+		937640CC1AC4127000716122 /* TransitionAniamtions */ = {
+			isa = PBXGroup;
+			children = (
+				937640CD1AC4127000716122 /* RAMTransitionItemAnimation.swift */,
+			);
+			path = TransitionAniamtions;
+			sourceTree = "<group>";
+		};
 		9396F5BF1AB07DB300784082 /* Modeles */ = {
 			isa = PBXGroup;
 			children = (
@@ -343,6 +419,7 @@
 		93D2E8291AAEE3040028ED1B /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				937640C21AC4127000716122 /* RAMAnimatedTabBarController */,
 				9396F5BD1AB07BDA00784082 /* IJReachbility.swift */,
 				9396F5C41AB0843200784082 /* SCLAlertView.swift */,
 				9345FBC11AB2F3F900D4F686 /* SwiftSpinner.swift */,
@@ -581,13 +658,20 @@
 				9396F5C51AB0843200784082 /* SCLAlertView.swift in Sources */,
 				93CD3CF51AC0170200E6E385 /* MapsAppsData.swift in Sources */,
 				9345FC051AB33AFB00D4F686 /* Alamofire-SwiftyJSON.swift in Sources */,
+				937640D41AC4127100716122 /* RAMTransitionItemAnimation.swift in Sources */,
+				937640D21AC4127100716122 /* RAMFumeAnimation.swift in Sources */,
 				93CCBA451AB6F60800FCCB1E /* AlertViewController.swift in Sources */,
 				9345FBC21AB2F3F900D4F686 /* SwiftSpinner.swift in Sources */,
+				937640D61AC4127100716122 /* RAMItemAnimationProtocol.swift in Sources */,
 				93EF793E1AC2B5C70053A329 /* SearchViewController.swift in Sources */,
 				935D42701AB1AAEA005779FA /* DataProvider.swift in Sources */,
 				9391D80E1AC2F207005EC0FD /* SearchSelectedViewController.swift in Sources */,
+				937640D51AC4127100716122 /* RAMAnimatedTabBarController.swift in Sources */,
+				937640D01AC4127100716122 /* RAMBounceAnimation.swift in Sources */,
+				937640D31AC4127100716122 /* RAMRotationAnimation.swift in Sources */,
 				937627011AB031D60059C23D /* AboutViewController.swift in Sources */,
 				939F00C71AB834A6007B928E /* UIViewExtension.swift in Sources */,
+				937640D11AC4127100716122 /* RAMFrameItemAnimation.swift in Sources */,
 				9375D5FB1AC1999200A583B5 /* Lieu.swift in Sources */,
 				93CCBA431AB6DDF800FCCB1E /* ServicesController.swift in Sources */,
 				937626FF1AB031A80059C23D /* HelpViewController.swift in Sources */,

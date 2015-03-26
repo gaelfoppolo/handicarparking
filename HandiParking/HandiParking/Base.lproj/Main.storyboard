@@ -28,7 +28,16 @@
         <scene sceneID="c06-Vu-T4W">
             <objects>
                 <navigationController id="fl6-iQ-b6O" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="À propos" image="ic_menu_about" id="OeG-8g-f4B"/>
+                    <tabBarItem key="tabBarItem" title="À propos" image="ic_menu_about" id="OeG-8g-f4B" customClass="RAMAnimatedTabBarItem" customModule="HandiParking" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="animation" destination="Zqt-tz-8HL" id="DbB-ac-SxZ"/>
+                        </connections>
+                    </tabBarItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MAx-1g-6IW">
@@ -40,13 +49,29 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gVr-l6-NnC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="Zqt-tz-8HL" customClass="RAMFlipBottomTransitionItemAniamtions" customModule="HandiParking" customModuleProvider="target">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                            <real key="value" value="0.80000000000000004"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="textDeselectedColor">
+                            <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="textSelectedColor">
+                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
+                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="385" y="-1374"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Animated Tab Bar Controller-->
         <scene sceneID="DxI-jW-41X">
             <objects>
-                <tabBarController id="dRn-qT-5zn" sceneMemberID="viewController">
+                <tabBarController id="dRn-qT-5zn" customClass="RAMAnimatedTabBarController" customModule="HandiParking" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
@@ -55,6 +80,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.0" green="0.5568627451" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="2Iw-bA-fRb" kind="relationship" relationship="viewControllers" id="cmM-al-qUJ"/>
@@ -71,7 +97,16 @@
         <scene sceneID="ZjP-Ad-NfU">
             <objects>
                 <navigationController id="2Iw-bA-fRb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Géolocalisation" image="ic_menu_location" id="Pn0-n3-mZO"/>
+                    <tabBarItem key="tabBarItem" title="Géolocalisation" image="ic_menu_location" id="Pn0-n3-mZO" customClass="RAMAnimatedTabBarItem" customModule="HandiParking" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="animation" destination="C2B-fb-JrS" id="zEK-3P-lqT"/>
+                        </connections>
+                    </tabBarItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9AI-Dm-84L">
@@ -87,6 +122,22 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XJK-vu-uG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="C2B-fb-JrS" customClass="RAMBounceAnimation" customModule="HandiParking" customModuleProvider="target">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                            <real key="value" value="0.80000000000000004"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="textSelectedColor">
+                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
+                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="textDeselectedColor">
+                            <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="1610" y="-1374"/>
         </scene>
@@ -94,7 +145,16 @@
         <scene sceneID="DhT-u1-FnA">
             <objects>
                 <navigationController id="wlH-ca-XwW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Aide" image="ic_menu_help" id="ePO-Zc-P3P"/>
+                    <tabBarItem key="tabBarItem" title="Aide" image="ic_menu_help" id="ePO-Zc-P3P" customClass="RAMAnimatedTabBarItem" customModule="HandiParking" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="animation" destination="1e7-q8-Pax" id="4bW-of-FpL"/>
+                        </connections>
+                    </tabBarItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fMY-fg-m4T">
@@ -106,6 +166,22 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I89-Re-4G1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="1e7-q8-Pax" customClass="RAMFlipLeftTransitionItemAniamtions" customModule="HandiParking" customModuleProvider="target">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="textSelectedColor">
+                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
+                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="textDeselectedColor">
+                            <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                            <real key="value" value="0.80000000000000004"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="734" y="-626"/>
         </scene>
@@ -195,7 +271,16 @@
         <scene sceneID="C4w-pK-wh4">
             <objects>
                 <navigationController definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="D9K-ix-aJ9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Recherche" image="ic_menu_search" id="45o-MJ-lDN"/>
+                    <tabBarItem key="tabBarItem" title="Recherche" image="ic_menu_search" id="45o-MJ-lDN" customClass="RAMAnimatedTabBarItem" customModule="HandiParking" customModuleProvider="target">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="animation" destination="Njh-tu-zuT" id="KYL-Xx-nnv"/>
+                        </connections>
+                    </tabBarItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VTf-sj-F8i">
@@ -210,6 +295,22 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d0a-M2-G0O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="Njh-tu-zuT" customClass="RAMLeftRotationAnimation" customModule="HandiParking" customModuleProvider="target">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                            <real key="value" value="0.80000000000000004"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="textSelectedColor">
+                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="iconSelectedColor">
+                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="textDeselectedColor">
+                            <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="1358" y="-626"/>
         </scene>

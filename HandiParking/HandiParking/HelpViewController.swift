@@ -14,7 +14,7 @@ class HelpViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Aide"
+        //title = "Aide"
     }
     
 }
