@@ -10,7 +10,11 @@ import Foundation
 
 struct MapsAppsData {
     
-    private let listAppsMaps = ["Google Maps", "Waze"]
+    private let listAppsMaps = [
+        "Plans":"http://maps.apple.com/?",
+        "Google Maps":"comgooglemaps://?",
+        "Waze":"waze://?"
+    ]
     
     func generateActionSheet() -> UIActionSheet {
         var sheet: UIActionSheet = UIActionSheet()
@@ -18,50 +22,35 @@ struct MapsAppsData {
         sheet.title = title
         sheet.addButtonWithTitle("Annuler")
         sheet.cancelButtonIndex = 0
-        sheet.addButtonWithTitle("Plans")
+        //sheet.addButtonWithTitle("Plans")
         
         var installApps = MapsAppsData().getListOfInstalledMapsApps()
         
-        for app in installApps {
-            sheet.addButtonWithTitle(app)
+        for (appName,urlscheme) in installApps {
+            sheet.addButtonWithTitle(appName)
         }
         
         return sheet
     }
     
-    func getListOfInstalledMapsApps() -> [String] {
-        var listAppsInstall = [String]()
-        for app in listAppsMaps {
-            if isInstalled(app) {
-                listAppsInstall.append(app)
+    func getListOfInstalledMapsApps() -> [String:String] {
+        var listAppsInstall = [String:String]()
+        for (appName,urlscheme) in listAppsMaps {
+            if isInstalled(appName) {
+                listAppsInstall[appName] = urlscheme
             }
         }
         return listAppsInstall
     }
     
     func isInstalled(appName: String) -> Bool {
-        var urlsheme: String = getBaseURLScheme(appName)
+        var urlsheme = listAppsMaps[appName]!
         return UIApplication.sharedApplication().canOpenURL(NSURL(string: urlsheme)!)
-    }
-    
-    func getBaseURLScheme(appName: String) -> String {
-        var urlsheme:String = ""
-        switch appName {
-            case "Google Maps":
-                urlsheme = "comgooglemaps://?"
-            case "Waze":
-                urlsheme = "waze://?"
-            case "Plans":
-                urlsheme = "http://maps.apple.com/?"
-            default:
-                break
-        }
-        return urlsheme
     }
     
     func generateURLScheme(appName:String, location: CLLocationCoordinate2D, marker: PlaceMarker) -> String {
         
-        let baseURL = getBaseURLScheme(appName)
+        let baseURL = listAppsMaps[appName]!
         var parameters: String?
         
         switch appName {
