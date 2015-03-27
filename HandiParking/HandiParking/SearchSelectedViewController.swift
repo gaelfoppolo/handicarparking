@@ -210,6 +210,7 @@ class SearchSelectedViewController: UIViewController, CLLocationManagerDelegate,
         if let location = locations.first as? CLLocation {
             
             locationManager.stopUpdatingLocation()
+            updateMapCameraOnUserLocation()
         }
     }
     
@@ -232,6 +233,15 @@ class SearchSelectedViewController: UIViewController, CLLocationManagerDelegate,
     func updateMapCameraOnPlaceLocation() {
         var marker = place.generateMarker()
         var camera = GMSCameraPosition(target: marker.position, zoom: 15, bearing: 0, viewingAngle: 0)
+        mapView.animateToCameraPosition(camera)
+    }
+    
+    /**
+    Centre la caméra (vue) sur la localisation actuelle
+    On suppose ici qu'une vérification des services a été effectuées et que la localisation a été actualisé au moins une fois
+    */
+    func updateMapCameraOnUserLocation() {
+        var camera = GMSCameraPosition(target: locationManager.location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
         mapView.animateToCameraPosition(camera)
     }
     
