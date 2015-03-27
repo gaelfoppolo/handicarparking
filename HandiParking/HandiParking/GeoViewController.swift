@@ -238,6 +238,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         println(self.emplacements.count)
         println(self.rayon.valeur)
         if(self.emplacements.count > DataProvider.OpenStreetMap.minimumResults) {
+            sortNearestPlace()
             createMarkersAndBoundsToDisplay()
         } else if let newRayon = RayonRecherche(rawValue: self.rayon.rawValue+1){
             self.emplacements.removeAll(keepCapacity: false)
@@ -246,6 +247,24 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         } else {
             createMarkersAndBoundsToDisplay()
         }
+    }
+    
+    func sortNearestPlace() {
+        
+        for place in self.emplacements {
+            var nodeLocation = CLLocation(latitude: NSString(string: place.latitude).doubleValue, longitude: NSString(string: place.longitude).doubleValue)
+            var distance = self.locationManager.location.distanceFromLocation(nodeLocation)
+            place.distance = distance
+        }
+
+        self.emplacements.sort({ $0.distance < $1.distance })
+        var newEmplac = [Emplacement]()
+        
+        for index in 0...10 {
+            newEmplac.append(self.emplacements[index])
+        }
+        
+        self.emplacements = newEmplac
     }
     
     /**
@@ -340,7 +359,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             self.mapView.selectedMarker = nil
         }
         if ServicesController().servicesAreWorking() && locationManager.location != nil {
-            getInformations(marker as PlaceMarker)
+            //getInformations(marker as PlaceMarker)
         } else {
            self.mapView.selectedMarker = nil
         }
@@ -360,7 +379,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 infoView.unlock()
                 infoView.adresse.text = placeMarker.place.adresse
                 infoView.duration.text = placeMarker.place.duration
-                infoView.distance.text = placeMarker.place.distance
+                infoView.distance.text = ""//placeMarker.place.distance
                 infoView.name.text = placeMarker.place.name
                 infoView.capacity.text = placeMarker.place.capacity
                 infoView.fee.text = placeMarker.place.fee

@@ -24,7 +24,7 @@ class SearchSelectedViewController: UIViewController, CLLocationManagerDelegate,
     
     @IBAction func launchButtonAction(sender: AnyObject) {
         
-        if let lat = self.place.lat {
+        if let icon = marker_place.icon {
             
             if ServicesController().servicesAreWorking() {
                 if let locationWasGet = locationManager.location {
@@ -44,6 +44,9 @@ class SearchSelectedViewController: UIViewController, CLLocationManagerDelegate,
     
     /// lieu choisi
     var place = Lieu()
+    
+    /// marqueur du lieu choisi
+    var marker_place = GMSMarker()
     
     /// déclaration d'un alias pour les notifications KVO + instanciation d'un contexte
     typealias KVOContext = UInt8
@@ -152,11 +155,15 @@ class SearchSelectedViewController: UIViewController, CLLocationManagerDelegate,
                         lat = dataRecup["result"]["geometry"]["location"]["lat"].stringValue
                         lon = dataRecup["result"]["geometry"]["location"]["lng"].stringValue
                         
-                        self.place.setCoordinate(lat, lon:lon)
+                        self.marker_place = GMSMarker(position: CLLocationCoordinate2DMake(NSString(string: lat!).doubleValue, NSString(string: lon!).doubleValue))
                         
-                        var marker = self.place.generateMarker()
+                        self.marker_place.icon = UIImage(named: "marker_place")
+                        self.marker_place.groundAnchor = CGPoint(x: 0.5, y: 1)
+                        self.marker_place.appearAnimation = kGMSMarkerAnimationPop
+                        self.marker_place.title = self.place.nom
+                        self.marker_place.tappable = false
                         
-                        marker.map = self.mapView
+                        self.marker_place.map = self.mapView
                         
                         self.updateMapCameraOnPlaceLocation()
                         
@@ -231,8 +238,7 @@ class SearchSelectedViewController: UIViewController, CLLocationManagerDelegate,
     On suppose ici qu'une vérification des services a été effectuées et que la localisation du lieu a été récupérée
     */
     func updateMapCameraOnPlaceLocation() {
-        var marker = place.generateMarker()
-        var camera = GMSCameraPosition(target: marker.position, zoom: 15, bearing: 0, viewingAngle: 0)
+        var camera = GMSCameraPosition(target: self.marker_place.position, zoom: 15, bearing: 0, viewingAngle: 0)
         mapView.animateToCameraPosition(camera)
     }
     
@@ -253,7 +259,7 @@ class SearchSelectedViewController: UIViewController, CLLocationManagerDelegate,
         self.markers.removeAll(keepCapacity: false)
         self.emplacements.removeAll(keepCapacity: false)
         self.rayon = RayonRecherche(rawValue: 1)!
-        self.getEmplacements(locationManager.location.coordinate, radius: self.rayon)
+        self.getEmplacements(marker_place.position, radius: self.rayon)
     }
     
     /**
@@ -268,7 +274,7 @@ class SearchSelectedViewController: UIViewController, CLLocationManagerDelegate,
         } else if let newRayon = RayonRecherche(rawValue: self.rayon.rawValue+1){
             self.emplacements.removeAll(keepCapacity: false)
             self.rayon = newRayon
-            self.getEmplacements(locationManager.location.coordinate, radius: self.rayon)
+            self.getEmplacements(marker_place.position, radius: self.rayon)
         } else {
             createMarkersAndBoundsToDisplay()
         }
@@ -281,7 +287,8 @@ class SearchSelectedViewController: UIViewController, CLLocationManagerDelegate,
     func createMarkersAndBoundsToDisplay() {
         SwiftSpinner.show("Récupération des informations...")
         var firstLocation: CLLocationCoordinate2D
-        var bounds = GMSCoordinateBounds(coordinate: self.locationManager.location.coordinate, coordinate: self.locationManager.location.coordinate)
+        var bounds = GMSCoordinateBounds(coordinate: self.marker_place.position, coordinate: self.marker_place.position)
+        marker_place.map = mapView
         if !self.emplacements.isEmpty {
             for place: Emplacement in self.emplacements {
                 let marker = PlaceMarker(place: place)
@@ -356,9 +363,122 @@ class SearchSelectedViewController: UIViewController, CLLocationManagerDelegate,
         
     }
 
-
-
+    /**
+    Appelé dès qu'un marqueur est tappé
+    On retourne faux pour que le comportement par défaut soit réalisé
+    si les services (internet, localisation) et la localisation sont ok
+    */
+    func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
+        if self.mapView.selectedMarker != nil {
+            self.mapView.selectedMarker = nil
+        }
+        if marker_place != marker {
+            if ServicesController().servicesAreWorking() && locationManager.location != nil {
+                getInformations(marker as PlaceMarker)
+            } else {
+                self.mapView.selectedMarker = nil
+            }
+        }
+        
+        return false
+    }
     
+    /**
+    Appelé juste avant que infoWindow soit affiché
+    On load notre vue personnalisée et on affiche si disponible les informations
+    */
+    func mapView(mapView: GMSMapView!, markerInfoWindow marker: GMSMarker!) -> UIView! {
+        if marker_place == marker {
+            return nil
+        } else {
+            let placeMarker = marker as PlaceMarker
+            if let infoView = UIView.viewFromNibName("InfoMarkerWindow") as? InfoMarkerWindow {
+                if (infoView.adresse.text == "" && placeMarker.place.adresse == nil) {
+                    infoView.lock()
+                } else if infoView.adresse.text != placeMarker.place.adresse {
+                    infoView.unlock()
+                    infoView.adresse.text = placeMarker.place.adresse
+                    infoView.duration.text = placeMarker.place.duration
+                    infoView.distance.text = ""//placeMarker.place.distance
+                    infoView.name.text = placeMarker.place.name
+                    infoView.capacity.text = placeMarker.place.capacity
+                    infoView.fee.text = placeMarker.place.fee
+                    
+                    //self.itineraryButtonText.enabled = true
+                    //self.streetViewButtonText.enabled = true
+                }
+                
+                return infoView
+            } else {
+                return nil
+            }
+        }
+        
+    }
     
+    /**
+    Recherche des informations complémentaires entre deux lieux
+    
+    :param: place Le marqueur sélectionné
+    
+    On effectue une requête sur l'API de Google Maps afin de récupérer l'adresse du lieu de destination ainsi que la distance et le temps de parcours pour se rendre sur ce lieu, grâce à la position actuelle.
+    
+    La requête est effectuée de façon asynchrone grâce à une closure, avec un timeout de 10 secondes.
+    */
+    func getInformations(place: PlaceMarker) {
+        if place.place.adresse == nil {
+            let request = self.managerGM!.request(DataProvider.GoogleMaps.DistanceMatrix(self.locationManager.location.coordinate, place.position))
+            request.validate()
+            request.responseSwiftyJSON { request, response, json, error in
+                if error == nil  {
+                    var dataRecup = json
+                    var status:String? = dataRecup["status"].stringValue
+                    
+                    var adresse:String?
+                    var duration:String?
+                    var distance:String?
+                    
+                    if status == "OK" {
+                        
+                        var destination = dataRecup["destination_addresses"]
+                        
+                        if !destination.isEmpty {
+                            adresse = destination.arrayValue[0].stringValue
+                        }
+                        
+                        var rows = dataRecup["rows"].arrayValue
+                        
+                        if !rows.isEmpty {
+                            
+                            let element = rows[0]["elements"].arrayValue
+                            
+                            let firstData = element[0]
+                            
+                            if firstData["status"].stringValue == "OK" {
+                                
+                                duration = firstData["duration"]["text"].stringValue
+                                
+                                distance = firstData["distance"]["text"].stringValue
+                            }
+                            
+                        }
+                        
+                        place.place.setInfos(adresse, dur: duration, dist: distance)
+                        
+                        self.mapView.selectedMarker = place
+                        
+                    } else {
+                        self.mapView.selectedMarker = nil
+                        AlertViewController().errorResponseGoogle()
+                    }
+                    
+                } else {
+                    self.mapView.selectedMarker = nil
+                    AlertViewController().errorRequest()
+                }
+            }
+        }
+    }
+   
     
 }

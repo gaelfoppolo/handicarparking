@@ -22,7 +22,7 @@ struct DataProvider {
         static let baseURLString = "http://overpass-api.de/api/interpreter"
         
         /// nombre minimum de résultats à récupérer
-        static let minimumResults: Int = 20
+        static let minimumResults: Int = 10
         
         /// nombre maximum de résultats à récupérer
         static let maximumResults: Int = 200

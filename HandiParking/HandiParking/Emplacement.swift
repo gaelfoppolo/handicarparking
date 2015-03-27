@@ -23,7 +23,7 @@ class Emplacement {
     var adresse: String?
     
     /// distance approximative jusqu'à l'emplacement (reverseGoogle -> texte)
-    var distance: String?
+    var distance: CLLocationDistance?
     
     /// temps de parcours approximatif jusqu'à l'emplacement (reverseGoogle -> texte)
     var duration: String?
@@ -78,9 +78,8 @@ class Emplacement {
         }
     }
     
-    func setInfos(adr: String?, dur: String?, dist: String?) {
+    func setAdresse(adr: String?) {
         self.adresse = adr ?? "Aucune adresse correspondante"
-        self.duration = dur ?? "N/A"
-        self.distance = dist ?? "N/A"
+        self.duration = ""//dur ?? "N/A"
     }
 }
