@@ -33,4 +33,5 @@ class PlaceMarker: GMSMarker {
         appearAnimation = kGMSMarkerAnimationPop
         
     }
+    
 }

@@ -40,4 +40,16 @@ class Lieu: NSObject, Printable {
         self.lat = lat
         self.lon = lon
     }
+    
+    func generateMarker() -> GMSMarker {
+        var marker = GMSMarker()
+        
+        marker.position = CLLocationCoordinate2DMake(NSString(string: self.lat!).doubleValue, NSString(string: self.lon!).doubleValue)
+        marker.icon = UIImage(named: "marker_place")
+        marker.groundAnchor = CGPoint(x: 0.5, y: 1)
+        marker.appearAnimation = kGMSMarkerAnimationPop
+        marker.title = self.nom
+        
+        return marker
+    }
 }
