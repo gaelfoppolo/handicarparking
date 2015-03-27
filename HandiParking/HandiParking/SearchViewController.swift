@@ -17,6 +17,8 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
     var searchArray = [Lieu]()
     var countrySearchController: UISearchController!
     var searchTimer = NSTimer()
+    
+    var inSearching: Bool = false
 
     /// gestionnaire des requêtes pour Google Maps
     var managerGM: Alamofire.Manager?
@@ -51,8 +53,8 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
         self.countrySearchController = UISearchController(searchResultsController: nil)
         self.countrySearchController.searchResultsUpdater = self
         self.countrySearchController.searchBar.sizeToFit()
-        //self.countrySearchController.searchBar.barTintColor = self.navigationController?.navigationBar.barTintColor
-        //self.countrySearchController.searchBar.translucent = true
+        self.countrySearchController.searchBar.barTintColor = self.navigationController?.navigationBar.barTintColor
+        self.countrySearchController.searchBar.translucent = true
         tableView.tableHeaderView = self.countrySearchController.searchBar
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None;
         //self.countrySearchController.searchBar.searchBarStyle = .Prominent
@@ -65,6 +67,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
         // presentation semantics apply. Namely that presentation will walk up the view controller
         // hierarchy until it finds the root view controller or one that defines a presentation context.
         definesPresentationContext = true
+        
     }
     
     // MARK: UISearchBarDelegate
@@ -116,23 +119,42 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
                 self.tableView.backgroundView = messageLabel;
                 
             }
+            else if self.inSearching {
+                
+                let loadingView = UIView(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
+                
+                let myActivityIndicatorView: DTIActivityIndicatorView = DTIActivityIndicatorView(frame: CGRectMake(0, 0, 80, 80))
+                myActivityIndicatorView.center = loadingView.center
+                loadingView.alpha = 0.0
+                myActivityIndicatorView.indicatorColor = UIColor.blueColor()
+                myActivityIndicatorView.indicatorStyle = DTIIndicatorStyle.convInv(.spotify)
+                myActivityIndicatorView.startActivity()
+                
+                loadingView.addSubview(myActivityIndicatorView)
+                
+                UIView.animateWithDuration(0.5) {
+                    loadingView.alpha = 1.0
+                }
+                
+               self.tableView.backgroundView = loadingView
+            }
             else if (self.searchArray.count == 0) {
                 var messageLabel:UILabel
                 messageLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
                 messageLabel.text = "Aucun lieu ne correpond à votre recherche 😞"
                 messageLabel.textColor = UIColor.blackColor()
                 messageLabel.numberOfLines = 0
-                messageLabel.textAlignment = NSTextAlignment.Center;
+                messageLabel.textAlignment = NSTextAlignment.Center
                 //messageLabel.font = UIFont(name: "HelveticaNeue", size: CGFloat(22))
                 //[messageLabel sizeToFit];
-                self.tableView.backgroundView = messageLabel;
+                self.tableView.backgroundView = messageLabel
             }
             else {
-                self.tableView.backgroundView = nil;
+                self.tableView.backgroundView = nil
             }
         }
         else {
-            self.tableView.backgroundView = nil;
+            self.tableView.backgroundView = nil
         }
         return self.searchArray.count
     }
@@ -153,6 +175,8 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
     {
         let searchString:String = self.countrySearchController.searchBar.text
         
+        self.inSearching = false
+        
         if searchString.isEmpty {
             self.searchArray.removeAll(keepCapacity: false)
             self.tableView.reloadData()
@@ -168,8 +192,11 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
     
     func launchSearch(sTimer: NSTimer) {
         
+        self.inSearching = true
         
         self.searchArray.removeAll(keepCapacity: false)
+        
+        self.tableView.reloadData()
 
         if let searchString:String = self.countrySearchController.searchBar.text {
             
@@ -197,22 +224,30 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
                                 }
                                 
                             }
+                            self.inSearching = false
                             self.tableView.reloadData()
                             
                         } else {
+                            self.inSearching = false
                             self.countrySearchController.searchBar.resignFirstResponder()
                             AlertViewController().errorResponseGoogle()
+                            self.tableView.reloadData()
                         }
                         
                     } else {
-                        self.countrySearchController.searchBar.resignFirstResponder()
-                        AlertViewController().errorRequest()
+                        self.inSearching = false
+                        if error?.code != -999 {
+                            AlertViewController().errorRequest()
+                            self.countrySearchController.searchBar.resignFirstResponder()
+                        }
+                        self.tableView.reloadData()
                     }
                     
                 }
    
             }
             else {
+                self.inSearching = false
                 self.tableView.reloadData()
             }
         }

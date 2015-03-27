@@ -25,6 +25,18 @@
 		937640D51AC4127100716122 /* RAMAnimatedTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640CE1AC4127000716122 /* RAMAnimatedTabBarController.swift */; };
 		937640D61AC4127100716122 /* RAMItemAnimationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640CF1AC4127000716122 /* RAMItemAnimationProtocol.swift */; };
 		938EA4B91ABB004700F9B247 /* InfoMarkerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939F00B41AB82E8D007B928E /* InfoMarkerWindow.xib */; };
+		9391A6751AC4AA5A00BD64C7 /* CALayer+DTI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391A6671AC4AA5A00BD64C7 /* CALayer+DTI.swift */; };
+		9391A6761AC4AA5A00BD64C7 /* DTIActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391A6691AC4AA5A00BD64C7 /* DTIActivityIndicatorView.swift */; };
+		9391A6771AC4AA5A00BD64C7 /* DTIAnimChasingDots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391A66A1AC4AA5A00BD64C7 /* DTIAnimChasingDots.swift */; };
+		9391A6781AC4AA5A00BD64C7 /* DTIAnimDoubleBounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391A66B1AC4AA5A00BD64C7 /* DTIAnimDoubleBounce.swift */; };
+		9391A6791AC4AA5A00BD64C7 /* DTIAnimProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391A66C1AC4AA5A00BD64C7 /* DTIAnimProtocol.swift */; };
+		9391A67A1AC4AA5A00BD64C7 /* DTIAnimPulse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391A66D1AC4AA5A00BD64C7 /* DTIAnimPulse.swift */; };
+		9391A67B1AC4AA5A00BD64C7 /* DTIAnimRotatingPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391A66E1AC4AA5A00BD64C7 /* DTIAnimRotatingPlane.swift */; };
+		9391A67C1AC4AA5A00BD64C7 /* DTIAnimSpotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391A66F1AC4AA5A00BD64C7 /* DTIAnimSpotify.swift */; };
+		9391A67D1AC4AA5A00BD64C7 /* DTIAnimWanderingCubes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391A6701AC4AA5A00BD64C7 /* DTIAnimWanderingCubes.swift */; };
+		9391A67E1AC4AA5A00BD64C7 /* DTIAnimWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391A6711AC4AA5A00BD64C7 /* DTIAnimWave.swift */; };
+		9391A67F1AC4AA5A00BD64C7 /* DTIAnimWp8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391A6721AC4AA5A00BD64C7 /* DTIAnimWp8.swift */; };
+		9391A6801AC4AA5A00BD64C7 /* DTIIndicatorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391A6731AC4AA5A00BD64C7 /* DTIIndicatorStyle.swift */; };
 		9391D80E1AC2F207005EC0FD /* SearchSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9391D80D1AC2F207005EC0FD /* SearchSelectedViewController.swift */; };
 		9396F5BE1AB07BDA00784082 /* IJReachbility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9396F5BD1AB07BDA00784082 /* IJReachbility.swift */; };
 		9396F5C51AB0843200784082 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9396F5C41AB0843200784082 /* SCLAlertView.swift */; };
@@ -176,6 +188,18 @@
 		937640CD1AC4127000716122 /* RAMTransitionItemAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMTransitionItemAnimation.swift; sourceTree = "<group>"; };
 		937640CE1AC4127000716122 /* RAMAnimatedTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMAnimatedTabBarController.swift; sourceTree = "<group>"; };
 		937640CF1AC4127000716122 /* RAMItemAnimationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMItemAnimationProtocol.swift; sourceTree = "<group>"; };
+		9391A6671AC4AA5A00BD64C7 /* CALayer+DTI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+DTI.swift"; sourceTree = "<group>"; };
+		9391A6691AC4AA5A00BD64C7 /* DTIActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTIActivityIndicatorView.swift; sourceTree = "<group>"; };
+		9391A66A1AC4AA5A00BD64C7 /* DTIAnimChasingDots.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTIAnimChasingDots.swift; sourceTree = "<group>"; };
+		9391A66B1AC4AA5A00BD64C7 /* DTIAnimDoubleBounce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTIAnimDoubleBounce.swift; sourceTree = "<group>"; };
+		9391A66C1AC4AA5A00BD64C7 /* DTIAnimProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTIAnimProtocol.swift; sourceTree = "<group>"; };
+		9391A66D1AC4AA5A00BD64C7 /* DTIAnimPulse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTIAnimPulse.swift; sourceTree = "<group>"; };
+		9391A66E1AC4AA5A00BD64C7 /* DTIAnimRotatingPlane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTIAnimRotatingPlane.swift; sourceTree = "<group>"; };
+		9391A66F1AC4AA5A00BD64C7 /* DTIAnimSpotify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTIAnimSpotify.swift; sourceTree = "<group>"; };
+		9391A6701AC4AA5A00BD64C7 /* DTIAnimWanderingCubes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTIAnimWanderingCubes.swift; sourceTree = "<group>"; };
+		9391A6711AC4AA5A00BD64C7 /* DTIAnimWave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTIAnimWave.swift; sourceTree = "<group>"; };
+		9391A6721AC4AA5A00BD64C7 /* DTIAnimWp8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTIAnimWp8.swift; sourceTree = "<group>"; };
+		9391A6731AC4AA5A00BD64C7 /* DTIIndicatorStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTIIndicatorStyle.swift; sourceTree = "<group>"; };
 		9391D80D1AC2F207005EC0FD /* SearchSelectedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSelectedViewController.swift; sourceTree = "<group>"; };
 		9396F5BD1AB07BDA00784082 /* IJReachbility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IJReachbility.swift; sourceTree = "<group>"; };
 		9396F5C41AB0843200784082 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
@@ -344,6 +368,26 @@
 			path = TransitionAniamtions;
 			sourceTree = "<group>";
 		};
+		9391A6661AC4AA5A00BD64C7 /* DTIActivityIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				9391A6671AC4AA5A00BD64C7 /* CALayer+DTI.swift */,
+				9391A6691AC4AA5A00BD64C7 /* DTIActivityIndicatorView.swift */,
+				9391A66A1AC4AA5A00BD64C7 /* DTIAnimChasingDots.swift */,
+				9391A66B1AC4AA5A00BD64C7 /* DTIAnimDoubleBounce.swift */,
+				9391A66C1AC4AA5A00BD64C7 /* DTIAnimProtocol.swift */,
+				9391A66D1AC4AA5A00BD64C7 /* DTIAnimPulse.swift */,
+				9391A66E1AC4AA5A00BD64C7 /* DTIAnimRotatingPlane.swift */,
+				9391A66F1AC4AA5A00BD64C7 /* DTIAnimSpotify.swift */,
+				9391A6701AC4AA5A00BD64C7 /* DTIAnimWanderingCubes.swift */,
+				9391A6711AC4AA5A00BD64C7 /* DTIAnimWave.swift */,
+				9391A6721AC4AA5A00BD64C7 /* DTIAnimWp8.swift */,
+				9391A6731AC4AA5A00BD64C7 /* DTIIndicatorStyle.swift */,
+			);
+			name = DTIActivityIndicator;
+			path = Source;
+			sourceTree = "<group>";
+		};
 		9396F5BF1AB07DB300784082 /* Modeles */ = {
 			isa = PBXGroup;
 			children = (
@@ -419,6 +463,7 @@
 		93D2E8291AAEE3040028ED1B /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				9391A6661AC4AA5A00BD64C7 /* DTIActivityIndicator */,
 				937640C21AC4127000716122 /* RAMAnimatedTabBarController */,
 				9396F5BD1AB07BDA00784082 /* IJReachbility.swift */,
 				9396F5C41AB0843200784082 /* SCLAlertView.swift */,
@@ -649,35 +694,47 @@
 			buildActionMask = 2147483647;
 			files = (
 				93C83F541AAED9AD005990C2 /* GeoViewController.swift in Sources */,
+				9391A67C1AC4AA5A00BD64C7 /* DTIAnimSpotify.swift in Sources */,
 				9345FBD11AB2FFDD00D4F686 /* PlaceMarker.swift in Sources */,
 				935D42821AB1DC05005779FA /* Emplacement.swift in Sources */,
+				9391A67F1AC4AA5A00BD64C7 /* DTIAnimWp8.swift in Sources */,
 				9396F5BE1AB07BDA00784082 /* IJReachbility.swift in Sources */,
+				9391A67E1AC4AA5A00BD64C7 /* DTIAnimWave.swift in Sources */,
 				939F00BD1AB831D5007B928E /* InfoMarkerWindow.swift in Sources */,
 				93EF79401AC2B69B0053A329 /* BaseTableView.swift in Sources */,
 				93C83F4F1AAED9AD005990C2 /* AppDelegate.swift in Sources */,
 				9396F5C51AB0843200784082 /* SCLAlertView.swift in Sources */,
 				93CD3CF51AC0170200E6E385 /* MapsAppsData.swift in Sources */,
+				9391A6771AC4AA5A00BD64C7 /* DTIAnimChasingDots.swift in Sources */,
+				9391A6751AC4AA5A00BD64C7 /* CALayer+DTI.swift in Sources */,
 				9345FC051AB33AFB00D4F686 /* Alamofire-SwiftyJSON.swift in Sources */,
+				9391A67A1AC4AA5A00BD64C7 /* DTIAnimPulse.swift in Sources */,
 				937640D41AC4127100716122 /* RAMTransitionItemAnimation.swift in Sources */,
+				9391A6781AC4AA5A00BD64C7 /* DTIAnimDoubleBounce.swift in Sources */,
 				937640D21AC4127100716122 /* RAMFumeAnimation.swift in Sources */,
 				93CCBA451AB6F60800FCCB1E /* AlertViewController.swift in Sources */,
 				9345FBC21AB2F3F900D4F686 /* SwiftSpinner.swift in Sources */,
 				937640D61AC4127100716122 /* RAMItemAnimationProtocol.swift in Sources */,
 				93EF793E1AC2B5C70053A329 /* SearchViewController.swift in Sources */,
+				9391A6801AC4AA5A00BD64C7 /* DTIIndicatorStyle.swift in Sources */,
 				935D42701AB1AAEA005779FA /* DataProvider.swift in Sources */,
 				9391D80E1AC2F207005EC0FD /* SearchSelectedViewController.swift in Sources */,
+				9391A67D1AC4AA5A00BD64C7 /* DTIAnimWanderingCubes.swift in Sources */,
 				937640D51AC4127100716122 /* RAMAnimatedTabBarController.swift in Sources */,
 				937640D01AC4127100716122 /* RAMBounceAnimation.swift in Sources */,
 				937640D31AC4127100716122 /* RAMRotationAnimation.swift in Sources */,
 				937627011AB031D60059C23D /* AboutViewController.swift in Sources */,
 				939F00C71AB834A6007B928E /* UIViewExtension.swift in Sources */,
+				9391A6791AC4AA5A00BD64C7 /* DTIAnimProtocol.swift in Sources */,
 				937640D11AC4127100716122 /* RAMFrameItemAnimation.swift in Sources */,
 				9375D5FB1AC1999200A583B5 /* Lieu.swift in Sources */,
 				93CCBA431AB6DDF800FCCB1E /* ServicesController.swift in Sources */,
 				937626FF1AB031A80059C23D /* HelpViewController.swift in Sources */,
 				93C83F521AAED9AD005990C2 /* HandiParking.xcdatamodeld in Sources */,
 				93DC120E1AB2DE9200C244DB /* RayonRecherche.swift in Sources */,
+				9391A67B1AC4AA5A00BD64C7 /* DTIAnimRotatingPlane.swift in Sources */,
 				93CE8E861AC1529A008F09BF /* StreetViewController.swift in Sources */,
+				9391A6761AC4AA5A00BD64C7 /* DTIActivityIndicatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
