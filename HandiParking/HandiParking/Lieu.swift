@@ -14,6 +14,8 @@ class Lieu: NSObject, Printable {
     
     let placeid: String
     let nom: String
+    var lat: String?
+    var lon: String?
     
     //MARK: description de l'objet
     
@@ -32,5 +34,10 @@ class Lieu: NSObject, Printable {
         self.placeid = ""
         self.nom = ""
         super.init()
+    }
+    
+    func setCoordinate(lat:String?, lon: String?) {
+        self.lat = lat
+        self.lon = lon
     }
 }

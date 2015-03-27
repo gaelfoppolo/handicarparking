@@ -363,17 +363,21 @@
                     </view>
                     <navigationItem key="navigationItem" id="eOD-8M-zT8">
                         <nil key="title"/>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="95B-mb-YdT" userLabel="Lancement">
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="95B-mb-YdT" userLabel="Lancement">
                             <rect key="frame" x="147.5" y="9.5" width="25" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="toolbar_launch">
+                            <state key="normal" image="toolbar_place_location">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="launchButtonAction:" destination="QlG-71-OAr" eventType="touchUpInside" id="Msb-b3-dCL"/>
+                            </connections>
                         </button>
                     </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="launchButtonText" destination="95B-mb-YdT" id="9Oq-a8-ZVK"/>
                         <outlet property="mapView" destination="EmB-rJ-7Cq" id="UY4-N2-i5N"/>
                     </connections>
                 </viewController>
@@ -389,6 +393,7 @@
         <image name="ic_menu_search" width="25" height="25"/>
         <image name="toolbar_itinerary" width="25" height="25"/>
         <image name="toolbar_launch" width="25" height="25"/>
+        <image name="toolbar_place_location" width="25" height="25"/>
         <image name="toolbar_streetview" width="25" height="25"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

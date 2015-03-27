@@ -20,6 +20,22 @@ class SearchSelectedViewController: UIViewController, CLLocationManagerDelegate,
     
     var itineraryButton: UIBarButtonItem!
     
+    @IBOutlet weak var launchButtonText: UIButton!
+    
+    @IBAction func launchButtonAction(sender: AnyObject) {
+        
+        if let lat = self.place.lat {
+            
+            //launchsearch car on a les coordonnées
+            
+        } else {
+            
+            self.launchButtonText.enabled = false
+            getCoordinate()
+            
+        }
+    }
+    
     /// lieu choisi
     var place = Lieu()
     
@@ -34,8 +50,11 @@ class SearchSelectedViewController: UIViewController, CLLocationManagerDelegate,
         self.managerGM = Alamofire.Manager(configuration: configurationGM)
         
         self.navigationItem.rightBarButtonItems = setButtons()
-        println(place.description)
-        getCoordinate()
+        
+        if ServicesController().checkInternetConnection() {
+        
+            getCoordinate()
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -67,17 +86,27 @@ class SearchSelectedViewController: UIViewController, CLLocationManagerDelegate,
                         lat = dataRecup["result"]["geometry"]["location"]["lat"].stringValue
                         lon = dataRecup["result"]["geometry"]["location"]["lng"].stringValue
                         
-                        println(lat)
-                        println(lon)
-
+                        self.place.setCoordinate(lat, lon:lon)
+                        
+                        UIView.animateWithDuration(0.5, animations: {
+                            self.launchButtonText.alpha = 0.0
+                        }) { finished in
+                                self.launchButtonText.setImage(UIImage(named: "toolbar_launch"), forState: .Normal)
+                                self.launchButtonText.enabled = true
+                                UIView.animateWithDuration(0.5, animations: {
+                                    self.launchButtonText.alpha = 1.0
+                                })
+                        }
                         
                     } else {
-
+                        
+                        self.launchButtonText.enabled = true
                         AlertViewController().errorResponseGoogle()
                     }
                     
                 } else {
-
+                    
+                    self.launchButtonText.enabled = true
                     AlertViewController().errorRequest()
                 }
             }
