@@ -51,6 +51,8 @@
 		93CCBA431AB6DDF800FCCB1E /* ServicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CCBA421AB6DDF800FCCB1E /* ServicesController.swift */; };
 		93CCBA451AB6F60800FCCB1E /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CCBA441AB6F60800FCCB1E /* AlertViewController.swift */; };
 		93CD3CF51AC0170200E6E385 /* MapsAppsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD3CF41AC0170200E6E385 /* MapsAppsData.swift */; };
+		93CDE4551AC5432F00DA38FF /* KeepCore.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 93CDE4541AC5432F00DA38FF /* KeepCore.gpx */; };
+		93CDE45D1AC543CB00DA38FF /* IUT Montpellier.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 93CDE45C1AC543CB00DA38FF /* IUT Montpellier.gpx */; };
 		93CE8E861AC1529A008F09BF /* StreetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE8E851AC1529A008F09BF /* StreetViewController.swift */; };
 		93D2E8311AAEED1A0028ED1B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D2E8301AAEED1A0028ED1B /* Images.xcassets */; };
 		93D2E8631AAF2EB60028ED1B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D2E8621AAF2EB60028ED1B /* AVFoundation.framework */; };
@@ -219,6 +221,8 @@
 		93CCBA421AB6DDF800FCCB1E /* ServicesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesController.swift; sourceTree = "<group>"; };
 		93CCBA441AB6F60800FCCB1E /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		93CD3CF41AC0170200E6E385 /* MapsAppsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapsAppsData.swift; sourceTree = "<group>"; };
+		93CDE4541AC5432F00DA38FF /* KeepCore.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = KeepCore.gpx; path = ../KeepCore.gpx; sourceTree = "<group>"; };
+		93CDE45C1AC543CB00DA38FF /* IUT Montpellier.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "IUT Montpellier.gpx"; path = "../IUT Montpellier.gpx"; sourceTree = "<group>"; };
 		93CE8E851AC1529A008F09BF /* StreetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetViewController.swift; sourceTree = "<group>"; };
 		93D2E8301AAEED1A0028ED1B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		93D2E8621AAF2EB60028ED1B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -438,6 +442,8 @@
 		93C83F4C1AAED9AD005990C2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				93CDE45C1AC543CB00DA38FF /* IUT Montpellier.gpx */,
+				93CDE4541AC5432F00DA38FF /* KeepCore.gpx */,
 				93C83F4D1AAED9AD005990C2 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -671,9 +677,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				938EA4B91ABB004700F9B247 /* InfoMarkerWindow.xib in Resources */,
+				93CDE4551AC5432F00DA38FF /* KeepCore.gpx in Resources */,
 				93D2E8311AAEED1A0028ED1B /* Images.xcassets in Resources */,
 				93C83F571AAED9AD005990C2 /* Main.storyboard in Resources */,
 				93C83F5C1AAED9AD005990C2 /* LaunchScreen.xib in Resources */,
+				93CDE45D1AC543CB00DA38FF /* IUT Montpellier.gpx in Resources */,
 				93EF79071AC2A4550053A329 /* TableCell.xib in Resources */,
 				935D426A1AB19361005779FA /* GoogleMaps.bundle in Resources */,
 			);

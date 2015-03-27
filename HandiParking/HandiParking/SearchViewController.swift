@@ -171,23 +171,26 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
     
     // MARK : UISearchResultsUpdating
     
-    func updateSearchResultsForSearchController(searchController: UISearchController)
-    {
-        let searchString:String = self.countrySearchController.searchBar.text
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
         
-        self.inSearching = false
-        
-        if searchString.isEmpty {
-            self.searchArray.removeAll(keepCapacity: false)
-            self.tableView.reloadData()
-        } else {
-            if self.searchTimer.valid {
-                self.searchTimer.invalidate()
-                self.request?.cancel()
-            }
+        if ServicesController().checkInternetConnection() {
+            let searchString:String = self.countrySearchController.searchBar.text
             
-            self.searchTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("launchSearch:"), userInfo:nil, repeats:false)
+            self.inSearching = false
+            
+            if searchString.isEmpty {
+                self.searchArray.removeAll(keepCapacity: false)
+                self.tableView.reloadData()
+            } else {
+                if self.searchTimer.valid {
+                    self.searchTimer.invalidate()
+                    self.request?.cancel()
+                }
+                
+                self.searchTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("launchSearch:"), userInfo:nil, repeats:false)
+            }
         }
+        
     }
     
     func launchSearch(sTimer: NSTimer) {

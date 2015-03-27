@@ -18,7 +18,7 @@ class ServicesController {
     
         :returns: internetIsWorking la connexion Internet est fonctionnelle
     */
-    private func checkInternetConnection() -> Bool {
+    internal func checkInternetConnection() -> Bool {
         
         // le service est activé par défaut
         var internetIsWorking: Bool = true
