@@ -68,6 +68,10 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
         // hierarchy until it finds the root view controller or one that defines a presentation context.
         definesPresentationContext = true
         
+        self.countrySearchController.searchBar.becomeFirstResponder()
+        
+        self.countrySearchController.searchBar.tintColor = UIColor.whiteColor()
+        
     }
     
     // MARK: UISearchBarDelegate
