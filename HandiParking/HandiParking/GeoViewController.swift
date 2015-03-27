@@ -340,16 +340,11 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             self.mapView.selectedMarker = nil
         }
         if ServicesController().servicesAreWorking() && locationManager.location != nil {
-            var point: CGPoint = self.mapView.projection.pointForCoordinate(marker.position)
-            point.y = point.y - 100
-            var position = self.mapView.projection.coordinateForPoint(point)
-            var camera = GMSCameraPosition(target: position, zoom: self.mapView.camera.zoom, bearing: 0, viewingAngle: 0)
-            mapView.animateToCameraPosition(camera)
             getInformations(marker as PlaceMarker)
         } else {
            self.mapView.selectedMarker = nil
         }
-        return true
+        return false
     }
     
     /**
