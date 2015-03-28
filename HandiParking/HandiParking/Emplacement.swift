@@ -37,6 +37,21 @@ class Emplacement {
     /// nom du lieu
     var name: String?
     
+    /// distance description
+    
+    var distanceDescription: String = {
+        get {
+            var distanceTexte:String?
+            if distance < 1000 {
+                distanceTexte = "\(Int(self.distance!)) m"
+            } else {
+                distanceTexte = String(format: "%.2f", (self.distance!/1000)) + " km"
+            }
+            return distanceTexte
+        }
+        
+    }()
+    
     /**
         Initialise un nouvel emplacement avec les informations suivantes :
         
@@ -46,10 +61,11 @@ class Emplacement {
         
         :returns: Un emplacement tout neuf, prêt à être utilisé
     */
-    init(id: String?, lat: String?, lon: String?, name: String?, fee: String?, capacity: String?) {
+    init(id: String?, lat: String?, lon: String?, name: String?, fee: String?, capacity: String?, distance: CLLocationDistance) {
         self.id_node = id ?? ""
         self.latitude = lat ?? ""
         self.longitude = lon ?? ""
+        self.distance = distance
         self.name = name ?? "Aucune information"
         if let feee = fee {
             switch feee {
@@ -81,5 +97,15 @@ class Emplacement {
     func setAdresse(adr: String?) {
         self.adresse = adr ?? "Aucune adresse correspondante"
         self.duration = ""//dur ?? "N/A"
+    }
+    
+    func getDistance() -> String? {
+        var distanceTexte:String?
+        if self.distance < 1000 {
+            distanceTexte = "\(Int(self.distance!)) m"
+        } else {
+            distanceTexte = String(format: "%.2f", (self.distance!/1000)) + " km"
+        }
+        return distanceTexte
     }
 }

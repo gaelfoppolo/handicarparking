@@ -336,6 +336,7 @@ class SearchSelectedViewController: UIViewController, CLLocationManagerDelegate,
                     var name: String?
                     var fee: String?
                     var capacity:String?
+                    var distance:CLLocationDistance
                     
                     for tag in place["tags"] {
                         switch tag.0 {
@@ -350,7 +351,11 @@ class SearchSelectedViewController: UIViewController, CLLocationManagerDelegate,
                         }
                     }
                     
-                    var emplacement = Emplacement(id: id, lat: lat, lon: lon, name: name, fee: fee, capacity: capacity)
+                    
+                    var nodeLocation = CLLocation(latitude: NSString(string: lat!).doubleValue, longitude: NSString(string: lon!).doubleValue)
+                    distance = self.locationManager.location.distanceFromLocation(nodeLocation)
+                    
+                    var emplacement = Emplacement(id: id, lat: lat, lon: lon, name: name, fee: fee, capacity: capacity, distance: distance)
                     self.emplacements.append(emplacement)
                 }
                 
@@ -463,7 +468,7 @@ class SearchSelectedViewController: UIViewController, CLLocationManagerDelegate,
                             
                         }
                         
-                        place.place.setInfos(adresse, dur: duration, dist: distance)
+                        //place.place.setInfos(adresse, dur: duration, dist: distance)
                         
                         self.mapView.selectedMarker = place
                         

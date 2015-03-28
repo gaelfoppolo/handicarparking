@@ -237,30 +237,25 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     func searchResultsController() {
         println(self.emplacements.count)
         println(self.rayon.valeur)
-        if(self.emplacements.count > DataProvider.OpenStreetMap.minimumResults) {
-            sortNearestPlace()
+        if(self.emplacements.count >= DataProvider.OpenStreetMap.minimumResults) {
+            sortAndFilterNearestPlace()
             createMarkersAndBoundsToDisplay()
         } else if let newRayon = RayonRecherche(rawValue: self.rayon.rawValue+1){
             self.emplacements.removeAll(keepCapacity: false)
             self.rayon = newRayon
             self.getEmplacements(locationManager.location.coordinate, radius: self.rayon)
         } else {
+            
             createMarkersAndBoundsToDisplay()
         }
     }
     
-    func sortNearestPlace() {
-        
-        for place in self.emplacements {
-            var nodeLocation = CLLocation(latitude: NSString(string: place.latitude).doubleValue, longitude: NSString(string: place.longitude).doubleValue)
-            var distance = self.locationManager.location.distanceFromLocation(nodeLocation)
-            place.distance = distance
-        }
+    func sortAndFilterNearestPlace() {
 
         self.emplacements.sort({ $0.distance < $1.distance })
         var newEmplac = [Emplacement]()
         
-        for index in 0...10 {
+        for index in 0...DataProvider.OpenStreetMap.minimumResults {
             newEmplac.append(self.emplacements[index])
         }
         
@@ -322,6 +317,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                         var name: String?
                         var fee: String?
                         var capacity:String?
+                        var distance:CLLocationDistance
                         
                         for tag in place["tags"] {
                             switch tag.0 {
@@ -335,8 +331,11 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                                     break
                             }
                         }
+                        
+                        var nodeLocation = CLLocation(latitude: NSString(string: lat!).doubleValue, longitude: NSString(string: lon!).doubleValue)
+                        distance = self.locationManager.location.distanceFromLocation(nodeLocation)
 
-                        var emplacement = Emplacement(id: id, lat: lat, lon: lon, name: name, fee: fee, capacity: capacity)
+                        var emplacement = Emplacement(id: id, lat: lat, lon: lon, name: name, fee: fee, capacity: capacity, distance: distance)
                         self.emplacements.append(emplacement)
                     }
             
@@ -359,7 +358,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             self.mapView.selectedMarker = nil
         }
         if ServicesController().servicesAreWorking() && locationManager.location != nil {
-            //getInformations(marker as PlaceMarker)
+            reverseGeocodeCoordinate(marker as PlaceMarker)
         } else {
            self.mapView.selectedMarker = nil
         }
@@ -379,7 +378,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 infoView.unlock()
                 infoView.adresse.text = placeMarker.place.adresse
                 infoView.duration.text = placeMarker.place.duration
-                infoView.distance.text = ""//placeMarker.place.distance
+                infoView.distance.text = placeMarker.place.getDistance()
                 infoView.name.text = placeMarker.place.name
                 infoView.capacity.text = placeMarker.place.capacity
                 infoView.fee.text = placeMarker.place.fee
@@ -394,6 +393,28 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         }
     }
     
+    func reverseGeocodeCoordinate(place: PlaceMarker) {
+        if place.place.adresse == nil {
+            let geocoder = GMSGeocoder()
+            geocoder.reverseGeocodeCoordinate(place.position) { response , error in
+                if error == nil {
+                    
+                    if let address = response?.firstResult() {
+                        
+                        let lines = address.lines as [String]
+                        place.place.setAdresse(join(", ", lines))
+                        
+                        self.mapView.selectedMarker = place
+                    }
+                    
+                } else {
+                    self.mapView.selectedMarker = nil
+                    AlertViewController().errorResponseGoogle()
+                }
+            }
+        }
+    }
+    
     /**
         Recherche des informations complémentaires entre deux lieux
     
@@ -402,7 +423,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         On effectue une requête sur l'API de Google Maps afin de récupérer l'adresse du lieu de destination ainsi que la distance et le temps de parcours pour se rendre sur ce lieu, grâce à la position actuelle.
     
         La requête est effectuée de façon asynchrone grâce à une closure, avec un timeout de 10 secondes.
-    */
+    */ /**
     func getInformations(place: PlaceMarker) {
         if place.place.adresse == nil {
             let request = self.managerGM!.request(DataProvider.GoogleMaps.DistanceMatrix(self.locationManager.location.coordinate, place.position))
@@ -456,7 +477,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 }
             }
         }
-    }
+    }*/
     
     
 
