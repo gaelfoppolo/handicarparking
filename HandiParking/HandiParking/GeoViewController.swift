@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import Alamofire
 import SwiftyJSON
+import MapKit
 
 /// Contrôleur de la vue géolocalisation 📍
 
@@ -235,8 +236,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         Si en revanche il y a assez de résultats, on peut préparer les données pour le traitement/affichage
     */
     func searchResultsController() {
-        println(self.emplacements.count)
-        println(self.rayon.valeur)
         if(self.emplacements.count >= DataProvider.OpenStreetMap.minimumResults) {
             sortAndFilterNearestPlace()
             createMarkersAndBoundsToDisplay()
@@ -351,14 +350,20 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     /**
         Appelé dès qu'un marqueur est tappé
         On retourne faux pour que le comportement par défaut soit réalisé
-        si les services (internet, localisation) et la localisation sont ok
+        Si les services (internet, localisation) et la localisation sont ok et si les informations n'ont pas encore été récupérées, on lance leur récupération
+    
     */
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
         if self.mapView.selectedMarker != nil {
             self.mapView.selectedMarker = nil
         }
         if ServicesController().servicesAreWorking() && locationManager.location != nil {
-            reverseGeocodeCoordinate(marker as PlaceMarker)
+            if (marker as PlaceMarker).place.adresse == nil {
+                reverseGeocodeCoordinate(marker as PlaceMarker)
+            }
+            if (marker as PlaceMarker).place.distanceETA == nil && (marker as PlaceMarker).place.durationETA == nil {
+              getExpectedDistanceAndTravelTime(marker as PlaceMarker)
+            }
         } else {
            self.mapView.selectedMarker = nil
         }
@@ -368,16 +373,19 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     /**
         Appelé juste avant que infoWindow soit affiché
         On load notre vue personnalisée et on affiche si disponible les informations
+        Si les informations ne sont pas encore disponible (en cours de récupération), on lock la vue
+        Dès que les informations sont disponible (récupération ok ou échouée), on unlock la vue et on affiche
     */
     func mapView(mapView: GMSMapView!, markerInfoWindow marker: GMSMarker!) -> UIView! {
         let placeMarker = marker as PlaceMarker
+        var boolCheck:Bool = (placeMarker.place.adresse == nil) || (placeMarker.place.distanceETA == nil) || (placeMarker.place.durationETA == nil)
         if let infoView = UIView.viewFromNibName("InfoMarkerWindow") as? InfoMarkerWindow {
-            if (infoView.adresse.text == "" && placeMarker.place.adresse == nil) {
+            if (boolCheck) {
                 infoView.lock()
-            } else if infoView.adresse.text != placeMarker.place.adresse {
+            } else {
                 infoView.unlock()
                 infoView.adresse.text = placeMarker.place.adresse
-                infoView.duration.text = placeMarker.place.duration
+                infoView.duration.text = placeMarker.place.getDuration()
                 infoView.distance.text = placeMarker.place.getDistance()
                 infoView.name.text = placeMarker.place.name
                 infoView.capacity.text = placeMarker.place.capacity
@@ -393,26 +401,76 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         }
     }
     
+    /**
+        Récupération de l'adresse approximative de la place sélectionnée (Google)
+    
+        :param: place Le marqueur sélectionné
+    
+        On effectue une requête grâce à Google Maps SDK afin de récupérer l'adresse de la place sélectionnée
+    
+        La requête est effectuée de façon asynchrone grâce à une closure, avec timeout (défini par Google).
+    */
     func reverseGeocodeCoordinate(place: PlaceMarker) {
-        if place.place.adresse == nil {
             let geocoder = GMSGeocoder()
             geocoder.reverseGeocodeCoordinate(place.position) { response , error in
+                var adresse:String?
                 if error == nil {
                     
                     if let address = response?.firstResult() {
                         
                         let lines = address.lines as [String]
-                        place.place.setAdresse(join(", ", lines))
-                        
-                        self.mapView.selectedMarker = place
+                        adresse = join(", ", lines)
                     }
                     
-                } else {
-                    self.mapView.selectedMarker = nil
-                    AlertViewController().errorResponseGoogle()
+                }
+                place.place.setAdresse(adresse)
+                self.mapView.selectedMarker = place
+            }
+    }
+    
+    /**
+        Récupération de la distance et du temps de parcours estimé (Apple) entre la place sélectionnée et la position actuelle
+    
+        :param: place Le marqueur sélectionné
+    
+        On effectue une requête grâce à MapKit (Apple) afin de récupérer la distance et le temps de parcours pour se rendre sur ce lieu, en partant de la position actuelle.
+    
+        La requête est effectuée de façon asynchrone grâce à une closure, avec timeout (défini Apple).
+    */
+    func getExpectedDistanceAndTravelTime(place: PlaceMarker) {
+        var sourcePlacemark:MKPlacemark = MKPlacemark(coordinate: self.locationManager.location.coordinate, addressDictionary: nil)
+        var destinationPlacemark:MKPlacemark = MKPlacemark(coordinate: place.position, addressDictionary: nil)
+        var source:MKMapItem = MKMapItem(placemark: sourcePlacemark)
+        var destination:MKMapItem = MKMapItem(placemark: destinationPlacemark)
+        var directionRequest:MKDirectionsRequest = MKDirectionsRequest()
+        
+        directionRequest.setSource(source)
+        directionRequest.setDestination(destination)
+        directionRequest.transportType = MKDirectionsTransportType.Automobile
+        directionRequest.requestsAlternateRoutes = true
+        
+        var directions:MKDirections = MKDirections(request: directionRequest)
+        
+        directions.calculateDirectionsWithCompletionHandler({
+            (response: MKDirectionsResponse!, error: NSError?) in
+            
+            var timeETA:NSTimeInterval?
+            var distanceETA:CLLocationDistance?
+            
+            if response != nil {
+                if response.routes.count > 0 {
+                    
+                    var route = response.routes.first! as MKRoute
+                    
+                    timeETA = route.expectedTravelTime
+                    
+                    distanceETA = route.distance
+                    
                 }
             }
-        }
+            place.place.setDistanceAndDurationETA(distanceETA, durETA: timeETA)
+            self.mapView.selectedMarker = place
+        })
     }
     
     /**
@@ -423,7 +481,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         On effectue une requête sur l'API de Google Maps afin de récupérer l'adresse du lieu de destination ainsi que la distance et le temps de parcours pour se rendre sur ce lieu, grâce à la position actuelle.
     
         La requête est effectuée de façon asynchrone grâce à une closure, avec un timeout de 10 secondes.
-    */ /**
+    */
     func getInformations(place: PlaceMarker) {
         if place.place.adresse == nil {
             let request = self.managerGM!.request(DataProvider.GoogleMaps.DistanceMatrix(self.locationManager.location.coordinate, place.position))
@@ -458,16 +516,17 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                                 duration = firstData["duration"]["text"].stringValue
                                 
                                 distance = firstData["distance"]["text"].stringValue
+                                
+                                println("Distance estimée \(distance)")
+                                println("Temps estimé \(duration)")
                             }
                             
                         }
-                            
-                        place.place.setInfos(adresse, dur: duration, dist: distance)
 
-                        self.mapView.selectedMarker = place
+                        //self.mapView.selectedMarker = place
                         
                     } else {
-                        self.mapView.selectedMarker = nil
+                        //self.mapView.selectedMarker = nil
                         AlertViewController().errorResponseGoogle()
                     }
                     
@@ -477,7 +536,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 }
             }
         }
-    }*/
+    }
     
     
 

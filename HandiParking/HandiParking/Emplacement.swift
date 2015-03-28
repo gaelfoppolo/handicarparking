@@ -22,11 +22,14 @@ class Emplacement {
     /// l'adresse approximative de l'emplacement (reverseGoogle)
     var adresse: String?
     
-    /// distance approximative jusqu'à l'emplacement (reverseGoogle -> texte)
-    var distance: CLLocationDistance?
+    /// distance à vol d'oiseau jusqu'à l'emplacement
+    var distance: CLLocationDistance!
     
-    /// temps de parcours approximatif jusqu'à l'emplacement (reverseGoogle -> texte)
-    var duration: String?
+    /// distance approximative jusqu'à l'emplacement
+    var distanceETA: CLLocationDistance!
+    
+    /// temps de parcours approximatif jusqu'à l'emplacement
+    var durationETA: NSTimeInterval?
     
     /// place playante
     var fee: String?
@@ -36,21 +39,6 @@ class Emplacement {
     
     /// nom du lieu
     var name: String?
-    
-    /// distance description
-    
-    var distanceDescription: String = {
-        get {
-            var distanceTexte:String?
-            if distance < 1000 {
-                distanceTexte = "\(Int(self.distance!)) m"
-            } else {
-                distanceTexte = String(format: "%.2f", (self.distance!/1000)) + " km"
-            }
-            return distanceTexte
-        }
-        
-    }()
     
     /**
         Initialise un nouvel emplacement avec les informations suivantes :
@@ -96,16 +84,56 @@ class Emplacement {
     
     func setAdresse(adr: String?) {
         self.adresse = adr ?? "Aucune adresse correspondante"
-        self.duration = ""//dur ?? "N/A"
     }
     
-    func getDistance() -> String? {
-        var distanceTexte:String?
-        if self.distance < 1000 {
-            distanceTexte = "\(Int(self.distance!)) m"
+    func setDistanceAndDurationETA(distETA: CLLocationDistance?, durETA: NSTimeInterval?) {
+        self.distanceETA = distETA ?? -1
+        self.durationETA = durETA ?? -1
+    }
+    
+    func getDistance() -> NSString {
+        var distance:CLLocationDistance
+        if self.distanceETA != -1 {
+            distance = self.distanceETA
         } else {
-            distanceTexte = String(format: "%.2f", (self.distance!/1000)) + " km"
+            distance = self.distance!
+        }
+        
+        var distanceTexte:String
+        if distance < 1000 {
+            distanceTexte = "\(Int(distance)) m"
+        } else {
+            distanceTexte = String(format: "%.2f", (distance/1000)) + " km"
         }
         return distanceTexte
     }
+    
+    func getDuration() -> NSString {
+        if self.durationETA != -1 {
+            let tii = NSInteger(self.durationETA!)
+            var seconds = tii % 60
+            var minutes = (tii / 60) % 60
+            var hours = (tii / 3600)
+            
+            let formatter = NSDateComponentsFormatter()
+            formatter.unitsStyle = .Short
+            
+            let components = NSDateComponents()
+            if minutes == 0 && hours == 0 {
+                components.second = seconds
+            } else {
+                components.hour = hours
+                components.minute = minutes
+            }
+            
+            let string = formatter.stringFromDateComponents(components)
+            
+            return NSString(string: string!)
+            
+        } else {
+            return "N/A"
+        }
+
+    }
+    
 }
