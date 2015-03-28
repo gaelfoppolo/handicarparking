@@ -201,12 +201,25 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999987" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dl4-Xb-f9Q" userLabel="Nb place found">
+                                <rect key="frame" x="0.0" y="64" width="320" height="25"/>
+                                <color key="backgroundColor" red="0.0" green="0.55686274509803924" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="z5s-y2-kZP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Ubb-74-Jby" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="17a-KO-Sti"/>
+                            <constraint firstItem="Dl4-Xb-f9Q" firstAttribute="trailing" secondItem="Ubb-74-Jby" secondAttribute="trailing" id="1Dk-vg-odn"/>
                             <constraint firstAttribute="trailing" secondItem="Ubb-74-Jby" secondAttribute="trailing" id="RfY-Ef-UPe"/>
+                            <constraint firstItem="Dl4-Xb-f9Q" firstAttribute="leading" secondItem="Ubb-74-Jby" secondAttribute="leading" id="UYw-Bw-Ha3"/>
                             <constraint firstItem="Ubb-74-Jby" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="hE3-bj-abU"/>
+                            <constraint firstItem="Dl4-Xb-f9Q" firstAttribute="top" secondItem="Ubb-74-Jby" secondAttribute="top" id="ks7-Ts-rUV"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Ubb-74-Jby" secondAttribute="bottom" id="pII-Hk-DH2"/>
                         </constraints>
                     </view>
@@ -240,6 +253,7 @@
                     <connections>
                         <outlet property="itineraryButtonText" destination="QPG-YG-gcl" id="Z0L-g4-sHY"/>
                         <outlet property="mapView" destination="Ubb-74-Jby" id="7Xh-hs-TFJ"/>
+                        <outlet property="resultsInfo" destination="Dl4-Xb-f9Q" id="HgN-a9-BzO"/>
                         <outlet property="streetViewButtonText" destination="pbJ-q0-J9F" id="Nb6-gx-oJu"/>
                     </connections>
                 </viewController>

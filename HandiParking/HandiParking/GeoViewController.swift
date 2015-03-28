@@ -21,6 +21,8 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     /// lien de sortie vers la carte
     @IBOutlet weak var mapView: GMSMapView!
     
+    @IBOutlet weak var resultsInfo: UILabel!
+    
     /// bouton pour lancer la recherche de places - action
     @IBAction func launchButtonAction(sender: AnyObject) {
         if ServicesController().servicesAreWorking() {
@@ -225,6 +227,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     */
     func launchRecherche() {
         mapView.clear()
+        resultsInfo.hidden = true
         self.markers.removeAll(keepCapacity: false)
         self.parkingSpaces.removeAll(keepCapacity: false)
         self.radius = SearchRadius(rawValue: 1)!
@@ -244,7 +247,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             self.radius = newRadius
             self.getEmplacements(locationManager.location.coordinate, radius: self.radius)
         } else {
-            
             createMarkersAndBoundsToDisplay()
         }
     }
@@ -254,11 +256,25 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         self.parkingSpaces.sort({ $0.distance < $1.distance })
         var newParkSpac = [ParkingSpace]()
         
-        for index in 0...DataProvider.OpenStreetMap.minimumResults {
+        for index in 0...DataProvider.OpenStreetMap.minimumResults-1 {
             newParkSpac.append(self.parkingSpaces[index])
         }
         
         self.parkingSpaces = newParkSpac
+    }
+    
+    func makeStringSearchResultsInfo() -> NSString {
+        var string = "\(self.parkingSpaces.count) place"
+        if self.parkingSpaces.count > 1 {
+            string += "s"
+        }
+        string += " dans un rayon de "
+        if self.radius.value > 500 {
+            string += "\(self.radius.value/1000) km"
+        } else {
+            string += "\(self.radius.value) m"
+        }
+        return string
     }
     
     /**
@@ -267,6 +283,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     */
     func createMarkersAndBoundsToDisplay() {
         SwiftSpinner.show("Récupération des informations...")
+        resultsInfo.text = makeStringSearchResultsInfo()
         var firstLocation: CLLocationCoordinate2D
         var bounds = GMSCoordinateBounds(coordinate: self.locationManager.location.coordinate, coordinate: self.locationManager.location.coordinate)
         if !self.parkingSpaces.isEmpty {
@@ -278,6 +295,12 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             }
             mapView.animateWithCameraUpdate(GMSCameraUpdate.fitBounds(bounds, withPadding: 50.0))
             SwiftSpinner.hide()
+            resultsInfo.alpha = 0.0
+            resultsInfo.hidden = false
+            UIView.animateWithDuration(2.5, animations: {
+                self.resultsInfo.alpha = 0.75
+            })
+            
         } else {
             SwiftSpinner.hide()
             AlertViewController().noPlacesFound(self.radius)
