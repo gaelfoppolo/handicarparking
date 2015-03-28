@@ -59,6 +59,10 @@ class StreetViewController: UIViewController {
                 
                 var panoView: GMSPanoramaView = GMSPanoramaView()
                 
+                panoView.autoresizingMask = .FlexibleWidth | .FlexibleHeight | .FlexibleBottomMargin |
+                    .FlexibleLeftMargin | .FlexibleRightMargin |
+                    .FlexibleTopMargin | .FlexibleBottomMargin
+                
                 panoView.camera = camera
                 
                 panoView.panorama = panorama
