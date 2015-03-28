@@ -12,8 +12,8 @@ import UIKit
 
 class PlaceMarker: GMSMarker {
     
-    // les marqueurs sont des emplacements auxquels on ajoute des layouts
-    let place: Emplacement
+    // emplacement contenant toutes informations additionnelles
+    let place: ParkingSpace
     
     /**
         Initialise un nouveau marqueur
@@ -22,7 +22,7 @@ class PlaceMarker: GMSMarker {
         
         :returns: Un marqueur contenant les informations de l'emplacement
     */
-    init(place: Emplacement) {
+    init(place: ParkingSpace) {
         
         self.place = place
         super.init()

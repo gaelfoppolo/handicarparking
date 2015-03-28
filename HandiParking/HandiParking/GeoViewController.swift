@@ -71,10 +71,10 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     var locationManager = CLLocationManager()
     
     /// rayon de recherche (mètres) des emplacements
-    var rayon: RayonRecherche = RayonRecherche(rawValue: 1)!
+    var radius: SearchRadius = SearchRadius(rawValue: 1)!
     
-    /// tableau des emplacements récupérés
-    var emplacements = [Emplacement]()
+    /// liste des emplacements récupérés
+    var parkingSpaces = [ParkingSpace]()
     
     /// gestionnaire des requêtes pour OpenStreetMap
     var managerOSM: Alamofire.Manager?
@@ -156,9 +156,9 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         if buttonIndex > 0 {
             if MapsAppsData().isInstalled(sheet.buttonTitleAtIndex(buttonIndex)) {
                 var marker = mapView.selectedMarker as PlaceMarker
-                var urlsheme: NSString = MapsAppsData().generateURLScheme(sheet.buttonTitleAtIndex(buttonIndex), location: self.locationManager.location.coordinate, marker: marker)
+                var urlscheme: NSString = MapsAppsData().generateURLScheme(sheet.buttonTitleAtIndex(buttonIndex), location: self.locationManager.location.coordinate, marker: marker)
                 // on parse l'url sinon les caractères Unicode font crasher lors de openURL()
-                var urlParse: NSString = urlsheme.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+                var urlParse: NSString = urlscheme.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
                 UIApplication.sharedApplication().openURL(NSURL(string: urlParse)!)
             } else {
                 AlertViewController().appsDeleted(sheet.buttonTitleAtIndex(buttonIndex))
@@ -226,9 +226,9 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     func launchRecherche() {
         mapView.clear()
         self.markers.removeAll(keepCapacity: false)
-        self.emplacements.removeAll(keepCapacity: false)
-        self.rayon = RayonRecherche(rawValue: 1)!
-        self.getEmplacements(locationManager.location.coordinate, radius: self.rayon)
+        self.parkingSpaces.removeAll(keepCapacity: false)
+        self.radius = SearchRadius(rawValue: 1)!
+        self.getEmplacements(locationManager.location.coordinate, radius: self.radius)
     }
     
     /**
@@ -236,13 +236,13 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         Si en revanche il y a assez de résultats, on peut préparer les données pour le traitement/affichage
     */
     func searchResultsController() {
-        if(self.emplacements.count >= DataProvider.OpenStreetMap.minimumResults) {
+        if(self.parkingSpaces.count >= DataProvider.OpenStreetMap.minimumResults) {
             sortAndFilterNearestPlace()
             createMarkersAndBoundsToDisplay()
-        } else if let newRayon = RayonRecherche(rawValue: self.rayon.rawValue+1){
-            self.emplacements.removeAll(keepCapacity: false)
-            self.rayon = newRayon
-            self.getEmplacements(locationManager.location.coordinate, radius: self.rayon)
+        } else if let newRadius = SearchRadius(rawValue: self.radius.rawValue+1){
+            self.parkingSpaces.removeAll(keepCapacity: false)
+            self.radius = newRadius
+            self.getEmplacements(locationManager.location.coordinate, radius: self.radius)
         } else {
             
             createMarkersAndBoundsToDisplay()
@@ -251,14 +251,14 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     
     func sortAndFilterNearestPlace() {
 
-        self.emplacements.sort({ $0.distance < $1.distance })
-        var newEmplac = [Emplacement]()
+        self.parkingSpaces.sort({ $0.distance < $1.distance })
+        var newParkSpac = [ParkingSpace]()
         
         for index in 0...DataProvider.OpenStreetMap.minimumResults {
-            newEmplac.append(self.emplacements[index])
+            newParkSpac.append(self.parkingSpaces[index])
         }
         
-        self.emplacements = newEmplac
+        self.parkingSpaces = newParkSpac
     }
     
     /**
@@ -269,8 +269,8 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         SwiftSpinner.show("Récupération des informations...")
         var firstLocation: CLLocationCoordinate2D
         var bounds = GMSCoordinateBounds(coordinate: self.locationManager.location.coordinate, coordinate: self.locationManager.location.coordinate)
-        if !self.emplacements.isEmpty {
-            for place: Emplacement in self.emplacements {
+        if !self.parkingSpaces.isEmpty {
+            for place: ParkingSpace in self.parkingSpaces {
                 let marker = PlaceMarker(place: place)
                 bounds = bounds.includingCoordinate(marker.position)
                 self.markers.append(marker)
@@ -280,7 +280,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             SwiftSpinner.hide()
         } else {
             SwiftSpinner.hide()
-            AlertViewController().noPlacesFound()
+            AlertViewController().noPlacesFound(self.radius)
         }
         
     }
@@ -295,9 +295,9 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         La requête est effectuée de façon asynchrone grâce à une closure, avec un timeout de 10 secondes.
         Quand la requête est un succès, on appelle une fonction contrôleur qui va vérifier les résultats.    
     */
-    func getEmplacements(coordinate: CLLocationCoordinate2D, radius: RayonRecherche) {
+    func getEmplacements(coordinate: CLLocationCoordinate2D, radius: SearchRadius) {
         
-        if self.rayon.rawValue % 2 == 0 {
+        if self.radius.rawValue % 2 == 0 {
             SwiftSpinner.show("Recherche en cours...")
         } else {
             SwiftSpinner.show("Patientez...")
@@ -334,8 +334,8 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                         var nodeLocation = CLLocation(latitude: NSString(string: lat!).doubleValue, longitude: NSString(string: lon!).doubleValue)
                         distance = self.locationManager.location.distanceFromLocation(nodeLocation)
 
-                        var emplacement = Emplacement(id: id, lat: lat, lon: lon, name: name, fee: fee, capacity: capacity, distance: distance)
-                        self.emplacements.append(emplacement)
+                        var parkingSpace = ParkingSpace(id: id, lat: lat, lon: lon, name: name, fee: fee, capacity: capacity, distance: distance)
+                        self.parkingSpaces.append(parkingSpace)
                     }
             
                 self.searchResultsController()
@@ -358,7 +358,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             self.mapView.selectedMarker = nil
         }
         if ServicesController().servicesAreWorking() && locationManager.location != nil {
-            if (marker as PlaceMarker).place.adresse == nil {
+            if (marker as PlaceMarker).place.address == nil {
                 reverseGeocodeCoordinate(marker as PlaceMarker)
             }
             if (marker as PlaceMarker).place.distanceETA == nil && (marker as PlaceMarker).place.durationETA == nil {
@@ -378,13 +378,13 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     */
     func mapView(mapView: GMSMapView!, markerInfoWindow marker: GMSMarker!) -> UIView! {
         let placeMarker = marker as PlaceMarker
-        var boolCheck:Bool = (placeMarker.place.adresse == nil) || (placeMarker.place.distanceETA == nil) || (placeMarker.place.durationETA == nil)
+        var optionalDataHasNotBeenSet:Bool = (placeMarker.place.address == nil) || (placeMarker.place.distanceETA == nil) || (placeMarker.place.durationETA == nil)
         if let infoView = UIView.viewFromNibName("InfoMarkerWindow") as? InfoMarkerWindow {
-            if (boolCheck) {
+            if (optionalDataHasNotBeenSet) {
                 infoView.lock()
             } else {
                 infoView.unlock()
-                infoView.adresse.text = placeMarker.place.adresse
+                infoView.address.text = placeMarker.place.address
                 infoView.duration.text = placeMarker.place.getDuration()
                 infoView.distance.text = placeMarker.place.getDistance()
                 infoView.name.text = placeMarker.place.name
@@ -413,17 +413,17 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     func reverseGeocodeCoordinate(place: PlaceMarker) {
             let geocoder = GMSGeocoder()
             geocoder.reverseGeocodeCoordinate(place.position) { response , error in
-                var adresse:String?
+                var address:String?
                 if error == nil {
                     
-                    if let address = response?.firstResult() {
+                    if let addressGet = response?.firstResult() {
                         
-                        let lines = address.lines as [String]
-                        adresse = join(", ", lines)
+                        let lines = addressGet.lines as [String]
+                        address = join(", ", lines)
                     }
                     
                 }
-                place.place.setAdresse(adresse)
+                place.place.setAddress(address)
                 self.mapView.selectedMarker = place
             }
     }
@@ -483,7 +483,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         La requête est effectuée de façon asynchrone grâce à une closure, avec un timeout de 10 secondes.
     */
     func getInformations(place: PlaceMarker) {
-        if place.place.adresse == nil {
+        if place.place.address == nil {
             let request = self.managerGM!.request(DataProvider.GoogleMaps.DistanceMatrix(self.locationManager.location.coordinate, place.position))
             request.validate()
             request.responseSwiftyJSON { request, response, json, error in

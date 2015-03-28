@@ -22,7 +22,6 @@ struct MapsAppsData {
         sheet.title = title
         sheet.addButtonWithTitle("Annuler")
         sheet.cancelButtonIndex = 0
-        //sheet.addButtonWithTitle("Plans")
         
         var installApps = MapsAppsData().getListOfInstalledMapsApps()
         
@@ -44,11 +43,11 @@ struct MapsAppsData {
     }
     
     func isInstalled(appName: String) -> Bool {
-        var urlsheme = listAppsMaps[appName]!
-        return UIApplication.sharedApplication().canOpenURL(NSURL(string: urlsheme)!)
+        var urlscheme = listAppsMaps[appName]!
+        return UIApplication.sharedApplication().canOpenURL(NSURL(string: urlscheme)!)
     }
     
-    func generateURLScheme(appName:String, location: CLLocationCoordinate2D, marker: PlaceMarker) -> String {
+    func generateURLScheme(appName:String, location: CLLocationCoordinate2D, marker: PlaceMarker) -> NSString {
         
         let baseURL = listAppsMaps[appName]!
         var parameters: String?

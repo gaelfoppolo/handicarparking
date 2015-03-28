@@ -14,8 +14,8 @@
 		935D42681AB19355005779FA /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 935D42671AB19355005779FA /* GoogleMaps.framework */; };
 		935D426A1AB19361005779FA /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 935D42691AB19361005779FA /* GoogleMaps.bundle */; };
 		935D42701AB1AAEA005779FA /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D426F1AB1AAEA005779FA /* DataProvider.swift */; };
-		935D42821AB1DC05005779FA /* Emplacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D42811AB1DC05005779FA /* Emplacement.swift */; };
-		9375D5FB1AC1999200A583B5 /* Lieu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9375D5FA1AC1999200A583B5 /* Lieu.swift */; };
+		935D42821AB1DC05005779FA /* ParkingSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D42811AB1DC05005779FA /* ParkingSpace.swift */; };
+		9375D5FB1AC1999200A583B5 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9375D5FA1AC1999200A583B5 /* Place.swift */; };
 		937626FF1AB031A80059C23D /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937626FE1AB031A80059C23D /* HelpViewController.swift */; };
 		937627011AB031D60059C23D /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937627001AB031D60059C23D /* AboutViewController.swift */; };
 		937640D01AC4127100716122 /* RAMBounceAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640C51AC4127000716122 /* RAMBounceAnimation.swift */; };
@@ -70,7 +70,7 @@
 		93D2E8791AAF2F050028ED1B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D2E8781AAF2F050028ED1B /* SystemConfiguration.framework */; };
 		93D2E9111AAF3C1B0028ED1B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D2E8F01AAF3BDA0028ED1B /* Alamofire.framework */; };
 		93D2E9121AAF3C1B0028ED1B /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 93D2E8F01AAF3BDA0028ED1B /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		93DC120E1AB2DE9200C244DB /* RayonRecherche.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DC120D1AB2DE9200C244DB /* RayonRecherche.swift */; };
+		93DC120E1AB2DE9200C244DB /* SearchRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DC120D1AB2DE9200C244DB /* SearchRadius.swift */; };
 		93EF79071AC2A4550053A329 /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93EF79061AC2A4550053A329 /* TableCell.xib */; };
 		93EF793E1AC2B5C70053A329 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EF793D1AC2B5C70053A329 /* SearchViewController.swift */; };
 		93EF79401AC2B69B0053A329 /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EF793F1AC2B69B0053A329 /* BaseTableView.swift */; };
@@ -181,8 +181,8 @@
 		935D42671AB19355005779FA /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		935D42691AB19361005779FA /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		935D426F1AB1AAEA005779FA /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
-		935D42811AB1DC05005779FA /* Emplacement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emplacement.swift; sourceTree = "<group>"; };
-		9375D5FA1AC1999200A583B5 /* Lieu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lieu.swift; sourceTree = "<group>"; };
+		935D42811AB1DC05005779FA /* ParkingSpace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingSpace.swift; sourceTree = "<group>"; };
+		9375D5FA1AC1999200A583B5 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		937626FE1AB031A80059C23D /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		937627001AB031D60059C23D /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		937640C51AC4127000716122 /* RAMBounceAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMBounceAnimation.swift; sourceTree = "<group>"; };
@@ -241,7 +241,7 @@
 		93D2E8781AAF2F050028ED1B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		93D2E87A1AAF2FAD0028ED1B /* HandiParking-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HandiParking-Bridging-Header.h"; sourceTree = "<group>"; };
 		93D2E8E81AAF3BDA0028ED1B /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "../../../Downloads/Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
-		93DC120D1AB2DE9200C244DB /* RayonRecherche.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RayonRecherche.swift; sourceTree = "<group>"; };
+		93DC120D1AB2DE9200C244DB /* SearchRadius.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRadius.swift; sourceTree = "<group>"; };
 		93EF79061AC2A4550053A329 /* TableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
 		93EF793D1AC2B5C70053A329 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		93EF793F1AC2B69B0053A329 /* BaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
@@ -401,9 +401,9 @@
 				93C83F501AAED9AD005990C2 /* HandiParking.xcdatamodeld */,
 				935D426F1AB1AAEA005779FA /* DataProvider.swift */,
 				93CD3CF41AC0170200E6E385 /* MapsAppsData.swift */,
-				935D42811AB1DC05005779FA /* Emplacement.swift */,
-				93DC120D1AB2DE9200C244DB /* RayonRecherche.swift */,
-				9375D5FA1AC1999200A583B5 /* Lieu.swift */,
+				935D42811AB1DC05005779FA /* ParkingSpace.swift */,
+				93DC120D1AB2DE9200C244DB /* SearchRadius.swift */,
+				9375D5FA1AC1999200A583B5 /* Place.swift */,
 			);
 			name = Modeles;
 			sourceTree = "<group>";
@@ -708,7 +708,7 @@
 				93C83F541AAED9AD005990C2 /* GeoViewController.swift in Sources */,
 				9391A67C1AC4AA5A00BD64C7 /* DTIAnimSpotify.swift in Sources */,
 				9345FBD11AB2FFDD00D4F686 /* PlaceMarker.swift in Sources */,
-				935D42821AB1DC05005779FA /* Emplacement.swift in Sources */,
+				935D42821AB1DC05005779FA /* ParkingSpace.swift in Sources */,
 				9391A67F1AC4AA5A00BD64C7 /* DTIAnimWp8.swift in Sources */,
 				9396F5BE1AB07BDA00784082 /* IJReachbility.swift in Sources */,
 				9391A67E1AC4AA5A00BD64C7 /* DTIAnimWave.swift in Sources */,
@@ -739,11 +739,11 @@
 				939F00C71AB834A6007B928E /* UIViewExtension.swift in Sources */,
 				9391A6791AC4AA5A00BD64C7 /* DTIAnimProtocol.swift in Sources */,
 				937640D11AC4127100716122 /* RAMFrameItemAnimation.swift in Sources */,
-				9375D5FB1AC1999200A583B5 /* Lieu.swift in Sources */,
+				9375D5FB1AC1999200A583B5 /* Place.swift in Sources */,
 				93CCBA431AB6DDF800FCCB1E /* ServicesController.swift in Sources */,
 				937626FF1AB031A80059C23D /* HelpViewController.swift in Sources */,
 				93C83F521AAED9AD005990C2 /* HandiParking.xcdatamodeld in Sources */,
-				93DC120E1AB2DE9200C244DB /* RayonRecherche.swift in Sources */,
+				93DC120E1AB2DE9200C244DB /* SearchRadius.swift in Sources */,
 				9391A67B1AC4AA5A00BD64C7 /* DTIAnimRotatingPlane.swift in Sources */,
 				93CE8E861AC1529A008F09BF /* StreetViewController.swift in Sources */,
 				9391A6761AC4AA5A00BD64C7 /* DTIActivityIndicatorView.swift in Sources */,

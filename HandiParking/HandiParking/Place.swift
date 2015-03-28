@@ -1,5 +1,5 @@
 //
-//  Lieu.swift
+//  Place.swift
 //  HandiParking
 //
 //  Created by Gaël on 24/03/2015.
@@ -8,29 +8,23 @@
 
 import Foundation
 
-class Lieu: NSObject, Printable {
+class Place: NSObject, Printable {
     
     //MARK: Attributs
     
     let placeid: String
-    let nom: String
-    
-    //MARK: description de l'objet
-    
-    override var description: String {
-        return "ID : \(placeid) \nNom : \(nom) \n"
-    }
+    let name: String
     
     //MARK: Initialisateur
     
-    init(placeid: String?, nom: String?) {
+    init(placeid: String?, name: String?) {
         self.placeid = placeid ?? ""
-        self.nom = nom ?? ""
+        self.name = name ?? ""
     }
     
     override init() {
         self.placeid = ""
-        self.nom = ""
+        self.name = ""
         super.init()
     }
 }

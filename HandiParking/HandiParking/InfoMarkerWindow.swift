@@ -10,7 +10,7 @@ import UIKit
 
 @IBDesignable class InfoMarkerWindow: UIView {
     
-    @IBOutlet weak var adresse: UILabel!
+    @IBOutlet weak var address: UILabel!
 
     @IBOutlet weak var duration: UILabel!
     
@@ -34,13 +34,7 @@ import UIKit
     func setup() {
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 15
-        //self.clipsToBounds = true
         self.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.8)
-        
-        //var blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
-        //var blurEffectView = UIVisualEffectView(effect: blurEffect)
-        //blurEffectView.frame = self.bounds
-        //self.addSubview(blurEffectView)
 
     }
     

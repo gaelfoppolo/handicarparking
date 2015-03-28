@@ -35,14 +35,14 @@ struct DataProvider {
             :param: le rayon de recherche (en mètres)
         
         */
-        case GetNodes(CLLocationCoordinate2D, RayonRecherche)
+        case GetNodes(CLLocationCoordinate2D, SearchRadius)
         
         var URLRequest: NSURLRequest {
             let (parameters: [String: AnyObject]) = {
                 switch self {
                     
                 case .GetNodes (let coordinate, let rayon):
-                    let params = ["data": "[out:json];(node(around:\(rayon.valeur),\(coordinate.latitude),\(coordinate.longitude))['amenity'~'parking|parking_space']['capacity:disabled'~'yes|[0-9]*[0-9]'];node(around:\(rayon.valeur),\(coordinate.latitude),\(coordinate.longitude))['amenity'~'parking|parking_space']['wheelchair'='yes'];node(around:\(rayon.valeur),\(coordinate.latitude),\(coordinate.longitude))['amenity'='parking_space']['parking_space'='disable'];);out meta \(OpenStreetMap.maximumResults);"]
+                    let params = ["data": "[out:json];(node(around:\(rayon.value),\(coordinate.latitude),\(coordinate.longitude))['amenity'~'parking|parking_space']['capacity:disabled'~'yes|[0-9]*[0-9]'];node(around:\(rayon.value),\(coordinate.latitude),\(coordinate.longitude))['amenity'~'parking|parking_space']['wheelchair'='yes'];node(around:\(rayon.value),\(coordinate.latitude),\(coordinate.longitude))['amenity'='parking_space']['parking_space'='disable'];);out meta \(OpenStreetMap.maximumResults);"]
                     return (params)
                 }
             }()

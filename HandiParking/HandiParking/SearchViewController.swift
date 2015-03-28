@@ -14,9 +14,9 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
     
     // MARK : Properties
     
-    var searchArray = [Lieu]()
-    var countrySearchController: UISearchController!
-    var searchTimer = NSTimer()
+    var placesResults = [Place]()
+    var placeSearchController: UISearchController!
+    var timerBeforeLaunchSearch = NSTimer()
     
     var inSearching: Bool = false
 
@@ -48,32 +48,32 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        // Configure countrySearchController
+        // Configure placeSearchController
         
-        self.countrySearchController = UISearchController(searchResultsController: nil)
-        self.countrySearchController.searchResultsUpdater = self
-        self.countrySearchController.searchBar.sizeToFit()
-        self.countrySearchController.searchBar.barTintColor = self.navigationController?.navigationBar.barTintColor
-        self.countrySearchController.searchBar.translucent = true
-        tableView.tableHeaderView = self.countrySearchController.searchBar
+        self.placeSearchController = UISearchController(searchResultsController: nil)
+        self.placeSearchController.searchResultsUpdater = self
+        self.placeSearchController.searchBar.sizeToFit()
+        self.placeSearchController.searchBar.barTintColor = self.navigationController?.navigationBar.barTintColor
+        self.placeSearchController.searchBar.translucent = true
+        tableView.tableHeaderView = self.placeSearchController.searchBar
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None;
-        //self.countrySearchController.searchBar.searchBarStyle = .Prominent
+        //self.placeSearchController.searchBar.searchBarStyle = .Prominent
         
-        self.countrySearchController.delegate = self
-        self.countrySearchController.dimsBackgroundDuringPresentation = false // default is YES
-        self.countrySearchController.searchBar.delegate = self    // so we can monitor text changes + others
+        self.placeSearchController.delegate = self
+        self.placeSearchController.dimsBackgroundDuringPresentation = false // default is YES
+        self.placeSearchController.searchBar.delegate = self    // so we can monitor text changes + others
         
         // Search is now just presenting a view controller. As such, normal view controller
         // presentation semantics apply. Namely that presentation will walk up the view controller
         // hierarchy until it finds the root view controller or one that defines a presentation context.
         definesPresentationContext = true
         
-        self.countrySearchController.searchBar.tintColor = UIColor.whiteColor()
+        self.placeSearchController.searchBar.tintColor = UIColor.whiteColor()
         
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.countrySearchController.searchBar.becomeFirstResponder()
+        self.placeSearchController.searchBar.becomeFirstResponder()
     }
     
     
@@ -84,7 +84,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        self.countrySearchController.searchBar.resignFirstResponder()
+        self.placeSearchController.searchBar.resignFirstResponder()
     }
     
     // MARK: UISearchControllerDelegate
@@ -113,7 +113,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        if let searchBarValue:String = self.countrySearchController.searchBar.text {
+        if let searchBarValue:String = self.placeSearchController.searchBar.text {
             if (searchBarValue.isEmpty) {
                 var messageLabel:UILabel
                 messageLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
@@ -145,7 +145,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
                 
                self.tableView.backgroundView = loadingView
             }
-            else if (self.searchArray.count == 0) {
+            else if (self.placesResults.count == 0) {
                 var messageLabel:UILabel
                 messageLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
                 messageLabel.text = "Aucun lieu ne correpond à votre recherche 😞"
@@ -163,14 +163,14 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
         else {
             self.tableView.backgroundView = nil
         }
-        return self.searchArray.count
+        return self.placesResults.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         var cell = self.tableView.dequeueReusableCellWithIdentifier(Constants.TableViewCell.identifier, forIndexPath: indexPath) as UITableViewCell
         //cell.textLabel?.text! = self.searchArray[indexPath.row].nom
-        let place = self.searchArray[indexPath.row]
+        let place = self.placesResults[indexPath.row]
         configureCell(cell, forPlace: place)
 
         return cell
@@ -181,20 +181,20 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         
         if ServicesController().checkInternetConnection() {
-            let searchString:String = self.countrySearchController.searchBar.text
+            let searchString:String = self.placeSearchController.searchBar.text
             
             self.inSearching = false
             
             if searchString.isEmpty {
-                self.searchArray.removeAll(keepCapacity: false)
+                self.placesResults.removeAll(keepCapacity: false)
                 self.tableView.reloadData()
             } else {
-                if self.searchTimer.valid {
-                    self.searchTimer.invalidate()
+                if self.timerBeforeLaunchSearch.valid {
+                    self.timerBeforeLaunchSearch.invalidate()
                     self.request?.cancel()
                 }
                 
-                self.searchTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("launchSearch:"), userInfo:nil, repeats:false)
+                self.timerBeforeLaunchSearch = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("launchSearch:"), userInfo:nil, repeats:false)
             }
         }
         
@@ -204,11 +204,11 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
         
         self.inSearching = true
         
-        self.searchArray.removeAll(keepCapacity: false)
+        self.placesResults.removeAll(keepCapacity: false)
         
         self.tableView.reloadData()
 
-        if let searchString:String = self.countrySearchController.searchBar.text {
+        if let searchString:String = self.placeSearchController.searchBar.text {
             
             if !searchString.isEmpty {
                 
@@ -225,11 +225,11 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
                                 
                                 for lieu in predictions {
                                     var placeid: String? = lieu["place_id"].stringValue
-                                    var nom: String? = lieu["description"].stringValue
+                                    var name: String? = lieu["description"].stringValue
                                     var types = lieu["types"].arrayValue
                                     if !contains(types, "country") {
-                                        var point = Lieu(placeid: placeid, nom: nom)
-                                        self.searchArray.append(point)
+                                        var point = Place(placeid: placeid, name: name)
+                                        self.placesResults.append(point)
                                     }
                                 }
                                 
@@ -239,7 +239,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
                             
                         } else {
                             self.inSearching = false
-                            self.countrySearchController.searchBar.resignFirstResponder()
+                            self.placeSearchController.searchBar.resignFirstResponder()
                             AlertViewController().errorResponseGoogle()
                             self.tableView.reloadData()
                         }
@@ -248,7 +248,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
                         self.inSearching = false
                         if error?.code != -999 {
                             AlertViewController().errorRequest()
-                            self.countrySearchController.searchBar.resignFirstResponder()
+                            self.placeSearchController.searchBar.resignFirstResponder()
                         }
                         self.tableView.reloadData()
                     }
@@ -279,7 +279,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
         if segue.identifier == "placeSelected" {
             let searchSelectedViewController = segue.destinationViewController as SearchSelectedViewController
             let indexPath = self.tableView.indexPathForSelectedRow()!
-            searchSelectedViewController.place = self.searchArray[indexPath.row]
+            searchSelectedViewController.place = self.placesResults[indexPath.row]
             //self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Recherche", style: .Plain, target: nil, action: nil)
         }
     }

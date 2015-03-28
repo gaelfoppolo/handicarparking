@@ -1,5 +1,5 @@
 //
-//  Emplacement.swift
+//  ParkingSpace.swift
 //  HandiParking
 //
 //  Created by Gaël on 12/03/2015.
@@ -8,7 +8,7 @@
 
 // MARK: Classe gérant les emplacements récupérés grâce à OpenStreetMap
 
-class Emplacement {
+class ParkingSpace {
     
     /// l'id de la node récupérée
     var id_node: String
@@ -20,24 +20,24 @@ class Emplacement {
     var longitude: String
     
     /// l'adresse approximative de l'emplacement (reverseGoogle)
-    var adresse: String?
+    var address: String?
     
-    /// distance à vol d'oiseau jusqu'à l'emplacement
+    /// distance (à vol d'oiseau) jusqu'à l'emplacement
     var distance: CLLocationDistance!
     
-    /// distance approximative jusqu'à l'emplacement
+    /// distance (estimée) de parcours jusqu'à l'emplacement
     var distanceETA: CLLocationDistance!
     
-    /// temps de parcours approximatif jusqu'à l'emplacement
+    /// temps (estimé) de parcours jusqu'à l'emplacement
     var durationETA: NSTimeInterval?
     
-    /// place playante
+    /// emplacement payant/gratuit
     var fee: String?
     
     /// nombre d'emplacements
     var capacity: String?
     
-    /// nom du lieu
+    /// nom du lieu associé à l'emplacement
     var name: String?
     
     /**
@@ -82,8 +82,8 @@ class Emplacement {
         }
     }
     
-    func setAdresse(adr: String?) {
-        self.adresse = adr ?? "Aucune adresse correspondante"
+    func setAddress(adr: String?) {
+        self.address = adr ?? "Aucune adresse correspondante"
     }
     
     func setDistanceAndDurationETA(distETA: CLLocationDistance?, durETA: NSTimeInterval?) {

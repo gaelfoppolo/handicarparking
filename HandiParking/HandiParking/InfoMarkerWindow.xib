@@ -173,7 +173,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="adresse" destination="V8d-Yu-fyP" id="dX9-N8-YQQ"/>
+                <outlet property="address" destination="V8d-Yu-fyP" id="dzP-V1-Gnj"/>
                 <outlet property="capacity" destination="qAd-AS-KQI" id="M0F-NT-BWT"/>
                 <outlet property="distance" destination="18t-BE-Zxp" id="vJI-jT-AGf"/>
                 <outlet property="duration" destination="fSe-Gu-m2g" id="h9h-yG-dX4"/>

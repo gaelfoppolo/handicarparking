@@ -1,5 +1,5 @@
 //
-//  RayonRecherche.swift
+//  SearchRadius.swift
 //  HandiParking
 //
 //  Created by Gaël on 13/03/2015.
@@ -10,7 +10,7 @@ import Foundation
 
 /// Rayon (en mètres) lors de la recherche des emplacements avec OpenStreetMap
 
-enum RayonRecherche: Int {
+enum SearchRadius: Int {
     
     /**  
         Quatre rayons (mètres) : 
@@ -20,15 +20,15 @@ enum RayonRecherche: Int {
         - 10km
         - 25km  
     */
-    case rayon1 = 1, rayon2, rayon3, rayon4, rayon5
+    case radius1 = 1, radius2, radius3, radius4, radius5
     
-    var valeur : Int {
+    var value : Int {
         switch self {
-            case .rayon1: return 500;
-            case .rayon2: return 1000;
-            case .rayon3: return 5000
-            case .rayon4: return 10000;
-            case .rayon5: return 25000;
+            case .radius1: return 500;
+            case .radius2: return 1000;
+            case .radius3: return 5000
+            case .radius4: return 10000;
+            case .radius5: return 25000;
         }
     }
 }

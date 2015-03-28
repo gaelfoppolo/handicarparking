@@ -41,8 +41,8 @@ class BaseTableViewController: UITableViewController {
     
     // MARK:
     
-    func configureCell(cell: UITableViewCell, forPlace place: Lieu) {
-        cell.textLabel?.text = place.nom
+    func configureCell(cell: UITableViewCell, forPlace place: Place) {
+        cell.textLabel?.text = place.name
         cell.imageView?.image = UIImage(named: "marker")
         //cell.detailTextLabel?.text = "what display?"
     }
