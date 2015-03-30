@@ -8,13 +8,25 @@
 
 import UIKit
 
-extension UIView {
+/// Extension de UIView
 
+extension UIView {
+    
+    /**
+        Charge un xib grâce à son nom
+    
+        :param: name Le nom identifiant le nib
+    
+        :returns: une instance du xib
+    */
     class func viewFromNibName(name: String) -> UIView? {
         let views = NSBundle.mainBundle().loadNibNamed(name, owner: nil, options: nil)
         return views.first as? UIView
     }
     
+    /**
+        Lock la vue appelante : vue devient sombre et un message de chargement s'affiche
+    */
     func lock() {
         if let lockView = viewWithTag(10) {
             // la vue est déjà lock
@@ -40,6 +52,9 @@ extension UIView {
         }
     }
     
+    /**
+        Unlock la vue appelante : on supprime la vue de lock
+    */
     func unlock() {
         if let lockView = self.viewWithTag(10) {
             UIView.animateWithDuration(0.5, animations: {

@@ -12,8 +12,12 @@ import UIKit
 
 class PlaceMarker: GMSMarker {
     
+    // MARK: Attributs
+    
     // emplacement contenant toutes informations additionnelles
     let place: ParkingSpace
+    
+    // MARK: Initialisateur
     
     /**
         Initialise un nouveau marqueur

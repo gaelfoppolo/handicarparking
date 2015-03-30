@@ -56,7 +56,7 @@ struct AlertViewController {
         Erreur - Pas d'emplacements trouvés lors de la recherche OSM
     */
     internal func noPlacesFound(radius: SearchRadius) {
-        SCLAlertView().showError("😁", subTitle:"Il semblerait qu'aucun emplacement n'est été trouvé dans un rayon de \((radius.value)/1000) kilomètres... C'est fortuit !", closeButtonTitle:"OK")
+        SCLAlertView().showWarning("😁", subTitle:"Il semblerait qu'aucun emplacement n'est été trouvé dans un rayon de \((radius.value)/1000) kilomètres... C'est fortuit !", closeButtonTitle:"OK")
     }
     
     /**

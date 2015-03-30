@@ -22,6 +22,7 @@ enum SearchRadius: Int {
     */
     case radius1 = 1, radius2, radius3, radius4, radius5
     
+    /// retourne la valeur (en m) du rayon choisi
     var value : Int {
         switch self {
             case .radius1: return 500;

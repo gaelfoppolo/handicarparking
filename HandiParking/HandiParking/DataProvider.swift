@@ -1,5 +1,5 @@
 //
-//  GoogleDataProvider.swift
+//  DataProvider.swift
 //  HandiParking
 //
 //  Created by Gaël Foppolo on 3/12/15.

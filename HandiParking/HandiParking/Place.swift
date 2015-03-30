@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 KeepCore. All rights reserved.
 //
 
+/// Lieu choisi lors de la recherche par nom
+
 import Foundation
 
 class Place: NSObject, Printable {

@@ -6,9 +6,11 @@
 //  Copyright (c) 2015 KeepCore. All rights reserved.
 //
 
-// MARK: Classe gérant les emplacements récupérés grâce à OpenStreetMap
+/// Emplacements récupérés grâce à OpenStreetMap
 
 class ParkingSpace {
+    
+    // MARK: Attributs
     
     /// l'id de la node récupérée
     var id_node: String
@@ -34,11 +36,13 @@ class ParkingSpace {
     /// emplacement payant/gratuit
     var fee: String?
     
-    /// nombre d'emplacements
+    /// nombre de places
     var capacity: String?
     
     /// nom du lieu associé à l'emplacement
     var name: String?
+    
+    // MARK: Initialisateurs
     
     /**
         Initialise un nouvel emplacement avec les informations suivantes :
@@ -82,15 +86,34 @@ class ParkingSpace {
         }
     }
     
+    // MARK: Fonctions
+    
+    /**
+        Met à jour l'adresse d'un emplacement ou défaut si aucune adresse
+    
+        :param: adr l'adresse à mettre à jour
+
+    */
     func setAddress(adr: String?) {
         self.address = adr ?? "Aucune adresse correspondante"
     }
     
+    /**
+        Met à jour la distance et la durée estimée de parcours jusqu'à la place ou défaut si aucune estimation
+    
+        :param: distETA distance de parcours estimée
+        :param: durETA durée de parcours estimée
+ 
+    */
     func setDistanceAndDurationETA(distETA: CLLocationDistance?, durETA: NSTimeInterval?) {
         self.distanceETA = distETA ?? -1
         self.durationETA = durETA ?? -1
     }
+    /**
+        Génère sous une forme plus lisible par l'utilisateur, la distance
     
+        :returns: la distance sous forme lisible
+    */
     func getDistance() -> NSString {
         var distance:CLLocationDistance
         if self.distanceETA != -1 {
@@ -108,6 +131,11 @@ class ParkingSpace {
         return distanceTexte
     }
     
+    /**
+        Génère sous une forme plus lisible par l'utilisateur, la durée ou défaut si pas de durée
+    
+        :returns: la durée sous forme lisible
+    */
     func getDuration() -> NSString {
         if self.durationETA != -1 {
             let tii = NSInteger(self.durationETA!)
@@ -116,7 +144,7 @@ class ParkingSpace {
             var hours = (tii / 3600)
             
             let formatter = NSDateComponentsFormatter()
-            formatter.unitsStyle = .Short
+            formatter.unitsStyle = .Abbreviated
             
             let components = NSDateComponents()
             if minutes == 0 && hours == 0 {
