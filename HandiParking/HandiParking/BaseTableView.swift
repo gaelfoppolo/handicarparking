@@ -6,16 +6,12 @@
 //  Copyright (c) 2015 KeepCore. All rights reserved.
 //
 
-/*
-Abstract:
-
-Base or common view controller to share a common UITableViewCell prototype between subclasses.
-
-*/
+/// ViewController commune pour partager un prototype d'UITableViewCell commune entre les sous classes
 
 import UIKit
 
 class BaseTableViewController: UITableViewController {
+    
     // MARK: Types
     
     struct Constants {
@@ -28,22 +24,22 @@ class BaseTableViewController: UITableViewController {
         }
     }
     
-    // MARK: View Life Cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let nib = UINib(nibName: Constants.Nib.name, bundle: nil)
         
-        // Required if our subclasses are to use: dequeueReusableCellWithIdentifier:forIndexPath:
+        // Requis si nos sous classes utilisent dequeueReusableCellWithIdentifier:forIndexPath:
         tableView.registerNib(nib, forCellReuseIdentifier: Constants.TableViewCell.identifier)
     }
     
-    // MARK:
-    
+    /**
+        Configure la cellule avec les données de la place
+        :param: cell la cellule à remplir avec les données
+        :param: place les données utilisées pour remplir
+    */
     func configureCell(cell: UITableViewCell, forPlace place: Place) {
         cell.textLabel?.text = place.name
         cell.imageView?.image = UIImage(named: "marker")
-        //cell.detailTextLabel?.text = "what display?"
     }
 }

@@ -10,22 +10,29 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
+/// Contrôleur de la vue recherche 🔍
+
 class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISearchControllerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating {
     
     // MARK : Properties
     
+    /// la liste des lieux trouvées
     var placesResults = [Place]()
+    
+    /// le contrôleur de la barre de recherche
     var placeSearchController: UISearchController!
+    
+    /// timer pour lancer la recherche
     var timerBeforeLaunchSearch = NSTimer()
     
+    // booléen en recherche ou non
     var inSearching: Bool = false
 
     /// gestionnaire des requêtes pour Google Maps
     var managerGM: Alamofire.Manager?
     
+    // requête de la recherche Google Autocomplete (permet de cancel)
     var request: Alamofire.Request?
-    
-    //MARK : Base view controllers func
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
@@ -44,28 +51,24 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
         configurationGM.timeoutIntervalForRequest = 10 // secondes
         self.managerGM = Alamofire.Manager(configuration: configurationGM)
         
-        // Configure tableView
+        // Configuration de la tableView
+        // On veut être le délégué et la source des données pour notre tableView afin de pouvoir gérer le fait de sélectionner une ligne
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        // Configure placeSearchController
-        
+        // Configuration de placeSearchController
         self.placeSearchController = UISearchController(searchResultsController: nil)
         self.placeSearchController.searchResultsUpdater = self
         self.placeSearchController.searchBar.sizeToFit()
         self.placeSearchController.searchBar.barTintColor = self.navigationController?.navigationBar.barTintColor
         self.placeSearchController.searchBar.translucent = true
         tableView.tableHeaderView = self.placeSearchController.searchBar
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.None;
-        //self.placeSearchController.searchBar.searchBarStyle = .Prominent
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         
         self.placeSearchController.delegate = self
-        self.placeSearchController.dimsBackgroundDuringPresentation = false // default is YES
-        self.placeSearchController.searchBar.delegate = self    // so we can monitor text changes + others
+        self.placeSearchController.dimsBackgroundDuringPresentation = false // par défaut c'est true
+        self.placeSearchController.searchBar.delegate = self // donc on peut surveiller/contrôler les changements
         
-        // Search is now just presenting a view controller. As such, normal view controller
-        // presentation semantics apply. Namely that presentation will walk up the view controller
-        // hierarchy until it finds the root view controller or one that defines a presentation context.
         definesPresentationContext = true
         
         self.placeSearchController.searchBar.tintColor = UIColor.whiteColor()
@@ -73,22 +76,24 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
     }
     
     override func viewWillAppear(animated: Bool) {
+        // après 0.8 secondes on affiche le clavier
         var delayKeyboardPresentation = NSTimer.scheduledTimerWithTimeInterval(0.8, target: self, selector: Selector("presentKeyboard:"), userInfo:nil, repeats:false)
     }
     
+    /**
+        Affiche le clavier
+    */
     func presentKeyboard(sTimer: NSTimer) {
         self.placeSearchController.searchBar.becomeFirstResponder()
     }
     
-    
     // MARK: UISearchBarDelegate
     
+    /**
+        Cache le clavier lorsque le bouton Recherche est cliqué
+    */
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-    }
-    
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        self.placeSearchController.searchBar.resignFirstResponder()
     }
     
     // MARK: UISearchControllerDelegate
@@ -115,8 +120,13 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
     
     // MARK: UITableViewDataSource
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
+    /**
+        Défini le nombre de lignes à afficher dans notre tableView (voir Apple Doc)
+        En plus ici on gère deux autres choses :
+            - si la barre de recherche est vide, un message d'aide
+            - si la barre de recherche n'est pas vide et aucun résultat, un message d'erreur
+    */
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let searchBarValue:String = self.placeSearchController.searchBar.text {
             if (searchBarValue.isEmpty) {
                 var messageLabel:UILabel
@@ -124,10 +134,8 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
                 messageLabel.text = "Veuillez rentrer un nom de lieu 🏠"
                 messageLabel.textColor = UIColor.blackColor()
                 messageLabel.numberOfLines = 0
-                messageLabel.textAlignment = NSTextAlignment.Center;
-                //messageLabel.font = UIFont(name: "HelveticaNeue", size: CGFloat(22))
-                //[messageLabel sizeToFit];
-                self.tableView.backgroundView = messageLabel;
+                messageLabel.textAlignment = NSTextAlignment.Center
+                self.tableView.backgroundView = messageLabel
                 
             }
             else if self.inSearching {
@@ -137,7 +145,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
                 let myActivityIndicatorView: DTIActivityIndicatorView = DTIActivityIndicatorView(frame: CGRectMake(0, 0, 80, 80))
                 myActivityIndicatorView.center = loadingView.center
                 loadingView.alpha = 0.0
-                myActivityIndicatorView.indicatorColor = UIColor.blueColor()
+                myActivityIndicatorView.indicatorColor = UIColor(red: 0/255, green: 142/255, blue: 255/255, alpha: 1.0)
                 myActivityIndicatorView.indicatorStyle = DTIIndicatorStyle.convInv(.spotify)
                 myActivityIndicatorView.startActivity()
                 
@@ -156,8 +164,6 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
                 messageLabel.textColor = UIColor.blackColor()
                 messageLabel.numberOfLines = 0
                 messageLabel.textAlignment = NSTextAlignment.Center
-                //messageLabel.font = UIFont(name: "HelveticaNeue", size: CGFloat(22))
-                //[messageLabel sizeToFit];
                 self.tableView.backgroundView = messageLabel
             }
             else {
@@ -169,11 +175,12 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
         }
         return self.placesResults.count
     }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-    {
+    /**
+        Demande les données à afficher dans la cellule (voir Apple Doc)
+        On utilise une sous fonction pour remplir la cellule
+    */
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = self.tableView.dequeueReusableCellWithIdentifier(Constants.TableViewCell.identifier, forIndexPath: indexPath) as UITableViewCell
-        //cell.textLabel?.text! = self.searchArray[indexPath.row].nom
         let place = self.placesResults[indexPath.row]
         configureCell(cell, forPlace: place)
 
@@ -182,6 +189,10 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
     
     // MARK : UISearchResultsUpdating
     
+    /**
+        Appelée quand le texte de la barre de recherche est modifié
+        On vérifie si la barre n'est pas vide et on attend 0.5 seconde avant de lancer la recherche
+    */
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         
         if ServicesController().checkInternetConnection() {
@@ -204,6 +215,13 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
         
     }
     
+    /**
+        Recherche des lieux correspondants au contenu de la barre de recherche
+    
+        On effectue une requête sur l'API de Google Maps, Places (Autocommplete) afin de récupérer le nom du lieu ainsi que son identifiant unique. Un maximum de 5 résultats est proposé (il est arrivé d'en obtenir 6).
+    
+        La requête est effectuée de façon asynchrone grâce à une closure, avec un timeout de 10 secondes.
+    */
     func launchSearch(sTimer: NSTimer) {
         
         self.inSearching = true
@@ -269,22 +287,26 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
     
     // MARK : UITableViewDelegate
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-    {
-        //tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    /**
+        Signifie au délégué que la ligne spécifiée a été sélectionnée
+        On lance le segue grâce à son identifiant
+    */
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.performSegueWithIdentifier("placeSelected", sender: self.tableView)
     }
     
     // MARK : Segue
     
-    //pour savoir à quelle vue on envoie les donnnées
-    
+    /**
+        Préparation de la segue
+        On spécifie la vue à laquelle on envoie les données et quelles données on envoie
+    */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "placeSelected" {
             let searchSelectedViewController = segue.destinationViewController as SearchSelectedViewController
             let indexPath = self.tableView.indexPathForSelectedRow()!
             searchSelectedViewController.place = self.placesResults[indexPath.row]
-            //self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Recherche", style: .Plain, target: nil, action: nil)
+            //self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "test", style: .Plain, target: nil, action: nil)
         }
     }
 

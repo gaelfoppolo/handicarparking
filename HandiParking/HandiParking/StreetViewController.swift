@@ -17,6 +17,8 @@ class StreetViewController: UIViewController {
     /// marqueur contenant les coordonnées pour charger StreetView
     var marker:PlaceMarker
     
+    var service: GMSPanoramaService!
+    
     //MARK: Initialisateurs
     
     /**
@@ -49,7 +51,11 @@ class StreetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var service: GMSPanoramaService = GMSPanoramaService()
+        service = GMSPanoramaService()
+        
+        var loadingView = generateLoadingView()
+        
+        self.view.addSubview(loadingView)
         
         service.requestPanoramaNearCoordinate(self.marker.position, callback: { (panorama, error) -> Void in
             
@@ -71,13 +77,12 @@ class StreetViewController: UIViewController {
                 
                 self.view = panoView
                 
-                var closeButton: UIButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
-                closeButton.addTarget(self, action: "closeButton:", forControlEvents: .TouchUpInside)
-                closeButton.setImage(UIImage(named: "close.png") as UIImage!, forState: .Normal)
-                closeButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-                closeButton.frame = CGRectMake(10, 25, 50, 50)
+                loadingView.removeFromSuperview()
+                
+                var closeButton = self.generateCloseButton()
                 
                 self.view.addSubview(closeButton)
+
                 
             } else {
                 if error.code == -1001 { // == timeout
@@ -90,6 +95,36 @@ class StreetViewController: UIViewController {
             
             
         })
+    }
+    
+    /**
+        Création du bouton permettant de fermer la vue
+    */
+    func generateCloseButton() -> UIButton {
+        var closeButton: UIButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
+        closeButton.addTarget(self, action: "closeButton:", forControlEvents: .TouchUpInside)
+        closeButton.setImage(UIImage(named: "close.png") as UIImage!, forState: .Normal)
+        closeButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        closeButton.frame = CGRectMake(10, 25, 50, 50)
+        
+        return closeButton
+    }
+    
+    /**
+        Création de la vue loading
+    */
+    func generateLoadingView() -> UIView {
+        let loadingView = UIView(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
+        
+        let myActivityIndicatorView: DTIActivityIndicatorView = DTIActivityIndicatorView(frame: CGRectMake(0, 0, 100, 100))
+        myActivityIndicatorView.center = loadingView.center
+        myActivityIndicatorView.indicatorColor = UIColor.whiteColor()
+        myActivityIndicatorView.indicatorStyle = DTIIndicatorStyle.convInv(.spotify)
+        myActivityIndicatorView.startActivity()
+        
+        loadingView.addSubview(myActivityIndicatorView)
+        
+        return loadingView
     }
 
     /**
@@ -110,7 +145,7 @@ class StreetViewController: UIViewController {
     }
     
     /**
-    Appelée le message d'erreur indique un timeout
+        Appelée le message d'erreur indique un timeout
     */
     func errorBadConnection() {
         self.dismissViewControllerAnimated(false, completion: { () -> Void in

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dRn-qT-5zn">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Help View Controller-->
@@ -201,6 +202,13 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f9R-Pi-ohs" userLabel="loading">
+                                <rect key="frame" x="0.0" y="401" width="320" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="6fl-DO-Lfy"/>
+                                </constraints>
+                            </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999987" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dl4-Xb-f9Q" userLabel="Nb place found">
                                 <rect key="frame" x="0.0" y="64" width="320" height="25"/>
                                 <color key="backgroundColor" red="0.0" green="0.55686274509803924" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -216,8 +224,11 @@
                         <constraints>
                             <constraint firstItem="Ubb-74-Jby" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="17a-KO-Sti"/>
                             <constraint firstItem="Dl4-Xb-f9Q" firstAttribute="trailing" secondItem="Ubb-74-Jby" secondAttribute="trailing" id="1Dk-vg-odn"/>
+                            <constraint firstItem="f9R-Pi-ohs" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="7UI-7y-XMu"/>
                             <constraint firstAttribute="trailing" secondItem="Ubb-74-Jby" secondAttribute="trailing" id="RfY-Ef-UPe"/>
                             <constraint firstItem="Dl4-Xb-f9Q" firstAttribute="leading" secondItem="Ubb-74-Jby" secondAttribute="leading" id="UYw-Bw-Ha3"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="f9R-Pi-ohs" secondAttribute="bottom" id="doP-aB-VjI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="f9R-Pi-ohs" secondAttribute="trailing" constant="-16" id="hDL-Zf-LnL"/>
                             <constraint firstItem="Ubb-74-Jby" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="hE3-bj-abU"/>
                             <constraint firstItem="Dl4-Xb-f9Q" firstAttribute="top" secondItem="Ubb-74-Jby" secondAttribute="top" id="ks7-Ts-rUV"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Ubb-74-Jby" secondAttribute="bottom" id="pII-Hk-DH2"/>
@@ -252,6 +263,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="itineraryButtonText" destination="QPG-YG-gcl" id="9uH-ah-3dd"/>
+                        <outlet property="loadingInfoWindow" destination="f9R-Pi-ohs" id="Qcl-Vx-XGX"/>
                         <outlet property="mapView" destination="Ubb-74-Jby" id="6VC-8e-yBU"/>
                         <outlet property="resultsInRadius" destination="Dl4-Xb-f9Q" id="tJm-Pa-tRd"/>
                         <outlet property="streetViewButtonText" destination="pbJ-q0-J9F" id="c5A-DI-nG8"/>
@@ -366,7 +378,14 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.85000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVC-1N-Lq7" userLabel="Nb place found">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rCe-b7-aeW" userLabel="loading">
+                                <rect key="frame" x="0.0" y="401" width="320" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="mBy-mh-8hH"/>
+                                </constraints>
+                            </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVC-1N-Lq7" userLabel="Nb place found">
                                 <rect key="frame" x="0.0" y="64" width="320" height="25"/>
                                 <color key="backgroundColor" red="0.0" green="0.5568627451" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -383,8 +402,11 @@
                             <constraint firstItem="EmB-rJ-7Cq" firstAttribute="top" secondItem="kvv-r9-7TE" secondAttribute="bottom" id="C4s-vS-uvr"/>
                             <constraint firstItem="EmB-rJ-7Cq" firstAttribute="leading" secondItem="ziS-hO-SLu" secondAttribute="leading" id="Dne-hN-qCg"/>
                             <constraint firstAttribute="trailing" secondItem="EmB-rJ-7Cq" secondAttribute="trailing" id="NOJ-WA-dhs"/>
+                            <constraint firstItem="rCe-b7-aeW" firstAttribute="bottom" secondItem="wO5-Em-PYd" secondAttribute="top" id="S6A-iO-bDF"/>
                             <constraint firstItem="BVC-1N-Lq7" firstAttribute="leading" secondItem="EmB-rJ-7Cq" secondAttribute="leading" id="hNf-tl-nAZ"/>
                             <constraint firstItem="wO5-Em-PYd" firstAttribute="top" secondItem="EmB-rJ-7Cq" secondAttribute="bottom" id="iLy-VZ-hQU"/>
+                            <constraint firstItem="rCe-b7-aeW" firstAttribute="leading" secondItem="BVC-1N-Lq7" secondAttribute="leading" id="nHl-ac-wwF"/>
+                            <constraint firstItem="rCe-b7-aeW" firstAttribute="trailing" secondItem="BVC-1N-Lq7" secondAttribute="trailing" id="pwk-0Y-y9X"/>
                             <constraint firstItem="BVC-1N-Lq7" firstAttribute="top" secondItem="EmB-rJ-7Cq" secondAttribute="top" id="xNt-i7-SSK"/>
                         </constraints>
                     </view>
@@ -405,6 +427,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="launchButtonText" destination="95B-mb-YdT" id="9Oq-a8-ZVK"/>
+                        <outlet property="loadingInfoWindow" destination="rCe-b7-aeW" id="Vaf-ja-sq1"/>
                         <outlet property="mapView" destination="EmB-rJ-7Cq" id="ltA-JP-ZDL"/>
                         <outlet property="resultsInRadius" destination="BVC-1N-Lq7" id="bRe-Bz-IFV"/>
                     </connections>

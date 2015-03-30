@@ -6,42 +6,49 @@
 //  Copyright (c) 2015 KeepCore. All rights reserved.
 //
 
+/// Contrôleur de la vue recherche après sélection d'un lieu 📍
+
 class SearchSelectedViewController: GeoViewController {
     
-    var streetViewButton: UIBarButtonItem!
+    //MARK : IBOutlets
     
-    var itineraryButton: UIBarButtonItem!
-    
+    /// bouton lancement recherche/coordonnées
     @IBOutlet weak var launchButtonText: UIButton!
     
+    /**
+        Appelée quand le bouton lancement est tapé
+    */
     @IBAction override func launchButtonAction(sender: AnyObject) {
         
         if let icon = marker_place.icon {
-            
             launchAction()
-            
         } else {
-            
             self.launchButtonText.enabled = false
             getCoordinate()
-            
         }
     }
+    
+    /// bouton StreetView
+    var streetViewButton: UIBarButtonItem!
+    
+    /// bouton itinéraire
+    var itineraryButton: UIBarButtonItem!
     
     /// lieu choisi
     var place = Place()
     
     /// marqueur du lieu choisi
     var marker_place = GMSMarker()
+    
+    // MARK: Initialisateur
 
     override func viewDidLoad() {
-        
+        // on appelle le constructeur papa
         super.viewDidLoad()
-        
+        // on set les boutons itinéraire et StreetView
         self.navigationItem.rightBarButtonItems = setButtons()
-        
+        // on lance la récupération des coordonnées du lieu choisi
         if ServicesController().checkInternetConnection() {
-        
             getCoordinate()
         }
     }
@@ -50,7 +57,9 @@ class SearchSelectedViewController: GeoViewController {
         return marker_place.position
     }
 
-    
+    /**
+        Génère les boutons de la barre de navigation
+    */
     func setButtons() -> NSArray {
         self.streetViewButton = UIBarButtonItem(image: UIImage(named: "toolbar_streetview"), style: UIBarButtonItemStyle.Bordered, target: self, action: "streetViewButtonAction:")
         streetViewButton.enabled = false
@@ -60,6 +69,15 @@ class SearchSelectedViewController: GeoViewController {
         return buttons
     }
     
+    /**
+        Récupération des coordonnées du lieu choisi
+    
+        On effectue une requête sur l'API de Google Maps afin de récupérer les coordonnées du lieu choisi, en utilisant l'id unique associé à ce lieu
+    
+        La requête est effectuée de façon asynchrone grâce à une closure, avec un timeout de 10 secondes.
+            
+        On affiche ensuite un marker pour identifier ce lieu, on centre la caméra dessus et on change le bouton pour pouvoir lancer la recherche
+    */
     func getCoordinate() {
             let request = self.managerGM!.request(DataProvider.GoogleMaps.PlaceDetails(self.place.placeid))
             request.validate()
@@ -114,19 +132,23 @@ class SearchSelectedViewController: GeoViewController {
     }
 
     /**
-    Centre la caméra (vue) sur la localisation du lieu recherchée
-    On suppose ici qu'une vérification des services a été effectuées et que la localisation du lieu a été récupérée
+        Centre la caméra (vue) sur la localisation du lieu recherchée
+        On suppose ici qu'une vérification des services a été effectuées et que la localisation du lieu a été récupérée
     */
     func updateMapCameraOnPlaceLocation() {
         var camera = GMSCameraPosition(target: self.marker_place.position, zoom: 15, bearing: 0, viewingAngle: 0)
         mapView.animateToCameraPosition(camera)
     }
-    
+    /**
+        En plus de la recherche, on affiche notre lieu sur la carte (erreur ou pas)
+    */
     override func launchRecherche() {
         super.launchRecherche()
         marker_place.map = mapView
     }
-    
+    /**
+        On ne sélectionne qu'un marqueur-emplacement, pas un marqueur représentant le lieu choisi
+    */
     override func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
         if marker_place != marker {
             super.mapView(mapView, didTapMarker: marker)
@@ -134,7 +156,9 @@ class SearchSelectedViewController: GeoViewController {
         
         return false
     }
-    
+    /**
+        On ne génère l'infoWindow que si c'est un emplacement, sinon pas de fenêtre
+    */
     override func mapView(mapView: GMSMapView!, markerInfoWindow marker: GMSMarker!) -> UIView! {
         if marker_place == marker {
             return nil
@@ -142,7 +166,7 @@ class SearchSelectedViewController: GeoViewController {
             return super.mapView(mapView, markerInfoWindow: marker)
         }
     }
-    
+
     override func setButtonsItineraryAndStreetViewInState(state: Bool) {
         itineraryButton.enabled = state
         streetViewButton.enabled = state
