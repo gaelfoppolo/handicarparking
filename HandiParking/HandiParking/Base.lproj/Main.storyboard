@@ -228,7 +228,7 @@
                         <barButtonItem key="leftBarButtonItem" enabled="NO" image="toolbar_streetview" id="pbJ-q0-J9F" userLabel="StreetView">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="streetViewButtonAction:" destination="vXZ-lx-hvc" id="ybf-Dv-2g5"/>
+                                <action selector="streetViewButtonAction:" destination="vXZ-lx-hvc" id="7tT-xy-tIZ"/>
                             </connections>
                         </barButtonItem>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Uj9-vT-BvY" userLabel="Lancement">
@@ -238,23 +238,23 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="launchButtonAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="5OZ-5W-EPs"/>
+                                <action selector="launchButtonAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="rpw-Kd-d8E"/>
                             </connections>
                         </button>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" image="toolbar_itinerary" id="QPG-YG-gcl" userLabel="Itinéraire">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="itineraryButtonAction:" destination="vXZ-lx-hvc" id="V9V-SF-CTJ"/>
+                                <action selector="itineraryButtonAction:" destination="vXZ-lx-hvc" id="iBP-65-0CA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="itineraryButtonText" destination="QPG-YG-gcl" id="Z0L-g4-sHY"/>
-                        <outlet property="mapView" destination="Ubb-74-Jby" id="7Xh-hs-TFJ"/>
-                        <outlet property="resultsInfo" destination="Dl4-Xb-f9Q" id="HgN-a9-BzO"/>
-                        <outlet property="streetViewButtonText" destination="pbJ-q0-J9F" id="Nb6-gx-oJu"/>
+                        <outlet property="itineraryButtonText" destination="QPG-YG-gcl" id="9uH-ah-3dd"/>
+                        <outlet property="mapView" destination="Ubb-74-Jby" id="6VC-8e-yBU"/>
+                        <outlet property="resultsInRadius" destination="Dl4-Xb-f9Q" id="tJm-Pa-tRd"/>
+                        <outlet property="streetViewButtonText" destination="pbJ-q0-J9F" id="c5A-DI-nG8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -366,13 +366,26 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.85000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVC-1N-Lq7" userLabel="Nb place found">
+                                <rect key="frame" x="0.0" y="64" width="320" height="25"/>
+                                <color key="backgroundColor" red="0.0" green="0.5568627451" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="zxA-fn-cTe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="BVC-1N-Lq7" firstAttribute="trailing" secondItem="EmB-rJ-7Cq" secondAttribute="trailing" id="7R2-0s-NQe"/>
                             <constraint firstItem="EmB-rJ-7Cq" firstAttribute="top" secondItem="kvv-r9-7TE" secondAttribute="bottom" id="C4s-vS-uvr"/>
                             <constraint firstItem="EmB-rJ-7Cq" firstAttribute="leading" secondItem="ziS-hO-SLu" secondAttribute="leading" id="Dne-hN-qCg"/>
                             <constraint firstAttribute="trailing" secondItem="EmB-rJ-7Cq" secondAttribute="trailing" id="NOJ-WA-dhs"/>
+                            <constraint firstItem="BVC-1N-Lq7" firstAttribute="leading" secondItem="EmB-rJ-7Cq" secondAttribute="leading" id="hNf-tl-nAZ"/>
                             <constraint firstItem="wO5-Em-PYd" firstAttribute="top" secondItem="EmB-rJ-7Cq" secondAttribute="bottom" id="iLy-VZ-hQU"/>
+                            <constraint firstItem="BVC-1N-Lq7" firstAttribute="top" secondItem="EmB-rJ-7Cq" secondAttribute="top" id="xNt-i7-SSK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eOD-8M-zT8">
@@ -392,7 +405,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="launchButtonText" destination="95B-mb-YdT" id="9Oq-a8-ZVK"/>
-                        <outlet property="mapView" destination="EmB-rJ-7Cq" id="UY4-N2-i5N"/>
+                        <outlet property="mapView" destination="EmB-rJ-7Cq" id="ltA-JP-ZDL"/>
+                        <outlet property="resultsInRadius" destination="BVC-1N-Lq7" id="bRe-Bz-IFV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MbO-FX-36d" sceneMemberID="firstResponder"/>

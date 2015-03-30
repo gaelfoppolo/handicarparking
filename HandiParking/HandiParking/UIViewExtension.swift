@@ -29,7 +29,7 @@ extension UIView {
             label.textColor = UIColor.whiteColor()
             label.numberOfLines = 1
             label.textAlignment = NSTextAlignment.Center
-            label.font = UIFont.systemFontOfSize(16.0)
+            label.font = UIFont.systemFontOfSize(15.0)
             label.sizeToFit()
             lockView.addSubview(label)
             label.center = lockView.center

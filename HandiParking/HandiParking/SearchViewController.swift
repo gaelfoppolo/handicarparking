@@ -73,6 +73,10 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
     }
     
     override func viewWillAppear(animated: Bool) {
+        var delayKeyboardPresentation = NSTimer.scheduledTimerWithTimeInterval(0.8, target: self, selector: Selector("presentKeyboard:"), userInfo:nil, repeats:false)
+    }
+    
+    func presentKeyboard(sTimer: NSTimer) {
         self.placeSearchController.searchBar.becomeFirstResponder()
     }
     

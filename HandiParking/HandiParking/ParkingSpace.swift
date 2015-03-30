@@ -54,7 +54,7 @@ class ParkingSpace {
         self.latitude = lat ?? ""
         self.longitude = lon ?? ""
         self.distance = distance
-        self.name = name ?? "Aucune information"
+        self.name = name
         if let feee = fee {
             switch feee {
                 case "yes":

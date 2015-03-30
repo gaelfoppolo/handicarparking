@@ -55,6 +55,7 @@
 		93CDE4551AC5432F00DA38FF /* KeepCore.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 93CDE4541AC5432F00DA38FF /* KeepCore.gpx */; };
 		93CDE45D1AC543CB00DA38FF /* IUT Montpellier.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 93CDE45C1AC543CB00DA38FF /* IUT Montpellier.gpx */; };
 		93CE8E861AC1529A008F09BF /* StreetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE8E851AC1529A008F09BF /* StreetViewController.swift */; };
+		93D09EF91AC933A300D014B2 /* InfoMarkerWindowWithoutName.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93D09EF81AC933A300D014B2 /* InfoMarkerWindowWithoutName.xib */; };
 		93D2E8311AAEED1A0028ED1B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D2E8301AAEED1A0028ED1B /* Images.xcassets */; };
 		93D2E8631AAF2EB60028ED1B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D2E8621AAF2EB60028ED1B /* AVFoundation.framework */; };
 		93D2E8651AAF2EBC0028ED1B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D2E8641AAF2EBC0028ED1B /* CoreData.framework */; };
@@ -226,6 +227,7 @@
 		93CDE4541AC5432F00DA38FF /* KeepCore.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = KeepCore.gpx; path = ../KeepCore.gpx; sourceTree = "<group>"; };
 		93CDE45C1AC543CB00DA38FF /* IUT Montpellier.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "IUT Montpellier.gpx"; path = "../IUT Montpellier.gpx"; sourceTree = "<group>"; };
 		93CE8E851AC1529A008F09BF /* StreetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetViewController.swift; sourceTree = "<group>"; };
+		93D09EF81AC933A300D014B2 /* InfoMarkerWindowWithoutName.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoMarkerWindowWithoutName.xib; sourceTree = "<group>"; };
 		93D2E8301AAEED1A0028ED1B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		93D2E8621AAF2EB60028ED1B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		93D2E8641AAF2EBC0028ED1B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -306,6 +308,7 @@
 				9345FBD01AB2FFDD00D4F686 /* PlaceMarker.swift */,
 				93CCBA441AB6F60800FCCB1E /* AlertViewController.swift */,
 				939F00B41AB82E8D007B928E /* InfoMarkerWindow.xib */,
+				93D09EF81AC933A300D014B2 /* InfoMarkerWindowWithoutName.xib */,
 				939F00BC1AB831D5007B928E /* InfoMarkerWindow.swift */,
 				939F00C61AB834A6007B928E /* UIViewExtension.swift */,
 				93EF79061AC2A4550053A329 /* TableCell.xib */,
@@ -680,6 +683,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93D09EF91AC933A300D014B2 /* InfoMarkerWindowWithoutName.xib in Resources */,
 				938EA4B91ABB004700F9B247 /* InfoMarkerWindow.xib in Resources */,
 				93CDE4551AC5432F00DA38FF /* KeepCore.gpx in Resources */,
 				93D2E8311AAEED1A0028ED1B /* Images.xcassets in Resources */,
