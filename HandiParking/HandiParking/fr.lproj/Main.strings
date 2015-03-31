@@ -1,0 +1,15 @@
+
+/* Class = "IBUITabBarItem"; title = "Search"; ObjectID = "45o-MJ-lDN"; */
+"45o-MJ-lDN.title" = "Recherche";
+
+/* Class = "IBUINavigationItem"; title = "Search"; ObjectID = "EEK-Gk-3Kf"; */
+"EEK-Gk-3Kf.title" = "Recherche";
+
+/* Class = "IBUITabBarItem"; title = "About"; ObjectID = "OeG-8g-f4B"; */
+"OeG-8g-f4B.title" = "À propos";
+
+/* Class = "IBUITabBarItem"; title = "Geolocation"; ObjectID = "Pn0-n3-mZO"; */
+"Pn0-n3-mZO.title" = "Géolocalisation";
+
+/* Class = "IBUITabBarItem"; title = "Help"; ObjectID = "ePO-Zc-P3P"; */
+"ePO-Zc-P3P.title" = "Aide";

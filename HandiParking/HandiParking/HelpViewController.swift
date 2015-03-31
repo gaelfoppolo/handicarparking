@@ -14,7 +14,7 @@ class HelpViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.topItem?.title = "Help"
+        navigationController?.navigationBar.topItem?.title = NSLocalizedString("HELP", comment: "Help")
     }
     
 }

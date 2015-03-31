@@ -62,9 +62,9 @@ class ParkingSpace {
         if let feee = fee {
             switch feee {
                 case "yes":
-                    self.fee = "Fee"
+                    self.fee = NSLocalizedString("FEE",comment:"Fee")
                 case "no":
-                    self.fee = "No fee"
+                    self.fee = NSLocalizedString("NO_FEE",comment:"No fee")
                 default:
                     break
             }
@@ -73,16 +73,17 @@ class ParkingSpace {
         }
         if let capa = capacity {
             if let capa2 = capa.toInt() {
-                if capa2 > 1 {
-                    self.capacity = "\(capa2) spaces"
-                } else {
-                    self.capacity = "1 space"
+                if capa2 > 0 {
+                    self.capacity = NSString(format: NSLocalizedString("NB_SPACE", comment: "nb space"), String(capa2))
+                    if capa2 > 1 {
+                        self.capacity = self.capacity! + "s"
+                    }
                 }
             } else {
-                self.capacity = "1 space"
+                self.capacity = NSString(format: NSLocalizedString("NB_SPACE", comment: "nb space"), String(1))
             }
         } else {
-            self.capacity = "N/A"
+            self.capacity = NSLocalizedString("NA",comment:"Not available")
         }
     }
     
@@ -95,7 +96,7 @@ class ParkingSpace {
 
     */
     func setAddress(adr: String?) {
-        self.address = adr ?? "No matching address"
+        self.address = adr ?? NSLocalizedString("NO_ADDRESS",comment:"No adresse found")
     }
     
     /**
@@ -159,7 +160,7 @@ class ParkingSpace {
             return NSString(string: string!)
             
         } else {
-            return "N/A"
+            return NSLocalizedString("NA",comment:"Not available")
         }
 
     }

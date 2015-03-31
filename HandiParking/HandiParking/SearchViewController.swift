@@ -76,6 +76,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
     }
     
     override func viewWillAppear(animated: Bool) {
+        self.placeSearchController.searchBar.placeholder = NSLocalizedString("SEARCH_BAR_PLACEHOLDER", comment: "help people know what typing")
         // après 0.8 secondes on affiche le clavier
         var delayKeyboardPresentation = NSTimer.scheduledTimerWithTimeInterval(0.8, target: self, selector: Selector("presentKeyboard:"), userInfo:nil, repeats:false)
     }
@@ -131,7 +132,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
             if (searchBarValue.isEmpty) {
                 var messageLabel:UILabel
                 messageLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
-                messageLabel.text = "Please enter a city, an address, a zip code, etc... 🏠"
+                messageLabel.text = NSLocalizedString("SEARCH_WELCOME", comment: "help people know what typing")
                 messageLabel.textColor = UIColor.blackColor()
                 messageLabel.numberOfLines = 0
                 messageLabel.textAlignment = NSTextAlignment.Center
@@ -160,7 +161,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
             else if (self.placesResults.count == 0) {
                 var messageLabel:UILabel
                 messageLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
-                messageLabel.text = "No place matches you search 😞"
+                messageLabel.text = NSLocalizedString("SEARCH_NO_RESULT", comment: "search no results message")
                 messageLabel.textColor = UIColor.blackColor()
                 messageLabel.numberOfLines = 0
                 messageLabel.textAlignment = NSTextAlignment.Center

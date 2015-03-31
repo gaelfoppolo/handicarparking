@@ -1,0 +1,48 @@
+/*
+ Localizable.strings
+ HandiParking
+ 
+ Created by Gaël on 31/03/2015.
+ Copyright (c) 2015 KeepCore. All rights reserved.
+ */
+
+SLC_APP_ITI="Select the application that will take over your route";
+CANCEL="Cancel";
+FEE="Fee";
+NO_FEE="No fee";
+NB_SPACE="%@ space";
+NA="N/A";
+NO_ADDRESS="No matching address";
+OK="OK";
+NO_LOC_SERV="No location service";
+NO_LOC_SERV_EXPL="It looks like the location service is not enabled! Go in Settings > Privacy > Location to turn it on!";
+NO_WEB_CONNEC="No Internet connection";
+NO_WEB_CONNEC_EXPL="It looks like your Internet access is disabled. Please re-enable it if you want to fully use the application.";
+NO_WEB="No Internet";
+NO_WEB_EXPL="It looks like your Internet connection is active, but limited. Try to find a better connection to fully use the application.";
+LOC_AUTH="Location authorization";
+LOC_AUTH_EXPL="It looks like the application is not allowed to use your location data!";
+NO_SPACE_FOUND="No parking space found 😁";
+NO_SPACE_FOUND_EXPL="It looks like no parking space has been found within a radius of %@ kilometers... 😁";
+OVER_SERV="Overloaded servers";
+OVER_SERV_EXPL="It looks like all servers are overloaded at the moment or your Internet connection is too weak... Please try again in a few moments!";
+LOC_NOT_DETER="Position not determined";
+LOC_NOT_DETER_EXPL="It looks like your position could not be determined! Please try again in a few moments!";
+GOOGLE_FUCK_UP="Error retrieving data";
+GOOGLE_FUCK_UP_EXPL="It looks like there was a problem while retrieving data! Please try again in a few moments and if this problem persists, please contact us!";
+APP_NOT_INST="Application not installed";
+APP_NOT_INST_EXPL="It looks like %@ is no longer installed! Reinstall it in order to use it again!";
+STREETVIEW_NA="StreetView not available";
+STREETVIEW_NA_EXPL="It looks like StreetView is not available for this location! 😁";
+WEB_CONNEC_WEAK="Internet connection too weak";
+WEB_CONNEC_WEAK_EXPL="It looks like your Internet connection is too weak to display StreetView...";
+LOADING="Loading...";
+RADIUS_OF="within a radius of";
+FORMA_DATA="Formatting data...";
+SEARCHING="Search in progress...";
+WAITING="Please wait...";
+HELP="Help";
+ABOUT="About";
+SEARCH_BAR_PLACEHOLDER="City, address, zip code, etc...";
+SEARCH_WELCOME="Please type a city, an address,\na zip code, a place, etc...";
+SEARCH_NO_RESULT="No place matches you search 😞";

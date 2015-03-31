@@ -14,7 +14,7 @@ class AboutViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.topItem?.title = "About"
+        navigationController?.navigationBar.topItem?.title = NSLocalizedString("ABOUT", comment: "About")
     }
     
 }

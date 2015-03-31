@@ -37,7 +37,7 @@ extension UIView {
             lockView.tag = 10
             lockView.alpha = 0.0
             var label: UILabel = UILabel()
-            label.text = "Loading..."
+            label.text = NSLocalizedString("LOADING", comment: "Loading additionnal information")
             label.textColor = UIColor.whiteColor()
             label.numberOfLines = 1
             label.textAlignment = NSTextAlignment.Center

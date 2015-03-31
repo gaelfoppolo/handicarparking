@@ -1,0 +1,48 @@
+/*
+ Localizable.strings
+ HandiParking
+ 
+ Created by Gaël on 31/03/2015.
+ Copyright (c) 2015 KeepCore. All rights reserved.
+ */
+
+SLC_APP_ITI="Sélectionnez l’application qui va prendre en charge votre itinéraire";
+CANCEL="Annuler";
+FEE="Payant";
+NO_FEE="Gratuit";
+NB_SPACE="%@ place";
+NA="N/A";
+NO_ADDRESS="Aucune adresse correspondante";
+OK="OK";
+NO_LOC_SERV="Service de localisation désactivé";
+NO_LOC_SERV_EXPL="Il semblerait que le service de localisation n’est pas activé ! Allez dans Réglages > Confidentialité >  Localisation pour l’activer !";
+NO_WEB_CONNEC="Aucune connexion Internet";
+NO_WEB_CONNEC_EXPL="Il semblerait que l’accès à Internet est désactivé. Réactivez-le pour pouvoir utiliser l’application pleinement !";
+NO_WEB="No internet";
+NO_WEB_EXPL="Il semblerait que votre connexion Internet est active, mais limitée. Essayez de trouver une meilleure connexion afin de pouvoir utiliser l’application pleinement.";
+LOC_AUTH="Autorisation localisation";
+LOC_AUTH_EXPL="Il semblerait que l’application n’est pas autorisée pour utiliser votre données de localisation !";
+NO_SPACE_FOUND="Aucune place de parking trouvée 😁";
+NO_SPACE_FOUND_EXPL="Il semblerait qu’aucune place de parking n’ait été trouvée dans un rayon de %@ kilomètres... 😁";
+OVER_SERV="Serveurs surchargés";
+OVER_SERV_EXPL="Il semblerait que tous les serveurs soient surchargés actuellement ou que votre connexion Internet est trop faible... Réessayez dans quelques instants !";
+LOC_NOT_DETER="Position non déterminée";
+LOC_NOT_DETER_EXPL="Il semblerait que votre position n’est pas pu être déterminée ! Réessayez dans quelques instants !";
+GOOGLE_FUCK_UP="Erreur de récupération des données";
+GOOGLE_FUCK_UP_EXPL="Il semblerait qu’il y ait eu un problème lors de la récupération des données ! Réessayez dans quelques instants et si le problème persiste, contactez-nous !";
+APP_NOT_INST="Application non installée";
+APP_NOT_INST_EXPL="Il semblerait que %@ n’est plus installée! Réinstallez-le si vous souhaitez l’utiliser à nouveau !";
+STREETVIEW_NA="StreetView n’est pas disponible";
+STREETVIEW_NA_EXPL="Il semblerait que StreetView n’est pas disponible pour ce lieu ! 😁";
+WEB_CONNEC_WEAK="Connexion Internet trop faible";
+WEB_CONNEC_WEAK_EXPL="Il semblerait que votre connexion Internet est trop faible pour pouvoir afficher StreetView...";
+LOADING="Chargement...";
+RADIUS_OF="dans un rayon de";
+FORMA_DATA="Formattage des données...";
+SEARCHING="Recherche en cours...";
+WAITING="Patientez...";
+HELP="Aide";
+ABOUT="À propos";
+SEARCH_BAR_PLACEHOLDER="Ville, adresse, code postal, etc.";
+SEARCH_WELCOME="Saisissez une ville, une adresse, \nun code postal, etc.";
+SEARCH_NO_RESULT="Aucun lieu ne correspond à votre recherche 😞";

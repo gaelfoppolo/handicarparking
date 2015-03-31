@@ -71,6 +71,7 @@
 		93D2E8791AAF2F050028ED1B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D2E8781AAF2F050028ED1B /* SystemConfiguration.framework */; };
 		93D2E9111AAF3C1B0028ED1B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D2E8F01AAF3BDA0028ED1B /* Alamofire.framework */; };
 		93D2E9121AAF3C1B0028ED1B /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 93D2E8F01AAF3BDA0028ED1B /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		93D4DF051ACA819000C7C2AB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 93D4DF071ACA819000C7C2AB /* Localizable.strings */; };
 		93DC120E1AB2DE9200C244DB /* SearchRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DC120D1AB2DE9200C244DB /* SearchRadius.swift */; };
 		93EF79071AC2A4550053A329 /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93EF79061AC2A4550053A329 /* TableCell.xib */; };
 		93EF793E1AC2B5C70053A329 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EF793D1AC2B5C70053A329 /* SearchViewController.swift */; };
@@ -243,6 +244,10 @@
 		93D2E8781AAF2F050028ED1B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		93D2E87A1AAF2FAD0028ED1B /* HandiParking-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HandiParking-Bridging-Header.h"; sourceTree = "<group>"; };
 		93D2E8E81AAF3BDA0028ED1B /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "../../../Downloads/Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
+		93D4DEFB1ACA80D700C7C2AB /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		93D4DEFC1ACA80D700C7C2AB /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		93D4DF061ACA819000C7C2AB /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		93D4DF081ACA819B00C7C2AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		93DC120D1AB2DE9200C244DB /* SearchRadius.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRadius.swift; sourceTree = "<group>"; };
 		93EF79061AC2A4550053A329 /* TableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
 		93EF793D1AC2B5C70053A329 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -448,6 +453,7 @@
 		93C83F4C1AAED9AD005990C2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				93D4DF071ACA819000C7C2AB /* Localizable.strings */,
 				93CDE45C1AC543CB00DA38FF /* IUT Montpellier.gpx */,
 				93CDE4541AC5432F00DA38FF /* KeepCore.gpx */,
 				93C83F4D1AAED9AD005990C2 /* Info.plist */,
@@ -688,6 +694,7 @@
 				93CDE4551AC5432F00DA38FF /* KeepCore.gpx in Resources */,
 				93D2E8311AAEED1A0028ED1B /* Images.xcassets in Resources */,
 				93C83F571AAED9AD005990C2 /* Main.storyboard in Resources */,
+				93D4DF051ACA819000C7C2AB /* Localizable.strings in Resources */,
 				93C83F5C1AAED9AD005990C2 /* LaunchScreen.xib in Resources */,
 				93CDE45D1AC543CB00DA38FF /* IUT Montpellier.gpx in Resources */,
 				93EF79071AC2A4550053A329 /* TableCell.xib in Resources */,
@@ -787,6 +794,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				93C83F561AAED9AD005990C2 /* Base */,
+				93D4DEFC1ACA80D700C7C2AB /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -795,8 +803,19 @@
 			isa = PBXVariantGroup;
 			children = (
 				93C83F5B1AAED9AD005990C2 /* Base */,
+				93D4DEFB1ACA80D700C7C2AB /* fr */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		93D4DF071ACA819000C7C2AB /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				93D4DF061ACA819000C7C2AB /* fr */,
+				93D4DF081ACA819B00C7C2AB /* en */,
+			);
+			name = Localizable.strings;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

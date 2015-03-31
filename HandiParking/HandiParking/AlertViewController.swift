@@ -14,7 +14,7 @@ struct AlertViewController {
         Erreur - Service de localisation désactivé
     */
     internal func locationServiceError() {
-        SCLAlertView().showError("No location service", subTitle:"It looks like the location service is not enabled! Go in Settings > Privacy > Location to turn it on!", closeButtonTitle:"OK")
+        SCLAlertView().showError(NSLocalizedString("NO_LOC_SERV",comment:"No location service"), subTitle:NSLocalizedString("NO_LOC_SERV_EXPL",comment:"No location service meaning"), closeButtonTitle:NSLocalizedString("OK",comment:"OK"))
             
             //let iosVersion: Double = (UIDevice.currentDevice().systemVersion as NSString).doubleValue
             
@@ -35,70 +35,71 @@ struct AlertViewController {
         Erreur - Accès Internet désactivé
     */
     internal func internetConnectionDisabled() {
-        SCLAlertView().showError("No internet connection", subTitle:"It looks like your Internet access is disabled. Please re-enable it if you want to fully use the application.", closeButtonTitle:"OK")
+        SCLAlertView().showError(NSLocalizedString("NO_WEB_CONNEC",comment:"No internet connection"), subTitle:NSLocalizedString("NO_WEB_CONNEC_EXPL",comment:"No internet connection meaning"), closeButtonTitle:NSLocalizedString("OK",comment:"OK"))
     }
     
     /**
         Erreur - Accès Internet limité
     */
     internal func internetConnectionLimited() {
-        SCLAlertView().showWarning("No internet", subTitle: "It looks like your Internet connection is active but limited. Try to find a better connection to fully use the application.", closeButtonTitle:"OK")
+        SCLAlertView().showWarning(NSLocalizedString("NO_WEB",comment:"No internet"), subTitle: NSLocalizedString("NO_WEB_EXPL",comment:"No internet meaning"), closeButtonTitle:NSLocalizedString("OK",comment:"OK"))
     }
     
     /**
         Erreur - Autorisation d'utilisation de la localisation refusée
     */
     internal func locationAutho() {
-        SCLAlertView().showError("Location authorization", subTitle:"It looks like the application is not allowed to use your location data!", closeButtonTitle:"OK")
+        SCLAlertView().showError(NSLocalizedString("LOC_AUTH",comment:"Location authorization"), subTitle:NSLocalizedString("LOC_AUTH_EXPL",comment:"Location authorization meaning"), closeButtonTitle:NSLocalizedString("OK",comment:"OK"))
     }
     
     /**
         Erreur - Pas d'emplacements trouvés lors de la recherche OSM
     */
     internal func noPlacesFound(radius: SearchRadius) {
-        SCLAlertView().showWarning("No parking space found", subTitle:"It looks like no parking space has been found within a radius of \((radius.value)/1000) kilometers... 😁", closeButtonTitle:"OK")
+        SCLAlertView().showWarning(NSLocalizedString("NO_SPACE_FOUND",comment:"No space found"), subTitle:NSString(format: NSLocalizedString("NO_SPACE_FOUND_EXPL", comment: "No space found meaning"), String((radius.value)/1000)), closeButtonTitle:NSLocalizedString("OK",comment:"OK"))
+        
     }
     
     /**
         Erreur - Erreur lors de la réponse de la requête (timeout ou autre)
     */
     internal func errorRequest() {
-        SCLAlertView().showError("Overloaded servers", subTitle:"It looks like all servers are overloaded at the moment or your internet connection is too weak... Please try again in a few moments!", closeButtonTitle:"OK")
+        SCLAlertView().showError(NSLocalizedString("OVER_SERV",comment:"Overloaded servers"), subTitle:NSLocalizedString("OVER_SERV_EXPL",comment:"Overloaded servers meaning"), closeButtonTitle:NSLocalizedString("OK",comment:"OK"))
     }
     
     /**
         Erreur - La localisation n'a pas encore été récupérée
     */
     internal func locationWasNotGet() {
-        SCLAlertView().showError("Position not determined", subTitle:"It look like your position could not be determined! Please try again in a few moments!", closeButtonTitle:"OK")
+        SCLAlertView().showError(NSLocalizedString("LOC_NOT_DETER",comment:"Position not located"), subTitle:NSLocalizedString("LOC_NOT_DETER_EXPL",comment:"Position not located meaning"), closeButtonTitle:NSLocalizedString("OK",comment:"OK"))
     }
     
     /**
         Erreur - Erreur dans la réponse de la requête Google
     */
     internal func errorResponseGoogle() {
-        SCLAlertView().showError("Error retrieving data", subTitle:"It looks like there was a problem while retrieving data! Please try again in a few moments and if this problem persists, please contact us!", closeButtonTitle:"OK")
+        SCLAlertView().showError(NSLocalizedString("GOOGLE_FUCK_UP",comment:"Error retrieving Google data"), subTitle:NSLocalizedString("GOOGLE_FUCK_UP_EXPL",comment:"Error retrieving Google data meaning"), closeButtonTitle:NSLocalizedString("OK",comment:"OK"))
     }
     
     /**
         Erreur - L'application n'est plus installée
     */
     internal func appsDeleted(appName: String) {
-        SCLAlertView().showError("Application not installed", subTitle:"It looks like \(appName) is no longer installed! Reinstall it in order to use it again!", closeButtonTitle:"OK")
+        SCLAlertView().showError(NSLocalizedString("APP_NOT_INST",comment:"Application not install"), subTitle:NSString(format: NSLocalizedString("APP_NOT_INST_EXPL", comment: "Application not install meaning"), appName), closeButtonTitle:NSLocalizedString("OK",comment:"OK"))
     }
     
     /**
         Erreur - StreetView non disponible
     */
     internal func errorStreetView() {
-        SCLAlertView().showError("StreetView not available", subTitle:"It looks like StreetView is not available for this location!", closeButtonTitle:"OK")
+        SCLAlertView().showError(NSLocalizedString("STREETVIEW_NA",comment:"StreetView not available"), subTitle:NSLocalizedString("STREETVIEW_NA_EXPL",comment:"StreetView not available meaning"), closeButtonTitle:NSLocalizedString("OK",comment:"OK"))
     }
     
     /**
         Erreur - Connexion trop faible pour StreetView
     */
     internal func errorBadConnection() {
-        SCLAlertView().showError("Internet connection too weak", subTitle:"It looks like you internet connection is too weak to display StreetView...", closeButtonTitle:"OK")
+        SCLAlertView().showError(NSLocalizedString("WEB_CONNEC_WEAK",comment:"Internet connection to weak"), subTitle:NSLocalizedString("WEB_CONNEC_WEAEXPL",comment:"Internet connection to weak meaning"), closeButtonTitle:NSLocalizedString("OK",comment:"OK"))
     }
     
 }
