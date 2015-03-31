@@ -37,7 +37,7 @@ extension UIView {
             lockView.tag = 10
             lockView.alpha = 0.0
             var label: UILabel = UILabel()
-            label.text = "Chargement..."
+            label.text = "Loading..."
             label.textColor = UIColor.whiteColor()
             label.numberOfLines = 1
             label.textAlignment = NSTextAlignment.Center

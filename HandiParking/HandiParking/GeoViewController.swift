@@ -320,11 +320,11 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     func makeStringSearchResultsInRadius() -> NSString {
         var formattedString:String
         if parkingSpaces.count > 0 {
-            formattedString = "\(parkingSpaces.count) place"
+            formattedString = "\(parkingSpaces.count) space"
             if parkingSpaces.count > 1 {
                 formattedString += "s"
             }
-            formattedString += " dans un rayon de "
+            formattedString += " within a radius of "
             if radius.value > 500 {
                 formattedString += "\(radius.value/1000) km"
             } else {
@@ -332,7 +332,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             }
 
         } else {
-            formattedString = "Aucune place n'a été trouvée 😁"
+            formattedString = "No parking space found 😁"
         }
         return formattedString
     }
@@ -465,7 +465,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         En même temps, on calcule les bornes afin d'ajuster la caméra pour afficher tous les marqueurs (+ padding pour laisser de la marge autour de la carte)
     */
     func createMarkersAndBoundsToDisplay() {
-        SwiftSpinner.show("Récupération des informations...")
+        SwiftSpinner.show("Retrieving data...")
         var firstLocation: CLLocationCoordinate2D
         var bounds = GMSCoordinateBounds(coordinate: sourceOfSearch(), coordinate: sourceOfSearch())
         for place: ParkingSpace in parkingSpaces {
@@ -494,9 +494,9 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     func getEmplacements(coordinate: CLLocationCoordinate2D, radius: SearchRadius) {
         
         if radius.rawValue % 2 == 0 {
-            SwiftSpinner.show("Recherche en cours...")
+            SwiftSpinner.show("Search in progress...")
         } else {
-            SwiftSpinner.show("Patientez...")
+            SwiftSpinner.show("Please wait...")
         }
         
         let request = managerOSM!.request(DataProvider.OpenStreetMap.GetNodes(coordinate,radius))

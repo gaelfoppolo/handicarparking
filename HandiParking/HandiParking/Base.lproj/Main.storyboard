@@ -25,11 +25,11 @@
             </objects>
             <point key="canvasLocation" x="85" y="-626"/>
         </scene>
-        <!--À propos-->
+        <!--About-->
         <scene sceneID="c06-Vu-T4W">
             <objects>
                 <navigationController id="fl6-iQ-b6O" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="À propos" image="ic_menu_about" id="OeG-8g-f4B" customClass="RAMAnimatedTabBarItem" customModule="HandiParking" customModuleProvider="target">
+                    <tabBarItem key="tabBarItem" title="About" image="ic_menu_about" id="OeG-8g-f4B" customClass="RAMAnimatedTabBarItem" customModule="HandiParking" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                 <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -94,11 +94,11 @@
             </objects>
             <point key="canvasLocation" x="971" y="-1382"/>
         </scene>
-        <!--Géolocalisation-->
+        <!--Geolocation-->
         <scene sceneID="ZjP-Ad-NfU">
             <objects>
                 <navigationController id="2Iw-bA-fRb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Géolocalisation" image="ic_menu_location" id="Pn0-n3-mZO" customClass="RAMAnimatedTabBarItem" customModule="HandiParking" customModuleProvider="target">
+                    <tabBarItem key="tabBarItem" title="Geolocation" image="ic_menu_location" id="Pn0-n3-mZO" customClass="RAMAnimatedTabBarItem" customModule="HandiParking" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                 <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -142,11 +142,11 @@
             </objects>
             <point key="canvasLocation" x="1610" y="-1374"/>
         </scene>
-        <!--Aide-->
+        <!--Help-->
         <scene sceneID="DhT-u1-FnA">
             <objects>
                 <navigationController id="wlH-ca-XwW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Aide" image="ic_menu_help" id="ePO-Zc-P3P" customClass="RAMAnimatedTabBarItem" customModule="HandiParking" customModuleProvider="target">
+                    <tabBarItem key="tabBarItem" title="Help" image="ic_menu_help" id="ePO-Zc-P3P" customClass="RAMAnimatedTabBarItem" customModule="HandiParking" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                 <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -209,7 +209,7 @@
                                     <constraint firstAttribute="height" constant="30" id="6fl-DO-Lfy"/>
                                 </constraints>
                             </view>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999987" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dl4-Xb-f9Q" userLabel="Nb place found">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999987" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dl4-Xb-f9Q" userLabel="Nb spaces found">
                                 <rect key="frame" x="0.0" y="64" width="320" height="25"/>
                                 <color key="backgroundColor" red="0.0" green="0.55686274509803924" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -242,7 +242,7 @@
                                 <action selector="streetViewButtonAction:" destination="vXZ-lx-hvc" id="7tT-xy-tIZ"/>
                             </connections>
                         </barButtonItem>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Uj9-vT-BvY" userLabel="Lancement">
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Uj9-vT-BvY" userLabel="Launch">
                             <rect key="frame" x="147.5" y="9.5" width="25" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="toolbar_launch">
@@ -252,7 +252,7 @@
                                 <action selector="launchButtonAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="rpw-Kd-d8E"/>
                             </connections>
                         </button>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" image="toolbar_itinerary" id="QPG-YG-gcl" userLabel="Itinéraire">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" image="toolbar_itinerary" id="QPG-YG-gcl" userLabel="Itinerary">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="itineraryButtonAction:" destination="vXZ-lx-hvc" id="iBP-65-0CA"/>
@@ -293,11 +293,11 @@
             </objects>
             <point key="canvasLocation" x="-167" y="-1382"/>
         </scene>
-        <!--Recherche-->
+        <!--Search-->
         <scene sceneID="C4w-pK-wh4">
             <objects>
                 <navigationController definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="D9K-ix-aJ9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Recherche" image="ic_menu_search" id="45o-MJ-lDN" customClass="RAMAnimatedTabBarItem" customModule="HandiParking" customModuleProvider="target">
+                    <tabBarItem key="tabBarItem" title="Search" image="ic_menu_search" id="45o-MJ-lDN" customClass="RAMAnimatedTabBarItem" customModule="HandiParking" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                 <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -340,7 +340,7 @@
             </objects>
             <point key="canvasLocation" x="1358" y="-626"/>
         </scene>
-        <!--Recherche-->
+        <!--Search-->
         <scene sceneID="2s2-4N-pnL">
             <objects>
                 <tableViewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="A7Z-Rq-Nwg" customClass="SearchViewController" customModule="HandiParking" customModuleProvider="target" sceneMemberID="viewController">
@@ -353,7 +353,7 @@
                             <outlet property="delegate" destination="A7Z-Rq-Nwg" id="9Gu-4E-zaw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Recherche" id="EEK-Gk-3Kf"/>
+                    <navigationItem key="navigationItem" title="Search" id="EEK-Gk-3Kf"/>
                     <connections>
                         <segue destination="QlG-71-OAr" kind="show" identifier="placeSelected" id="xhS-zR-7kT"/>
                     </connections>
@@ -385,7 +385,7 @@
                                     <constraint firstAttribute="height" constant="30" id="mBy-mh-8hH"/>
                                 </constraints>
                             </view>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVC-1N-Lq7" userLabel="Nb place found">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVC-1N-Lq7" userLabel="Nb spaces found">
                                 <rect key="frame" x="0.0" y="64" width="320" height="25"/>
                                 <color key="backgroundColor" red="0.0" green="0.5568627451" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -412,7 +412,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="eOD-8M-zT8">
                         <nil key="title"/>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="95B-mb-YdT" userLabel="Lancement">
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="95B-mb-YdT" userLabel="Launch">
                             <rect key="frame" x="147.5" y="9.5" width="25" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="toolbar_place_location">

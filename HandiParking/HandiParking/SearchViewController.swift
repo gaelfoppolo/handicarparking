@@ -131,7 +131,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
             if (searchBarValue.isEmpty) {
                 var messageLabel:UILabel
                 messageLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
-                messageLabel.text = "Veuillez rentrer un nom de lieu 🏠"
+                messageLabel.text = "Please enter a city, an address, a zip code, etc... 🏠"
                 messageLabel.textColor = UIColor.blackColor()
                 messageLabel.numberOfLines = 0
                 messageLabel.textAlignment = NSTextAlignment.Center
@@ -160,7 +160,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
             else if (self.placesResults.count == 0) {
                 var messageLabel:UILabel
                 messageLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
-                messageLabel.text = "Aucun lieu ne correpond à votre recherche 😞"
+                messageLabel.text = "No place matches you search 😞"
                 messageLabel.textColor = UIColor.blackColor()
                 messageLabel.numberOfLines = 0
                 messageLabel.textAlignment = NSTextAlignment.Center

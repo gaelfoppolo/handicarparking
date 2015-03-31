@@ -28,9 +28,9 @@ struct MapsAppsData {
     */
     func generateActionSheet() -> UIActionSheet {
         var sheet: UIActionSheet = UIActionSheet()
-        let title: String = "Sélectionnez l'application qui va prendre en charge votre itinéraire"
+        let title: String = "Select the application that will take over your route"
         sheet.title = title
-        sheet.addButtonWithTitle("Annuler")
+        sheet.addButtonWithTitle("Cancel")
         sheet.cancelButtonIndex = 0
         
         var installApps = MapsAppsData().getListOfInstalledMapsApps()

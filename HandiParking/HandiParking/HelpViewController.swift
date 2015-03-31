@@ -14,7 +14,7 @@ class HelpViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.topItem?.title = "Aide"
+        navigationController?.navigationBar.topItem?.title = "Help"
     }
     
 }

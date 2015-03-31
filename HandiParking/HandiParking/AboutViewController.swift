@@ -14,7 +14,7 @@ class AboutViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.topItem?.title = "À propos"
+        navigationController?.navigationBar.topItem?.title = "About"
     }
     
 }

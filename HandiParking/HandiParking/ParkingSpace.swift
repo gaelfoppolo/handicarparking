@@ -62,9 +62,9 @@ class ParkingSpace {
         if let feee = fee {
             switch feee {
                 case "yes":
-                    self.fee = "Payant"
+                    self.fee = "Fee"
                 case "no":
-                    self.fee = "Gratuit"
+                    self.fee = "No fee"
                 default:
                     break
             }
@@ -74,12 +74,12 @@ class ParkingSpace {
         if let capa = capacity {
             if let capa2 = capa.toInt() {
                 if capa2 > 1 {
-                    self.capacity = "\(capa2) places"
+                    self.capacity = "\(capa2) spaces"
                 } else {
-                    self.capacity = "1 place"
+                    self.capacity = "1 space"
                 }
             } else {
-                self.capacity = "1 place"
+                self.capacity = "1 space"
             }
         } else {
             self.capacity = "N/A"
@@ -95,7 +95,7 @@ class ParkingSpace {
 
     */
     func setAddress(adr: String?) {
-        self.address = adr ?? "Aucune adresse correspondante"
+        self.address = adr ?? "No matching address"
     }
     
     /**
