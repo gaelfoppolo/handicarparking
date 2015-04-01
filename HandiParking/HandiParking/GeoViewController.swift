@@ -97,7 +97,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         
         // instanciation du manager de requêtes OSM + GM
         let configurationOSM = NSURLSessionConfiguration.defaultSessionConfiguration()
-        configurationOSM.timeoutIntervalForResource = 10 // secondes
+        configurationOSM.timeoutIntervalForRequest = 10 // secondes
         managerOSM = Alamofire.Manager(configuration: configurationOSM)
         
         let configurationGM = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -519,6 +519,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         } else {
             SwiftSpinner.show(NSLocalizedString("WAITING", comment: "In progress 2"))
         }
+        println(radius.value)
         let request = managerOSM!.request(DataProvider.OpenStreetMap.GetNodes(coordinate,radius))
         request.validate()
         request.responseSwiftyJSON { request, response, json, error in
