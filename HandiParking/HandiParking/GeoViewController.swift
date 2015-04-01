@@ -519,7 +519,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         } else {
             SwiftSpinner.show(NSLocalizedString("WAITING", comment: "In progress 2"))
         }
-        println(radius.value)
         let request = managerOSM!.request(DataProvider.OpenStreetMap.GetNodes(coordinate,radius))
         request.validate()
         request.responseSwiftyJSON { request, response, json, error in
