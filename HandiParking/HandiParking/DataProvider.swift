@@ -18,8 +18,20 @@ struct DataProvider {
 
     enum OpenStreetMap: URLRequestConvertible {
         
+        static let listOSMServers = [
+            "http://overpass.osm.rambler.ru/cgi/interpreter",
+            "http://overpass-api.de/api/interpreter",
+            "http://api.openstreetmap.fr/oapi/interpreter"
+        ]
+        
+        static var actualServer: Int = 0
+        
+        static var nbServerUsed: Int = 0
+        
         /// l'URL de base de l'API d'OSM
-        static let baseURLString = "http://overpass.osm.rambler.ru/cgi/interpreter"
+        static var baseURLString : String {
+            return listOSMServers[actualServer]
+        }
         
         /// nombre minimum de résultats à récupérer
         static let minimumResults: Int = 10

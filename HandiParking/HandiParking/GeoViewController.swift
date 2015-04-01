@@ -97,7 +97,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         
         // instanciation du manager de requêtes OSM + GM
         let configurationOSM = NSURLSessionConfiguration.defaultSessionConfiguration()
-        configurationOSM.timeoutIntervalForRequest = 10 // secondes
+        configurationOSM.timeoutIntervalForResource = 10 // secondes
         managerOSM = Alamofire.Manager(configuration: configurationOSM)
         
         let configurationGM = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -278,6 +278,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     */
     func searchResultsController() {
         if(parkingSpaces.count >= DataProvider.OpenStreetMap.minimumResults) {
+            resetServerParameters()
             sortAndFilterNearestPlace()
             controlIfPlaceFound()
         } else if let newRadius = SearchRadius(rawValue: radius.rawValue+1){
@@ -285,6 +286,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             radius = newRadius
             getEmplacements(sourceOfSearch(), radius: radius)
         } else {
+            resetServerParameters()
             controlIfPlaceFound()
         }
     }
@@ -479,6 +481,25 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         
     }
     
+    func switchServer() {
+        // on peut encore faire un tour:
+        // nbServerUsed++
+        // et on prend un nouveau serveur avec 3->0
+        DataProvider.OpenStreetMap.nbServerUsed++
+        var actualServer = DataProvider.OpenStreetMap.actualServer
+        
+        if actualServer < DataProvider.OpenStreetMap.listOSMServers.count-1 {
+            DataProvider.OpenStreetMap.actualServer++
+        } else {
+            DataProvider.OpenStreetMap.actualServer = 0
+        }
+        //DataProvider.OpenStreetMap.baseURLString = DataProvider.OpenStreetMap.listOSMServers[DataProvider.OpenStreetMap.actualServer]
+    }
+    
+    func resetServerParameters() {
+        DataProvider.OpenStreetMap.nbServerUsed = 0
+    }
+    
     // MARK: Recherche & récupération de données
     
     /**
@@ -498,7 +519,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         } else {
             SwiftSpinner.show(NSLocalizedString("WAITING", comment: "In progress 2"))
         }
-        
         let request = managerOSM!.request(DataProvider.OpenStreetMap.GetNodes(coordinate,radius))
         request.validate()
         request.responseSwiftyJSON { request, response, json, error in
@@ -535,11 +555,17 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                     var parkingSpace = ParkingSpace(id: id, lat: lat, lon: lon, name: name, fee: fee, capacity: capacity, distance: distance)
                     self.parkingSpaces.append(parkingSpace)
                 }
-                
                 self.searchResultsController()
             } else {
-                SwiftSpinner.hide()
-                AlertViewController().errorRequest()
+                if DataProvider.OpenStreetMap.nbServerUsed < DataProvider.OpenStreetMap.listOSMServers.count-1 {
+                    self.switchServer()
+                    self.getEmplacements(coordinate, radius: radius)
+                } else {
+                    SwiftSpinner.hide()
+                    AlertViewController().errorRequest()
+                    // remise à zéro des paramètres de switch serveurs puisque erreur
+                    self.resetServerParameters()
+                }
             }
         }
         
