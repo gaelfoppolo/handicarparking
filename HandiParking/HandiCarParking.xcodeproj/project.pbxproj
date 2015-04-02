@@ -16,7 +16,6 @@
 		935D42701AB1AAEA005779FA /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D426F1AB1AAEA005779FA /* DataProvider.swift */; };
 		935D42821AB1DC05005779FA /* ParkingSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935D42811AB1DC05005779FA /* ParkingSpace.swift */; };
 		9375D5FB1AC1999200A583B5 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9375D5FA1AC1999200A583B5 /* Place.swift */; };
-		937626FF1AB031A80059C23D /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937626FE1AB031A80059C23D /* HelpViewController.swift */; };
 		937627011AB031D60059C23D /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937627001AB031D60059C23D /* AboutViewController.swift */; };
 		937640D01AC4127100716122 /* RAMBounceAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640C51AC4127000716122 /* RAMBounceAnimation.swift */; };
 		937640D11AC4127100716122 /* RAMFrameItemAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937640C71AC4127000716122 /* RAMFrameItemAnimation.swift */; };
@@ -176,6 +175,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9303C1DC1ACD793100D61A33 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		931740E11AC72C6100371734 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9345FBC11AB2F3F900D4F686 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
 		9345FBD01AB2FFDD00D4F686 /* PlaceMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceMarker.swift; sourceTree = "<group>"; };
@@ -185,7 +185,6 @@
 		935D426F1AB1AAEA005779FA /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		935D42811AB1DC05005779FA /* ParkingSpace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingSpace.swift; sourceTree = "<group>"; };
 		9375D5FA1AC1999200A583B5 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
-		937626FE1AB031A80059C23D /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		937627001AB031D60059C23D /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		937640C51AC4127000716122 /* RAMBounceAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMBounceAnimation.swift; sourceTree = "<group>"; };
 		937640C71AC4127000716122 /* RAMFrameItemAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMFrameItemAnimation.swift; sourceTree = "<group>"; };
@@ -246,7 +245,6 @@
 		93D2E8781AAF2F050028ED1B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		93D2E87A1AAF2FAD0028ED1B /* HandiParking-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HandiParking-Bridging-Header.h"; sourceTree = "<group>"; };
 		93D4DEFB1ACA80D700C7C2AB /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		93D4DEFC1ACA80D700C7C2AB /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		93D4DF061ACA819000C7C2AB /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		93D4DF081ACA819B00C7C2AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		93DC120D1AB2DE9200C244DB /* SearchRadius.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRadius.swift; sourceTree = "<group>"; };
@@ -294,7 +292,6 @@
 			children = (
 				93C83F531AAED9AD005990C2 /* GeoViewController.swift */,
 				93CE8E851AC1529A008F09BF /* StreetViewController.swift */,
-				937626FE1AB031A80059C23D /* HelpViewController.swift */,
 				937627001AB031D60059C23D /* AboutViewController.swift */,
 				93CCBA421AB6DDF800FCCB1E /* ServicesController.swift */,
 				93EF793D1AC2B5C70053A329 /* SearchViewController.swift */,
@@ -611,6 +608,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 93C83F401AAED9AD005990C2;
 			productRefGroup = 93C83F4A1AAED9AD005990C2 /* Products */;
@@ -760,7 +758,6 @@
 				937640D11AC4127100716122 /* RAMFrameItemAnimation.swift in Sources */,
 				9375D5FB1AC1999200A583B5 /* Place.swift in Sources */,
 				93CCBA431AB6DDF800FCCB1E /* ServicesController.swift in Sources */,
-				937626FF1AB031A80059C23D /* HelpViewController.swift in Sources */,
 				93C83F521AAED9AD005990C2 /* HandiParking.xcdatamodeld in Sources */,
 				93DC120E1AB2DE9200C244DB /* SearchRadius.swift in Sources */,
 				9391A67B1AC4AA5A00BD64C7 /* DTIAnimRotatingPlane.swift in Sources */,
@@ -802,7 +799,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				93C83F561AAED9AD005990C2 /* Base */,
-				93D4DEFC1ACA80D700C7C2AB /* fr */,
+				9303C1DC1ACD793100D61A33 /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
