@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "93C83F481AAED9AD005990C2"
-               BuildableName = "HandiParking.app"
-               BlueprintName = "HandiParking"
-               ReferencedContainer = "container:HandiParking.xcodeproj">
+               BuildableName = "HandiCarParking.app"
+               BlueprintName = "HandiCarParking"
+               ReferencedContainer = "container:HandiCarParking.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "93C83F601AAED9AD005990C2"
-               BuildableName = "HandiParkingTests.xctest"
-               BlueprintName = "HandiParkingTests"
-               ReferencedContainer = "container:HandiParking.xcodeproj">
+               BuildableName = "HandiCarParkingTests.xctest"
+               BlueprintName = "HandiCarParkingTests"
+               ReferencedContainer = "container:HandiCarParking.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "93C83F601AAED9AD005990C2"
-               BuildableName = "HandiParkingTests.xctest"
-               BlueprintName = "HandiParkingTests"
-               ReferencedContainer = "container:HandiParking.xcodeproj">
+               BuildableName = "HandiCarParkingTests.xctest"
+               BlueprintName = "HandiCarParkingTests"
+               ReferencedContainer = "container:HandiCarParking.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "93C83F481AAED9AD005990C2"
-            BuildableName = "HandiParking.app"
-            BlueprintName = "HandiParking"
-            ReferencedContainer = "container:HandiParking.xcodeproj">
+            BuildableName = "HandiCarParking.app"
+            BlueprintName = "HandiCarParking"
+            ReferencedContainer = "container:HandiCarParking.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "93C83F481AAED9AD005990C2"
-            BuildableName = "HandiParking.app"
-            BlueprintName = "HandiParking"
-            ReferencedContainer = "container:HandiParking.xcodeproj">
+            BuildableName = "HandiCarParking.app"
+            BlueprintName = "HandiCarParking"
+            ReferencedContainer = "container:HandiCarParking.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "93C83F481AAED9AD005990C2"
-            BuildableName = "HandiParking.app"
-            BlueprintName = "HandiParking"
-            ReferencedContainer = "container:HandiParking.xcodeproj">
+            BuildableName = "HandiCarParking.app"
+            BlueprintName = "HandiCarParking"
+            ReferencedContainer = "container:HandiCarParking.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -214,14 +214,14 @@
 		939F00B41AB82E8D007B928E /* InfoMarkerWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoMarkerWindow.xib; sourceTree = "<group>"; };
 		939F00BC1AB831D5007B928E /* InfoMarkerWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoMarkerWindow.swift; sourceTree = "<group>"; };
 		939F00C61AB834A6007B928E /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		93C83F491AAED9AD005990C2 /* HandiParking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandiParking.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		93C83F491AAED9AD005990C2 /* HandiCarParking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandiCarParking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C83F4D1AAED9AD005990C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93C83F4E1AAED9AD005990C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93C83F511AAED9AD005990C2 /* HandiParking.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HandiParking.xcdatamodel; sourceTree = "<group>"; };
 		93C83F531AAED9AD005990C2 /* GeoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoViewController.swift; sourceTree = "<group>"; };
 		93C83F561AAED9AD005990C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		93C83F5B1AAED9AD005990C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		93C83F611AAED9AD005990C2 /* HandiParkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HandiParkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		93C83F611AAED9AD005990C2 /* HandiCarParkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HandiCarParkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C83F661AAED9AD005990C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93C83F671AAED9AD005990C2 /* HandiParkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandiParkingTests.swift; sourceTree = "<group>"; };
 		93CCBA421AB6DDF800FCCB1E /* ServicesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesController.swift; sourceTree = "<group>"; };
@@ -462,8 +462,8 @@
 		93C83F4A1AAED9AD005990C2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				93C83F491AAED9AD005990C2 /* HandiParking.app */,
-				93C83F611AAED9AD005990C2 /* HandiParkingTests.xctest */,
+				93C83F491AAED9AD005990C2 /* HandiCarParking.app */,
+				93C83F611AAED9AD005990C2 /* HandiCarParkingTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -547,9 +547,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		93C83F481AAED9AD005990C2 /* HandiParking */ = {
+		93C83F481AAED9AD005990C2 /* HandiCarParking */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 93C83F6B1AAED9AD005990C2 /* Build configuration list for PBXNativeTarget "HandiParking" */;
+			buildConfigurationList = 93C83F6B1AAED9AD005990C2 /* Build configuration list for PBXNativeTarget "HandiCarParking" */;
 			buildPhases = (
 				93C83F451AAED9AD005990C2 /* Sources */,
 				93C83F461AAED9AD005990C2 /* Frameworks */,
@@ -562,14 +562,14 @@
 				9384594B1ACC9EEA00843485 /* PBXTargetDependency */,
 				938459491ACC9EE600843485 /* PBXTargetDependency */,
 			);
-			name = HandiParking;
+			name = HandiCarParking;
 			productName = HandiParking;
-			productReference = 93C83F491AAED9AD005990C2 /* HandiParking.app */;
+			productReference = 93C83F491AAED9AD005990C2 /* HandiCarParking.app */;
 			productType = "com.apple.product-type.application";
 		};
-		93C83F601AAED9AD005990C2 /* HandiParkingTests */ = {
+		93C83F601AAED9AD005990C2 /* HandiCarParkingTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 93C83F6E1AAED9AD005990C2 /* Build configuration list for PBXNativeTarget "HandiParkingTests" */;
+			buildConfigurationList = 93C83F6E1AAED9AD005990C2 /* Build configuration list for PBXNativeTarget "HandiCarParkingTests" */;
 			buildPhases = (
 				93C83F5D1AAED9AD005990C2 /* Sources */,
 				93C83F5E1AAED9AD005990C2 /* Frameworks */,
@@ -580,9 +580,9 @@
 			dependencies = (
 				93C83F631AAED9AD005990C2 /* PBXTargetDependency */,
 			);
-			name = HandiParkingTests;
+			name = HandiCarParkingTests;
 			productName = HandiParkingTests;
-			productReference = 93C83F611AAED9AD005990C2 /* HandiParkingTests.xctest */;
+			productReference = 93C83F611AAED9AD005990C2 /* HandiCarParkingTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -604,7 +604,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 93C83F441AAED9AD005990C2 /* Build configuration list for PBXProject "HandiParking" */;
+			buildConfigurationList = 93C83F441AAED9AD005990C2 /* Build configuration list for PBXProject "HandiCarParking" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -627,8 +627,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				93C83F481AAED9AD005990C2 /* HandiParking */,
-				93C83F601AAED9AD005990C2 /* HandiParkingTests */,
+				93C83F481AAED9AD005990C2 /* HandiCarParking */,
+				93C83F601AAED9AD005990C2 /* HandiCarParkingTests */,
 			);
 		};
 /* End PBXProject section */
@@ -792,7 +792,7 @@
 		};
 		93C83F631AAED9AD005990C2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 93C83F481AAED9AD005990C2 /* HandiParking */;
+			target = 93C83F481AAED9AD005990C2 /* HandiCarParking */;
 			targetProxy = 93C83F621AAED9AD005990C2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -924,7 +924,7 @@
 				INFOPLIST_FILE = HandiParking/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HandiCarParking;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HandiParking/HandiParking-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -947,7 +947,7 @@
 				INFOPLIST_FILE = HandiParking/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HandiCarParking;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HandiParking/HandiParking-Bridging-Header.h";
 			};
@@ -967,8 +967,8 @@
 				);
 				INFOPLIST_FILE = HandiParkingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HandiParking.app/HandiParking";
+				PRODUCT_NAME = HandiCarParkingTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HandiCarParking.app/HandiCarParking";
 			};
 			name = Debug;
 		};
@@ -982,15 +982,15 @@
 				);
 				INFOPLIST_FILE = HandiParkingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HandiParking.app/HandiParking";
+				PRODUCT_NAME = HandiCarParkingTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HandiCarParking.app/HandiCarParking";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		93C83F441AAED9AD005990C2 /* Build configuration list for PBXProject "HandiParking" */ = {
+		93C83F441AAED9AD005990C2 /* Build configuration list for PBXProject "HandiCarParking" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				93C83F691AAED9AD005990C2 /* Debug */,
@@ -999,7 +999,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		93C83F6B1AAED9AD005990C2 /* Build configuration list for PBXNativeTarget "HandiParking" */ = {
+		93C83F6B1AAED9AD005990C2 /* Build configuration list for PBXNativeTarget "HandiCarParking" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				93C83F6C1AAED9AD005990C2 /* Debug */,
@@ -1008,7 +1008,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		93C83F6E1AAED9AD005990C2 /* Build configuration list for PBXNativeTarget "HandiParkingTests" */ = {
+		93C83F6E1AAED9AD005990C2 /* Build configuration list for PBXNativeTarget "HandiCarParkingTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				93C83F6F1AAED9AD005990C2 /* Debug */,

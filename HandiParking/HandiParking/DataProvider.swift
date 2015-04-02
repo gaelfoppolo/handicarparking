@@ -78,7 +78,7 @@ struct DataProvider {
         static let baseURLString = "https://maps.googleapis.com/maps/api"
         
         // la clé spécifique au bundle de cette application iOS
-        static let apiKeyiOS = "AIzaSyBCsJT2QsSUcnnkb8Oq6wDuRUshrXmYb4Y"
+        static let apiKeyiOS = "AIzaSyDhySHTDSe2IOR8WTF4fmr1ISAo-HcIoGc"
         
         // la clé utiliser pour les appels aux services serveurs
         static let apiKeyServer = "AIzaSyB5wnwkYNT7azlLkIGDOcFAA3DrBo-Jneo"
