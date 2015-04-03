@@ -170,6 +170,11 @@ class SearchSelectedViewController: GeoViewController {
     override func setButtonsItineraryAndStreetViewInState(state: Bool) {
         itineraryButton.enabled = state
         streetViewButton.enabled = state
-    }   
+    }
+    
+    override func didStopSearch() {
+        super.didStopSearch()
+        marker_place.map = mapView
+    }
     
 }

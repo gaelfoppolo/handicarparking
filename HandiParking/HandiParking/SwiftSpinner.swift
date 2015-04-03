@@ -124,8 +124,8 @@ public class SwiftSpinner: UIView {
     }
     
     func closeButton(sender: UIButton!) {
-        let spinner = SwiftSpinner.sharedInstance
-        spinner.removeFromSuperview()
+        //let spinner = SwiftSpinner.sharedInstance
+        //spinner.removeFromSuperview()
         delegate?.didStopSearch()
     }
     

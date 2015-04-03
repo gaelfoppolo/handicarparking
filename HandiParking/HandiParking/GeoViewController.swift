@@ -18,6 +18,13 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     
     func didStopSearch() {
         println("stop")
+        self.request?.cancel()
+        mapView.clear()
+        resultsInRadius.hidden = true
+        // ou un message ?
+        markers.removeAll(keepCapacity: false)
+        parkingSpaces.removeAll(keepCapacity: false)
+        radius = SearchRadius(rawValue: 1)!
     }
     
     //MARK: Outlets
@@ -81,6 +88,8 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     
     /// tableau de marqueurs ajoutés sur la carte
     var markers = [PlaceMarker]()
+    
+    var request: Alamofire.Request?
     
     // MARK: Init & deinit
     
@@ -525,9 +534,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         } else {
             SwiftSpinner.show(NSLocalizedString("WAITING", comment: "In progress 2"))
         }
-        let request = managerOSM!.request(DataProvider.OpenStreetMap.GetNodes(coordinate,radius))
-        request.validate()
-        request.responseSwiftyJSON { request, response, json, error in
+        self.request = managerOSM!.request(DataProvider.OpenStreetMap.GetNodes(coordinate,radius)).validate().responseSwiftyJSON { request, response, json, error in
             if error == nil {
                 let elements = json["elements"].arrayValue
                 
@@ -563,18 +570,33 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 }
                 self.searchResultsController()
             } else {
-                if DataProvider.OpenStreetMap.nbServerUsed < DataProvider.OpenStreetMap.listOSMServers.count-1 {
-                    self.switchServer()
-                    self.getEmplacements(coordinate, radius: radius)
+                if error?.code == -999 {
+                   SwiftSpinner.show("Recherche stopée", animated: false)
+                    self.delay(seconds: 1.0, completion: {
+                        SwiftSpinner.hide()
+                    }) 
                 } else {
-                    SwiftSpinner.hide()
-                    AlertViewController().errorRequest()
-                    // remise à zéro des paramètres de switch serveurs puisque erreur
-                    self.resetServerParameters()
+                    if DataProvider.OpenStreetMap.nbServerUsed < DataProvider.OpenStreetMap.listOSMServers.count-1 {
+                        self.switchServer()
+                        self.getEmplacements(coordinate, radius: radius)
+                    } else {
+                        SwiftSpinner.hide()
+                        AlertViewController().errorRequest()
+                        // remise à zéro des paramètres de switch serveurs puisque erreur
+                        self.resetServerParameters()
+                    }
                 }
             }
         }
         
+    }
+    
+    func delay(#seconds: Double, completion:()->()) {
+        let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64( Double(NSEC_PER_SEC) * seconds ))
+        
+        dispatch_after(popTime, dispatch_get_main_queue()) {
+            completion()
+        }
     }
     
     /**
