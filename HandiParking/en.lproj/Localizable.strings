@@ -11,6 +11,7 @@ CANCEL="Cancel";
 FEE="Fee";
 NO_FEE="No fee";
 NB_SPACE="%@ space";
+NB_SPACES="%@ spaces";
 NA="N/A";
 NO_ADDRESS="No matching address";
 OK="OK";

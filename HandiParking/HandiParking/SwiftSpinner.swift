@@ -93,6 +93,7 @@ public class SwiftSpinner: UIView {
         closeButton.setImage(UIImage(named: "close.png") as UIImage!, forState: .Normal)
         closeButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         closeButton.frame = CGRectMake(10, 25, 50, 50)
+        closeButton.tintColor = UIColor.whiteColor()
         addSubview(closeButton)
     }
     
