@@ -102,4 +102,11 @@ struct AlertViewController {
         SCLAlertView().showError(NSLocalizedString("WEB_CONNEC_WEAK",comment:"Internet connection to weak"), subTitle:NSLocalizedString("WEB_CONNEC_WEAEXPL",comment:"Internet connection to weak meaning"), closeButtonTitle:NSLocalizedString("OK",comment:"OK"))
     }
     
+    /**
+        Erreur - Envoi e-mail
+    */
+    internal func errorSendMail() {
+        SCLAlertView().showError(NSLocalizedString("ERROR_MAIL",comment:"Error send mail"), subTitle:NSLocalizedString("ERROR_MAIL_MESSAGE",comment:"Error send mail meaning"), closeButtonTitle:NSLocalizedString("OK",comment:"OK"))
+    }
+    
 }
