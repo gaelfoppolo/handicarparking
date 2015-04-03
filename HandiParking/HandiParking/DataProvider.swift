@@ -18,17 +18,20 @@ struct DataProvider {
 
     enum OpenStreetMap: URLRequestConvertible {
         
+        /// la liste des seveurs OSM
         static let listOSMServers = [
             "http://overpass.osm.rambler.ru/cgi/interpreter",
             "http://overpass-api.de/api/interpreter",
             "http://api.openstreetmap.fr/oapi/interpreter"
         ]
         
+        /// le numéro du serveur utilisé actuellement dans la recherche (correspond à une case de listOSMServers)
         static var actualServer: Int = 0
         
+        /// le nombre de serveur utilisés lors de la recherche en cours, inférieur à listOSMServers-1
         static var nbServerUsed: Int = 0
         
-        /// l'URL de base de l'API d'OSM
+        /// l'URL de base de l'API d'OSM (computed)
         static var baseURLString : String {
             return listOSMServers[actualServer]
         }

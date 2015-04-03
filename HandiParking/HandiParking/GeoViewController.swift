@@ -78,7 +78,8 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     /// tableau de marqueurs ajoutés sur la carte
     var markers = [PlaceMarker]()
     
-    var request: Alamofire.Request?
+    /// requête de recherche OpenStreetMap (permet de l'annuler à tout moment)
+    var requestOSM: Alamofire.Request?
     
     // MARK: Init & deinit
     
@@ -436,6 +437,9 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         }
     }
     
+    /**
+        Ajoute un spinner au bas de la vue pour signaler à l'utilisateur qu'une activité est en cours
+    */
     func loadInfoWindow() {
         let loadingView = UIView(frame: CGRectMake(0, 0, self.loadingInfoWindow.bounds.size.width, self.loadingInfoWindow.bounds.size.height))
         loadingView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
@@ -456,34 +460,15 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         loadingInfoWindow.addSubview(loadingView)
     }
     
+    /**
+        Supprimer le spinner d'activité en bas de la vue
+    */
     func unloadInfoWindow() {
         if let views = loadingInfoWindow.subviews as? [UIView] {
             for view in views {
               view.removeFromSuperview()
             }
         }
-    }
-    
-    func delay(#seconds: Double, completion:()->()) {
-        let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64( Double(NSEC_PER_SEC) * seconds ))
-        
-        dispatch_after(popTime, dispatch_get_main_queue()) {
-            completion()
-        }
-    }
-    
-    //MARK: SwiftSpinnerDelegate
-    
-    func didStopSearch() {
-        self.request?.cancel()
-        resultsInRadius.text = NSLocalizedString("SEARCH_CANCELLED", comment: "Search cancelled")
-        resultsInRadius.alpha = 0.0
-        resultsInRadius.hidden = false
-        UIView.animateWithDuration(2.5, animations: {
-            self.resultsInRadius.alpha = 0.85
-        })
-        parkingSpaces.removeAll(keepCapacity: false)
-        radius = SearchRadius(rawValue: 1)!
     }
     
     /**
@@ -507,10 +492,11 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         
     }
     
+    /**
+        Permet de changer le serveur OSM sur lequel on effectue les appels
+        On fait une rotation sur un tableau et quand on est au bout, on revient au début du tableau
+    */
     func switchServer() {
-        // on peut encore faire un tour:
-        // nbServerUsed++
-        // et on prend un nouveau serveur avec 3->0
         DataProvider.OpenStreetMap.nbServerUsed++
         var actualServer = DataProvider.OpenStreetMap.actualServer
         
@@ -519,9 +505,12 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         } else {
             DataProvider.OpenStreetMap.actualServer = 0
         }
-        //DataProvider.OpenStreetMap.baseURLString = DataProvider.OpenStreetMap.listOSMServers[DataProvider.OpenStreetMap.actualServer]
     }
     
+    /**
+        Reset le switch des serveurs
+        Appelée dès que la recherche est un succès
+    */
     func resetServerParameters() {
         DataProvider.OpenStreetMap.nbServerUsed = 0
     }
@@ -536,6 +525,9 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         :param: radius Le rayon (en mètres) de recherche
     
         La requête est effectuée de façon asynchrone grâce à une closure, avec un timeout de 10 secondes.
+    
+        Après ce timeout, on swich de serveur (si possible).
+    
         Quand la requête est un succès, on appelle une fonction contrôleur qui va vérifier les résultats.
     */
     func getEmplacements(coordinate: CLLocationCoordinate2D, radius: SearchRadius) {
@@ -545,7 +537,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         } else {
             SwiftSpinner.show(NSLocalizedString("WAITING", comment: "In progress 2"))
         }
-        self.request = managerOSM!.request(DataProvider.OpenStreetMap.GetNodes(coordinate,radius)).validate().responseSwiftyJSON { request, response, json, error in
+        self.requestOSM = managerOSM!.request(DataProvider.OpenStreetMap.GetNodes(coordinate,radius)).validate().responseSwiftyJSON { request, response, json, error in
             if error == nil {
                 let elements = json["elements"].arrayValue
                 
@@ -737,6 +729,37 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 }
             }
         }
+    }
+    
+    /**
+        Permet de lancer un timer avec completion handler
+        :param: #seconds: le nombre de secondes à attendre avant d'effectuer l'action dans le handler
+        :param: le handler
+    */
+    func delay(#seconds: Double, completion:()->()) {
+        let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64( Double(NSEC_PER_SEC) * seconds ))
+        
+        dispatch_after(popTime, dispatch_get_main_queue()) {
+            completion()
+        }
+    }
+    
+    //MARK: SwiftSpinnerDelegate
+    
+    /**
+        Appelée dès que le bouton close de la vue SwiftSpinner est tappé
+        On annule la requête et remet les variables utilent à la recherche à zéro
+    */
+    func didStopSearch() {
+        self.requestOSM?.cancel()
+        resultsInRadius.text = NSLocalizedString("SEARCH_CANCELLED", comment: "Search cancelled")
+        resultsInRadius.alpha = 0.0
+        resultsInRadius.hidden = false
+        UIView.animateWithDuration(2.5, animations: {
+            self.resultsInRadius.alpha = 0.85
+        })
+        parkingSpaces.removeAll(keepCapacity: false)
+        radius = SearchRadius(rawValue: 1)!
     }
     
 }
