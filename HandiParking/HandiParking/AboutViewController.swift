@@ -37,6 +37,20 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         controller.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func learnMoreOSM(sender: AnyObject) {
+        var mySafari: UIApplication = UIApplication.sharedApplication()
+        var myURL: NSURL = NSURL(string: "http://www.openstreetmap.org/about")!
+        mySafari.openURL(myURL)
+    }
+    
+    @IBAction func contributeOSM(sender: AnyObject) {
+        var mySafari: UIApplication = UIApplication.sharedApplication()
+        var urlString = "http://wiki.openstreetmap.org/wiki/" + NSLocalizedString("CONTRIB_OSM_URL",comment:"language string") + "Beginners'_guide"
+        var urlParse: NSString = urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        var myURL: NSURL = NSURL(string: urlParse)!
+        mySafari.openURL(myURL)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

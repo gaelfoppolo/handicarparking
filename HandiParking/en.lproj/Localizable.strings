@@ -48,3 +48,4 @@ SEARCH_WELCOME="Please type a city, an address,\na zip code, a place, etc...";
 SEARCH_NO_RESULT="No place matches you search 😞";
 ERROR_MAIL="Could not send email";
 ERROR_MAIL_MESSAGE="Your device could not send e-mail.  Please check e-mail configuration and try again.";
+CONTRIB_OSM_URL="";

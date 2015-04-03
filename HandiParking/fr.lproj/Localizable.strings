@@ -48,3 +48,4 @@ SEARCH_WELCOME="Saisissez une ville, une adresse, \nun code postal, etc.";
 SEARCH_NO_RESULT="Aucun lieu ne correspond à votre recherche 😞";
 ERROR_MAIL="Impossible d'envoyer l'email";
 ERROR_MAIL_MESSAGE="Votre appareil ne peut pas envoyer d'email. Vérifiez votre configuration e-mail et réeassayez.";
+CONTRIB_OSM_URL="FR:";

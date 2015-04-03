@@ -237,12 +237,12 @@
                                                     <constraint firstAttribute="width" constant="95" id="c06-fO-isq"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Helping people with disability findind parking spaces around the world" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytT-co-Wkh">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Helping people with disability findind parking spaces around the world 🗽" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytT-co-Wkh">
                                                 <rect key="frame" x="111" y="8" width="256" height="95"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="95" id="YhE-dA-zAJ"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -257,6 +257,9 @@
                                                 <state key="normal" title="Learn more about OpenStreetMap">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="learnMoreOSM:" destination="pL5-nx-PPr" eventType="touchUpInside" id="HpV-tn-ajd"/>
+                                                </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="osm_logo" translatesAutoresizingMaskIntoConstraints="NO" id="UDJ-Le-mdW">
                                                 <rect key="frame" x="272" y="111" width="95" height="95"/>
@@ -301,6 +304,9 @@
                                                 <state key="normal" title="Contribute to OpenStreetMap">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="contributeOSM:" destination="pL5-nx-PPr" eventType="touchUpInside" id="9Jn-VU-nBR"/>
+                                                </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kc_logo" translatesAutoresizingMaskIntoConstraints="NO" id="1TH-sW-6aD">
                                                 <rect key="frame" x="8" y="355" width="359" height="87"/>
@@ -361,6 +367,9 @@
                                         <state key="normal" title="Contact us!">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="sendMail:" destination="pL5-nx-PPr" eventType="touchUpInside" id="sh1-7k-hJg"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
