@@ -16,17 +16,6 @@ import MapKit
 
 class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate, UIActionSheetDelegate, SwiftSpinnerDelegate {
     
-    func didStopSearch() {
-        println("stop")
-        self.request?.cancel()
-        mapView.clear()
-        resultsInRadius.hidden = true
-        // ou un message ?
-        markers.removeAll(keepCapacity: false)
-        parkingSpaces.removeAll(keepCapacity: false)
-        radius = SearchRadius(rawValue: 1)!
-    }
-    
     //MARK: Outlets
     
     /// la carte
@@ -358,13 +347,13 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         Création du message des résultats + lancement du traitement des markers ou erreur
     */
     func controlIfPlaceFound() {
-        resultsInRadius.text = makeStringSearchResultsInRadius()
         if !parkingSpaces.isEmpty {
             createMarkersAndBoundsToDisplay()
         } else {
             SwiftSpinner.hide()
             AlertViewController().noPlacesFound(radius)
         }
+        resultsInRadius.text = makeStringSearchResultsInRadius()
         resultsInRadius.alpha = 0.0
         resultsInRadius.hidden = false
         UIView.animateWithDuration(2.5, animations: {
@@ -477,6 +466,30 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         }
     }
     
+    func delay(#seconds: Double, completion:()->()) {
+        let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64( Double(NSEC_PER_SEC) * seconds ))
+        
+        dispatch_after(popTime, dispatch_get_main_queue()) {
+            completion()
+        }
+    }
+    
+    //MARK: SwiftSpinnerDelegate
+    
+    func didStopSearch() {
+        self.request?.cancel()
+        mapView.clear()
+        resultsInRadius.text = NSLocalizedString("SEARCH_CANCELLED", comment: "Search cancelled")
+        resultsInRadius.alpha = 0.0
+        resultsInRadius.hidden = false
+        UIView.animateWithDuration(2.5, animations: {
+            self.resultsInRadius.alpha = 0.85
+        })
+        markers.removeAll(keepCapacity: false)
+        parkingSpaces.removeAll(keepCapacity: false)
+        radius = SearchRadius(rawValue: 1)!
+    }
+    
     /**
         Traitement & affichage des marqueurs sur la carte
         En même temps, on calcule les bornes afin d'ajuster la caméra pour afficher tous les marqueurs (+ padding pour laisser de la marge autour de la carte)
@@ -571,7 +584,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 self.searchResultsController()
             } else {
                 if error?.code == -999 {
-                   SwiftSpinner.show("Recherche stopée", animated: false)
+                   SwiftSpinner.show(NSLocalizedString("SEARCH_CANCELLED", comment: "Search cancelled"), animated: false)
                     self.delay(seconds: 1.0, completion: {
                         SwiftSpinner.hide()
                     }) 
@@ -589,14 +602,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             }
         }
         
-    }
-    
-    func delay(#seconds: Double, completion:()->()) {
-        let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64( Double(NSEC_PER_SEC) * seconds ))
-        
-        dispatch_after(popTime, dispatch_get_main_queue()) {
-            completion()
-        }
     }
     
     /**

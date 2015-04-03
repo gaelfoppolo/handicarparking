@@ -41,6 +41,7 @@ RADIUS_OF="within a radius of";
 FORMA_DATA="Formatting data...";
 SEARCHING="Search in progress...";
 WAITING="Please wait...";
+SEARCH_CANCELLED="Search cancelled...";
 HELP="Help";
 ABOUT="About";
 SEARCH_BAR_PLACEHOLDER="City, address, zip code, etc...";

@@ -10,7 +10,7 @@
 import UIKit
 
 // set up the SwiftSpinner protocol with a single option stop search function
-protocol SwiftSpinnerDelegate {
+protocol SwiftSpinnerDelegate: NSObjectProtocol {
     func didStopSearch()
 }
 
@@ -123,9 +123,15 @@ public class SwiftSpinner: UIView {
         
     }
     
+    //
+    // Tap close button of spinner
+    //
+    // Handle by the delegate method
+    //
     func closeButton(sender: UIButton!) {
-        //let spinner = SwiftSpinner.sharedInstance
-        //spinner.removeFromSuperview()
+        // test if delegate methode is implemented
+        //if (delegate?.respondsToSelector("didStopSearch"))! {
+        //}
         delegate?.didStopSearch()
     }
     

@@ -41,6 +41,7 @@ RADIUS_OF="dans un rayon de";
 FORMA_DATA="Formattage des données...";
 SEARCHING="Recherche en cours...";
 WAITING="Patientez...";
+SEARCH_CANCELLED="Recherche annulée...";
 HELP="Aide";
 ABOUT="À propos";
 SEARCH_BAR_PLACEHOLDER="Ville, adresse, code postal, etc.";
