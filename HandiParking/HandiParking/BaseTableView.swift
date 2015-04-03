@@ -38,8 +38,9 @@ class BaseTableViewController: UITableViewController {
         :param: cell la cellule à remplir avec les données
         :param: place les données utilisées pour remplir
     */
-    func configureCell(cell: UITableViewCell, forPlace place: Place) {
-        cell.textLabel?.text = place.name
+    func configureCell(cell: UITableViewCell, forText text: NSAttributedString) {
+        //cell.textLabel?.text = place.name
+        cell.textLabel?.attributedText = text
         cell.imageView?.image = UIImage(named: "marker")
     }
 }

@@ -17,7 +17,11 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
     // MARK : Properties
     
     /// la liste des lieux trouvées
-    var placesResults = [Place]()
+    var placesResults: [Place]? {
+        didSet {
+            reloadAutoCompleteData()
+        }
+    }
     
     /// le contrôleur de la barre de recherche
     var placeSearchController: UISearchController!
@@ -33,6 +37,12 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
     
     // requête de la recherche Google Autocomplete (permet de cancel)
     var request: Alamofire.Request?
+    
+    var autoCompleteTextColor = UIColor.lightGrayColor()
+    
+    var attributedAutocompleteStrings:[NSAttributedString]?
+    
+    var autoCompleteAttributes:Dictionary<String,AnyObject>?
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
@@ -72,6 +82,12 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
         definesPresentationContext = true
         
         self.placeSearchController.searchBar.tintColor = UIColor.whiteColor()
+        
+        var attributes = Dictionary<String,AnyObject>()
+        attributes[NSForegroundColorAttributeName] = UIColor.blackColor()
+        attributes[NSFontAttributeName] = UIFont.boldSystemFontOfSize(12)
+        
+        autoCompleteAttributes = attributes
         
     }
     
@@ -158,7 +174,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
                 
                self.tableView.backgroundView = loadingView
             }
-            else if (self.placesResults.count == 0) {
+            else if (self.placesResults == nil) {
                 var messageLabel:UILabel
                 messageLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
                 messageLabel.text = NSLocalizedString("SEARCH_NO_RESULT", comment: "search no results message")
@@ -174,7 +190,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
         else {
             self.tableView.backgroundView = nil
         }
-        return self.placesResults.count
+        return self.placesResults != nil ? self.placesResults!.count : 0
     }
     /**
         Demande les données à afficher dans la cellule (voir Apple Doc)
@@ -182,8 +198,10 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
     */
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = self.tableView.dequeueReusableCellWithIdentifier(Constants.TableViewCell.identifier, forIndexPath: indexPath) as UITableViewCell
-        let place = self.placesResults[indexPath.row]
-        configureCell(cell, forPlace: place)
+        let place = self.placesResults![indexPath.row]
+        let textToDisplay = attributedAutocompleteStrings![indexPath.row]
+        //cell.textLabel?.attributedText = attributedAutocompleteStrings![indexPath.row]
+        configureCell(cell, forText: textToDisplay)
 
         return cell
     }
@@ -202,7 +220,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
             self.inSearching = false
             
             if searchString.isEmpty {
-                self.placesResults.removeAll(keepCapacity: false)
+                self.placesResults = nil
                 self.tableView.reloadData()
             } else {
                 if self.timerBeforeLaunchSearch.valid {
@@ -227,7 +245,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
         
         self.inSearching = true
         
-        self.placesResults.removeAll(keepCapacity: false)
+        self.placesResults = nil
         
         self.tableView.reloadData()
 
@@ -246,19 +264,25 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
                             
                             if !predictions.isEmpty {
                                 
+                                var placesTemp = [Place]()
+                                
                                 for lieu in predictions {
                                     var placeid: String? = lieu["place_id"].stringValue
                                     var name: String? = lieu["description"].stringValue
                                     var types = lieu["types"].arrayValue
                                     if !contains(types, "country") {
                                         var point = Place(placeid: placeid, name: name)
-                                        self.placesResults.append(point)
+                                        placesTemp.append(point)
                                     }
                                 }
+                                self.inSearching = false
+                                self.placesResults = placesTemp
                                 
+                            } else {
+                                self.inSearching = false
+                                self.tableView.reloadData()
                             }
-                            self.inSearching = false
-                            self.tableView.reloadData()
+                            
                             
                         } else {
                             self.inSearching = false
@@ -306,10 +330,34 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
         if segue.identifier == "placeSelected" {
             let searchSelectedViewController = segue.destinationViewController as SearchSelectedViewController
             let indexPath = self.tableView.indexPathForSelectedRow()!
-            searchSelectedViewController.place = self.placesResults[indexPath.row]
+            searchSelectedViewController.place = self.placesResults![indexPath.row]
             //self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "test", style: .Plain, target: nil, action: nil)
         }
     }
-
     
+    private func reloadAutoCompleteData(){
+            let searchString:String = self.placeSearchController.searchBar.text
+            let attrs = [NSForegroundColorAttributeName:autoCompleteTextColor, NSFontAttributeName:UIFont.systemFontOfSize(13)]
+            if attributedAutocompleteStrings == nil{
+                attributedAutocompleteStrings = [NSAttributedString]()
+            }
+            else{
+                if attributedAutocompleteStrings?.count > 0 {
+                    attributedAutocompleteStrings?.removeAll(keepCapacity: false)
+                }
+            }
+            
+            if placesResults != nil{
+                for i in 0..<placesResults!.count{
+                    let str = placesResults![i].name as NSString
+                    let range = str.rangeOfString(searchString, options: .CaseInsensitiveSearch)
+                    var attString = NSMutableAttributedString(string: str, attributes: attrs)
+                    attString.addAttributes(autoCompleteAttributes!, range: range)
+                    attributedAutocompleteStrings?.append(attString)
+                }
+            }
+        tableView.reloadData()
+    }
+
+
 }
