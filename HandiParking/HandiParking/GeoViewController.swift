@@ -14,7 +14,11 @@ import MapKit
 
 /// Contrôleur de la vue géolocalisation 📍
 
-class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate, UIActionSheetDelegate {
+class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate, UIActionSheetDelegate, SwiftSpinnerDelegate {
+    
+    func didStopSearch() {
+        println("stop")
+    }
     
     //MARK: Outlets
     
@@ -94,6 +98,8 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         mapView.delegate = self
+        
+        SwiftSpinner.sharedInstance.delegate = self
         
         // instanciation du manager de requêtes OSM + GM
         let configurationOSM = NSURLSessionConfiguration.defaultSessionConfiguration()

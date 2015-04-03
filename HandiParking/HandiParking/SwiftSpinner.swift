@@ -9,6 +9,11 @@
 
 import UIKit
 
+// set up the SwiftSpinner protocol with a single option stop search function
+protocol SwiftSpinnerDelegate {
+    func didStopSearch()
+}
+
 public class SwiftSpinner: UIView {
     
     // MARK: - Singleton
@@ -82,6 +87,13 @@ public class SwiftSpinner: UIView {
         innerCircle.strokeEnd = 1.0
         
         vibrancyView.contentView.addSubview(innerCircleView)
+        
+        var closeButton: UIButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
+        closeButton.addTarget(self, action: "closeButton:", forControlEvents: .TouchUpInside)
+        closeButton.setImage(UIImage(named: "close.png") as UIImage!, forState: .Normal)
+        closeButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        closeButton.frame = CGRectMake(10, 25, 50, 50)
+        addSubview(closeButton)
     }
     
     // MARK: - Public interface
@@ -109,6 +121,12 @@ public class SwiftSpinner: UIView {
         spinner.title = title
         spinner.animating = animated
         
+    }
+    
+    func closeButton(sender: UIButton!) {
+        let spinner = SwiftSpinner.sharedInstance
+        spinner.removeFromSuperview()
+        delegate?.didStopSearch()
     }
     
     //
@@ -202,6 +220,9 @@ public class SwiftSpinner: UIView {
     //
     // layout elements
     //
+    
+    // this is where we declare our protocol
+    var delegate:SwiftSpinnerDelegate?
     
     private var blurEffectStyle: UIBlurEffectStyle = .Dark
     private var blurEffect: UIBlurEffect!
