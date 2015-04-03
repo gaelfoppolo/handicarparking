@@ -139,13 +139,7 @@ class SearchSelectedViewController: GeoViewController {
         var camera = GMSCameraPosition(target: self.marker_place.position, zoom: 15, bearing: 0, viewingAngle: 0)
         mapView.animateToCameraPosition(camera)
     }
-    /**
-        En plus de la recherche, on affiche notre lieu sur la carte (erreur ou pas)
-    */
-    override func launchRecherche() {
-        super.launchRecherche()
-        marker_place.map = mapView
-    }
+    
     /**
         On ne sélectionne qu'un marqueur-emplacement, pas un marqueur représentant le lieu choisi
     */
@@ -172,8 +166,8 @@ class SearchSelectedViewController: GeoViewController {
         streetViewButton.enabled = state
     }
     
-    override func didStopSearch() {
-        super.didStopSearch()
+    override func createMarkersAndBoundsToDisplay() {
+        super.createMarkersAndBoundsToDisplay()
         marker_place.map = mapView
     }
     

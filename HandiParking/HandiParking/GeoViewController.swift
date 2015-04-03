@@ -268,9 +268,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         Initie le lancement de la recherche d'emplacements en remettant les données à zéro
     */
     func launchRecherche() {
-        mapView.clear()
         resultsInRadius.hidden = true
-        markers.removeAll(keepCapacity: false)
         parkingSpaces.removeAll(keepCapacity: false)
         radius = SearchRadius(rawValue: 1)!
         getEmplacements(sourceOfSearch(), radius: radius)
@@ -478,14 +476,12 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     
     func didStopSearch() {
         self.request?.cancel()
-        mapView.clear()
         resultsInRadius.text = NSLocalizedString("SEARCH_CANCELLED", comment: "Search cancelled")
         resultsInRadius.alpha = 0.0
         resultsInRadius.hidden = false
         UIView.animateWithDuration(2.5, animations: {
             self.resultsInRadius.alpha = 0.85
         })
-        markers.removeAll(keepCapacity: false)
         parkingSpaces.removeAll(keepCapacity: false)
         radius = SearchRadius(rawValue: 1)!
     }
@@ -495,6 +491,8 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         En même temps, on calcule les bornes afin d'ajuster la caméra pour afficher tous les marqueurs (+ padding pour laisser de la marge autour de la carte)
     */
     func createMarkersAndBoundsToDisplay() {
+        mapView.clear()
+        markers.removeAll(keepCapacity: false)
         SwiftSpinner.show(NSLocalizedString("FORMA_DATA", comment: "Formatting data"))
         var firstLocation: CLLocationCoordinate2D
         var bounds = GMSCoordinateBounds(coordinate: sourceOfSearch(), coordinate: sourceOfSearch())
