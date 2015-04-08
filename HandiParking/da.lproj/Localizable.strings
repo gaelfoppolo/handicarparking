@@ -1,0 +1,53 @@
+/*
+ Localizable.strings
+ HandiParking
+ 
+ Created by Gaël on 31/03/2015.
+ Copyright (c) 2015 KeepCore. All rights reserved.
+ */
+
+SLC_APP_ITI="Vælg den applikation som skal overtage din rutevejledning";
+CANCEL="Annuller";
+FEE="Afgift";
+NO_FEE="Ingen afgift";
+NB_SPACE="%@ plads";
+NB_SPACES="%@ pladser";
+NA="N/A";
+NO_ADDRESS="Ingen passende adresse";
+OK="OK";
+NO_LOC_SERV="Ingen lokationstjeneste";
+NO_LOC_SERV_EXPL="Din lokationtjeneste er deaktiveret! Gå til instillinger > Privatliv > Lokation for at aktivere den!";
+NO_WEB_CONNEC="Ingen internetforbindelse";
+NO_WEB_CONNEC_EXPL="Din internetforbindelse er deaktiveret. Venligst genaktiver den hvis du vil benytte applikationen fuldt ud.";
+NO_WEB="Intet internet";
+NO_WEB_EXPL="Din internetforbindelse er aktiv, men begrænset. Prøv at finde en bedre forbindelse for at benytte applikation fuldt ud.";
+LOC_AUTH="Lokationstilladelse";
+LOC_AUTH_EXPL="Applikationen har ikke adgang til at bruge din lokationsdata!";
+NO_SPACE_FOUND="Ingen parkeringspladser fundet😁";
+NO_SPACE_FOUND_EXPL="Der er ikke fundet nogle parkeringspladser inden for en radius af %@ kilometer... 😁";
+OVER_SERV="Overbelastede servere";
+OVER_SERV_EXPL="Alle servere er overbelastede lige nu, eller også er din internetforbindelse for svag... Prøv igen om et øjeblik!";
+LOC_NOT_DETER="Position kan ikke bestemmes";
+LOC_NOT_DETER_EXPL="Din position kunne ikke bestemmes! Prøv igen om et øjeblik!";
+GOOGLE_FUCK_UP="Fejl ved hentning af data";
+GOOGLE_FUCK_UP_EXPL="Der forekom et problem mens data blev hentet! Prøv igen senere... Hvis problemet gentager sig, venligst kontakt os!";
+APP_NOT_INST="Applikation ikke installeret";
+APP_NOT_INST_EXPL="%@ er ikke længere installeret! Geninstaller hvis du ønsker at bruge den igen!";
+STREETVIEW_NA="StreetView er ikke tilgængeligt";
+STREETVIEW_NA_EXPL="StreetView er ikke tilgængeligt i dette område! 😁";
+WEB_CONNEC_WEAK="Internetforbindelse for svag";
+WEB_CONNEC_WEAK_EXPL="Din internetforbindelse er for svag til at vise StreetView...";
+LOADING="Henter...";
+RADIUS_OF="inden for en radius af";
+FORMA_DATA="Formaterer data...";
+SEARCHING="Søgning i gang...";
+WAITING="Vent venligst...";
+SEARCH_CANCELLED="Søgning annulleret...";
+HELP="Hjælp";
+ABOUT="Om";
+SEARCH_BAR_PLACEHOLDER="By, addresse, postnummer...";
+SEARCH_WELCOME="Indtast venligst en by, adresse, eller postnummer";
+SEARCH_NO_RESULT="Ingen steder passede til din søgning 😞";
+ERROR_MAIL="Kunne ikke sende email";
+ERROR_MAIL_MESSAGE="Din enhed kunne ikke sende email. Tjek venligst dine email konfiguration og prøv igen.";
+CONTRIB_OSM_URL="Da:";

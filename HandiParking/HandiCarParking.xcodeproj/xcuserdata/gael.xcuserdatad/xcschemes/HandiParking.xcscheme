@@ -72,8 +72,8 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES"
-      language = "fr"
-      region = "FR">
+      language = "da"
+      region = "DK">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"

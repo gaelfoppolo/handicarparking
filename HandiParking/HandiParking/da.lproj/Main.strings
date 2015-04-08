@@ -1,0 +1,36 @@
+
+/* Class = "IBUITabBarItem"; title = "Search"; ObjectID = "45o-MJ-lDN"; */
+"45o-MJ-lDN.title" = "Søg";
+
+/* Class = "IBUIButton"; normalTitle = "Contact us!"; ObjectID = "6lN-Us-sgE"; */
+"6lN-Us-sgE.normalTitle" = "Kontakt os!";
+
+/* Class = "IBUIButton"; normalTitle = "Learn more about OpenStreetMap"; ObjectID = "DDp-Lc-71K"; */
+"DDp-Lc-71K.normalTitle" = "Lær mere om OpenStreetMap";
+
+/* Class = "IBUINavigationItem"; title = "Search"; ObjectID = "EEK-Gk-3Kf"; */
+"EEK-Gk-3Kf.title" = "Søg";
+
+/* Class = "IBUIButton"; normalTitle = "Contribute to OpenStreetMap"; ObjectID = "HM2-cf-A1c"; */
+"HM2-cf-A1c.normalTitle" = "Bidrag til OpenStreetMap";
+
+/* Class = "IBUILabel"; text = "A remark? A question?"; ObjectID = "KlG-Sa-ez1"; */
+"KlG-Sa-ez1.text" = "En kommentar? Et spørgsmål?";
+
+/* Class = "IBUITabBarItem"; title = "About"; ObjectID = "OeG-8g-f4B"; */
+"OeG-8g-f4B.title" = "Om";
+
+/* Class = "IBUITabBarItem"; title = "Geolocation"; ObjectID = "Pn0-n3-mZO"; */
+"Pn0-n3-mZO.title" = "Geolokalisering";
+
+/* Class = "IBUILabel"; text = "OpenStreetMap"; ObjectID = "s3g-HU-cmO"; */
+"s3g-HU-cmO.text" = "OpenStreetMap";
+
+/* Class = "IBUILabel"; text = "Data provided by the community"; ObjectID = "xlj-PI-YJ5"; */
+"xlj-PI-YJ5.text" = "Data leveret af fællesskabet";
+
+/* Class = "IBUILabel"; text = "Developped by"; ObjectID = "ylf-xK-lyC"; */
+"ylf-xK-lyC.text" = "Udviklet af";
+
+/* Class = "IBUILabel"; text = "Helping people with disability findind parking spaces around the world 🗽"; ObjectID = "ytT-co-Wkh"; */
+"ytT-co-Wkh.text" = "Hjælper folk med handicap at finde parkeringspladser i hele verdenen 🗽";

@@ -177,6 +177,9 @@
 /* Begin PBXFileReference section */
 		931740E11AC72C6100371734 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		931ED9F71ACE8F32002226B5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		931F1C821AD5372C0090CB9C /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		931F1C831AD5372C0090CB9C /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Main.strings; sourceTree = "<group>"; };
+		931F1C841AD5372D0090CB9C /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9345FBC11AB2F3F900D4F686 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
 		9345FBD01AB2FFDD00D4F686 /* PlaceMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceMarker.swift; sourceTree = "<group>"; };
 		9345FC041AB33AFB00D4F686 /* Alamofire-SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire-SwiftyJSON.swift"; sourceTree = "<group>"; };
@@ -609,6 +612,7 @@
 				en,
 				Base,
 				fr,
+				da,
 			);
 			mainGroup = 93C83F401AAED9AD005990C2;
 			productRefGroup = 93C83F4A1AAED9AD005990C2 /* Products */;
@@ -800,6 +804,7 @@
 			children = (
 				93C83F561AAED9AD005990C2 /* Base */,
 				931ED9F71ACE8F32002226B5 /* fr */,
+				931F1C831AD5372C0090CB9C /* da */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -809,6 +814,7 @@
 			children = (
 				93C83F5B1AAED9AD005990C2 /* Base */,
 				93D4DEFB1ACA80D700C7C2AB /* fr */,
+				931F1C821AD5372C0090CB9C /* da */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -818,6 +824,7 @@
 			children = (
 				93D4DF061ACA819000C7C2AB /* fr */,
 				93D4DF081ACA819B00C7C2AB /* en */,
+				931F1C841AD5372D0090CB9C /* da */,
 			);
 			name = Localizable.strings;
 			path = ..;
