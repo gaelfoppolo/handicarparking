@@ -98,8 +98,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         locationManager.requestWhenInUseAuthorization()
         mapView.delegate = self
         
-        SwiftSpinner.sharedInstance.delegate = self
-        
         // instanciation du manager de requêtes OSM + GM
         let configurationOSM = NSURLSessionConfiguration.defaultSessionConfiguration()
         configurationOSM.timeoutIntervalForRequest = 10 // secondes
@@ -117,6 +115,16 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         
         self.loadingInfoWindow.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
         
+    }
+    
+    /**
+        Appelé juste avant que la vue apparaisse (nom de la fonction assez obvious)
+    
+        D'après mois, comme notre ViewController est utilisé comme parent et que SwiftSpinner est un singleton, le delegate ne fait pas de liaison dynamique ascendante une fois que le fils de ce ViewController est instancié. Ainsi on doit redéfinir le delegate dès que la vue apparait sinon la liaison reste bloquée dans le ViewController le plus bas dans la hiérarchie. 
+            Dès que SearchSelectedViewController est instancié, il devient le ViewController le plus bas de la hiérarchie et donc quand on revient sur GeoViewController (son père), le delegate se fait toujours sur SearchSelectedViewController. On doit donc manuellement redéfinir le delegate à l'apparition de la vue pour que le delegate se fasse sur le bon ViewController.
+    */
+    override func viewWillAppear(animated: Bool) {
+        SwiftSpinner.sharedInstance.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -781,7 +789,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         Appelée dès que le bouton close de la vue SwiftSpinner est tappé
         On annule la requête et remet les variables utilent à la recherche à zéro
     */
-    func didStopSearch() {
+    func didTapCloseButton() {
         self.requestOSM?.cancel()
         changeSearchResultsEffect()
         self.delay(seconds: 1.3, completion: {
