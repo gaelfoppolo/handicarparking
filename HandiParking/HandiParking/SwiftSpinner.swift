@@ -88,7 +88,7 @@ public class SwiftSpinner: UIView {
         
         vibrancyView.contentView.addSubview(innerCircleView)
         
-        var closeButton: UIButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
+        closeButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
         closeButton.addTarget(self, action: "closeButton:", forControlEvents: .TouchUpInside)
         closeButton.setImage(UIImage(named: "close.png") as UIImage!, forState: .Normal)
         closeButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
@@ -108,6 +108,16 @@ public class SwiftSpinner: UIView {
         let spinner = SwiftSpinner.sharedInstance
         
         spinner.updateFrame()
+        
+        if animated {
+            
+            spinner.closeButton.enabled = true
+            
+        } else {
+            
+            spinner.closeButton.enabled = false
+            
+        }
         
         if spinner.superview == nil {
             //show the spinner
@@ -230,6 +240,8 @@ public class SwiftSpinner: UIView {
     
     // this is where we declare our protocol
     var delegate:SwiftSpinnerDelegate?
+    
+    private var closeButton: UIButton!
     
     private var blurEffectStyle: UIBlurEffectStyle = .Dark
     private var blurEffect: UIBlurEffect!
