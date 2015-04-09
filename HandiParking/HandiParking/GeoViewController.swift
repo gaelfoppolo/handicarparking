@@ -22,7 +22,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     @IBOutlet weak var mapView: GMSMapView!
     
     /// petit résumé des places trouvées
-    @IBOutlet weak var resultsInRadius: UILabel!
+    @IBOutlet weak var resultsInRadius: LTMorphingLabel!
     
     /// loader lors du chargement des informations d'infoWindow
     @IBOutlet weak var loadingInfoWindow: UIView!
@@ -116,6 +116,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         mapView.addObserver(self, forKeyPath: "selectedMarker", options: options, context: &MyObservationContext)
         
         self.loadingInfoWindow.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -269,10 +270,10 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         Initie le lancement de la recherche d'emplacements en remettant les données à zéro
     */
     func launchRecherche() {
-        resultsInRadius.hidden = true
         parkingSpaces.removeAll(keepCapacity: false)
         radius = SearchRadius(rawValue: 1)!
         getEmplacements(sourceOfSearch(), radius: radius)
+        self.resultsInRadius.text = nil
     }
     
     /**
@@ -324,21 +325,25 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     */
     func makeStringSearchResultsInRadius() -> NSString {
         var formattedString:String
-        if parkingSpaces.count > 0 {
-            formattedString = NSString(format: NSLocalizedString("NB_SPACE", comment: "nb space"), String(parkingSpaces.count))
-            if parkingSpaces.count > 1 {
-                formattedString += "s"
+        
+        switch parkingSpaces.count {
+        case 0:
+            formattedString = NSLocalizedString("NO_SPACE_FOUND", comment: "no space found")
+        default:
+            switch parkingSpaces.count {
+            case 1:
+                formattedString = NSString(format: NSLocalizedString("NB_SPACE", comment: "nb space"), String(parkingSpaces.count))
+            default:
+                formattedString = NSString(format: NSLocalizedString("NB_SPACES", comment: "nb spaces"), String(parkingSpaces.count))
             }
-            formattedString += " " + NSLocalizedString("RADIUS_OF", comment: "radius of") + " "
+            formattedString += NSLocalizedString("RADIUS_OF", comment: "radius of")
             if radius.value > 500 {
                 formattedString += "\(radius.value/1000) km"
             } else {
                 formattedString += "\(radius.value) m"
             }
-
-        } else {
-            formattedString = NSLocalizedString("NO_SPACE_FOUND", comment: "no space found")
         }
+        
         return formattedString
     }
     
@@ -352,12 +357,38 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             SwiftSpinner.hide()
             AlertViewController().noPlacesFound(radius)
         }
-        resultsInRadius.text = makeStringSearchResultsInRadius()
-        resultsInRadius.alpha = 0.0
-        resultsInRadius.hidden = false
-        UIView.animateWithDuration(2.5, animations: {
-            self.resultsInRadius.alpha = 0.85
+        changeSearchResultsEffect()
+        self.delay(seconds: 1.3, completion: {
+            self.resultsInRadius.text = self.makeStringSearchResultsInRadius()
         })
+        
+        if resultsInRadius.hidden {
+            resultsInRadius.alpha = 0.0
+            resultsInRadius.hidden = false
+            UIView.animateWithDuration(2.5, animations: {
+                self.resultsInRadius.alpha = 0.85
+            })
+        }
+        
+    }
+    
+    func changeSearchResultsEffect() {
+        switch arc4random_uniform(6) {
+        case 0:
+            self.resultsInRadius.morphingEffect = .Evaporate
+        case 1:
+            self.resultsInRadius.morphingEffect = .Fall
+        case 2:
+            self.resultsInRadius.morphingEffect = .Pixelate
+        case 3:
+            self.resultsInRadius.morphingEffect = .Sparkle
+        case 4:
+            self.resultsInRadius.morphingEffect = .Burn
+        case 5:
+            self.resultsInRadius.morphingEffect = .Anvil
+        default:
+            self.resultsInRadius.morphingEffect = .Scale
+        }
     }
     
     /**
@@ -752,12 +783,17 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     */
     func didStopSearch() {
         self.requestOSM?.cancel()
-        resultsInRadius.text = NSLocalizedString("SEARCH_CANCELLED", comment: "Search cancelled")
-        resultsInRadius.alpha = 0.0
-        resultsInRadius.hidden = false
-        UIView.animateWithDuration(2.5, animations: {
-            self.resultsInRadius.alpha = 0.85
+        changeSearchResultsEffect()
+        self.delay(seconds: 1.3, completion: {
+            self.resultsInRadius.text = NSLocalizedString("SEARCH_CANCELLED", comment: "Search cancelled")
         })
+        if resultsInRadius.hidden {
+            resultsInRadius.alpha = 0.0
+            resultsInRadius.hidden = false
+            UIView.animateWithDuration(2.5, animations: {
+                self.resultsInRadius.alpha = 0.85
+            })
+        }
         parkingSpaces.removeAll(keepCapacity: false)
         radius = SearchRadius(rawValue: 1)!
     }

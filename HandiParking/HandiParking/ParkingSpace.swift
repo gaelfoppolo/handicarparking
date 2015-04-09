@@ -69,7 +69,7 @@ class ParkingSpace {
                     break
             }
         } else {
-            self.fee = "N/A"
+            self.fee = NSLocalizedString("NA",comment:"Not available")
         }
         if let capa = capacity {
             if let capa2 = capa.toInt() {
