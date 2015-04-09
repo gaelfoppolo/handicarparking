@@ -372,8 +372,12 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         
     }
     
+    /**
+        Met à jour l'effet d'apparition du label de résultats
+    
+    */
     func changeSearchResultsEffect() {
-        switch arc4random_uniform(6) {
+        switch arc4random_uniform(5) {
         case 0:
             self.resultsInRadius.morphingEffect = .Evaporate
         case 1:
@@ -382,10 +386,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             self.resultsInRadius.morphingEffect = .Pixelate
         case 3:
             self.resultsInRadius.morphingEffect = .Sparkle
-        case 4:
-            self.resultsInRadius.morphingEffect = .Burn
-        case 5:
-            self.resultsInRadius.morphingEffect = .Anvil
         default:
             self.resultsInRadius.morphingEffect = .Scale
         }
