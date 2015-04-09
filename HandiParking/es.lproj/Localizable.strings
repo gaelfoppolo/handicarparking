@@ -1,0 +1,52 @@
+/*
+ Localizable.strings
+ HandiParking
+ 
+ Created by Gaël on 31/03/2015.
+ Copyright (c) 2015 KeepCore. All rights reserved.
+ */
+
+SLC_APP_ITI="Seleccione la aplicación que lo guiará hasta su destino";
+CANCEL="Cancelar";
+FEE="Parquímetro";
+NO_FEE="Sin parquímetro";
+NB_SPACE="%@ espacio";
+NB_SPACES="%@ espacios";
+NA="No disponible";
+NO_ADDRESS="Dirección no encontrada";
+OK="OK";
+NO_LOC_SERV="Sin servicio de ubicación";
+NO_LOC_SERV_EXPL="¡El servicio de ubicación está deshabilitado! Diríjase a Configuración > Privacidad > Ubicación para activarlo.";
+NO_WEB_CONNEC="Sin conexión a internet";
+NO_WEB_CONNEC_EXPL="Su conexión a internet se encuentra deshabilitada. Habilítela para usar la aplicación.";
+NO_WEB="Conexión limitada";
+NO_WEB_EXPL="Su conexión a internet está activa, pero limitada. Encuentre una mejor conexión para usar todas las herramientas de la aplicación.";
+LOC_AUTH="Autorización de ubicación";
+LOC_AUTH_EXPL="¡No se le permite a la aplicación usar su ubicación!";
+NO_SPACE_FOUND="No se han encontrado aparcamientos 😁";
+NO_SPACE_FOUND_EXPL="Ningún aparcamiento se ha encontrado en un radio de %@ kilómetros... 😁";
+OVER_SERV="Servidores saturados";
+OVER_SERV_EXPL="Todos los servidores están saturados o su señal de internet es demasiado débil... inténtelo nuevamente en unos momentos";
+LOC_NOT_DETER="Posición indeterminada";
+LOC_NOT_DETER_EXPL="¡Su posición no pudo ser determinada! ¡Intente de nuevo en unos momentos!";
+GOOGLE_FUCK_UP="Error al recuperar los datos";
+GOOGLE_FUCK_UP_EXPL="¡Ocurrió un problema al recuperar los datos! Intente de nuevo en unos momentos, si el problema persiste, contáctenos.";
+APP_NOT_INST="Aplicación no instalada";
+APP_NOT_INST_EXPL="¡Parece que %@ no está instalado! ¡Reinstálelo para poder usarlo de nuevo!";
+STREETVIEW_NA="StreetView no disponible";
+STREETVIEW_NA_EXPL="¡StreetView no está disponible para esta ubicación! 😁";
+WEB_CONNEC_WEAK="Señal de internet muy débil";
+WEB_CONNEC_WEAK_EXPL="Su señal de internet es muy débil para mostrar StreetView...";
+LOADING="Cargando...";
+RADIUS_OF=" dentro de un radio de ";
+FORMA_DATA="Formateando datos...";
+SEARCHING="Búsqueda en progreso...";
+WAITING="Espere un momento...";
+SEARCH_CANCELLED="Búsqueda cancelada...";
+ABOUT="Acerca de...";
+SEARCH_BAR_PLACEHOLDER="Ciudad, dirección, código postal, etc...";
+SEARCH_WELCOME="Por favor ingrese una ciudad, dirección,\ncódigo postal, lugar, etc...";
+SEARCH_NO_RESULT="Su búsqueda no produjo resultados 😞";
+ERROR_MAIL="No se pudo enviar el e-mail";
+ERROR_MAIL_MESSAGE="Su dispositivo no pudo enviar el e-mail. Revise su configuración e inténtelo nuevamente.";
+CONTRIB_OSM_URL="ES:";
