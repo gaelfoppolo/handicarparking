@@ -1,0 +1,52 @@
+/*
+ Localizable.strings
+ HandiParking
+ 
+ Created by Gaël on 31/03/2015.
+ Copyright (c) 2015 KeepCore. All rights reserved.
+ */
+
+SLC_APP_ITI="Wybierz aplikację, która stworzy twoją trasę";
+CANCEL="Anuluj";
+FEE="Płatny";
+NO_FEE="Bezpłatny";
+NB_SPACE="%@ miejsce";
+NB_SPACES="%@ miejsc(a)";
+NA="ndst";
+NO_ADDRESS="Brak pasującego adresu";
+OK="OK";
+NO_LOC_SERV="Brak usługi lokalizacji";
+NO_LOC_SERV_EXPL="Wygląda na to, że usługa lokalizacji jest wyłączona! Przejdź do Ustawienia > Prywatność > Usługi lokalizacji, aby ją włączyć!";
+NO_WEB_CONNEC="Brak połączenia z Internetem";
+NO_WEB_CONNEC_EXPL="Wygląda na to, że dostęp do Internetu jest wyłączony. Włącz go, aby w pełni korzystać z aplikacji.";
+NO_WEB="Brak Internetu";
+NO_WEB_EXPL="Wygląda na to, że twoje połączenie z Internetem jest aktywne, ale ograniczone. Spróbuj znaleźć lepsze połączenie, by aby w pełni korzystać z aplikacji.";
+LOC_AUTH="Uprawnienie do lokalizacji";
+LOC_AUTH_EXPL="Wygląda na to, że aplikacja nie jest uprawniona do używania twoich danych lokalizacji!";
+NO_SPACE_FOUND="Nie znaleziono miejsca parkingowego";
+NO_SPACE_FOUND_EXPL="Wygląda na to, że nie znaleziono miejsca parkingowego w promieniu %@ km...";
+OVER_SERV="Serwery przeciążone";
+OVER_SERV_EXPL="Wygląda na to, że wszystkie serwery są w tym momencie przeciążone lub twoje połączenie Internetowe jest zbyt słabe... Spróbuj ponownie po chwili!";
+LOC_NOT_DETER="Położenie nieokreślone";
+LOC_NOT_DETER_EXPL="Wygląda na to, że twoje położenie nie mogło zostać określone! Spróbuj ponownie po chwili!";
+GOOGLE_FUCK_UP="Błąd pobierania danych";
+GOOGLE_FUCK_UP_EXPL="Wygląda na to, że był problem podczas pobierania danych! Spróbuj ponownie po chwili, a jeśli problem się powtórzy to skontaktuj się z nami!";
+APP_NOT_INST="Aplikacja niezainstalowana";
+APP_NOT_INST_EXPL="Wygląda na to, że aplikacja %@ nie jest zainstalowana! Zainstaluj ponownie, aby jej znowu używać!";
+STREETVIEW_NA="StreetView niedostępne";
+STREETVIEW_NA_EXPL="Wygląda na to, że StreetView nie jest dostępne dla tego położenia!";
+WEB_CONNEC_WEAK="Połączenie internetowe zbyt słabe";
+WEB_CONNEC_WEAK_EXPL="Wygląda na to, że twoje połączenie internetowe jest zbyt słabe do wyświetlenia StreetView...";
+LOADING="Ładowanie...";
+RADIUS_OF="w promieniu";
+FORMA_DATA="Formatowanie danych...";
+SEARCHING="Wyszukiwanie w trakcie...";
+WAITING="Proszę czekać...";
+SEARCH_CANCELLED="Wyszukiwanie anulowane...";
+ABOUT="O...";
+SEARCH_BAR_PLACEHOLDER="Miasto, adres, kod pocztowy, itp...";
+SEARCH_WELCOME="Wpisz miasto, adres,\nkod pocztowy, miejsce, itp...";
+SEARCH_NO_RESULT="Żadne miejsce nie pasuje do twojego zapytania";
+ERROR_MAIL="Nie udało się wysłać e-maila";
+ERROR_MAIL_MESSAGE="Twoje urządzenie nie było w stanie wysłać e-maila. Proszę sprawdź ustawienia poczty e-mail i spróbuj ponownie.";
+CONTRIB_OSM_URL="Pl:";

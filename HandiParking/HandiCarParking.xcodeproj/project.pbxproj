@@ -176,6 +176,9 @@
 		931F1C821AD5372C0090CB9C /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		931F1C831AD5372C0090CB9C /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Main.strings; sourceTree = "<group>"; };
 		931F1C841AD5372D0090CB9C /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
+		932887281AD7F0F700602C87 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		932887291AD7F0F700602C87 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
+		932887321AD7F0F800602C87 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		932E57051AD6CFF100CBA8A8 /* LTCharacterLimbo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTCharacterLimbo.swift; sourceTree = "<group>"; };
 		932E57061AD6CFF100CBA8A8 /* LTEasing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTEasing.swift; sourceTree = "<group>"; };
 		932E57071AD6CFF100CBA8A8 /* LTEmitterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTEmitterView.swift; sourceTree = "<group>"; };
@@ -659,6 +662,7 @@
 				fr,
 				da,
 				es,
+				pl,
 			);
 			mainGroup = 93C83F401AAED9AD005990C2;
 			productRefGroup = 93C83F4A1AAED9AD005990C2 /* Products */;
@@ -858,6 +862,7 @@
 				931ED9F71ACE8F32002226B5 /* fr */,
 				931F1C831AD5372C0090CB9C /* da */,
 				93895BAA1AD6EB05004A3E54 /* es */,
+				932887291AD7F0F700602C87 /* pl */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -869,6 +874,7 @@
 				93D4DEFB1ACA80D700C7C2AB /* fr */,
 				931F1C821AD5372C0090CB9C /* da */,
 				93895BA91AD6EB05004A3E54 /* es */,
+				932887281AD7F0F700602C87 /* pl */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -880,6 +886,7 @@
 				93D4DF081ACA819B00C7C2AB /* en */,
 				931F1C841AD5372D0090CB9C /* da */,
 				93895BAB1AD6EB06004A3E54 /* es */,
+				932887321AD7F0F800602C87 /* pl */,
 			);
 			name = Localizable.strings;
 			path = ..;
