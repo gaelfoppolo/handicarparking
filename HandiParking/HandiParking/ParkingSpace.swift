@@ -74,14 +74,14 @@ class ParkingSpace {
         if let capa = capacity {
             if let capa2 = capa.toInt() {
                 if capa2 > 1 {
-                    self.capacity = NSString(format: NSLocalizedString("NB_SPACES", comment: "nb spaces"), String(capa2))
+                    self.capacity = NSString(format: NSLocalizedString("NB_SPACES", comment: "nb spaces"), String(capa2)) as String
                 } else if capa2 == 1 {
-                    self.capacity = NSString(format: NSLocalizedString("NB_SPACE", comment: "nb space"), String(capa2))
+                    self.capacity = NSString(format: NSLocalizedString("NB_SPACE", comment: "nb space"), String(capa2)) as String
                 } else {
                     self.capacity = NSLocalizedString("NA",comment:"Not available")
                 }
             } else {
-                self.capacity = NSString(format: NSLocalizedString("NB_SPACE", comment: "nb space"), String(1))
+                self.capacity = NSString(format: NSLocalizedString("NB_SPACE", comment: "nb space"), String(1)) as String
             }
         } else {
             self.capacity = NSLocalizedString("NA",comment:"Not available")

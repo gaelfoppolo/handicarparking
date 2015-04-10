@@ -162,14 +162,14 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         Appelée dès qu'un bouton de l'action sheet est tappé
         On test si l'application est toujours installée, on génère l'URL scheme et on bascule vers l'application choisie
     */
-    func actionSheet(sheet: UIActionSheet!, clickedButtonAtIndex buttonIndex: Int) {
+    func actionSheet(sheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
         if buttonIndex > 0 {
             if MapsAppsData().isInstalled(sheet.buttonTitleAtIndex(buttonIndex)) {
-                var marker = mapView.selectedMarker as PlaceMarker
+                var marker = mapView.selectedMarker as! PlaceMarker
                 var urlscheme: NSString = MapsAppsData().generateURLScheme(sheet.buttonTitleAtIndex(buttonIndex), location: self.locationManager.location.coordinate, marker: marker)
                 // on parse l'URL sinon les caractères Unicode font crasher lors de openURL()
                 var urlParse: NSString = urlscheme.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
-                UIApplication.sharedApplication().openURL(NSURL(string: urlParse)!)
+                UIApplication.sharedApplication().openURL(NSURL(string: urlParse as String)!)
             } else {
                 AlertViewController().appsDeleted(sheet.buttonTitleAtIndex(buttonIndex))
             }
@@ -267,7 +267,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         if ServicesController().servicesAreWorking() {
             
             if ServicesController().checkInternetConnection() {
-                var streetView = StreetViewController(marker: mapView.selectedMarker as PlaceMarker)
+                var streetView = StreetViewController(marker: mapView.selectedMarker as! PlaceMarker)
                 presentViewController(streetView, animated: true, completion: nil)
             }
         }
@@ -340,9 +340,9 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         default:
             switch parkingSpaces.count {
             case 1:
-                formattedString = NSString(format: NSLocalizedString("NB_SPACE", comment: "nb space"), String(parkingSpaces.count))
+                formattedString = String(format: NSLocalizedString("NB_SPACE", comment: "nb space"), String(parkingSpaces.count))
             default:
-                formattedString = NSString(format: NSLocalizedString("NB_SPACES", comment: "nb spaces"), String(parkingSpaces.count))
+                formattedString = String(format: NSLocalizedString("NB_SPACES", comment: "nb spaces"), String(parkingSpaces.count))
             }
             formattedString += NSLocalizedString("RADIUS_OF", comment: "radius of")
             if radius.value > 500 {
@@ -368,7 +368,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         changeSearchResultsEffect()
         self.delay(seconds: 1.3, completion: {
             self.resultsInRadius.text = self.makeStringSearchResultsInRadius()
-        })
+  as String       })
         
         if resultsInRadius.hidden {
             resultsInRadius.alpha = 0.0
@@ -423,11 +423,11 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             mapView.selectedMarker = nil
         }
         if ServicesController().servicesAreWorking() && locationManager.location != nil {
-            if (marker as PlaceMarker).place.address == nil {
-                reverseGeocodeCoordinate(marker as PlaceMarker)
+            if (marker as! PlaceMarker).place.address == nil {
+                reverseGeocodeCoordinate(marker as! PlaceMarker)
             }
-            if (marker as PlaceMarker).place.distanceETA == nil && (marker as PlaceMarker).place.durationETA == nil {
-                getExpectedDistanceAndTravelTime(marker as PlaceMarker)
+            if (marker as! PlaceMarker).place.distanceETA == nil && (marker as! PlaceMarker).place.durationETA == nil {
+                getExpectedDistanceAndTravelTime(marker as! PlaceMarker)
             }
         } else {
             mapView.selectedMarker = nil
@@ -442,7 +442,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         Dès que les informations sont disponible (récupération ok ou échouée), on unlock la vue et on affiche
     */
     func mapView(mapView: GMSMapView!, markerInfoWindow marker: GMSMarker!) -> UIView! {
-        let placeMarker = marker as PlaceMarker
+        let placeMarker = marker as! PlaceMarker
         var optionalDataHasNotBeenSet:Bool = (placeMarker.place.address == nil) || (placeMarker.place.distanceETA == nil) || (placeMarker.place.durationETA == nil)
         var nibName:String
         if placeMarker.place.name == nil {
@@ -459,8 +459,8 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 infoView.unlock()
                 unloadInfoWindow()
                 infoView.address.text = placeMarker.place.address
-                infoView.duration.text = placeMarker.place.getDuration()
-                infoView.distance.text = placeMarker.place.getDistance()
+                infoView.duration.text = placeMarker.place.getDuration() as String
+                infoView.distance.text = placeMarker.place.getDistance() as String
                 if nibName == "InfoMarkerWindow" {
                     infoView.name.text = placeMarker.place.name
                 }
@@ -576,7 +576,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         } else {
             SwiftSpinner.show(NSLocalizedString("WAITING", comment: "In progress 2"))
         }
-        self.requestOSM = managerOSM!.request(DataProvider.OpenStreetMap.GetNodes(coordinate,radius)).validate().responseSwiftyJSON { request, response, json, error in
+        self.requestOSM = managerOSM!.request(DataProvider.OpenStreetMap.GetNodes(coordinate,radius)).validate().responseSwiftyJSON({ (request, response, json, error) -> Void in
             if error == nil {
                 let elements = json["elements"].arrayValue
                 
@@ -629,7 +629,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                     }
                 }
             }
-        }
+        })
         
     }
     
@@ -650,7 +650,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 
                 if let addressGet = response?.firstResult() {
                     
-                    let lines = addressGet.lines as [String]
+                    let lines = addressGet.lines as! [String]
                     address = join(", ", lines)
                 }
                 
@@ -692,7 +692,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             if response != nil {
                 if response.routes.count > 0 {
                     
-                    var route = response.routes.first! as MKRoute
+                    var route = response.routes.first! as! MKRoute
                     
                     timeETA = route.expectedTravelTime
                     
@@ -718,7 +718,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         if place.place.address == nil {
             let request = managerGM!.request(DataProvider.GoogleMaps.DistanceMatrix(locationManager.location.coordinate, place.position))
             request.validate()
-            request.responseSwiftyJSON { request, response, json, error in
+            request.responseSwiftyJSON({ (request, response, json, error) -> Void in
                 if error == nil  {
                     var dataRecup = json
                     var status:String? = dataRecup["status"].stringValue
@@ -766,7 +766,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                     self.mapView.selectedMarker = nil
                     AlertViewController().errorRequest()
                 }
-            }
+            })
         }
     }
     

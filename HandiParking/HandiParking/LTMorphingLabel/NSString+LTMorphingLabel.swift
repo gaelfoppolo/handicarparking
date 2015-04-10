@@ -37,22 +37,22 @@ public enum LTCharacterDiffType: Int, DebugPrintable {
     case Replace
     
     public var debugDescription: String {
-    get {
-        switch self {
-        case .Same:
-            return "Same"
-        case .Add:
-            return "Add"
-        case .Delete:
-            return "Delete"
-        case .Move:
-            return "Move"
-        case .MoveAndAdd:
-            return "MoveAndAdd"
-        default:
-            return "Replace"
+        get {
+            switch self {
+            case .Same:
+                return "Same"
+            case .Add:
+                return "Add"
+            case .Delete:
+                return "Delete"
+            case .Move:
+                return "Move"
+            case .MoveAndAdd:
+                return "MoveAndAdd"
+            default:
+                return "Replace"
+            }
         }
-    }
     }
     
 }
@@ -65,22 +65,22 @@ public struct LTCharacterDiffResult: DebugPrintable {
     public var skip: Bool
     
     public var debugDescription: String {
-    get {
-        switch diffType {
-        case .Same:
-            return "The character is unchanged."
-        case .Add:
-            return "A new character is ADDED."
-        case .Delete:
-            return "The character is DELETED."
-        case .Move:
-            return "The character is MOVED to \(moveOffset)."
-        case .MoveAndAdd:
-            return "The character is MOVED to \(moveOffset) and a new character is ADDED."
-        default:
-            return "The character is REPLACED with a new character."
+        get {
+            switch diffType {
+            case .Same:
+                return "The character is unchanged."
+            case .Add:
+                return "A new character is ADDED."
+            case .Delete:
+                return "The character is DELETED."
+            case .Move:
+                return "The character is MOVED to \(moveOffset)."
+            case .MoveAndAdd:
+                return "The character is MOVED to \(moveOffset) and a new character is ADDED."
+            default:
+                return "The character is REPLACED with a new character."
+            }
         }
-    }
     }
     
 }
@@ -90,8 +90,8 @@ public func >>(lhs: String, rhs: String) -> [LTCharacterDiffResult] {
     
     var diffResults = [LTCharacterDiffResult]()
     let newChars = enumerate(rhs)
-    let lhsLength = countElements(lhs)
-    let rhsLength = countElements(rhs)
+    let lhsLength = count(lhs)
+    let rhsLength = count(rhs)
     var skipIndexes = [Int]()
     let leftChars = Array(lhs)
     
@@ -144,7 +144,7 @@ public func >>(lhs: String, rhs: String) -> [LTCharacterDiffResult] {
         }
         
         if !foundCharacterInRhs {
-            if i < countElements(rhs) - 1 {
+            if i < count(rhs) - 1 {
                 result.diffType = .Replace
             } else {
                 result.diffType = .Delete

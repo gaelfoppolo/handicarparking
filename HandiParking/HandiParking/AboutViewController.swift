@@ -47,7 +47,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         var mySafari: UIApplication = UIApplication.sharedApplication()
         var urlString = "http://wiki.openstreetmap.org/wiki/" + NSLocalizedString("CONTRIB_OSM_URL",comment:"language string") + "Beginners'_guide"
         var urlParse: NSString = urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
-        var myURL: NSURL = NSURL(string: urlParse)!
+        var myURL: NSURL = NSURL(string: urlParse as String)!
         mySafari.openURL(myURL)
     }
     

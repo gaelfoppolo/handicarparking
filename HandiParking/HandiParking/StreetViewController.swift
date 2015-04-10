@@ -101,7 +101,7 @@ class StreetViewController: UIViewController {
         Création du bouton permettant de fermer la vue
     */
     func generateCloseButton() -> UIButton {
-        var closeButton: UIButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
+        var closeButton: UIButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
         closeButton.addTarget(self, action: "closeButton:", forControlEvents: .TouchUpInside)
         closeButton.setImage(UIImage(named: "close.png") as UIImage!, forState: .Normal)
         closeButton.setTitleColor(UIColor.blackColor(), forState: .Normal)

@@ -46,7 +46,7 @@ class SearchSelectedViewController: GeoViewController {
         // on appelle le constructeur papa
         super.viewDidLoad()
         // on set les boutons itinéraire et StreetView
-        self.navigationItem.rightBarButtonItems = setButtons()
+        self.navigationItem.rightBarButtonItems = setButtons() as [AnyObject]
         // on lance la récupération des coordonnées du lieu choisi
         if ServicesController().checkInternetConnection() {
             getCoordinate()
@@ -61,9 +61,9 @@ class SearchSelectedViewController: GeoViewController {
         Génère les boutons de la barre de navigation
     */
     func setButtons() -> NSArray {
-        self.streetViewButton = UIBarButtonItem(image: UIImage(named: "toolbar_streetview"), style: UIBarButtonItemStyle.Bordered, target: self, action: "streetViewButtonAction:")
+        self.streetViewButton = UIBarButtonItem(image: UIImage(named: "toolbar_streetview"), style: UIBarButtonItemStyle.Plain, target: self, action: "streetViewButtonAction:")
         streetViewButton.enabled = false
-        self.itineraryButton = UIBarButtonItem(image: UIImage(named: "toolbar_itinerary"), style: UIBarButtonItemStyle.Bordered, target: self, action: "itineraryButtonAction:")
+        self.itineraryButton = UIBarButtonItem(image: UIImage(named: "toolbar_itinerary"), style: UIBarButtonItemStyle.Plain, target: self, action: "itineraryButtonAction:")
         itineraryButton.enabled = false
         var buttons: NSArray = [self.streetViewButton, self.itineraryButton]
         return buttons
@@ -81,7 +81,7 @@ class SearchSelectedViewController: GeoViewController {
     func getCoordinate() {
             let request = self.managerGM!.request(DataProvider.GoogleMaps.PlaceDetails(self.place.placeid))
             request.validate()
-            request.responseSwiftyJSON { request, response, json, error in
+            request.responseSwiftyJSON({ (request, response, json, error) -> Void in
                 if error == nil  {
                     var dataRecup = json
                     var status:String? = dataRecup["status"].stringValue
@@ -127,7 +127,7 @@ class SearchSelectedViewController: GeoViewController {
                     self.launchButtonText.enabled = true
                     AlertViewController().errorRequest()
                 }
-            }
+            })
         
     }
 

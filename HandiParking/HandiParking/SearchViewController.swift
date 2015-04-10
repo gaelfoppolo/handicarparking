@@ -197,7 +197,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
         On utilise une sous fonction pour remplir la cellule
     */
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = self.tableView.dequeueReusableCellWithIdentifier(Constants.TableViewCell.identifier, forIndexPath: indexPath) as UITableViewCell
+        var cell = self.tableView.dequeueReusableCellWithIdentifier(Constants.TableViewCell.identifier, forIndexPath: indexPath) as! UITableViewCell
         let place = self.placesResults![indexPath.row]
         let textToDisplay = attributedAutocompleteStrings![indexPath.row]
         //cell.textLabel?.attributedText = attributedAutocompleteStrings![indexPath.row]
@@ -253,7 +253,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
             
             if !searchString.isEmpty {
                 
-                self.request = self.managerGM!.request(DataProvider.GoogleMaps.Autocomplete(searchString)).responseSwiftyJSON { request, response, json, error in
+                self.request = self.managerGM!.request(DataProvider.GoogleMaps.Autocomplete(searchString)).responseSwiftyJSON({ (request, response, json, error) -> Void in
                     
                     if error == nil  {
                         
@@ -300,7 +300,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
                         self.tableView.reloadData()
                     }
                     
-                }
+                })
    
             }
             else {
@@ -328,7 +328,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "placeSelected" {
-            let searchSelectedViewController = segue.destinationViewController as SearchSelectedViewController
+            let searchSelectedViewController = segue.destinationViewController as! SearchSelectedViewController
             let indexPath = self.tableView.indexPathForSelectedRow()!
             searchSelectedViewController.place = self.placesResults![indexPath.row]
             //self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "test", style: .Plain, target: nil, action: nil)
@@ -351,7 +351,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
                 for i in 0..<placesResults!.count{
                     let str = placesResults![i].name as NSString
                     let range = str.rangeOfString(searchString, options: .CaseInsensitiveSearch)
-                    var attString = NSMutableAttributedString(string: str, attributes: attrs)
+                    var attString = NSMutableAttributedString(string: str as String, attributes: attrs)
                     attString.addAttributes(autoCompleteAttributes!, range: range)
                     attributedAutocompleteStrings?.append(attString)
                 }

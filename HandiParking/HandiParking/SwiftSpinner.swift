@@ -8,321 +8,345 @@
 //
 
 import UIKit
-
-// set up the SwiftSpinner protocol with a single option stop search function
-protocol SwiftSpinnerDelegate: NSObjectProtocol {
-    func didTapCloseButton()
-}
-
-public class SwiftSpinner: UIView {
     
-    // MARK: - Singleton
-    
-    //
-    // Access the singleton instance
-    //
-    public class var sharedInstance: SwiftSpinner {
-        struct Singleton {
-            static let instance = SwiftSpinner(frame: CGRect.zeroRect)
-        }
-        return Singleton.instance
+    // set up the SwiftSpinner protocol with a single option stop search function
+    protocol SwiftSpinnerDelegate: NSObjectProtocol {
+        func didTapCloseButton()
     }
     
-    // MARK: - Init
-    
-    //
-    // Custom init to build the spinner UI
-    //
-    
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    public class SwiftSpinner: UIView {
         
-        blurEffect = UIBlurEffect(style: blurEffectStyle)
-        blurView = UIVisualEffectView(effect: blurEffect)
-        addSubview(blurView)
+        // MARK: - Singleton
         
-        vibrancyView = UIVisualEffectView(effect: UIVibrancyEffect(forBlurEffect: blurEffect))
-        addSubview(vibrancyView)
-        
-        let titleScale: CGFloat = 0.85
-        titleLabel.frame.size = CGSize(width: frameSize.width * titleScale, height: frameSize.height * titleScale)
-        titleLabel.font = UIFont(name: "HelveticaNeue", size: 22.0)
-        titleLabel.numberOfLines = 0
-        titleLabel.textAlignment = .Center
-        titleLabel.lineBreakMode = .ByWordWrapping
-        titleLabel.adjustsFontSizeToFitWidth = true
-        
-        vibrancyView.contentView.addSubview(titleLabel)
-        blurView.contentView.addSubview(vibrancyView)
-        
-        outerCircleView.frame.size = frameSize
-        
-        outerCircle.path = UIBezierPath(ovalInRect: CGRect(x: 0.0, y: 0.0, width: frameSize.width, height: frameSize.height)).CGPath
-        outerCircle.lineWidth = 8.0
-        outerCircle.strokeStart = 0.0
-        outerCircle.strokeEnd = 0.45
-        outerCircle.lineCap = kCALineCapRound
-        outerCircle.fillColor = UIColor.clearColor().CGColor
-        outerCircle.strokeColor = UIColor.whiteColor().CGColor
-        outerCircleView.layer.addSublayer(outerCircle)
-        
-        outerCircle.strokeStart = 0.0
-        outerCircle.strokeEnd = 1.0
-        
-        vibrancyView.contentView.addSubview(outerCircleView)
-        
-        innerCircleView.frame.size = frameSize
-        
-        let innerCirclePadding: CGFloat = 12
-        innerCircle.path = UIBezierPath(ovalInRect: CGRect(x: innerCirclePadding, y: innerCirclePadding, width: frameSize.width - 2*innerCirclePadding, height: frameSize.height - 2*innerCirclePadding)).CGPath
-        innerCircle.lineWidth = 4.0
-        innerCircle.strokeStart = 0.5
-        innerCircle.strokeEnd = 0.9
-        innerCircle.lineCap = kCALineCapRound
-        innerCircle.fillColor = UIColor.clearColor().CGColor
-        innerCircle.strokeColor = UIColor.grayColor().CGColor
-        innerCircleView.layer.addSublayer(innerCircle)
-        
-        innerCircle.strokeStart = 0.0
-        innerCircle.strokeEnd = 1.0
-        
-        vibrancyView.contentView.addSubview(innerCircleView)
-        
-        closeButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
-        closeButton.addTarget(self, action: "closeButton:", forControlEvents: .TouchUpInside)
-        closeButton.setImage(UIImage(named: "close.png") as UIImage!, forState: .Normal)
-        closeButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        closeButton.frame = CGRectMake(10, 25, 50, 50)
-        closeButton.tintColor = UIColor.whiteColor()
-        addSubview(closeButton)
-    }
-    
-    // MARK: - Public interface
-    
-    //
-    // Show the spinner activity on screen, if visible only update the title
-    //
-    public class func show(title: String, animated: Bool = true) {
-        
-        let window = UIApplication.sharedApplication().windows.first as UIWindow
-        let spinner = SwiftSpinner.sharedInstance
-        
-        spinner.updateFrame()
-        
-        if animated {
-            
-            spinner.closeButton.enabled = true
-            
-        } else {
-            
-            spinner.closeButton.enabled = false
-            
+        //
+        // Access the singleton instance
+        //
+        public class var sharedInstance: SwiftSpinner {
+            struct Singleton {
+                static let instance = SwiftSpinner(frame: CGRect.zeroRect)
+            }
+            return Singleton.instance
         }
         
-        if spinner.superview == nil {
-            //show the spinner
-            spinner.alpha = 0.0
-            window.addSubview(spinner)
+        // MARK: - Init
+        
+        //
+        // Custom init to build the spinner UI
+        //
+        
+        public override init(frame: CGRect) {
+            super.init(frame: frame)
             
-            UIView.animateWithDuration(0.33, delay: 0.0, options: .CurveEaseOut, animations: {
-                spinner.alpha = 1.0
-                }, completion: nil)
+            blurEffect = UIBlurEffect(style: blurEffectStyle)
+            blurView = UIVisualEffectView(effect: blurEffect)
+            addSubview(blurView)
+            
+            vibrancyView = UIVisualEffectView(effect: UIVibrancyEffect(forBlurEffect: blurEffect))
+            addSubview(vibrancyView)
+            
+            let titleScale: CGFloat = 0.85
+            titleLabel.frame.size = CGSize(width: frameSize.width * titleScale, height: frameSize.height * titleScale)
+            titleLabel.font = defaultTitleFont
+            titleLabel.numberOfLines = 0
+            titleLabel.textAlignment = .Center
+            titleLabel.lineBreakMode = .ByWordWrapping
+            titleLabel.adjustsFontSizeToFitWidth = true
+            
+            vibrancyView.contentView.addSubview(titleLabel)
+            blurView.contentView.addSubview(vibrancyView)
+            
+            outerCircleView.frame.size = frameSize
+            
+            outerCircle.path = UIBezierPath(ovalInRect: CGRect(x: 0.0, y: 0.0, width: frameSize.width, height: frameSize.height)).CGPath
+            outerCircle.lineWidth = 8.0
+            outerCircle.strokeStart = 0.0
+            outerCircle.strokeEnd = 0.45
+            outerCircle.lineCap = kCALineCapRound
+            outerCircle.fillColor = UIColor.clearColor().CGColor
+            outerCircle.strokeColor = UIColor.whiteColor().CGColor
+            outerCircleView.layer.addSublayer(outerCircle)
+            
+            outerCircle.strokeStart = 0.0
+            outerCircle.strokeEnd = 1.0
+            
+            vibrancyView.contentView.addSubview(outerCircleView)
+            
+            innerCircleView.frame.size = frameSize
+            
+            let innerCirclePadding: CGFloat = 12
+            innerCircle.path = UIBezierPath(ovalInRect: CGRect(x: innerCirclePadding, y: innerCirclePadding, width: frameSize.width - 2*innerCirclePadding, height: frameSize.height - 2*innerCirclePadding)).CGPath
+            innerCircle.lineWidth = 4.0
+            innerCircle.strokeStart = 0.5
+            innerCircle.strokeEnd = 0.9
+            innerCircle.lineCap = kCALineCapRound
+            innerCircle.fillColor = UIColor.clearColor().CGColor
+            innerCircle.strokeColor = UIColor.grayColor().CGColor
+            innerCircleView.layer.addSublayer(innerCircle)
+            
+            innerCircle.strokeStart = 0.0
+            innerCircle.strokeEnd = 1.0
+            
+            vibrancyView.contentView.addSubview(innerCircleView)
+            
+            closeButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+            closeButton.addTarget(self, action: "closeButton:", forControlEvents: .TouchUpInside)
+            closeButton.setImage(UIImage(named: "close.png") as UIImage!, forState: .Normal)
+            closeButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+            closeButton.frame = CGRectMake(10, 25, 50, 50)
+            closeButton.tintColor = UIColor.whiteColor()
+            addSubview(closeButton)
         }
         
-        spinner.title = title
-        spinner.animating = animated
+        // MARK: - Public interface
         
-    }
-    
-    //
-    // Tap close button of spinner
-    //
-    // Handle by the delegate method
-    //
-    func closeButton(sender: UIButton!) {
-        // test if delegate methode is implemented
-        //if (delegate?.respondsToSelector("didStopSearch"))! {
-        //}
-        delegate?.didTapCloseButton()
-    }
-    
-    //
-    // Hide the spinner
-    //
-    public class func hide() {
-        let spinner = SwiftSpinner.sharedInstance
-        
-        if  spinner.superview == nil {
-            return
-        }
-        
-        UIView.animateWithDuration(0.33, delay: 0.0, options: .CurveEaseOut, animations: {
-            spinner.alpha = 0.0
-            }, completion: {_ in
-                spinner.alpha = 1.0
-                spinner.removeFromSuperview()
-        })
-        
-        spinner.animating = false
-    }
-    
-    //
-    // The spinner title
-    //
-    public var title: String = "" {
-        didSet {
+        //
+        // Show the spinner activity on screen, if visible only update the title
+        //
+        public class func show(title: String, animated: Bool = true) {
             
+            let window = UIApplication.sharedApplication().windows.first as! UIWindow
             let spinner = SwiftSpinner.sharedInstance
             
-            UIView.animateWithDuration(0.15, delay: 0.0, options: .CurveEaseOut, animations: {
-                spinner.titleLabel.transform = CGAffineTransformMakeScale(0.75, 0.75)
-                spinner.titleLabel.alpha = 0.2
-                }, completion: {_ in
-                    spinner.titleLabel.text = self.title
-                    UIView.animateWithDuration(0.35, delay: 0.0, usingSpringWithDamping: 0.35, initialSpringVelocity: 0.0, options: nil, animations: {
-                        spinner.titleLabel.transform = CGAffineTransformIdentity
-                        spinner.titleLabel.alpha = 1.0
-                        }, completion: nil)
-            })
+            spinner.updateFrame()
+            
+            if animated {
+                
+                spinner.closeButton.enabled = true
+                
+            } else {
+                
+                spinner.closeButton.enabled = false
+                
+            }
+            
+            if spinner.superview == nil {
+                //show the spinner
+                spinner.alpha = 0.0
+                window.addSubview(spinner)
+                
+                UIView.animateWithDuration(0.33, delay: 0.0, options: .CurveEaseOut, animations: {
+                    spinner.alpha = 1.0
+                    }, completion: nil)
+            }
+            
+            spinner.title = title
+            spinner.animating = animated
         }
-    }
-    
-    //
-    // observe the view frame and update the subviews layout
-    //
-    public override var frame: CGRect {
-        didSet {
-            if frame == CGRect.zeroRect {
+        
+        //
+        // Show the spinner activity on screen with custom font, if visible only update the title
+        // Note that the custom font will be discarded when hiding the spinner
+        // To permanently change the title font, set the defaultTitleFont property
+        //
+        public class func show(title: String, withFont font: UIFont, animated: Bool = true) {
+            let spinner = SwiftSpinner.sharedInstance
+            spinner.titleLabel.font = font
+            
+            show(title, animated: true)
+        }
+        
+        //
+        // Tap close button of spinner
+        //
+        // Handle by the delegate method
+        //
+        func closeButton(sender: UIButton!) {
+            // test if delegate methode is implemented
+            //if (delegate?.respondsToSelector("didStopSearch"))! {
+            //}
+            delegate?.didTapCloseButton()
+        }
+        
+        //
+        // Hide the spinner
+        //
+        public class func hide() {
+            let spinner = SwiftSpinner.sharedInstance
+            
+            if spinner.superview == nil {
                 return
             }
-            blurView.frame = bounds
-            vibrancyView.frame = blurView.bounds
-            titleLabel.center = vibrancyView.center
-            outerCircleView.center = vibrancyView.center
-            innerCircleView.center = vibrancyView.center
+            
+            UIView.animateWithDuration(0.33, delay: 0.0, options: .CurveEaseOut, animations: {
+                spinner.alpha = 0.0
+                }, completion: {_ in
+                    spinner.alpha = 1.0
+                    spinner.removeFromSuperview()
+                    spinner.titleLabel.font = spinner.defaultTitleFont
+                    spinner.titleLabel.text = nil
+            })
+            
+            spinner.animating = false
         }
-    }
-    
-    //
-    // Start the spinning animation
-    //
-    
-    public var animating: Bool = false {
         
-        willSet (shouldAnimate) {
-            if shouldAnimate && !animating {
-                spinInner()
-                spinOuter()
+        //
+        // Set the default title font
+        //
+        public class func setDefaultTitleFont(font: UIFont?) {
+            let spinner = SwiftSpinner.sharedInstance
+            spinner.defaultTitleFont = font
+            spinner.titleLabel.font = font
+        }
+        
+        //
+        // The spinner title
+        //
+        public var title: String = "" {
+            didSet {
+                
+                let spinner = SwiftSpinner.sharedInstance
+                
+                UIView.animateWithDuration(0.15, delay: 0.0, options: .CurveEaseOut, animations: {
+                    spinner.titleLabel.transform = CGAffineTransformMakeScale(0.75, 0.75)
+                    spinner.titleLabel.alpha = 0.2
+                    }, completion: {_ in
+                        spinner.titleLabel.text = self.title
+                        UIView.animateWithDuration(0.35, delay: 0.0, usingSpringWithDamping: 0.35, initialSpringVelocity: 0.0, options: nil, animations: {
+                            spinner.titleLabel.transform = CGAffineTransformIdentity
+                            spinner.titleLabel.alpha = 1.0
+                            }, completion: nil)
+                })
             }
         }
         
-        didSet {
-            // update UI
-            if animating {
-                self.outerCircle.strokeStart = 0.0
-                self.outerCircle.strokeEnd = 0.45
-                self.innerCircle.strokeStart = 0.5
-                self.innerCircle.strokeEnd = 0.9
-            } else {
-                self.outerCircle.strokeStart = 0.0
-                self.outerCircle.strokeEnd = 1.0
-                self.innerCircle.strokeStart = 0.0
-                self.innerCircle.strokeEnd = 1.0
+        //
+        // observe the view frame and update the subviews layout
+        //
+        public override var frame: CGRect {
+            didSet {
+                if frame == CGRect.zeroRect {
+                    return
+                }
+                blurView.frame = bounds
+                vibrancyView.frame = blurView.bounds
+                titleLabel.center = vibrancyView.center
+                outerCircleView.center = vibrancyView.center
+                innerCircleView.center = vibrancyView.center
             }
         }
-    }
-    
-    // MARK: - Private interface
-    
-    //
-    // layout elements
-    //
-    
-    // this is where we declare our protocol
-    var delegate:SwiftSpinnerDelegate?
-    
-    private var closeButton: UIButton!
-    
-    private var blurEffectStyle: UIBlurEffectStyle = .Dark
-    private var blurEffect: UIBlurEffect!
-    private var blurView: UIVisualEffectView!
-    private var vibrancyView: UIVisualEffectView!
-    
-    lazy var titleLabel = UILabel()
-    let frameSize = CGSize(width: 200.0, height: 200.0)
-    
-    private lazy var outerCircleView = UIView()
-    private lazy var innerCircleView = UIView()
-    
-    private let outerCircle = CAShapeLayer()
-    private let innerCircle = CAShapeLayer()
-    
-    required public init(coder aDecoder: NSCoder) {
-        fatalError("Not coder compliant")
-    }
-    
-    private var currentOuterRotation: CGFloat = 0.0
-    private var currentInnerRotation: CGFloat = 0.1
-    
-    private func spinOuter() {
         
-        if superview == nil {
-            return
+        //
+        // Start the spinning animation
+        //
+        
+        public var animating: Bool = false {
+            
+            willSet (shouldAnimate) {
+                if shouldAnimate && !animating {
+                    spinInner()
+                    spinOuter()
+                }
+            }
+            
+            didSet {
+                // update UI
+                if animating {
+                    self.outerCircle.strokeStart = 0.0
+                    self.outerCircle.strokeEnd = 0.45
+                    self.innerCircle.strokeStart = 0.5
+                    self.innerCircle.strokeEnd = 0.9
+                } else {
+                    self.outerCircle.strokeStart = 0.0
+                    self.outerCircle.strokeEnd = 1.0
+                    self.innerCircle.strokeStart = 0.0
+                    self.innerCircle.strokeEnd = 1.0
+                }
+            }
         }
         
-        let duration = Double(Float(arc4random()) /  Float(UInt32.max)) * 2.0 + 1.5
-        let randomRotation = Double(Float(arc4random()) /  Float(UInt32.max)) * M_PI_4 + M_PI_4
+        // MARK: - Private interface
         
-        //outer circle
-        UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.0, options: nil, animations: {
-            self.currentOuterRotation -= CGFloat(randomRotation)
-            self.outerCircleView.transform = CGAffineTransformMakeRotation(self.currentOuterRotation)
-            }, completion: {_ in
-                let waitDuration = Double(Float(arc4random()) /  Float(UInt32.max)) * 1.0 + 1.0
-                self.delay(seconds: waitDuration, {
-                    if self.animating {
-                        self.spinOuter()
-                    }
-                })
-        })
-    }
-    
-    private func spinInner() {
-        if superview == nil {
-            return
+        //
+        // layout elements
+        //
+        
+        // this is where we declare our protocol
+        var delegate:SwiftSpinnerDelegate?
+        
+        private var closeButton: UIButton!
+        
+        private var blurEffectStyle: UIBlurEffectStyle = .Dark
+        private var blurEffect: UIBlurEffect!
+        private var blurView: UIVisualEffectView!
+        private var vibrancyView: UIVisualEffectView!
+        
+        lazy var titleLabel = UILabel()
+        var defaultTitleFont = UIFont(name: "HelveticaNeue", size: 22.0)
+
+        let frameSize = CGSize(width: 200.0, height: 200.0)
+        
+        private lazy var outerCircleView = UIView()
+        private lazy var innerCircleView = UIView()
+        
+        private let outerCircle = CAShapeLayer()
+        private let innerCircle = CAShapeLayer()
+        
+        required public init(coder aDecoder: NSCoder) {
+            fatalError("Not coder compliant")
         }
         
-        //inner circle
-        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: nil, animations: {
-            self.currentInnerRotation += CGFloat(M_PI_4)
-            self.innerCircleView.transform = CGAffineTransformMakeRotation(self.currentInnerRotation)
-            }, completion: {_ in
-                self.delay(seconds: 0.5, {
-                    if self.animating {
-                        self.spinInner()
-                    }
-                })
-        })
-    }
-    
-    private func updateFrame() {
-        let window = UIApplication.sharedApplication().windows.first as UIWindow
-        SwiftSpinner.sharedInstance.frame = window.frame
-    }
-    
-    // MARK: - Util methods
-    
-    func delay(#seconds: Double, completion:()->()) {
-        let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64( Double(NSEC_PER_SEC) * seconds ))
+        private var currentOuterRotation: CGFloat = 0.0
+        private var currentInnerRotation: CGFloat = 0.1
         
-        dispatch_after(popTime, dispatch_get_main_queue()) {
-            completion()
+        private func spinOuter() {
+            
+            if superview == nil {
+                return
+            }
+            
+            let duration = Double(Float(arc4random()) /  Float(UInt32.max)) * 2.0 + 1.5
+            let randomRotation = Double(Float(arc4random()) /  Float(UInt32.max)) * M_PI_4 + M_PI_4
+            
+            //outer circle
+            UIView.animateWithDuration(duration, delay: 0.0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.0, options: nil, animations: {
+                self.currentOuterRotation -= CGFloat(randomRotation)
+                self.outerCircleView.transform = CGAffineTransformMakeRotation(self.currentOuterRotation)
+                }, completion: {_ in
+                    let waitDuration = Double(Float(arc4random()) /  Float(UInt32.max)) * 1.0 + 1.0
+                    self.delay(seconds: waitDuration, completion: {
+                        if self.animating {
+                            self.spinOuter()
+                        }
+                    })
+            })
         }
-    }
-    
-    override public func layoutSubviews() {
-        super.layoutSubviews()
-        updateFrame()
-    }
-    
+        
+        private func spinInner() {
+            if superview == nil {
+                return
+            }
+            
+            //inner circle
+            UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: nil, animations: {
+                self.currentInnerRotation += CGFloat(M_PI_4)
+                self.innerCircleView.transform = CGAffineTransformMakeRotation(self.currentInnerRotation)
+                }, completion: {_ in
+                    self.delay(seconds: 0.5, completion: {
+                        if self.animating {
+                            self.spinInner()
+                        }
+                    })
+            })
+        }
+        
+        private func updateFrame() {
+            let window = UIApplication.sharedApplication().windows.first as! UIWindow
+            SwiftSpinner.sharedInstance.frame = window.frame
+        }
+        
+        // MARK: - Util methods
+        
+        func delay(#seconds: Double, completion:()->()) {
+            let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64( Double(NSEC_PER_SEC) * seconds ))
+            
+            dispatch_after(popTime, dispatch_get_main_queue()) {
+                completion()
+            }
+        }
+        
+        override public func layoutSubviews() {
+            super.layoutSubviews()
+            updateFrame()
+        }
+        
 }

@@ -56,7 +56,7 @@ struct AlertViewController {
         Erreur - Pas d'emplacements trouvés lors de la recherche OSM
     */
     internal func noPlacesFound(radius: SearchRadius) {
-        SCLAlertView().showWarning(NSLocalizedString("NO_SPACE_FOUND",comment:"No space found"), subTitle:NSString(format: NSLocalizedString("NO_SPACE_FOUND_EXPL", comment: "No space found meaning"), String((radius.value)/1000)), closeButtonTitle:NSLocalizedString("OK",comment:"OK"))
+        SCLAlertView().showWarning(NSLocalizedString("NO_SPACE_FOUND",comment:"No space found"), subTitle:String(format: NSLocalizedString("NO_SPACE_FOUND_EXPL", comment: "No space found meaning"), String((radius.value)/1000)), closeButtonTitle:NSLocalizedString("OK",comment:"OK"))
         
     }
     
@@ -85,7 +85,7 @@ struct AlertViewController {
         Erreur - L'application n'est plus installée
     */
     internal func appsDeleted(appName: String) {
-        SCLAlertView().showError(NSLocalizedString("APP_NOT_INST",comment:"Application not install"), subTitle:NSString(format: NSLocalizedString("APP_NOT_INST_EXPL", comment: "Application not install meaning"), appName), closeButtonTitle:NSLocalizedString("OK",comment:"OK"))
+        SCLAlertView().showError(NSLocalizedString("APP_NOT_INST",comment:"Application not install"), subTitle:String(format: NSLocalizedString("APP_NOT_INST_EXPL", comment: "Application not install meaning"), appName), closeButtonTitle:NSLocalizedString("OK",comment:"OK"))
     }
     
     /**

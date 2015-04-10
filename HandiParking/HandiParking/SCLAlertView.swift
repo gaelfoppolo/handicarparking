@@ -26,8 +26,8 @@ public class SCLButton: UIButton {
     var selector:Selector!
     var action:(()->Void)!
     
-    override public init() {
-        super.init()
+    public init() {
+        super.init(frame: CGRectZero)
     }
     
     required public init(coder aDecoder: NSCoder) {
@@ -101,8 +101,8 @@ public class SCLAlertView: UIViewController {
         fatalError("NSCoding not supported")
     }
     
-    required override public init() {
-        super.init()
+    required public init() {
+        super.init(nibName:nil, bundle:nil)
         // Set up main view
         view.frame = UIScreen.mainScreen().bounds
         view.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
@@ -145,6 +145,10 @@ public class SCLAlertView: UIViewController {
         labelTitle.textColor = UIColorFromRGB(0x4D4D4D)
         viewText.textColor = UIColorFromRGB(0x4D4D4D)
         contentView.layer.borderColor = UIColorFromRGB(0xCCCCCC).CGColor
+        //Gesture Recognizer for tapping outside the textinput
+        let tapGesture = UITapGestureRecognizer(target: self, action: Selector("dismissKeyboard"))
+        tapGesture.numberOfTapsRequired = 1
+        self.view.addGestureRecognizer(tapGesture)
     }
     
     override public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -190,7 +194,7 @@ public class SCLAlertView: UIViewController {
         }
     }
     
-    override public func touchesEnded(touches:NSSet, withEvent event:UIEvent) {
+    override public func touchesEnded(touches:Set<NSObject>, withEvent event:UIEvent) {
         if event.touchesForView(view)?.count > 0 {
             view.endEditing(true)
         }
@@ -276,6 +280,10 @@ public class SCLAlertView: UIViewController {
         btn.backgroundColor = viewColor
     }
     
+    //Dismiss keyboard when tapped outside textfield
+    func dismissKeyboard(){
+        self.view.endEditing(true)
+    }
     
     // showSuccess(view, title, subTitle)
     public func showSuccess(title: String, subTitle: String, closeButtonTitle:String?=nil, duration:NSTimeInterval=0.0) -> SCLAlertViewResponder {
@@ -314,7 +322,7 @@ public class SCLAlertView: UIViewController {
     // showTitle(view, title, subTitle, duration, style)
     public func showTitle(title: String, subTitle: String, duration: NSTimeInterval?, completeText: String?, style: SCLAlertViewStyle) -> SCLAlertViewResponder {
         view.alpha = 0
-        let rv = UIApplication.sharedApplication().keyWindow?.subviews.first as UIView
+        let rv = UIApplication.sharedApplication().keyWindow?.subviews.first as! UIView
         rv.addSubview(view)
         view.frame = rv.bounds
         baseView.frame = rv.bounds
@@ -451,8 +459,9 @@ class SCLAlertViewStyleKit : NSObject {
     }
     
     // Initialization
-    override class func load() {
-    }
+    /// swift 1.2 abolish func load
+    //    override class func load() {
+    //    }
     
     // Drawing Methods
     class func drawCheckmark() {
