@@ -656,7 +656,11 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 
             }
             place.place.setAddress(address)
-            self.mapView.selectedMarker = place
+            if let actualSelected = self.mapView.selectedMarker {
+                if self.CLLocationCoordinate2DEqual(place.position, coordinate2: actualSelected.position) {
+                    self.mapView.selectedMarker = place
+                }
+            }
         }
     }
     
@@ -701,8 +705,18 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 }
             }
             place.place.setDistanceAndDurationETA(distanceETA, durETA: timeETA)
-            self.mapView.selectedMarker = place
+            if let actualSelected = self.mapView.selectedMarker {
+                if self.CLLocationCoordinate2DEqual(place.position, coordinate2: actualSelected.position) {
+                    self.mapView.selectedMarker = place
+                }
+            }
+            
+            
         })
+    }
+    
+    func CLLocationCoordinate2DEqual(coordinate1: CLLocationCoordinate2D, coordinate2: CLLocationCoordinate2D) -> Bool {
+        return (coordinate1.latitude == coordinate2.latitude) && (coordinate1.longitude == coordinate2.longitude)
     }
     
     /**
@@ -714,7 +728,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     
         La requête est effectuée de façon asynchrone grâce à une closure, avec un timeout de 10 secondes.
     */
-    func getInformations(place: PlaceMarker) {
+    /*func getInformations(place: PlaceMarker) {
         if place.place.address == nil {
             let request = managerGM!.request(DataProvider.GoogleMaps.DistanceMatrix(locationManager.location.coordinate, place.position))
             request.validate()
@@ -754,8 +768,9 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                             }
                             
                         }
-                        
-                        self.mapView.selectedMarker = place
+                        if self.CLLocationCoordinate2DEqual(place.position, coordinate2: self.mapView.selectedMarker.position) {
+                            self.mapView.selectedMarker = place
+                        }
                         
                     } else {
                         self.mapView.selectedMarker = nil
@@ -768,7 +783,7 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 }
             })
         }
-    }
+    }*/
     
     /**
         Permet de lancer un timer avec completion handler
