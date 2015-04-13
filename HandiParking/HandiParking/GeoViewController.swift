@@ -115,6 +115,8 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         
         self.loadingInfoWindow.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
         
+        mapView.settings.compassButton = true
+        
     }
     
     /**
