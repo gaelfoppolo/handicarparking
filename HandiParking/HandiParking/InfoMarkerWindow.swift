@@ -10,7 +10,8 @@ import UIKit
 
 /// Vue affichant les détails d'un emplacement lorsqu'il est sélectionné
 
-@IBDesignable class InfoMarkerWindow: UIView {
+//@IBDesignable
+class InfoMarkerWindow: UIView {
     
     /// MARK: Outlets
     

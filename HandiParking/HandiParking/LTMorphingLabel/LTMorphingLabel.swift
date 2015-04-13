@@ -52,7 +52,8 @@ typealias LTMorphingSkipFramesClosure = (Void) -> Int
 
 
 // MARK: - LTMorphingLabel
-@IBDesignable public class LTMorphingLabel: UILabel {
+//@IBDesignable
+public class LTMorphingLabel: UILabel {
     
     public var morphingProgress: Float = 0.0
     public var morphingDuration: Float = 0.6

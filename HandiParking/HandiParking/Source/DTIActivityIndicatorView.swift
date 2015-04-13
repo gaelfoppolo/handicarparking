@@ -9,7 +9,7 @@ import UIKit
 import QuartzCore
 import Foundation
 
-@IBDesignable
+//@IBDesignable
 @objc
 public class DTIActivityIndicatorView: UIView {
     // warning unlike objc, we dont have TARGET_INTERFACE_BUILDER macro in swift !
