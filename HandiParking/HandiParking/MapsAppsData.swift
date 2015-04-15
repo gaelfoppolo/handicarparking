@@ -1,6 +1,6 @@
 //
 //  MapsAppsData.swift
-//  HandiParking
+//  HandiCarParking
 //
 //  Created by Gaël on 23/03/2015.
 //  Copyright (c) 2015 KeepCore. All rights reserved.

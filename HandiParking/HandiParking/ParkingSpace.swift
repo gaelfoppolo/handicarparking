@@ -1,6 +1,6 @@
 //
 //  ParkingSpace.swift
-//  HandiParking
+//  HandiCarParking
 //
 //  Created by Gaël on 12/03/2015.
 //  Copyright (c) 2015 KeepCore. All rights reserved.

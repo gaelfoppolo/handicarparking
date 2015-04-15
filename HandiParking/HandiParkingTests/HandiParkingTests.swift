@@ -1,6 +1,6 @@
 //
-//  HandiParkingTests.swift
-//  HandiParkingTests
+//  HandiCarParkingTests.swift
+//  HandiCarParkingTests
 //
 //  Created by Gaël on 10/03/2015.
 //  Copyright (c) 2015 KeepCore. All rights reserved.
