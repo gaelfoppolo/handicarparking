@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>34F13D23-1137-455E-A46E-AF5C7C064385</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>HandiCarParking</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>5ecc9668-ffb4-2040-a4ba-67aae04a6357++2003</key>
 		<string>svn://80.236.15.6/keepcore/KC/trunk/handiparkingios</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>HandiParking/HandiCarParking.xcodeproj/project.xcworkspace</string>
+	<string>HandiParking/HandiCarParking.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>5ecc9668-ffb4-2040-a4ba-67aae04a6357++2003</key>
@@ -26,7 +26,7 @@
 		<string>svn://80.236.15.6/keepcore</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>svn://80.236.15.6/keepcore/KC/trunk/handiparkingios/HandiParking/HandiCarParking.xcodeproj/project.xcworkspace</string>
+	<string>svn://80.236.15.6/keepcore/KC/trunk/handiparkingios/HandiParking/HandiCarParking.xcodeproj</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
