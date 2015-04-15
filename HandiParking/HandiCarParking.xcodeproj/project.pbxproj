@@ -253,6 +253,9 @@
 		939F00B41AB82E8D007B928E /* InfoMarkerWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoMarkerWindow.xib; sourceTree = "<group>"; };
 		939F00BC1AB831D5007B928E /* InfoMarkerWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoMarkerWindow.swift; sourceTree = "<group>"; };
 		939F00C61AB834A6007B928E /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		93AA39621ADE3D4A00A58B43 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		93AA39631ADE3D4B00A58B43 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		93AA396A1ADE3D4C00A58B43 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		93C83F491AAED9AD005990C2 /* HandiCarParking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandiCarParking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C83F4D1AAED9AD005990C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93C83F4E1AAED9AD005990C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -687,6 +690,7 @@
 				da,
 				es,
 				pl,
+				de,
 			);
 			mainGroup = 93C83F401AAED9AD005990C2;
 			productRefGroup = 93C83F4A1AAED9AD005990C2 /* Products */;
@@ -897,6 +901,7 @@
 				931F1C831AD5372C0090CB9C /* da */,
 				93895BAA1AD6EB05004A3E54 /* es */,
 				932887291AD7F0F700602C87 /* pl */,
+				93AA39631ADE3D4B00A58B43 /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -909,6 +914,7 @@
 				931F1C821AD5372C0090CB9C /* da */,
 				93895BA91AD6EB05004A3E54 /* es */,
 				932887281AD7F0F700602C87 /* pl */,
+				93AA39621ADE3D4A00A58B43 /* de */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -921,6 +927,7 @@
 				931F1C841AD5372D0090CB9C /* da */,
 				93895BAB1AD6EB06004A3E54 /* es */,
 				932887321AD7F0F800602C87 /* pl */,
+				93AA396A1ADE3D4C00A58B43 /* de */,
 			);
 			name = Localizable.strings;
 			path = ..;

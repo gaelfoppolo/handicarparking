@@ -1,0 +1,51 @@
+/*
+ Localizable.strings
+ HandiParking
+ 
+ Created by Gaël on 31/03/2015.
+ Copyright (c) 2015 KeepCore. All rights reserved.
+ */
+
+SLC_APP_ITI="Wählen Sie die Anwendung aus mit der Sie Navigieren möchten";
+CANCEL="Abbrechen";
+FEE="Kostenpflichtig";
+NO_FEE="Kostenlos";
+NB_SPACE="%@ Platz frei";
+NB_SPACES="%@ Plätze frei";
+NA="N/A";
+NO_ADDRESS="Keine übereinstimmende Adresse";
+OK="OK";
+NO_LOC_SERV="Keine Ortungsdienste";
+NO_LOC_SERV_EXPL="Es sieht aus als wären die Ortungsdienste deaktiviert! Gehen sie zu Einstellungen > Datenschutz > Ortungsdienste um sie zu aktivieren!";
+NO_WEB_CONNEC="Keine Internet Verbindung";
+NO_WEB_CONNEC_EXPL="Es sieht aus als wäre ihre Mobile Datenverbindung deaktiviert. Bitte aktivieren Sie die Datenverbindung um die Anwendung vollständig zu benutzen.";
+NO_WEB="Kein Internet";
+NO_WEB_EXPL=" Es sieht aus als wäre ihre Netzwerkverbindung aktiv aber limitiert. Versuchen Sie eine bessere Verbindung zu finden um die Anwendung vollständig zu benutzen.";
+LOC_AUTH="Genehmigung der Standortdaten";
+LOC_AUTH_EXPL="Es sieht aus als wäre diese Anwendung nicht erlaubt ihre Standortdaten zu verwenden!";
+NO_SPACE_FOUND="Keine freien Plätze gefunden 😁";
+NO_SPACE_FOUND_EXPL="Es sieht aus als wäre kein freier Parkplatz im Umkreis von %@ Kilometer gefunden…😁";
+OVER_SERV=" Überlastete Server ";
+OVER_SERV_EXPL="Es sieht aus als wären alle Server überlastet im Moment oder ihre Netzwerkverbindung ist zu schwach... Bitte versuchen Sie es erneut in ein paar Minuten!";
+LOC_NOT_DETER="Standort nicht bestimmt";
+LOC_NOT_DETER_EXPL="Es sieht aus als konnte ihre Position nicht bestimmt werden. Bitte versuchen Sie es erneut in ein paar Minuten!";
+GOOGLE_FUCK_UP="Fehler beim Abruf der Daten";
+GOOGLE_FUCK_UP_EXPL="Es sieht aus als wäre ein Fehler aufgetreten beim Abrufen der Daten! Bitte versuchen Sie es erneut in ein paar Minuten. Wenn der Fehler weiterhin besteht, bitte kontaktieren Sie uns.";
+APP_NOT_INST="Anwendung nicht installiert";
+APP_NOT_INST_EXPL="Es sieht aus als wäre %@ nicht mehr installiert! Installieren Sie erneut um es wieder zu verwenden!"; STREETVIEW_NA="StreetView nicht verfügbar";
+STREETVIEW_NA_EXPL="Es sieht aus als wäre StreetView nicht verfügbar an diesem Standort! 😁";
+WEB_CONNEC_WEAK="Internet verbindung zu schwach";
+WEB_CONNEC_WEAK_EXPL="It looks like your Internet connection is too weak to display StreetView...";
+LOADING="Laden...";
+RADIUS_OF=" Im Umkreis von ";
+FORMA_DATA="Formatieren der Daten...";
+SEARCHING="Der  Suchvorgang läuft...";
+WAITING="Bitte warten...";
+SEARCH_CANCELLED="Suchvorgang abgebrochen...";
+ABOUT="Über Uns";
+SEARCH_BAR_PLACEHOLDER="Stadt, Adresse, Postleitzahl, etc...";
+SEARCH_WELCOME="Bitte geben Sie eine Stadt, eine Adresse,\na eine Postleitzahl, ein Ort, etc...";
+SEARCH_NO_RESULT="Kein Ort entspricht Ihrer Suche 😞";
+ERROR_MAIL="E-Mail konnte nicht verschickt werden";
+ERROR_MAIL_MESSAGE="Ihr Gerät konnte nicht die E-Mail verschicken. Bitte überprüfen Sie ihre E-Mail Konfiguration und versuchen Sie es Erneut.";
+CONTRIB_OSM_URL="DE:";
