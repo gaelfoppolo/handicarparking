@@ -28,6 +28,8 @@ class SearchSelectedViewController: GeoViewController {
         }
     }
     
+    //MARK: Properties
+    
     /// bouton StreetView
     var streetViewButton: UIBarButtonItem!
     

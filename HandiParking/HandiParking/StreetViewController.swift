@@ -17,6 +17,7 @@ class StreetViewController: UIViewController {
     /// marqueur contenant les coordonnées pour charger StreetView
     var marker:PlaceMarker
     
+    /// le service pour initialisé StreetView
     var service: GMSPanoramaService!
     
     //MARK: Initialisateurs

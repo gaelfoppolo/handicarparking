@@ -369,9 +369,8 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         }
         changeSearchResultsEffect()
         self.delay(seconds: 1.3, completion: {
-            self.resultsInRadius.text = self.makeStringSearchResultsInRadius()
-  as String       })
-        
+            self.resultsInRadius.text = self.makeStringSearchResultsInRadius() as String
+        })
         if resultsInRadius.hidden {
             resultsInRadius.alpha = 0.0
             resultsInRadius.hidden = false
@@ -531,6 +530,16 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         mapView.animateWithCameraUpdate(GMSCameraUpdate.fitBounds(bounds, withPadding: 50.0))
         SwiftSpinner.hide()
         
+    }
+    
+    /**
+        Vérifie si deux coordonnées sont identiques
+        :param: coordinate1 la première coordonnée
+        :param: coordinate2 la seconde coordonnée
+        :return: un booléen
+    */
+    func CLLocationCoordinate2DEqual(coordinate1: CLLocationCoordinate2D, coordinate2: CLLocationCoordinate2D) -> Bool {
+        return (coordinate1.latitude == coordinate2.latitude) && (coordinate1.longitude == coordinate2.longitude)
     }
     
     /**
@@ -715,10 +724,6 @@ class GeoViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             
             
         })
-    }
-    
-    func CLLocationCoordinate2DEqual(coordinate1: CLLocationCoordinate2D, coordinate2: CLLocationCoordinate2D) -> Bool {
-        return (coordinate1.latitude == coordinate2.latitude) && (coordinate1.longitude == coordinate2.longitude)
     }
     
     /**

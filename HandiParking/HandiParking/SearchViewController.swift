@@ -29,20 +29,25 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
     /// timer pour lancer la recherche
     var timerBeforeLaunchSearch = NSTimer()
     
-    // booléen en recherche ou non
+    /// booléen en recherche ou non
     var inSearching: Bool = false
 
     /// gestionnaire des requêtes pour Google Maps
     var managerGM: Alamofire.Manager?
     
-    // requête de la recherche Google Autocomplete (permet de cancel)
+    /// requête de la recherche Google Autocomplete (permet de cancel)
     var request: Alamofire.Request?
     
+    /// couleur par défaut du texte
     var autoCompleteTextColor = UIColor.lightGrayColor()
     
+    /// liste des noms des lieux trouvés
     var attributedAutocompleteStrings:[NSAttributedString]?
     
+    /// attributs du texte à afficher
     var autoCompleteAttributes:Dictionary<String,AnyObject>?
+    
+    //MARK: Init
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
@@ -335,6 +340,11 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
         }
     }
     
+    /**
+        Mise en place du style du texte qui va être affiché
+        Si le texte de la barre de recherche est contenu dans le nom du lieu, on lui applique un style différent
+        On lance l'actualisation du contenu de la table quand c'est terminé
+    */
     private func reloadAutoCompleteData(){
             let searchString:String = self.placeSearchController.searchBar.text
             let attrs = [NSForegroundColorAttributeName:autoCompleteTextColor, NSFontAttributeName:UIFont.systemFontOfSize(13)]

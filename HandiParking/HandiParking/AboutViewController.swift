@@ -11,6 +11,9 @@ import MessageUI
 
 class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
+    //MARK : Outlets
+    
+    /// appelé lorsque le bouton nous contacter est touché
     @IBAction func sendMail(sender: AnyObject) {
         let mailComposeViewController = configuredMailComposeViewController()
         if MFMailComposeViewController.canSendMail() {
@@ -20,6 +23,39 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         }
     }
     
+    /// appelé lorsque le bouton en savoir plus est touché
+    @IBAction func learnMoreOSM(sender: AnyObject) {
+        var mySafari: UIApplication = UIApplication.sharedApplication()
+        var myURL: NSURL = NSURL(string: "http://www.openstreetmap.org/about")!
+        mySafari.openURL(myURL)
+    }
+    
+    /// appelé lorsque le bouton contribuer est touché
+    @IBAction func contributeOSM(sender: AnyObject) {
+        var mySafari: UIApplication = UIApplication.sharedApplication()
+        var urlString = "http://wiki.openstreetmap.org/wiki/" + NSLocalizedString("CONTRIB_OSM_URL",comment:"language string") + "Beginners'_guide"
+        var urlParse: NSString = urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        var myURL: NSURL = NSURL(string: urlParse as String)!
+        mySafari.openURL(myURL)
+    }
+    
+    //MARK: Init
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.topItem?.title = NSLocalizedString("ABOUT", comment: "About")
+    }
+    
+    //MARK: Fonctions
+    
+    /**
+        Créer la vue mail avec les paramètres nécessaires
+        :return: la vue qui va gérer le mail
+    */
     func configuredMailComposeViewController() -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
@@ -33,31 +69,9 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     }
     
     // MARK: MFMailComposeViewControllerDelegate
+    
     func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
         controller.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    @IBAction func learnMoreOSM(sender: AnyObject) {
-        var mySafari: UIApplication = UIApplication.sharedApplication()
-        var myURL: NSURL = NSURL(string: "http://www.openstreetmap.org/about")!
-        mySafari.openURL(myURL)
-    }
-    
-    @IBAction func contributeOSM(sender: AnyObject) {
-        var mySafari: UIApplication = UIApplication.sharedApplication()
-        var urlString = "http://wiki.openstreetmap.org/wiki/" + NSLocalizedString("CONTRIB_OSM_URL",comment:"language string") + "Beginners'_guide"
-        var urlParse: NSString = urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
-        var myURL: NSURL = NSURL(string: urlParse as String)!
-        mySafari.openURL(myURL)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.topItem?.title = NSLocalizedString("ABOUT", comment: "About")
     }
     
 }
