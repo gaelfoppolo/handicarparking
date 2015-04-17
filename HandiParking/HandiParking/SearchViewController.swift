@@ -77,6 +77,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate, UISear
         self.placeSearchController.searchBar.sizeToFit()
         self.placeSearchController.searchBar.barTintColor = self.navigationController?.navigationBar.barTintColor
         self.placeSearchController.searchBar.translucent = true
+        self.placeSearchController.searchBar.keyboardType = UIKeyboardType.ASCIICapable
         tableView.tableHeaderView = self.placeSearchController.searchBar
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         
